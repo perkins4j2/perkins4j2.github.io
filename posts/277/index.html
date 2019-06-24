@@ -107,18 +107,18 @@
 
 
 
-  <meta name="description" content="mogo 下载 12345wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-4.0.6.tgz ./tar xzvf mongodb-linux-x86_64-rhel70-4.0.6.tgzmkdir -p data/mongo_data data/logs  配置 1234567891011121314touch">
+  <meta name="description" content="mogo 下载12345wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-4.0.6.tgz ./tar xzvf mongodb-linux-x86_64-rhel70-4.0.6.tgzmkdir -p data/mongo_data data/logs">
 <meta name="keywords" content="MongoDB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS7安装部署 - MongoDB">
 <meta property="og:url" content="https://perkins4j2.github.io/posts/277/index.html">
 <meta property="og:site_name" content="Perkins4j2的技术博客">
-<meta property="og:description" content="mogo 下载 12345wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-4.0.6.tgz ./tar xzvf mongodb-linux-x86_64-rhel70-4.0.6.tgzmkdir -p data/mongo_data data/logs  配置 1234567891011121314touch">
+<meta property="og:description" content="mogo 下载12345wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-4.0.6.tgz ./tar xzvf mongodb-linux-x86_64-rhel70-4.0.6.tgzmkdir -p data/mongo_data data/logs">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-24T12:17:55.886Z">
+<meta property="og:updated_time" content="2019-06-24T12:33:55.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CentOS7安装部署 - MongoDB">
-<meta name="twitter:description" content="mogo 下载 12345wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-4.0.6.tgz ./tar xzvf mongodb-linux-x86_64-rhel70-4.0.6.tgzmkdir -p data/mongo_data data/logs  配置 1234567891011121314touch">
+<meta name="twitter:description" content="mogo 下载12345wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-4.0.6.tgz ./tar xzvf mongodb-linux-x86_64-rhel70-4.0.6.tgzmkdir -p data/mongo_data data/logs">
 
 
 
@@ -438,7 +438,7 @@
                 
               
 
-              <time title="创建时间：2019-06-24 20:15:24 / 修改时间：20:17:55" itemprop="dateCreated datePublished" datetime="2019-06-24T20:15:24+08:00">2019-06-24</time>
+              <time title="创建时间：2019-06-24 20:15:24 / 修改时间：20:33:55" itemprop="dateCreated datePublished" datetime="2019-06-24T20:15:24+08:00">2019-06-24</time>
             
 
             
@@ -531,9 +531,13 @@
 
       
         <h3 id="mogo"><a href="#mogo" class="headerlink" title="mogo"></a>mogo</h3><ul>
-<li><p>下载</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-4.0.6.tgz ./</span><br><span class="line"></span><br><span class="line">tar xzvf mongodb-linux-x86_64-rhel70-4.0.6.tgz</span><br><span class="line"></span><br><span class="line">mkdir -p data/mongo_data data/logs</span><br></pre></td></tr></table></figure>
+<li>下载<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-4.0.6.tgz ./</span><br><span class="line"></span><br><span class="line">tar xzvf mongodb-linux-x86_64-rhel70-4.0.6.tgz</span><br><span class="line"></span><br><span class="line">mkdir -p data/mongo_data data/logs</span><br></pre></td></tr></table></figure>
+
 </li>
+</ul>
+<a id="more"></a>
+
+<ul>
 <li><p>配置</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">touch mongo.conf</span><br><span class="line"></span><br><span class="line"><span class="comment">#数据目录</span></span><br><span class="line">dbpath=/home/admin/soft/mongodb/data/mongo_data</span><br><span class="line">logpath=/home/admin/soft/mongodb/data/logs/mongo.log</span><br><span class="line"><span class="comment">#后台允许</span></span><br><span class="line">fork=<span class="literal">true</span></span><br><span class="line">quiet=<span class="literal">true</span></span><br><span class="line">journal=<span class="literal">true</span></span><br><span class="line">logappend=<span class="literal">true</span></span><br><span class="line"><span class="comment">#可以外网访问</span></span><br><span class="line">bind_ip=0.0.0.0</span><br><span class="line"><span class="comment">#修改端口</span></span><br><span class="line">port=27018</span><br></pre></td></tr></table></figure>
 </li>
