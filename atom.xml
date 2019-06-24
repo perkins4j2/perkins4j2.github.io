@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Perkins4j2的技术博客</title>
+  
+  <subtitle>一个人,一根烧火棍,面对整个世界.</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://perkins4j2.github.io/"/>
+  <updated>2019-06-03T06:36:22.478Z</updated>
+  <id>https://perkins4j2.github.io/</id>
+  
+  <author>
+    <name>Perkins</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java并发编程艺术 - 多线程</title>
+    <link href="https://perkins4j2.github.io/posts/24227/"/>
+    <id>https://perkins4j2.github.io/posts/24227/</id>
+    <published>2019-06-03T05:48:17.000Z</published>
+    <updated>2019-06-03T06:36:22.478Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;启动Java应用程序则是一个进程，一个进程可以启动多个线程，线程是操作系统调度最小单元。线程拥有独立的计数器、栈和局部变量，可以共享堆内存。&lt;/p&gt;
+&lt;p&gt;一个Java程序入口是main主线程，线程优先级从1-10，优先级越高分配时间片越长。&lt;/p&gt;
+&lt;h3 id=&quot;线程状态&quot;&gt;&lt;a href=&quot;#线程状态&quot; class=&quot;headerlink&quot; title=&quot;线程状态&quot;&gt;&lt;/a&gt;线程状态&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;NEW 新建&lt;ul&gt;
+&lt;li&gt;Thread.start();&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;RUNNABLE 运行，包括就绪和运行&lt;ul&gt;
+&lt;li&gt;Thread.run();&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;BLOCKED 阻塞&lt;ul&gt;
+&lt;li&gt;synchronized&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;WAITING 等待，等待其他线程通知和中断&lt;ul&gt;
+&lt;li&gt;Object.wait()&lt;/li&gt;
+&lt;li&gt;Object.join()&lt;/li&gt;
+&lt;li&gt;LockSupport.park(Thread)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;TIME_WAITTING 等待，等待指定时间超时&lt;ul&gt;
+&lt;li&gt;Thread.sleep(long)&lt;/li&gt;
+&lt;li&gt;Object.wait(long)&lt;/li&gt;
+&lt;li&gt;Object.join(long)&lt;/li&gt;
+&lt;li&gt;LockSupport.parkNanos()&lt;/li&gt;
+&lt;li&gt;LockSupport.parkUntil()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;TERMINATED 终止&lt;ul&gt;
+&lt;li&gt;interrupt(),isInterrupted()和interrupted()&lt;/li&gt;
+&lt;li&gt;suspend()、resume()和stop()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="多线程" scheme="https://perkins4j2.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java并发编程艺术 - 延迟加载与双重检查锁定double check lock</title>
+    <link href="https://perkins4j2.github.io/posts/31866/"/>
+    <id>https://perkins4j2.github.io/posts/31866/</id>
+    <published>2019-05-30T06:15:24.000Z</published>
+    <updated>2019-05-30T08:10:37.693Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;类延迟初始化常采用单例模式。&lt;/p&gt;
+&lt;p&gt;方法1：&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Singleton&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; Singleton singleton = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; Singleton &lt;span class=&quot;title&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (singleton == &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) &amp;#123;&lt;span class=&quot;comment&quot;&gt;//1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            singleton=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Singleton();&lt;span class=&quot;comment&quot;&gt;//2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; singleton;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;多线程中，步骤1可以同步执行，导致步骤2多次执行。&lt;/code&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="单例模式" scheme="https://perkins4j2.github.io/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
+    
+      <category term="双重检测锁定" scheme="https://perkins4j2.github.io/tags/%E5%8F%8C%E9%87%8D%E6%A3%80%E6%B5%8B%E9%94%81%E5%AE%9A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java并发编程艺术 - 重排序</title>
+    <link href="https://perkins4j2.github.io/posts/35014/"/>
+    <id>https://perkins4j2.github.io/posts/35014/</id>
+    <published>2019-05-29T08:55:03.000Z</published>
+    <updated>2019-05-29T09:18:49.469Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;重排序是编译器和处理器为优化程序性能而对指令进行重新排序的手段。&lt;/p&gt;
+&lt;h3 id=&quot;数据依赖性&quot;&gt;&lt;a href=&quot;#数据依赖性&quot; class=&quot;headerlink&quot; title=&quot;数据依赖性&quot;&gt;&lt;/a&gt;数据依赖性&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;写后写;a=1,a=2&lt;/li&gt;
+&lt;li&gt;写后读;a=1,b=a&lt;/li&gt;
+&lt;li&gt;读后写;a=b,b=1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以上三种情况存在数据依赖，重排将会引起结果改变。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="重排序" scheme="https://perkins4j2.github.io/tags/%E9%87%8D%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java并发编程艺术 - Java内存模型基础</title>
+    <link href="https://perkins4j2.github.io/posts/49164/"/>
+    <id>https://perkins4j2.github.io/posts/49164/</id>
+    <published>2019-05-27T03:51:38.000Z</published>
+    <updated>2019-05-30T07:13:00.260Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;并发编程的两个关键性问题&quot;&gt;&lt;a href=&quot;#并发编程的两个关键性问题&quot; class=&quot;headerlink&quot; title=&quot;并发编程的两个关键性问题&quot;&gt;&lt;/a&gt;并发编程的两个关键性问题&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;线程通信&lt;/li&gt;
+&lt;li&gt;线程同步&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;线程通信&quot;&gt;&lt;a href=&quot;#线程通信&quot; class=&quot;headerlink&quot; title=&quot;线程通信&quot;&gt;&lt;/a&gt;线程通信&lt;/h4&gt;&lt;p&gt; 通信是指线程间的信息交换，主要有两种：共享内存和消息传递。&lt;/p&gt;
+&lt;p&gt; 共享内存是线程利用内存的公共状态进行隐私通信。&lt;/p&gt;
+&lt;p&gt;在Java中主要利用堆内存变量实现共享内存，包括静态域、数据、实例。&lt;br&gt; &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ThreadShare&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//利用内存静态变量进行状态传递&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; num = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;increase&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       num++;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       System.out.println(num);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String[] args)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       ThreadShare threadShare = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ThreadShare();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Thread(threadShare::increase).start();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Thread(threadShare::increase).start();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Java内存模型" scheme="https://perkins4j2.github.io/tags/Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/"/>
+    
+      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java并发编程艺术 - 原子性及CAS使用和原理</title>
+    <link href="https://perkins4j2.github.io/posts/28363/"/>
+    <id>https://perkins4j2.github.io/posts/28363/</id>
+    <published>2019-05-05T02:32:11.000Z</published>
+    <updated>2019-05-05T10:12:03.159Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;原子性&quot;&gt;&lt;a href=&quot;#原子性&quot; class=&quot;headerlink&quot; title=&quot;原子性&quot;&gt;&lt;/a&gt;原子性&lt;/h3&gt;&lt;p&gt;处理器保障从系统内存中读取和写入字节是原子的，即其他处理器不能访问该字节地址。&lt;/p&gt;
+&lt;h4 id=&quot;总线锁保障原子性&quot;&gt;&lt;a href=&quot;#总线锁保障原子性&quot; class=&quot;headerlink&quot; title=&quot;总线锁保障原子性&quot;&gt;&lt;/a&gt;总线锁保障原子性&lt;/h4&gt;&lt;p&gt;处理器发出Lock#信号到总线上，其他处理器阻塞，该处理器独享内存。&lt;/p&gt;
+&lt;h4 id=&quot;缓存锁保障原子性&quot;&gt;&lt;a href=&quot;#缓存锁保障原子性&quot; class=&quot;headerlink&quot; title=&quot;缓存锁保障原子性&quot;&gt;&lt;/a&gt;缓存锁保障原子性&lt;/h4&gt;&lt;p&gt;总线锁把CPU和内存通信锁住，其他CPU无法访问其他内存地址，开销较大。&lt;/p&gt;
+&lt;p&gt;可以在缓存中，锁定内存地址，保障原子性。&lt;/p&gt;
+&lt;p&gt;缓存锁定缓存行时，回写内存不声明LOCK#，而是修改内部内存地址，同时通过缓存一致性阻止其他处理器修改；当其他处理器回写&lt;br&gt;，将会无效缓存行，从内存重新加载数据。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="CAS" scheme="https://perkins4j2.github.io/tags/CAS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java并发编程艺术 - synchronized使用和原理</title>
+    <link href="https://perkins4j2.github.io/posts/43888/"/>
+    <id>https://perkins4j2.github.io/posts/43888/</id>
+    <published>2019-05-05T02:31:33.000Z</published>
+    <updated>2019-05-05T09:57:56.943Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;synchronized属于重量级锁，实现代码同步。&lt;/p&gt;
+&lt;p&gt;Java SE1.6优化引入了偏向锁和轻量级锁，同时支持锁升级，以减少获取锁和释放锁的性能消耗。&lt;/p&gt;
+&lt;h3 id=&quot;锁的对象&quot;&gt;&lt;a href=&quot;#锁的对象&quot; class=&quot;headerlink&quot; title=&quot;锁的对象&quot;&gt;&lt;/a&gt;锁的对象&lt;/h3&gt;&lt;p&gt;synchronized可以修饰Java非空对象，常见3种形式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;锁当前实例&lt;br&gt;修饰普通方法，例如:&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;synchronized&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;那么该对象实例将会在执行该方法时阻塞，以保持同步执行，不可并行执行；但是不同对象可以并行执行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="synchronized" scheme="https://perkins4j2.github.io/tags/synchronized/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java并发编程艺术 - volatile使用和原理</title>
+    <link href="https://perkins4j2.github.io/posts/34733/"/>
+    <id>https://perkins4j2.github.io/posts/34733/</id>
+    <published>2019-05-05T02:30:33.000Z</published>
+    <updated>2019-06-24T10:36:00.674Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Java代码经过Java编译器编译成字节码，并由类加载器加载到JVM运行时数据区，&lt;br&gt;最终由JVM执行引擎执行字节码，转换为汇编指令在CPU内执行。&lt;/p&gt;
+&lt;p&gt;Java并发机制主要依赖JVM实现和CPU指令。&lt;/p&gt;
+&lt;h3 id=&quot;volatile&quot;&gt;&lt;a href=&quot;#volatile&quot; class=&quot;headerlink&quot; title=&quot;volatile&quot;&gt;&lt;/a&gt;volatile&lt;/h3&gt;&lt;p&gt;volatile修饰变量，提供多处理器并发中共享变量的可见性，是轻量的synchronized。&lt;/p&gt;
+&lt;p&gt;volatile由CPU指令实现，不会引起上下文切换，性能比synchronized高。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="volatile" scheme="https://perkins4j2.github.io/tags/volatile/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Cloud - 如何利用Zuul实现接口限流</title>
+    <link href="https://perkins4j2.github.io/posts/33184/"/>
+    <id>https://perkins4j2.github.io/posts/33184/</id>
+    <published>2019-04-23T11:49:36.000Z</published>
+    <updated>2019-05-05T02:27:41.831Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;以下为Zuul利用ratelimit在网关进行接口限流。&lt;/p&gt;
+&lt;h3 id=&quot;限流方案&quot;&gt;&lt;a href=&quot;#限流方案&quot; class=&quot;headerlink&quot; title=&quot;限流方案&quot;&gt;&lt;/a&gt;限流方案&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;方案&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;基于用户id&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;根据用户标识或匿名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;基于用户角色&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;根据用户角色&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;基于用户源IP&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;请求源IP&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;基于请求URL&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;下游服务地址&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;基于请求方法类型&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;HTTP请求方法，GET、POST等&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;基于请求服务&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;下游服务&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&quot;POM引入&quot;&gt;&lt;a href=&quot;#POM引入&quot; class=&quot;headerlink&quot; title=&quot;POM引入&quot;&gt;&lt;/a&gt;POM引入&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!-- 请求限流 --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;groupId&amp;gt;com.marcosbarbero.cloud&amp;lt;/groupId&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;artifactId&amp;gt;spring-cloud-zuul-ratelimit&amp;lt;/artifactId&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;version&amp;gt;2.0.4.RELEASE&amp;lt;/version&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="微服务" scheme="https://perkins4j2.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+      <category term="Spring Cloud" scheme="https://perkins4j2.github.io/tags/Spring-Cloud/"/>
+    
+      <category term="Zuul" scheme="https://perkins4j2.github.io/tags/Zuul/"/>
+    
+      <category term="ratelimit" scheme="https://perkins4j2.github.io/tags/ratelimit/"/>
+    
+      <category term="限流" scheme="https://perkins4j2.github.io/tags/%E9%99%90%E6%B5%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Cloud - 如何利用Zuul进行网关开发</title>
+    <link href="https://perkins4j2.github.io/posts/33205/"/>
+    <id>https://perkins4j2.github.io/posts/33205/</id>
+    <published>2019-04-23T11:49:27.000Z</published>
+    <updated>2019-06-24T10:39:06.551Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Zuul介绍&quot;&gt;&lt;a href=&quot;#Zuul介绍&quot; class=&quot;headerlink&quot; title=&quot;Zuul介绍&quot;&gt;&lt;/a&gt;Zuul介绍&lt;/h3&gt;&lt;p&gt;Zuul是Spring Cloud全家桶一员，用于微服务网关开发，实现对外服务请求的白黑名单控制、代理转发、限流、权鉴认证、灰度测试等。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="微服务" scheme="https://perkins4j2.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+      <category term="Spring Cloud" scheme="https://perkins4j2.github.io/tags/Spring-Cloud/"/>
+    
+      <category term="Zuul" scheme="https://perkins4j2.github.io/tags/Zuul/"/>
+    
+      <category term="网关" scheme="https://perkins4j2.github.io/tags/%E7%BD%91%E5%85%B3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Cloud - Ribbon在Zuul上实现灰度和版本测试</title>
+    <link href="https://perkins4j2.github.io/posts/25628/"/>
+    <id>https://perkins4j2.github.io/posts/25628/</id>
+    <published>2019-04-23T11:34:43.000Z</published>
+    <updated>2019-05-05T02:26:59.813Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文依赖ribbon实现在Spring Cloud中的灰度测试。&lt;/p&gt;
+&lt;h3 id=&quot;POM引入&quot;&gt;&lt;a href=&quot;#POM引入&quot; class=&quot;headerlink&quot; title=&quot;POM引入&quot;&gt;&lt;/a&gt;POM引入&lt;/h3&gt;&lt;p&gt;Zuul及下游服务中均引入包&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;!-- 实现灰度测试关键包 --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;dependency&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;groupId&amp;gt;io.jmnarloch&amp;lt;/groupId&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;artifactId&amp;gt;ribbon-discovery-filter-spring-cloud-starter&amp;lt;/artifactId&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;lt;version&amp;gt;2.1.0&amp;lt;/version&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;/dependency&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="微服务" scheme="https://perkins4j2.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+      <category term="Spring Cloud" scheme="https://perkins4j2.github.io/tags/Spring-Cloud/"/>
+    
+      <category term="Zuul" scheme="https://perkins4j2.github.io/tags/Zuul/"/>
+    
+      <category term="Ribbon" scheme="https://perkins4j2.github.io/tags/Ribbon/"/>
+    
+      <category term="灰度测试" scheme="https://perkins4j2.github.io/tags/%E7%81%B0%E5%BA%A6%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Cloud - Nacos与Eureka区别及如何选型</title>
+    <link href="https://perkins4j2.github.io/posts/35353/"/>
+    <id>https://perkins4j2.github.io/posts/35353/</id>
+    <published>2019-04-23T08:02:48.000Z</published>
+    <updated>2019-04-30T09:03:54.149Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Nacos与Eureka均提供注册中心和服务治理功能，以下为两则差异和选型方案。&lt;/p&gt;
+&lt;h3 id=&quot;功能差异&quot;&gt;&lt;a href=&quot;#功能差异&quot; class=&quot;headerlink&quot; title=&quot;功能差异&quot;&gt;&lt;/a&gt;功能差异&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;模块&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;Nacos&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;Eureka&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;说明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;注册中心&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;是&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;是&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;服务治理基本功能，负责服务中心化注册&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;配置中心&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;是&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;否&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;Eureka需要配合Config实现配置中心，且不提供管理界面&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;动态刷新&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;是&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;否&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;Eureka需要配合MQ实现配置动态刷新，Nacos采用Netty保持TCP长连接实时推送&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;可用区AZ&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;是&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;是&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;对服务集群划分不同区域，实现区域隔离，并提供容灾自动切换&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;分组&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;是&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;否&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;Nacos可用根据业务和环境进行分组管理&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;元数据&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;是&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;是&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;提供服务标签数据，例如环境或服务标识&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;权重&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;是&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;否&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;Nacos默认提供权重设置功能，调整承载流量压力&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;健康检查&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;是&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;是&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;Nacos支持由客户端或服务端发起的健康检查，Eureka是由客户端发起心跳&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;负载均衡&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;是&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;是&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;均提供负责均衡策略，Eureka采用Ribion&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;管理界面&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;是&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&lt;code&gt;否&lt;/code&gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;Nacos支持对服务在线管理，Eureka只是预览服务状态&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+    
+    </summary>
+    
+      <category term="微服务" scheme="https://perkins4j2.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+      <category term="Spring Cloud" scheme="https://perkins4j2.github.io/tags/Spring-Cloud/"/>
+    
+      <category term="Nacos" scheme="https://perkins4j2.github.io/tags/Nacos/"/>
+    
+      <category term="Eureka" scheme="https://perkins4j2.github.io/tags/Eureka/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux运维常用命令 - grep</title>
+    <link href="https://perkins4j2.github.io/posts/48230/"/>
+    <id>https://perkins4j2.github.io/posts/48230/</id>
+    <published>2019-04-22T09:15:18.000Z</published>
+    <updated>2019-05-30T07:16:25.669Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;以下为Linux开发中常用的命令。&lt;/p&gt;
+&lt;h4 id=&quot;筛选文本并查看指定上下行数&quot;&gt;&lt;a href=&quot;#筛选文本并查看指定上下行数&quot; class=&quot;headerlink&quot; title=&quot;筛选文本并查看指定上下行数&quot;&gt;&lt;/a&gt;筛选文本并查看指定上下行数&lt;/h4&gt;&lt;p&gt;常用于筛选日志，并查看上下文&lt;/p&gt;
+&lt;p&gt;grep  [选项]  ‘模式’  [文件]  &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;选项:
+    -A  后几行
+    -B  前几行
+    -C  前后几行
+
+模式:
+    待筛选文本
+
+文件:
+    待筛选源文件
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;举例&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;grep -A 20 &lt;span class=&quot;string&quot;&gt;&#39;cat&#39;&lt;/span&gt; info.log &lt;span class=&quot;comment&quot;&gt;# 显示info.log及后20行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;grep -B 20 &lt;span class=&quot;string&quot;&gt;&#39;cat&#39;&lt;/span&gt; info.log &lt;span class=&quot;comment&quot;&gt;# 显示info.log及前20行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;grep -C 20 &lt;span class=&quot;string&quot;&gt;&#39;cat&#39;&lt;/span&gt; info.log &lt;span class=&quot;comment&quot;&gt;# 显示info.log文件里匹配cat字串行以及上下20行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://perkins4j2.github.io/categories/Linux/"/>
+    
+    
+      <category term="Shell" scheme="https://perkins4j2.github.io/tags/Shell/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java并发编程艺术 - 死锁产生及优化</title>
+    <link href="https://perkins4j2.github.io/posts/20463/"/>
+    <id>https://perkins4j2.github.io/posts/20463/</id>
+    <published>2019-04-22T09:12:05.000Z</published>
+    <updated>2019-06-24T10:39:06.544Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt; 本文介绍死锁产生的条件及优化方案。&lt;/p&gt;
+&lt;h3 id=&quot;死锁产生&quot;&gt;&lt;a href=&quot;#死锁产生&quot; class=&quot;headerlink&quot; title=&quot;死锁产生&quot;&gt;&lt;/a&gt;死锁产生&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;线程互相等待&lt;/p&gt;
+&lt;p&gt;常见的死锁有JDK死锁和数据库死锁。&lt;/p&gt;
+&lt;p&gt;以JDK死锁为例：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;31&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;32&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;33&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;34&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;35&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;36&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;37&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;38&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;39&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;40&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Deadlock&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Friend&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; String name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Friend&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String name)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name = name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; String &lt;span class=&quot;title&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//同步锁bow&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;synchronized&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;bow&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Friend bower)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            System.out.format(&lt;span class=&quot;string&quot;&gt;&quot;%s: %s&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                + &lt;span class=&quot;string&quot;&gt;&quot;  has bowed to me!%n&quot;&lt;/span&gt;, &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name, bower.getName());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;comment&quot;&gt;//调用同步锁bowBack&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            bower.bowBack(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;comment&quot;&gt;//同步锁bowBack&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;synchronized&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;bowBack&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Friend bower)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            System.out.format(&lt;span class=&quot;string&quot;&gt;&quot;%s: %s&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                + &lt;span class=&quot;string&quot;&gt;&quot; has bowed back to me!%n&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name, bower.getName());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String[] args)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; Friend alphonse =&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Friend(&lt;span class=&quot;string&quot;&gt;&quot;Alphonse&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;final&lt;/span&gt; Friend gaston =&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Friend(&lt;span class=&quot;string&quot;&gt;&quot;Gaston&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Thread(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Runnable() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123; alphonse.bow(gaston); &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;).start();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Thread(&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Runnable() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123; gaston.bow(alphonse); &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;).start();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="多线程" scheme="https://perkins4j2.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="死锁" scheme="https://perkins4j2.github.io/tags/%E6%AD%BB%E9%94%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>搭建GitHub博客教程 - Hexo及Next主题优化</title>
+    <link href="https://perkins4j2.github.io/posts/60068/"/>
+    <id>https://perkins4j2.github.io/posts/60068/</id>
+    <published>2019-04-22T09:07:13.000Z</published>
+    <updated>2019-05-05T10:33:31.804Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文为针对Hexo博客和Next主题的优化和配置。&lt;/p&gt;
+&lt;h3 id=&quot;标题配置&quot;&gt;&lt;a href=&quot;#标题配置&quot; class=&quot;headerlink&quot; title=&quot;标题配置&quot;&gt;&lt;/a&gt;标题配置&lt;/h3&gt;&lt;p&gt;vi  _config_yml&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;title: xxx的技术博客&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;subtitle: xxx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;description: xx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;keywords: xxx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;author: xx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;language: zh-CN&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;timezone: Asia/Chongqing&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;首页文章预览限制字数&quot;&gt;&lt;a href=&quot;#首页文章预览限制字数&quot; class=&quot;headerlink&quot; title=&quot;首页文章预览限制字数&quot;&gt;&lt;/a&gt;首页文章预览限制字数&lt;/h3&gt;&lt;p&gt;cd themes/next&lt;/p&gt;
+&lt;p&gt;vi _config.yml&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;auto_excerpt:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  enable: true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  length: 150&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;文章内使用&lt;code&gt;&amp;lt;!--more--&amp;gt;&lt;/code&gt;作为预览分割&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
+    
+    
+      <category term="工具" scheme="https://perkins4j2.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="Hexo" scheme="https://perkins4j2.github.io/tags/Hexo/"/>
+    
+      <category term="GitHub" scheme="https://perkins4j2.github.io/tags/GitHub/"/>
+    
+      <category term="Next" scheme="https://perkins4j2.github.io/tags/Next/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Cloud - Nacos集群配置和集成</title>
+    <link href="https://perkins4j2.github.io/posts/57096/"/>
+    <id>https://perkins4j2.github.io/posts/57096/</id>
+    <published>2019-04-22T08:48:57.000Z</published>
+    <updated>2019-06-24T10:39:06.534Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍生产环境中Nacos集群的安装配置，及与Spring Cloud的集成。&lt;/p&gt;
+&lt;h3 id=&quot;Nacos介绍&quot;&gt;&lt;a href=&quot;#Nacos介绍&quot; class=&quot;headerlink&quot; title=&quot;Nacos介绍&quot;&gt;&lt;/a&gt;Nacos介绍&lt;/h3&gt;&lt;p&gt;类似于Spring Cloud Eureka和Spring Cloud Config，Nacos提供了服务注册管理和配置中心的功能；其中配置中心实现动态刷新，无需MQ。&lt;/p&gt;
+&lt;p&gt;相对于Eureka，Nacos是由阿里提供的开源服务，可以兼容Spring Cloud，也支持其他语言例如python服务的注册管理。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://img.perkins4j2.com/nacosMap.jpg&quot; alt=&quot;nacosMap.jpg&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Nacos安装&quot;&gt;&lt;a href=&quot;#Nacos安装&quot; class=&quot;headerlink&quot; title=&quot;Nacos安装&quot;&gt;&lt;/a&gt;Nacos安装&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;环境要求：&lt;br&gt;  64 bit JDK 1.8+&lt;br&gt;  MySql 5.6.5+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/alibaba/nacos/releases&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;安装包下载&lt;/a&gt;&lt;br&gt;当前版本 1.0.0&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;解压&lt;br&gt;unzip nacos-server-$version.zip&lt;br&gt;tar -xvf nacos-server-$version.tar.gz&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="微服务" scheme="https://perkins4j2.github.io/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
+    
+    
+      <category term="Spring Cloud" scheme="https://perkins4j2.github.io/tags/Spring-Cloud/"/>
+    
+      <category term="Nacos" scheme="https://perkins4j2.github.io/tags/Nacos/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java并发编程艺术 - 多线程与资源限制</title>
+    <link href="https://perkins4j2.github.io/posts/10420/"/>
+    <id>https://perkins4j2.github.io/posts/10420/</id>
+    <published>2019-04-19T08:31:19.000Z</published>
+    <updated>2019-05-05T08:08:29.718Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;文本介绍多线程和资源的关系。&lt;/p&gt;
+&lt;h3 id=&quot;是否多线程越多速度越快？&quot;&gt;&lt;a href=&quot;#是否多线程越多速度越快？&quot; class=&quot;headerlink&quot; title=&quot;是否多线程越多速度越快？&quot;&gt;&lt;/a&gt;是否多线程越多速度越快？&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;结论：并发编程中采用多线程，并非线程越多执行效率越高。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;线程执行是由CPU分配较短的时间片，线程在得到时间片时执行，并在时间片后挂起，并切换其他线程执行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;线程切换时先会保存上一个线程状态，并加载当前线程的历史状态。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;因为线程的上下文切换需要时间，影响多线程执行速度。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在执行某些简单、快速任务情况下，多线程执行效率还不如单线程执行。&lt;br&gt;假如单核采用单线程执行任务仅需要20ms，但单核采用多线程，并发100，可能创建线程时间就超出20ms，再加上单核只能执行单线程，需要多线程频繁挂起、上下文切换肯定慢。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在低核时，不建议采用多线程进行CPU密集型计算；建议采用多线程执行监听输入、读取文件、网络通信等IO密集型操作。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="多线程" scheme="https://perkins4j2.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IDEA开发快捷键 - Mac</title>
+    <link href="https://perkins4j2.github.io/posts/10018/"/>
+    <id>https://perkins4j2.github.io/posts/10018/</id>
+    <published>2019-04-16T02:09:53.000Z</published>
+    <updated>2019-05-05T08:08:57.237Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文介绍IDEA中进行Java开发的常用快捷键。&lt;/p&gt;
+&lt;h3 id=&quot;编辑&quot;&gt;&lt;a href=&quot;#编辑&quot; class=&quot;headerlink&quot; title=&quot;编辑&quot;&gt;&lt;/a&gt;编辑&lt;/h3&gt;&lt;h4 id=&quot;撤销：-⌘-Z&quot;&gt;&lt;a href=&quot;#撤销：-⌘-Z&quot; class=&quot;headerlink&quot; title=&quot;撤销： ⌘+Z&quot;&gt;&lt;/a&gt;撤销： ⌘+Z&lt;/h4&gt;&lt;h4 id=&quot;切换大小写：-⇧-⌘-U&quot;&gt;&lt;a href=&quot;#切换大小写：-⇧-⌘-U&quot; class=&quot;headerlink&quot; title=&quot;切换大小写： ⇧+⌘+U&quot;&gt;&lt;/a&gt;切换大小写： ⇧+⌘+U&lt;/h4&gt;&lt;h4 id=&quot;上一个位置：-⌥-⌘-←&quot;&gt;&lt;a href=&quot;#上一个位置：-⌥-⌘-←&quot; class=&quot;headerlink&quot; title=&quot;上一个位置： ⌥+⌘+←&quot;&gt;&lt;/a&gt;上一个位置： ⌥+⌘+←&lt;/h4&gt;&lt;h4 id=&quot;下一个位置：-⌥-⌘-→&quot;&gt;&lt;a href=&quot;#下一个位置：-⌥-⌘-→&quot; class=&quot;headerlink&quot; title=&quot;下一个位置： ⌥+⌘+→&quot;&gt;&lt;/a&gt;下一个位置： ⌥+⌘+→&lt;/h4&gt;&lt;h4 id=&quot;反-注释行：-⌘&quot;&gt;&lt;a href=&quot;#反-注释行：-⌘&quot; class=&quot;headerlink&quot; title=&quot;(反)注释行： ⌘+/&quot;&gt;&lt;/a&gt;(反)注释行： ⌘+/&lt;/h4&gt;&lt;h4 id=&quot;反-注释块：-⌥-⌘&quot;&gt;&lt;a href=&quot;#反-注释块：-⌥-⌘&quot; class=&quot;headerlink&quot; title=&quot;(反)注释块： ⌥+⌘+/&quot;&gt;&lt;/a&gt;(反)注释块： ⌥+⌘+/&lt;/h4&gt;&lt;h4 id=&quot;格式化：-⌥-⌘-L&quot;&gt;&lt;a href=&quot;#格式化：-⌥-⌘-L&quot; class=&quot;headerlink&quot; title=&quot;格式化： ⌥+⌘+L&quot;&gt;&lt;/a&gt;格式化： ⌥+⌘+L&lt;/h4&gt;&lt;h4 id=&quot;生成构造器：-⌘-N&quot;&gt;&lt;a href=&quot;#生成构造器：-⌘-N&quot; class=&quot;headerlink&quot; title=&quot;生成构造器： ⌘+N&quot;&gt;&lt;/a&gt;生成构造器： ⌘+N&lt;/h4&gt;&lt;h4 id=&quot;查看方法实现：-⌥-⌘-B&quot;&gt;&lt;a href=&quot;#查看方法实现：-⌥-⌘-B&quot; class=&quot;headerlink&quot; title=&quot;查看方法实现： ⌥+⌘+B&quot;&gt;&lt;/a&gt;查看方法实现： ⌥+⌘+B&lt;/h4&gt;&lt;h4 id=&quot;删除当前或者选中块行：-⌘-⌫&quot;&gt;&lt;a href=&quot;#删除当前或者选中块行：-⌘-⌫&quot; class=&quot;headerlink&quot; title=&quot;删除当前或者选中块行： ⌘+⌫&quot;&gt;&lt;/a&gt;删除当前或者选中块行： ⌘+⌫&lt;/h4&gt;&lt;h3 id=&quot;查找&quot;&gt;&lt;a href=&quot;#查找&quot; class=&quot;headerlink&quot; title=&quot;查找&quot;&gt;&lt;/a&gt;查找&lt;/h3&gt;&lt;h4 id=&quot;全局查找：-⇧-⇧&quot;&gt;&lt;a href=&quot;#全局查找：-⇧-⇧&quot; class=&quot;headerlink&quot; title=&quot;全局查找： ⇧+⇧&quot;&gt;&lt;/a&gt;全局查找： ⇧+⇧&lt;/h4&gt;
+    
+    </summary>
+    
+      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
+    
+    
+      <category term="IDEA" scheme="https://perkins4j2.github.io/tags/IDEA/"/>
+    
+      <category term="工具" scheme="https://perkins4j2.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>快速搭建GitHub博客教程 - Hexo及Next主题安装</title>
+    <link href="https://perkins4j2.github.io/posts/17587/"/>
+    <id>https://perkins4j2.github.io/posts/17587/</id>
+    <published>2019-04-15T03:14:32.000Z</published>
+    <updated>2019-05-05T10:35:31.210Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文为在Mac上利用Hexo搭建GitHub博客过程，选择主题为Next。&lt;/p&gt;
+&lt;h2 id=&quot;Git安装和配置&quot;&gt;&lt;a href=&quot;#Git安装和配置&quot; class=&quot;headerlink&quot; title=&quot;Git安装和配置&quot;&gt;&lt;/a&gt;Git安装和配置&lt;/h2&gt;&lt;h3 id=&quot;Git安装&quot;&gt;&lt;a href=&quot;#Git安装&quot; class=&quot;headerlink&quot; title=&quot;Git安装&quot;&gt;&lt;/a&gt;Git安装&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;下载地址：&lt;a href=&quot;https://git-scm.com/downloads&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;downloads&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;选择Mac版本并安装&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;确认安装成功&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;git --version&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
+    
+    
+      <category term="工具" scheme="https://perkins4j2.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="Hexo" scheme="https://perkins4j2.github.io/tags/Hexo/"/>
+    
+      <category term="GitHub" scheme="https://perkins4j2.github.io/tags/GitHub/"/>
+    
+      <category term="Next" scheme="https://perkins4j2.github.io/tags/Next/"/>
+    
+  </entry>
+  
+</feed>
