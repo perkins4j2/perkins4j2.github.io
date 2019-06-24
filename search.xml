@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[ElasticSearch基本操作]]></title>
     <url>%2Fposts%2F278%2F</url>
-    <content type="text"><![CDATA[dochttps://docs.spring.io/spring-data/elasticsearch/docs/current/reference/html/ 聚合去重http://192.168.1.100:9200/a-b/a_b/_search 123456789101112&#123; &quot;from&quot;: 0, &quot;size&quot;: 0, &quot;aggregations&quot;: &#123; &quot;field1&quot;: &#123; &quot;terms&quot;: &#123; &quot;field&quot;: &quot;xx&quot;, &quot;size&quot;: 21474837 &#125; &#125; &#125; &#125;]]></content>
+    <content type="text"><![CDATA[Dochttps://docs.spring.io/spring-data/elasticsearch/docs/current/reference/html/ 聚合去重http://192.168.1.100:9200/a-b/a_b/_search 123456789101112&#123; &quot;from&quot;: 0, &quot;size&quot;: 0, &quot;aggregations&quot;: &#123; &quot;field1&quot;: &#123; &quot;terms&quot;: &#123; &quot;field&quot;: &quot;xx&quot;, &quot;size&quot;: 21474837 &#125; &#125; &#125; &#125;]]></content>
       <categories>
         <category>架构</category>
       </categories>
