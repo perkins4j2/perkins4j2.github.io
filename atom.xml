@@ -215,7 +215,7 @@
     <link href="https://perkins4j2.github.io/posts/34733/"/>
     <id>https://perkins4j2.github.io/posts/34733/</id>
     <published>2019-05-05T02:30:33.000Z</published>
-    <updated>2019-06-24T10:36:00.674Z</updated>
+    <updated>2019-06-24T12:01:12.997Z</updated>
     
     <summary type="html">
     
@@ -510,16 +510,18 @@
     <link href="https://perkins4j2.github.io/posts/60068/"/>
     <id>https://perkins4j2.github.io/posts/60068/</id>
     <published>2019-04-22T09:07:13.000Z</published>
-    <updated>2019-05-05T10:33:31.804Z</updated>
+    <updated>2019-06-24T11:51:06.199Z</updated>
     
     <summary type="html">
     
       &lt;p&gt;本文为针对Hexo博客和Next主题的优化和配置。&lt;/p&gt;
 &lt;h3 id=&quot;标题配置&quot;&gt;&lt;a href=&quot;#标题配置&quot; class=&quot;headerlink&quot; title=&quot;标题配置&quot;&gt;&lt;/a&gt;标题配置&lt;/h3&gt;&lt;p&gt;vi  _config_yml&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;title: xxx的技术博客&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;subtitle: xxx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;description: xx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;keywords: xxx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;author: xx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;language: zh-CN&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;timezone: Asia/Chongqing&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
 &lt;h3 id=&quot;首页文章预览限制字数&quot;&gt;&lt;a href=&quot;#首页文章预览限制字数&quot; class=&quot;headerlink&quot; title=&quot;首页文章预览限制字数&quot;&gt;&lt;/a&gt;首页文章预览限制字数&lt;/h3&gt;&lt;p&gt;cd themes/next&lt;/p&gt;
 &lt;p&gt;vi _config.yml&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;auto_excerpt:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  enable: true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  length: 150&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
 &lt;p&gt;文章内使用&lt;code&gt;&amp;lt;!--more--&amp;gt;&lt;/code&gt;作为预览分割&lt;/p&gt;
     
     </summary>
