@@ -107,18 +107,18 @@
 
 
 
-  <meta name="description" content="以下为Zuul利用ratelimit在网关进行接口限流。 限流方案   方案 说明     基于用户id 根据用户标识或匿名   基于用户角色 根据用户角色   基于用户源IP 请求源IP   基于请求URL 下游服务地址   基于请求方法类型 HTTP请求方法，GET、POST等   基于请求服务 下游服务    POM引入123456&amp;lt;!-- 请求限流 --&amp;gt;&amp;lt;depende">
+  <meta name="description" content="以下为Zuul利用ratelimit在网关进行接口限流。 限流方案   方案 说明    基于用户id 根据用户标识或匿名   基于用户角色 根据用户角色   基于用户源IP 请求源IP   基于请求URL 下游服务地址   基于请求方法类型 HTTP请求方法，GET、POST等   基于请求服务 下游服务   POM引入123456&amp;lt;!-- 请求限流 --&amp;gt;&amp;lt;dependenc">
 <meta name="keywords" content="Spring Cloud,Zuul,ratelimit,限流">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Cloud - 如何利用Zuul实现接口限流">
 <meta property="og:url" content="https://perkins4j2.github.io/posts/33184/index.html">
 <meta property="og:site_name" content="Perkins4j2的技术博客">
-<meta property="og:description" content="以下为Zuul利用ratelimit在网关进行接口限流。 限流方案   方案 说明     基于用户id 根据用户标识或匿名   基于用户角色 根据用户角色   基于用户源IP 请求源IP   基于请求URL 下游服务地址   基于请求方法类型 HTTP请求方法，GET、POST等   基于请求服务 下游服务    POM引入123456&amp;lt;!-- 请求限流 --&amp;gt;&amp;lt;depende">
+<meta property="og:description" content="以下为Zuul利用ratelimit在网关进行接口限流。 限流方案   方案 说明    基于用户id 根据用户标识或匿名   基于用户角色 根据用户角色   基于用户源IP 请求源IP   基于请求URL 下游服务地址   基于请求方法类型 HTTP请求方法，GET、POST等   基于请求服务 下游服务   POM引入123456&amp;lt;!-- 请求限流 --&amp;gt;&amp;lt;dependenc">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-05T02:27:41.831Z">
+<meta property="og:updated_time" content="2019-05-05T02:27:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Cloud - 如何利用Zuul实现接口限流">
-<meta name="twitter:description" content="以下为Zuul利用ratelimit在网关进行接口限流。 限流方案   方案 说明     基于用户id 根据用户标识或匿名   基于用户角色 根据用户角色   基于用户源IP 请求源IP   基于请求URL 下游服务地址   基于请求方法类型 HTTP请求方法，GET、POST等   基于请求服务 下游服务    POM引入123456&amp;lt;!-- 请求限流 --&amp;gt;&amp;lt;depende">
+<meta name="twitter:description" content="以下为Zuul利用ratelimit在网关进行接口限流。 限流方案   方案 说明    基于用户id 根据用户标识或匿名   基于用户角色 根据用户角色   基于用户源IP 请求源IP   基于请求URL 下游服务地址   基于请求方法类型 HTTP请求方法，GET、POST等   基于请求服务 下游服务   POM引入123456&amp;lt;!-- 请求限流 --&amp;gt;&amp;lt;dependenc">
 
 
 
@@ -269,7 +269,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">25</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">33</span></a>
 
   </li>
         
@@ -288,7 +288,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">4</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">7</span></a>
 
   </li>
         
@@ -307,7 +307,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">26</span></a>
 
   </li>
 
@@ -546,40 +546,41 @@
 <h3 id="限流方案"><a href="#限流方案" class="headerlink" title="限流方案"></a>限流方案</h3><table>
 <thead>
 <tr>
-<th style="text-align:center">方案</th>
-<th style="text-align:center">说明</th>
+<th align="center">方案</th>
+<th align="center">说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">基于用户id</td>
-<td style="text-align:center">根据用户标识或匿名</td>
+<tbody><tr>
+<td align="center">基于用户id</td>
+<td align="center">根据用户标识或匿名</td>
 </tr>
 <tr>
-<td style="text-align:center">基于用户角色</td>
-<td style="text-align:center">根据用户角色</td>
+<td align="center">基于用户角色</td>
+<td align="center">根据用户角色</td>
 </tr>
 <tr>
-<td style="text-align:center">基于用户源IP</td>
-<td style="text-align:center">请求源IP</td>
+<td align="center">基于用户源IP</td>
+<td align="center">请求源IP</td>
 </tr>
 <tr>
-<td style="text-align:center">基于请求URL</td>
-<td style="text-align:center">下游服务地址</td>
+<td align="center">基于请求URL</td>
+<td align="center">下游服务地址</td>
 </tr>
 <tr>
-<td style="text-align:center">基于请求方法类型</td>
-<td style="text-align:center">HTTP请求方法，GET、POST等</td>
+<td align="center">基于请求方法类型</td>
+<td align="center">HTTP请求方法，GET、POST等</td>
 </tr>
 <tr>
-<td style="text-align:center">基于请求服务</td>
-<td style="text-align:center">下游服务</td>
+<td align="center">基于请求服务</td>
+<td align="center">下游服务</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="POM引入"><a href="#POM引入" class="headerlink" title="POM引入"></a>POM引入</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 请求限流 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.marcosbarbero.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-zuul-ratelimit&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.0.4.RELEASE&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
 <a id="more"></a>
+
 <h3 id="参数配置"><a href="#参数配置" class="headerlink" title="参数配置"></a>参数配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#60秒内允许10个访问，并且要求总请求时间小于1000秒</span><br><span class="line">#seviceA在120秒内允许20个访问，并且要求总请求时间小于2000秒</span><br><span class="line">#seviceA针对匿名用户，IP为10.10.10.10，角色为用户，请求URL为/api/，请求方法为GET</span><br><span class="line"></span><br><span class="line">zuul:</span><br><span class="line">  ratelimit:</span><br><span class="line">    key-prefix: your-prefix #缓存key的前缀</span><br><span class="line">    enabled: true #开启限流</span><br><span class="line">    repository: REDIS #key存储方式为redis</span><br><span class="line">    behind-proxy: true # 当前网关是代理后的请求，需要获取Header中的X-FORWARDED-FOR以便获取源IP</span><br><span class="line">    add-response-headers: true #在response header中添加限流信息</span><br><span class="line">    default-policy-list: # 默认策略</span><br><span class="line">      - limit: 10 #每个刷新窗口请求数</span><br><span class="line">        quota: 1000 #每个刷新窗口总请求时间(秒)</span><br><span class="line">        refresh-interval: 60 #刷新窗口时间(秒),默认60秒</span><br><span class="line">        type:</span><br><span class="line">          - user #基于用户标识，默认匿名anonymous</span><br><span class="line">          - origin #基于用户IP</span><br><span class="line">          - url #基于下游服务URL</span><br><span class="line">          - httpmethod #基于请求方法</span><br><span class="line">    policy-list: #指定服务策略，优先默认</span><br><span class="line">      seviceA: #微服务ID</span><br><span class="line">        - limit: 20 </span><br><span class="line">          quota: 2000</span><br><span class="line">          refresh-interval: 120 </span><br><span class="line">          type:</span><br><span class="line">            - user</span><br><span class="line">            - origin</span><br><span class="line">            - url</span><br><span class="line">        - type: #每种类型值设定</span><br><span class="line">            - user=anonymous #指定用户,匿名用户</span><br><span class="line">            - origin=10.10.10.10 #指定源URL</span><br><span class="line">            - url=/api #指定下游请求URL前缀</span><br><span class="line">            - role=user #指定用户角色</span><br><span class="line">            - httpmethod=get #指定请求方法类型，大小写不敏感</span><br></pre></td></tr></table></figure>
+
 <p>其中，<code>user=anonymous</code>和<code>role=user</code>采用<code>Shiro</code>或者<code>Spring Security</code>进行维护，或者自定义request域UserPrincipal。</p>
 <h3 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h3><ul>
 <li>InMemory(ConcurrentHashMap)</li>
@@ -593,11 +594,15 @@
 </ul>
 <p>将会对服务集群的请求情况同步至选择的存储中，以做到数据共享和实时存储。</p>
 <h3 id="源码及原理分析"><a href="#源码及原理分析" class="headerlink" title="源码及原理分析"></a>源码及原理分析</h3><h4 id="自定义key"><a href="#自定义key" class="headerlink" title="自定义key"></a>自定义key</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> RateLimitKeyGenerator <span class="title">ratelimitKeyGenerator</span><span class="params">(RateLimitProperties properties, RateLimitUtils rateLimitUtils)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> DefaultRateLimitKeyGenerator(properties, rateLimitUtils) &#123;</span><br><span class="line">          <span class="meta">@Override</span></span><br><span class="line">          <span class="function"><span class="keyword">public</span> String <span class="title">key</span><span class="params">(HttpServletRequest request, Route route, RateLimitProperties.Policy policy)</span> </span>&#123;</span><br><span class="line">              <span class="comment">//super.key()为默认实现</span></span><br><span class="line">              <span class="comment">//keyPrefix+serviceId+(type1Key+...+typenKey)</span></span><br><span class="line">              String key= <span class="keyword">super</span>.key(request, route, policy) ;</span><br><span class="line">              </span><br><span class="line">              <span class="comment">//":" + request.getMethod() 为自定义策略  </span></span><br><span class="line">              key += <span class="string">":"</span> + request.getMethod();</span><br><span class="line">              </span><br><span class="line">              <span class="comment">//实现对key的重写，限流策略是以key为标识依据</span></span><br><span class="line">              <span class="keyword">return</span> key;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="自定义错误"><a href="#自定义错误" class="headerlink" title="自定义错误"></a>自定义错误</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> RateLimiterErrorHandler <span class="title">rateLimitErrorHandler</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> DefaultRateLimiterErrorHandler() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleSaveError</span><span class="params">(String key, Exception e)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// 处理存储key异常</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleFetchError</span><span class="params">(String key, Exception e)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// 处理查询key异常</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleError</span><span class="params">(String msg, Exception e)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// 处理异常信息</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="自定义用户和角色"><a href="#自定义用户和角色" class="headerlink" title="自定义用户和角色"></a>自定义用户和角色</h4><p>SecuredRateLimitUtils.java<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Set&lt;String&gt; <span class="title">getUserRoles</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();</span><br><span class="line">    <span class="keyword">if</span> (authentication == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> emptySet();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> AuthorityUtils.authorityListToSet(authentication.getAuthorities());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>SecurityContextHolder为Spring Security框架，可获取用户角色和标识。</p>
-<p>Spring Security样例如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">         auth</span><br><span class="line">              .inMemoryAuthentication()</span><br><span class="line">                   .withUser(<span class="string">"user"</span>)</span><br><span class="line">                        .password(<span class="string">"password"</span>)</span><br><span class="line">                        .roles(<span class="string">"USER"</span>);</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure></p>
 
+<h4 id="自定义错误"><a href="#自定义错误" class="headerlink" title="自定义错误"></a>自定义错误</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> RateLimiterErrorHandler <span class="title">rateLimitErrorHandler</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> DefaultRateLimiterErrorHandler() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleSaveError</span><span class="params">(String key, Exception e)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// 处理存储key异常</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleFetchError</span><span class="params">(String key, Exception e)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// 处理查询key异常</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleError</span><span class="params">(String msg, Exception e)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// 处理异常信息</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="自定义用户和角色"><a href="#自定义用户和角色" class="headerlink" title="自定义用户和角色"></a>自定义用户和角色</h4><p>SecuredRateLimitUtils.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Set&lt;String&gt; <span class="title">getUserRoles</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();</span><br><span class="line">    <span class="keyword">if</span> (authentication == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> emptySet();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> AuthorityUtils.authorityListToSet(authentication.getAuthorities());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>SecurityContextHolder为Spring Security框架，可获取用户角色和标识。</p>
+<p>Spring Security样例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">         auth</span><br><span class="line">              .inMemoryAuthentication()</span><br><span class="line">                   .withUser(<span class="string">"user"</span>)</span><br><span class="line">                        .password(<span class="string">"password"</span>)</span><br><span class="line">                        .roles(<span class="string">"USER"</span>);</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -610,13 +615,6 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/posts/33205/" rel="bookmark">Spring Cloud - 如何利用Zuul进行网关开发</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
       <div class="popular-posts-title"><a href="/posts/25628/" rel="bookmark">Spring Cloud - Ribbon在Zuul上实现灰度和版本测试</a></div>
       
     </li>
@@ -624,7 +622,7 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/posts/57096/" rel="bookmark">Spring Cloud - Nacos集群配置和集成</a></div>
+      <div class="popular-posts-title"><a href="/posts/33205/" rel="bookmark">Spring Cloud - 如何利用Zuul进行网关开发</a></div>
       
     </li>
   
@@ -632,6 +630,13 @@
       
       
       <div class="popular-posts-title"><a href="/posts/35353/" rel="bookmark">Spring Cloud - Nacos与Eureka区别及如何选型</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/57096/" rel="bookmark">Spring Cloud - Nacos集群配置和集成</a></div>
       
     </li>
   
@@ -811,7 +816,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -836,7 +841,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -903,7 +914,23 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -990,7 +1017,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">NaNm</span>
+    <span title="站点总字数">57k</span>
   
 
   
@@ -1001,7 +1028,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">NaN:aN</span>
+    <span title="站点阅读时长">51 分钟</span>
   
 </div>
 

@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="Perkins4j2的技术博客">
 <meta property="og:description" content="文本介绍多线程和资源的关系。 是否多线程越多速度越快？ 结论：并发编程中采用多线程，并非线程越多执行效率越高。  线程执行是由CPU分配较短的时间片，线程在得到时间片时执行，并在时间片后挂起，并切换其他线程执行。  线程切换时先会保存上一个线程状态，并加载当前线程的历史状态。  因为线程的上下文切换需要时间，影响多线程执行速度。  在执行某些简单、快速任务情况下，多线程执行效率还不如单线程执行。假">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-05T08:08:29.718Z">
+<meta property="og:updated_time" content="2019-05-05T08:08:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程艺术 - 多线程与资源限制">
 <meta name="twitter:description" content="文本介绍多线程和资源的关系。 是否多线程越多速度越快？ 结论：并发编程中采用多线程，并非线程越多执行效率越高。  线程执行是由CPU分配较短的时间片，线程在得到时间片时执行，并在时间片后挂起，并切换其他线程执行。  线程切换时先会保存上一个线程状态，并加载当前线程的历史状态。  因为线程的上下文切换需要时间，影响多线程执行速度。  在执行某些简单、快速任务情况下，多线程执行效率还不如单线程执行。假">
@@ -269,7 +269,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">25</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">33</span></a>
 
   </li>
         
@@ -288,7 +288,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">4</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">7</span></a>
 
   </li>
         
@@ -307,7 +307,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">26</span></a>
 
   </li>
 
@@ -558,6 +558,7 @@
 </li>
 </ol>
 <a id="more"></a>
+
 <h3 id="如何减少上下文切换"><a href="#如何减少上下文切换" class="headerlink" title="如何减少上下文切换"></a>如何减少上下文切换</h3><ol>
 <li><p>采用无锁的并发编程，即不进行锁竞争；例如根据ID进行Hash取模，多线程进行分段处理数据。<br>我们常见的JDK1.7中ConcurrentHashMap就是锁分段技术，对key进行hashcode，然后取桶位置，默认1/16；在更新数据时锁数据所在桶，不影响其他桶并发操作，以提高并发处理数据速度。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (value == <span class="keyword">null</span>)</span><br><span class="line">       <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</span><br><span class="line">    <span class="comment">// 计算键对应的散列码</span></span><br><span class="line">   <span class="keyword">int</span> hash = hash(key.hashCode());</span><br><span class="line">    <span class="comment">// 根据散列码找到对应的 Segment</span></span><br><span class="line">   <span class="keyword">return</span> segmentFor(hash).put(key, hash, value, <span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 使用 key 的散列码来得到 segments 数组中对应的 Segment</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">final</span> Segment&lt;K,V&gt; <span class="title">segmentFor</span><span class="params">(<span class="keyword">int</span> hash)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 最后根据下标值返回散列码对应的 Segment 对象</span></span><br><span class="line">   <span class="keyword">return</span> segments[(hash &gt;&gt;&gt; segmentShift) &amp; segmentMask];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -609,13 +610,6 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/posts/49164/" rel="bookmark">Java并发编程艺术 - Java内存模型基础</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
       <div class="popular-posts-title"><a href="/posts/43888/" rel="bookmark">Java并发编程艺术 - synchronized使用和原理</a></div>
       
     </li>
@@ -623,7 +617,14 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/posts/34733/" rel="bookmark">Java并发编程艺术 - volatile使用和原理</a></div>
+      <div class="popular-posts-title"><a href="/posts/49164/" rel="bookmark">Java并发编程艺术 - Java内存模型基础</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/28363/" rel="bookmark">Java并发编程艺术 - 原子性及CAS使用和原理</a></div>
       
     </li>
   
@@ -799,7 +800,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -824,7 +825,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -891,7 +898,23 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -978,7 +1001,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">NaNm</span>
+    <span title="站点总字数">57k</span>
   
 
   
@@ -989,7 +1012,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">NaN:aN</span>
+    <span title="站点阅读时长">51 分钟</span>
   
 </div>
 

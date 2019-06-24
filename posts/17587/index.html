@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="Perkins4j2的技术博客">
 <meta property="og:description" content="本文为在Mac上利用Hexo搭建GitHub博客过程，选择主题为Next。 Git安装和配置Git安装 下载地址：downloads  选择Mac版本并安装  确认安装成功   1git --version">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-05T10:35:31.210Z">
+<meta property="og:updated_time" content="2019-05-05T10:35:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速搭建GitHub博客教程 - Hexo及Next主题安装">
 <meta name="twitter:description" content="本文为在Mac上利用Hexo搭建GitHub博客过程，选择主题为Next。 Git安装和配置Git安装 下载地址：downloads  选择Mac版本并安装  确认安装成功   1git --version">
@@ -269,7 +269,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">25</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">33</span></a>
 
   </li>
         
@@ -288,7 +288,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">4</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">7</span></a>
 
   </li>
         
@@ -307,7 +307,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">26</span></a>
 
   </li>
 
@@ -552,7 +552,9 @@
 </li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+
 <a id="more"></a>
+
 <h3 id="Git-GUI安装"><a href="#Git-GUI安装" class="headerlink" title="Git GUI安装"></a>Git GUI安装</h3><ul>
 <li><p>下载地址：<a href="https://git-scm.com/downloads/guis" target="_blank" rel="noopener">git-scm</a></p>
 <p>建议：命令行用git bash，工具用SourceTree</p>
@@ -575,7 +577,8 @@
 </li>
 <li><p>新建SSH Keys，输入本地公钥</p>
 </li>
-<li><p>查看本地公钥：<br>cd ~<br>cd .ssh/<br>cat id_rsa.pub<br>拷贝结果至github的SSH Keys  </p>
+<li><p>查看本地公钥：<br>cd ~  
+cd .ssh/<br>cat id_rsa.pub<br>拷贝结果至github的SSH Keys  </p>
 </li>
 </ul>
 <h2 id="Hexo安装和配置"><a href="#Hexo安装和配置" class="headerlink" title="Hexo安装和配置"></a>Hexo安装和配置</h2><h3 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h3><ul>
@@ -608,11 +611,13 @@
 </li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:username/username.github.io.git  </span><br><span class="line">  brach: master</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><a href="https://hexo.io/zh-cn/docs/deployment" target="_blank" rel="noopener">deployment</a></li>
 <li><a href="https://github.com/hexojs/hexo-deployer-git" target="_blank" rel="noopener">hexo-deployer-git</a></li>
 </ul>
 <h3 id="Hexo操作"><a href="#Hexo操作" class="headerlink" title="Hexo操作"></a>Hexo操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo s，启动</span><br><span class="line"></span><br><span class="line">hexo d -g，生成并发布</span><br><span class="line"></span><br><span class="line">hexo new ’title‘，新建文章</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><a href="https://hexo.io/zh-cn/docs/commands" target="_blank" rel="noopener">参考文档</a></li>
 </ul>
@@ -620,10 +625,12 @@
 <li><p>安装pm2</p>
 <p>npm install -g pm2</p>
 </li>
-<li>编辑脚本代码</li>
+<li><p>编辑脚本代码</p>
+</li>
 </ul>
 <p>在hexo博客的根目录下新建run.js文件</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//run.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; exec &#125; = <span class="built_in">require</span>(<span class="string">'child_process'</span>)</span><br><span class="line">exec(<span class="string">'hexo s'</span>,(error, stdout, stderr) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span>(error)&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">`exec error: <span class="subst">$&#123;error&#125;</span>`</span>)</span><br><span class="line">         <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`stdout: <span class="subst">$&#123;stdout&#125;</span>`</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`stderr: <span class="subst">$&#123;stderr&#125;</span>`</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><p>运行</p>
 <p>pm2 start run.js</p>
@@ -827,7 +834,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -852,7 +859,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -919,7 +932,23 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1006,7 +1035,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">NaNm</span>
+    <span title="站点总字数">57k</span>
   
 
   
@@ -1017,7 +1046,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">NaN:aN</span>
+    <span title="站点阅读时长">51 分钟</span>
   
 </div>
 

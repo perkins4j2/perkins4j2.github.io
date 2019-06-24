@@ -116,7 +116,7 @@
 <meta property="og:description" content="Java代码经过Java编译器编译成字节码，并由类加载器加载到JVM运行时数据区，最终由JVM执行引擎执行字节码，转换为汇编指令在CPU内执行。 Java并发机制主要依赖JVM实现和CPU指令。 volatilevolatile修饰变量，提供多处理器并发中共享变量的可见性，是轻量的synchronized。 volatile由CPU指令实现，不会引起上下文切换，性能比synchronized高。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://img.perkins4j2.com/WX20190505-111203@2x.png?400x400">
-<meta property="og:updated_time" content="2019-06-24T12:01:12.997Z">
+<meta property="og:updated_time" content="2019-06-24T12:03:50.133Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程艺术 - volatile使用和原理">
 <meta name="twitter:description" content="Java代码经过Java编译器编译成字节码，并由类加载器加载到JVM运行时数据区，最终由JVM执行引擎执行字节码，转换为汇编指令在CPU内执行。 Java并发机制主要依赖JVM实现和CPU指令。 volatilevolatile修饰变量，提供多处理器并发中共享变量的可见性，是轻量的synchronized。 volatile由CPU指令实现，不会引起上下文切换，性能比synchronized高。">
@@ -271,7 +271,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">25</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">33</span></a>
 
   </li>
         
@@ -290,7 +290,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">4</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">7</span></a>
 
   </li>
         
@@ -309,7 +309,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">26</span></a>
 
   </li>
 
@@ -457,7 +457,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-24 20:01:12" itemprop="dateModified" datetime="2019-06-24T20:01:12+08:00">2019-06-24</time>
+                <time title="修改时间：2019-06-24 20:03:50" itemprop="dateModified" datetime="2019-06-24T20:03:50+08:00">2019-06-24</time>
               
             
           </span>
@@ -567,7 +567,7 @@
 <h4 id="volatile实现原理"><a href="#volatile实现原理" class="headerlink" title="volatile实现原理"></a>volatile实现原理</h4><p>在共享变量写前，CPU新增Lock操作指令，实现以下效果：</p>
 <ul>
 <li>将当期缓存行回写系统内存</li>
-<li>其他CPUh缓存该内存地址数据无效</li>
+<li>其他CPU缓存该内存地址数据无效</li>
 </ul>
 <p>为提高处理速度，CPU不和主存直接交互，而是将主存数据读取到缓存，但缓存写回内存时间未知。</p>
 <p>通过volatile将通过Lock指令实现写回操作，其他处理器通过总线检查缓存值是否过期；若发现<br>缓存行地址变更，则将缓存行置为无效。</p>
@@ -614,7 +614,21 @@
     <li class="popular-posts-item">
       
       
+      <div class="popular-posts-title"><a href="/posts/43888/" rel="bookmark">Java并发编程艺术 - synchronized使用和原理</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
       <div class="popular-posts-title"><a href="/posts/49164/" rel="bookmark">Java并发编程艺术 - Java内存模型基础</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/28363/" rel="bookmark">Java并发编程艺术 - 原子性及CAS使用和原理</a></div>
       
     </li>
   
@@ -629,20 +643,6 @@
       
       
       <div class="popular-posts-title"><a href="/posts/10420/" rel="bookmark">Java并发编程艺术 - 多线程与资源限制</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/posts/43888/" rel="bookmark">Java并发编程艺术 - synchronized使用和原理</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/posts/28363/" rel="bookmark">Java并发编程艺术 - 原子性及CAS使用和原理</a></div>
       
     </li>
   
@@ -818,7 +818,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -843,7 +843,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -910,7 +916,23 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -997,7 +1019,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">NaNm</span>
+    <span title="站点总字数">57k</span>
   
 
   
@@ -1008,7 +1030,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">NaN:aN</span>
+    <span title="站点阅读时长">51 分钟</span>
   
 </div>
 

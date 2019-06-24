@@ -107,18 +107,18 @@
 
 
 
-  <meta name="description" content="本文依赖ribbon实现在Spring Cloud中的灰度测试。 POM引入Zuul及下游服务中均引入包123456&amp;lt;!-- 实现灰度测试关键包 --&amp;gt;    &amp;lt;dependency&amp;gt;        &amp;lt;groupId&amp;gt;io.jmnarloch&amp;lt;/groupId&amp;gt;        &amp;lt;artifactId&amp;gt;ribbon-discovery-fi">
-<meta name="keywords" content="Spring Cloud,Zuul,Ribbon,灰度测试">
+  <meta name="description" content="本文依赖ribbon实现在Spring Cloud中的灰度测试。 POM引入Zuul及下游服务中均引入包 123456&amp;lt;!-- 实现灰度测试关键包 --&amp;gt;    &amp;lt;dependency&amp;gt;        &amp;lt;groupId&amp;gt;io.jmnarloch&amp;lt;/groupId&amp;gt;        &amp;lt;artifactId&amp;gt;ribbon-discovery-f">
+<meta name="keywords" content="Spring Cloud,Ribbon,Zuul,灰度测试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Cloud - Ribbon在Zuul上实现灰度和版本测试">
 <meta property="og:url" content="https://perkins4j2.github.io/posts/25628/index.html">
 <meta property="og:site_name" content="Perkins4j2的技术博客">
-<meta property="og:description" content="本文依赖ribbon实现在Spring Cloud中的灰度测试。 POM引入Zuul及下游服务中均引入包123456&amp;lt;!-- 实现灰度测试关键包 --&amp;gt;    &amp;lt;dependency&amp;gt;        &amp;lt;groupId&amp;gt;io.jmnarloch&amp;lt;/groupId&amp;gt;        &amp;lt;artifactId&amp;gt;ribbon-discovery-fi">
+<meta property="og:description" content="本文依赖ribbon实现在Spring Cloud中的灰度测试。 POM引入Zuul及下游服务中均引入包 123456&amp;lt;!-- 实现灰度测试关键包 --&amp;gt;    &amp;lt;dependency&amp;gt;        &amp;lt;groupId&amp;gt;io.jmnarloch&amp;lt;/groupId&amp;gt;        &amp;lt;artifactId&amp;gt;ribbon-discovery-f">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-05T02:26:59.813Z">
+<meta property="og:updated_time" content="2019-05-05T02:26:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Cloud - Ribbon在Zuul上实现灰度和版本测试">
-<meta name="twitter:description" content="本文依赖ribbon实现在Spring Cloud中的灰度测试。 POM引入Zuul及下游服务中均引入包123456&amp;lt;!-- 实现灰度测试关键包 --&amp;gt;    &amp;lt;dependency&amp;gt;        &amp;lt;groupId&amp;gt;io.jmnarloch&amp;lt;/groupId&amp;gt;        &amp;lt;artifactId&amp;gt;ribbon-discovery-fi">
+<meta name="twitter:description" content="本文依赖ribbon实现在Spring Cloud中的灰度测试。 POM引入Zuul及下游服务中均引入包 123456&amp;lt;!-- 实现灰度测试关键包 --&amp;gt;    &amp;lt;dependency&amp;gt;        &amp;lt;groupId&amp;gt;io.jmnarloch&amp;lt;/groupId&amp;gt;        &amp;lt;artifactId&amp;gt;ribbon-discovery-f">
 
 
 
@@ -269,7 +269,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">25</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">33</span></a>
 
   </li>
         
@@ -288,7 +288,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">4</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">7</span></a>
 
   </li>
         
@@ -307,7 +307,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">26</span></a>
 
   </li>
 
@@ -543,12 +543,21 @@
 
       
         <p>本文依赖ribbon实现在Spring Cloud中的灰度测试。</p>
-<h3 id="POM引入"><a href="#POM引入" class="headerlink" title="POM引入"></a>POM引入</h3><p>Zuul及下游服务中均引入包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 实现灰度测试关键包 --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;io.jmnarloch&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;ribbon-discovery-filter-spring-cloud-starter&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;2.1.0&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="POM引入"><a href="#POM引入" class="headerlink" title="POM引入"></a>POM引入</h3><p>Zuul及下游服务中均引入包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 实现灰度测试关键包 --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;io.jmnarloch&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;ribbon-discovery-filter-spring-cloud-starter&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;2.1.0&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
 <a id="more"></a>
+
 <h3 id="Zuul服务开发"><a href="#Zuul服务开发" class="headerlink" title="Zuul服务开发"></a>Zuul服务开发</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">fixGray</span><span class="params">(UserInfo userInfo)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 配置转发渠道，例如用户id</span></span><br><span class="line">        <span class="keyword">if</span> (isGrayer(userInfo.getUserId())) &#123;</span><br><span class="line">            RibbonFilterContextHolder.clearCurrentContext();</span><br><span class="line">            <span class="comment">//灰度标识</span></span><br><span class="line">            RibbonFilterContextHolder.getCurrentContext().add(<span class="string">"prod"</span>, <span class="string">"2"</span>);</span><br><span class="line">            RibbonFilterContextHolder.getCurrentContext().add(<span class="string">"prod"</span>, <span class="string">"1.0"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            RibbonFilterContextHolder.clearCurrentContext();</span><br><span class="line">            RibbonFilterContextHolder.getCurrentContext().add(<span class="string">"prod"</span>, <span class="string">"1"</span>);</span><br><span class="line">            RibbonFilterContextHolder.getCurrentContext().add(<span class="string">"prod"</span>, <span class="string">"1.1"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="下游服务开发"><a href="#下游服务开发" class="headerlink" title="下游服务开发"></a>下游服务开发</h3><p>添加版本拦截器<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebMvcConfig</span> <span class="keyword">extends</span> <span class="title">WebMvcConfigurerAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.addInterceptors(registry);</span><br><span class="line">        registry.addInterceptor(<span class="keyword">new</span> VersionInterceptor());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>实现拦截器<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VersionInterceptor</span> <span class="keyword">extends</span> <span class="title">HandlerInterceptorAdapter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//清除现有数据，防止干扰</span></span><br><span class="line">        RibbonFilterContextHolder.clearCurrentContext();</span><br><span class="line">        String prod = request.getHeader(<span class="string">"prod"</span>);</span><br><span class="line">        String version = request.getHeader(<span class="string">"version"</span>);</span><br><span class="line">        <span class="keyword">if</span> (!StringUtils.isEmpty(prod)&amp;&amp;!StringUtils.isEmpty(version)) &#123;</span><br><span class="line">            RibbonFilterContextHolder.getCurrentContext().add(<span class="string">"prod"</span>, prod);</span><br><span class="line">            RibbonFilterContextHolder.getCurrentContext().add(<span class="string">"version"</span>, version);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+<h3 id="下游服务开发"><a href="#下游服务开发" class="headerlink" title="下游服务开发"></a>下游服务开发</h3><p>添加版本拦截器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebMvcConfig</span> <span class="keyword">extends</span> <span class="title">WebMvcConfigurerAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.addInterceptors(registry);</span><br><span class="line">        registry.addInterceptor(<span class="keyword">new</span> VersionInterceptor());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实现拦截器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VersionInterceptor</span> <span class="keyword">extends</span> <span class="title">HandlerInterceptorAdapter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//清除现有数据，防止干扰</span></span><br><span class="line">        RibbonFilterContextHolder.clearCurrentContext();</span><br><span class="line">        String prod = request.getHeader(<span class="string">"prod"</span>);</span><br><span class="line">        String version = request.getHeader(<span class="string">"version"</span>);</span><br><span class="line">        <span class="keyword">if</span> (!StringUtils.isEmpty(prod)&amp;&amp;!StringUtils.isEmpty(version)) &#123;</span><br><span class="line">            RibbonFilterContextHolder.getCurrentContext().add(<span class="string">"prod"</span>, prod);</span><br><span class="line">            RibbonFilterContextHolder.getCurrentContext().add(<span class="string">"version"</span>, version);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="下游服务配置"><a href="#下游服务配置" class="headerlink" title="下游服务配置"></a>下游服务配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">eureka:</span><br><span class="line">  instance:</span><br><span class="line">    preferIpAddress: true</span><br><span class="line">    instance-id: $&#123;spring.cloud.client.ip-address&#125;:$&#123;server.port&#125;</span><br><span class="line">    metadataMap: #元信息</span><br><span class="line">      prod: 2 #灰度标识，1生产服务,2为灰度服务</span><br><span class="line">      version: 1.1 #服务版本标识</span><br><span class="line">  client:</span><br><span class="line">    registerWithEureka: true</span><br><span class="line">    fetchRegistry: true</span><br></pre></td></tr></table></figure>
+
 <h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
 <li>通过以上配置，启动各服务，可以实现灰度测试和版本测试</li>
 <li>在网关依据灰度和版本请求标识，Ribbon利用各服务的元信息进行匹配，以实现过滤和负载</li>
@@ -582,13 +591,6 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/posts/33205/" rel="bookmark">Spring Cloud - 如何利用Zuul进行网关开发</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
       <div class="popular-posts-title"><a href="/posts/33184/" rel="bookmark">Spring Cloud - 如何利用Zuul实现接口限流</a></div>
       
     </li>
@@ -596,7 +598,7 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/posts/57096/" rel="bookmark">Spring Cloud - Nacos集群配置和集成</a></div>
+      <div class="popular-posts-title"><a href="/posts/33205/" rel="bookmark">Spring Cloud - 如何利用Zuul进行网关开发</a></div>
       
     </li>
   
@@ -604,6 +606,13 @@
       
       
       <div class="popular-posts-title"><a href="/posts/35353/" rel="bookmark">Spring Cloud - Nacos与Eureka区别及如何选型</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/57096/" rel="bookmark">Spring Cloud - Nacos集群配置和集成</a></div>
       
     </li>
   
@@ -679,9 +688,9 @@
           
             <a href="/tags/Spring-Cloud/" rel="tag"># Spring Cloud</a>
           
-            <a href="/tags/Zuul/" rel="tag"># Zuul</a>
-          
             <a href="/tags/Ribbon/" rel="tag"># Ribbon</a>
+          
+            <a href="/tags/Zuul/" rel="tag"># Zuul</a>
           
             <a href="/tags/灰度测试/" rel="tag"># 灰度测试</a>
           
@@ -783,7 +792,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -808,7 +817,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -875,7 +890,23 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -962,7 +993,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">NaNm</span>
+    <span title="站点总字数">57k</span>
   
 
   
@@ -973,7 +1004,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">NaN:aN</span>
+    <span title="站点阅读时长">51 分钟</span>
   
 </div>
 

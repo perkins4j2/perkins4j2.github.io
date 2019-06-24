@@ -108,14 +108,14 @@
 
 
   <meta name="description" content="并发编程的两个关键性问题 线程通信 线程同步  线程通信 通信是指线程间的信息交换，主要有两种：共享内存和消息传递。  共享内存是线程利用内存的公共状态进行隐私通信。 在Java中主要利用堆内存变量实现共享内存，包括静态域、数据、实例。 12345678910111213141516public class ThreadShare &amp;#123;    //利用内存静态变量进行状态传递   stat">
-<meta name="keywords" content="Java内存模型,Java并发编程">
+<meta name="keywords" content="Java并发编程,Java内存模型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程艺术 - Java内存模型基础">
 <meta property="og:url" content="https://perkins4j2.github.io/posts/49164/index.html">
 <meta property="og:site_name" content="Perkins4j2的技术博客">
 <meta property="og:description" content="并发编程的两个关键性问题 线程通信 线程同步  线程通信 通信是指线程间的信息交换，主要有两种：共享内存和消息传递。  共享内存是线程利用内存的公共状态进行隐私通信。 在Java中主要利用堆内存变量实现共享内存，包括静态域、数据、实例。 12345678910111213141516public class ThreadShare &amp;#123;    //利用内存静态变量进行状态传递   stat">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-30T07:13:00.260Z">
+<meta property="og:updated_time" content="2019-05-30T07:13:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程艺术 - Java内存模型基础">
 <meta name="twitter:description" content="并发编程的两个关键性问题 线程通信 线程同步  线程通信 通信是指线程间的信息交换，主要有两种：共享内存和消息传递。  共享内存是线程利用内存的公共状态进行隐私通信。 在Java中主要利用堆内存变量实现共享内存，包括静态域、数据、实例。 12345678910111213141516public class ThreadShare &amp;#123;    //利用内存静态变量进行状态传递   stat">
@@ -269,7 +269,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">25</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">33</span></a>
 
   </li>
         
@@ -288,7 +288,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">4</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">7</span></a>
 
   </li>
         
@@ -307,7 +307,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">26</span></a>
 
   </li>
 
@@ -550,6 +550,7 @@
 <p> 共享内存是线程利用内存的公共状态进行隐私通信。</p>
 <p>在Java中主要利用堆内存变量实现共享内存，包括静态域、数据、实例。<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadShare</span> </span>&#123;</span><br><span class="line">    <span class="comment">//利用内存静态变量进行状态传递</span></span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">increase</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       num++;</span><br><span class="line">       System.out.println(num);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       ThreadShare threadShare = <span class="keyword">new</span> ThreadShare();</span><br><span class="line"></span><br><span class="line">       <span class="keyword">new</span> Thread(threadShare::increase).start();</span><br><span class="line">       <span class="keyword">new</span> Thread(threadShare::increase).start();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
  <a id="more"></a>
+
 <p> 消息传递是利用管道消息进行显示通信。<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> PipedInputStream pis;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Consumer</span><span class="params">(PipedInputStream pis)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.pis = pis;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 将数据保存在byte数组中</span></span><br><span class="line">        <span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">100</span>];</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 从数组中得到实际大小。</span></span><br><span class="line">            <span class="keyword">int</span> length = pis.read(bytes);</span><br><span class="line">            System.out.println(<span class="keyword">new</span> String(bytes, <span class="number">0</span>, length));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                pis.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Producer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> PipedOutputStream pos;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Producer</span><span class="params">(PipedOutputStream pos)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.pos = pos;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            pos.write(<span class="string">"Hello World"</span>.getBytes());</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                pos.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestPipedStream</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        PipedOutputStream pos = <span class="keyword">new</span> PipedOutputStream();</span><br><span class="line">        PipedInputStream pis = <span class="keyword">new</span> PipedInputStream();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 连接管道</span></span><br><span class="line">            pos.connect(pis);</span><br><span class="line">            <span class="keyword">new</span> Thread(<span class="keyword">new</span> Producer(pos)).start();</span><br><span class="line">            <span class="keyword">new</span> Thread(<span class="keyword">new</span> Consumer(pis)).start();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h4 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h4><p> 在共享内存中必须显式指定某个方法或代码段进行线程互斥，在消息传递中隐式说明消息接收需在消息发送前。</p>
 <p> 互斥锁主要有Lock，synchronized。</p>
@@ -590,21 +591,14 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/posts/24227/" rel="bookmark">Java并发编程艺术 - 多线程</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/posts/10420/" rel="bookmark">Java并发编程艺术 - 多线程与资源限制</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
       <div class="popular-posts-title"><a href="/posts/43888/" rel="bookmark">Java并发编程艺术 - synchronized使用和原理</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/28363/" rel="bookmark">Java并发编程艺术 - 原子性及CAS使用和原理</a></div>
       
     </li>
   
@@ -618,7 +612,14 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/posts/28363/" rel="bookmark">Java并发编程艺术 - 原子性及CAS使用和原理</a></div>
+      <div class="popular-posts-title"><a href="/posts/24227/" rel="bookmark">Java并发编程艺术 - 多线程</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/10420/" rel="bookmark">Java并发编程艺术 - 多线程与资源限制</a></div>
       
     </li>
   
@@ -692,9 +693,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java内存模型/" rel="tag"># Java内存模型</a>
-          
             <a href="/tags/Java并发编程/" rel="tag"># Java并发编程</a>
+          
+            <a href="/tags/Java内存模型/" rel="tag"># Java内存模型</a>
           
         </div>
       
@@ -794,7 +795,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -819,7 +820,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -886,7 +893,23 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -973,7 +996,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">NaNm</span>
+    <span title="站点总字数">57k</span>
   
 
   
@@ -984,7 +1007,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">NaN:aN</span>
+    <span title="站点阅读时长">51 分钟</span>
   
 </div>
 

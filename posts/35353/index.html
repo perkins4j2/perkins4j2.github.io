@@ -107,18 +107,18 @@
 
 
 
-  <meta name="description" content="Nacos与Eureka均提供注册中心和服务治理功能，以下为两则差异和选型方案。 功能差异   模块 Nacos Eureka 说明     注册中心 是 是 服务治理基本功能，负责服务中心化注册   配置中心 是 否 Eureka需要配合Config实现配置中心，且不提供管理界面   动态刷新 是 否 Eureka需要配合MQ实现配置动态刷新，Nacos采用Netty保持TCP长连接实时推送">
+  <meta name="description" content="Nacos与Eureka均提供注册中心和服务治理功能，以下为两则差异和选型方案。 功能差异   模块 Nacos Eureka 说明    注册中心 是 是 服务治理基本功能，负责服务中心化注册   配置中心 是 否 Eureka需要配合Config实现配置中心，且不提供管理界面   动态刷新 是 否 Eureka需要配合MQ实现配置动态刷新，Nacos采用Netty保持TCP长连接实时推送">
 <meta name="keywords" content="Spring Cloud,Nacos,Eureka">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Cloud - Nacos与Eureka区别及如何选型">
 <meta property="og:url" content="https://perkins4j2.github.io/posts/35353/index.html">
 <meta property="og:site_name" content="Perkins4j2的技术博客">
-<meta property="og:description" content="Nacos与Eureka均提供注册中心和服务治理功能，以下为两则差异和选型方案。 功能差异   模块 Nacos Eureka 说明     注册中心 是 是 服务治理基本功能，负责服务中心化注册   配置中心 是 否 Eureka需要配合Config实现配置中心，且不提供管理界面   动态刷新 是 否 Eureka需要配合MQ实现配置动态刷新，Nacos采用Netty保持TCP长连接实时推送">
+<meta property="og:description" content="Nacos与Eureka均提供注册中心和服务治理功能，以下为两则差异和选型方案。 功能差异   模块 Nacos Eureka 说明    注册中心 是 是 服务治理基本功能，负责服务中心化注册   配置中心 是 否 Eureka需要配合Config实现配置中心，且不提供管理界面   动态刷新 是 否 Eureka需要配合MQ实现配置动态刷新，Nacos采用Netty保持TCP长连接实时推送">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-30T09:03:54.149Z">
+<meta property="og:updated_time" content="2019-04-30T09:03:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Cloud - Nacos与Eureka区别及如何选型">
-<meta name="twitter:description" content="Nacos与Eureka均提供注册中心和服务治理功能，以下为两则差异和选型方案。 功能差异   模块 Nacos Eureka 说明     注册中心 是 是 服务治理基本功能，负责服务中心化注册   配置中心 是 否 Eureka需要配合Config实现配置中心，且不提供管理界面   动态刷新 是 否 Eureka需要配合MQ实现配置动态刷新，Nacos采用Netty保持TCP长连接实时推送">
+<meta name="twitter:description" content="Nacos与Eureka均提供注册中心和服务治理功能，以下为两则差异和选型方案。 功能差异   模块 Nacos Eureka 说明    注册中心 是 是 服务治理基本功能，负责服务中心化注册   配置中心 是 否 Eureka需要配合Config实现配置中心，且不提供管理界面   动态刷新 是 否 Eureka需要配合MQ实现配置动态刷新，Nacos采用Netty保持TCP长连接实时推送">
 
 
 
@@ -269,7 +269,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">25</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">33</span></a>
 
   </li>
         
@@ -288,7 +288,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">4</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">7</span></a>
 
   </li>
         
@@ -307,7 +307,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">26</span></a>
 
   </li>
 
@@ -508,7 +508,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5k</span>
+                <span title="本文字数">4.1k</span>
               
 
               
@@ -522,7 +522,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">5 分钟</span>
+                <span title="阅读时长">4 分钟</span>
               
             </div>
           
@@ -546,154 +546,149 @@
 <h3 id="功能差异"><a href="#功能差异" class="headerlink" title="功能差异"></a>功能差异</h3><table>
 <thead>
 <tr>
-<th style="text-align:center">模块</th>
-<th style="text-align:center">Nacos</th>
-<th style="text-align:center">Eureka</th>
-<th style="text-align:center">说明</th>
+<th align="center">模块</th>
+<th align="center">Nacos</th>
+<th align="center">Eureka</th>
+<th align="center">说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">注册中心</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center">服务治理基本功能，负责服务中心化注册</td>
+<tbody><tr>
+<td align="center">注册中心</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">服务治理基本功能，负责服务中心化注册</td>
 </tr>
 <tr>
-<td style="text-align:center">配置中心</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center"><code>否</code></td>
-<td style="text-align:center">Eureka需要配合Config实现配置中心，且不提供管理界面</td>
+<td align="center">配置中心</td>
+<td align="center">是</td>
+<td align="center"><code>否</code></td>
+<td align="center">Eureka需要配合Config实现配置中心，且不提供管理界面</td>
 </tr>
 <tr>
-<td style="text-align:center">动态刷新</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center"><code>否</code></td>
-<td style="text-align:center">Eureka需要配合MQ实现配置动态刷新，Nacos采用Netty保持TCP长连接实时推送</td>
+<td align="center">动态刷新</td>
+<td align="center">是</td>
+<td align="center"><code>否</code></td>
+<td align="center">Eureka需要配合MQ实现配置动态刷新，Nacos采用Netty保持TCP长连接实时推送</td>
 </tr>
 <tr>
-<td style="text-align:center">可用区AZ</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center">对服务集群划分不同区域，实现区域隔离，并提供容灾自动切换</td>
+<td align="center">可用区AZ</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">对服务集群划分不同区域，实现区域隔离，并提供容灾自动切换</td>
 </tr>
 <tr>
-<td style="text-align:center">分组</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center"><code>否</code></td>
-<td style="text-align:center">Nacos可用根据业务和环境进行分组管理</td>
+<td align="center">分组</td>
+<td align="center">是</td>
+<td align="center"><code>否</code></td>
+<td align="center">Nacos可用根据业务和环境进行分组管理</td>
 </tr>
 <tr>
-<td style="text-align:center">元数据</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center">提供服务标签数据，例如环境或服务标识</td>
+<td align="center">元数据</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">提供服务标签数据，例如环境或服务标识</td>
 </tr>
 <tr>
-<td style="text-align:center">权重</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center"><code>否</code></td>
-<td style="text-align:center">Nacos默认提供权重设置功能，调整承载流量压力</td>
+<td align="center">权重</td>
+<td align="center">是</td>
+<td align="center"><code>否</code></td>
+<td align="center">Nacos默认提供权重设置功能，调整承载流量压力</td>
 </tr>
 <tr>
-<td style="text-align:center">健康检查</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center">Nacos支持由客户端或服务端发起的健康检查，Eureka是由客户端发起心跳</td>
+<td align="center">健康检查</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">Nacos支持由客户端或服务端发起的健康检查，Eureka是由客户端发起心跳</td>
 </tr>
 <tr>
-<td style="text-align:center">负载均衡</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center">均提供负责均衡策略，Eureka采用Ribion</td>
+<td align="center">负载均衡</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">均提供负责均衡策略，Eureka采用Ribion</td>
 </tr>
 <tr>
-<td style="text-align:center">管理界面</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center"><code>否</code></td>
-<td style="text-align:center">Nacos支持对服务在线管理，Eureka只是预览服务状态</td>
+<td align="center">管理界面</td>
+<td align="center">是</td>
+<td align="center"><code>否</code></td>
+<td align="center">Nacos支持对服务在线管理，Eureka只是预览服务状态</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <a id="more"></a>
+
 <h3 id="部署安装"><a href="#部署安装" class="headerlink" title="部署安装"></a>部署安装</h3><table>
 <thead>
 <tr>
-<th style="text-align:center">模块</th>
-<th style="text-align:center">Nacos</th>
-<th style="text-align:center">Eureka</th>
-<th style="text-align:center">说明</th>
+<th align="center">模块</th>
+<th align="center">Nacos</th>
+<th align="center">Eureka</th>
+<th align="center">说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">MySql</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center"><code>否</code></td>
-<td style="text-align:center">Nacos需要采用MySql进行数据进行持久化</td>
+<tbody><tr>
+<td align="center">MySql</td>
+<td align="center">是</td>
+<td align="center"><code>否</code></td>
+<td align="center">Nacos需要采用MySql进行数据进行持久化</td>
 </tr>
 <tr>
-<td style="text-align:center">MQ</td>
-<td style="text-align:center"><code>否</code></td>
-<td style="text-align:center">是</td>
-<td style="text-align:center">Eureka需要采用MQ进行配置中心刷新</td>
+<td align="center">MQ</td>
+<td align="center"><code>否</code></td>
+<td align="center">是</td>
+<td align="center">Eureka需要采用MQ进行配置中心刷新</td>
 </tr>
 <tr>
-<td style="text-align:center">配置中心</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center"><code>否</code></td>
-<td style="text-align:center">Eureka结合Config或者Consul实现配置中心</td>
+<td align="center">配置中心</td>
+<td align="center">是</td>
+<td align="center"><code>否</code></td>
+<td align="center">Eureka结合Config或者Consul实现配置中心</td>
 </tr>
 <tr>
-<td style="text-align:center">配置文件</td>
-<td style="text-align:center">在线编辑</td>
-<td style="text-align:center">本地文件或者Git远程文件</td>
-<td style="text-align:center">Eureka结合Config或者Consul</td>
+<td align="center">配置文件</td>
+<td align="center">在线编辑</td>
+<td align="center">本地文件或者Git远程文件</td>
+<td align="center">Eureka结合Config或者Consul</td>
 </tr>
 <tr>
-<td style="text-align:center">集群</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center">Nacos需要配置集群ip再启动</td>
+<td align="center">集群</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">Nacos需要配置集群ip再启动</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="稳定及扩展性"><a href="#稳定及扩展性" class="headerlink" title="稳定及扩展性"></a>稳定及扩展性</h3><table>
 <thead>
 <tr>
-<th style="text-align:center">模块</th>
-<th style="text-align:center">Nacos</th>
-<th style="text-align:center">Eureka</th>
-<th style="text-align:center">说明</th>
+<th align="center">模块</th>
+<th align="center">Nacos</th>
+<th align="center">Eureka</th>
+<th align="center">说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">版本</td>
-<td style="text-align:center">1.0.0</td>
-<td style="text-align:center">1.9.9</td>
-<td style="text-align:center">Eureka2.0已停止开发,Nacos处于1.x-2.0开发</td>
+<tbody><tr>
+<td align="center">版本</td>
+<td align="center">1.0.0</td>
+<td align="center">1.9.9</td>
+<td align="center">Eureka2.0已停止开发,Nacos处于1.x-2.0开发</td>
 </tr>
 <tr>
-<td style="text-align:center">厂商</td>
-<td style="text-align:center">阿里巴巴</td>
-<td style="text-align:center">Netflix</td>
-<td style="text-align:center">Netflix已长期用于生产,阿里刚起步</td>
+<td align="center">厂商</td>
+<td align="center">阿里巴巴</td>
+<td align="center">Netflix</td>
+<td align="center">Netflix已长期用于生产,阿里刚起步</td>
 </tr>
 <tr>
-<td style="text-align:center">生产建议</td>
-<td style="text-align:center"><code>否</code></td>
-<td style="text-align:center">是</td>
-<td style="text-align:center">Nacos0.8以前不可用于生产,建议生产采用Nacos1.0,便于节省配置中心集群和服务管理</td>
+<td align="center">生产建议</td>
+<td align="center"><code>否</code></td>
+<td align="center">是</td>
+<td align="center">Nacos0.8以前不可用于生产,建议生产采用Nacos1.0,便于节省配置中心集群和服务管理</td>
 </tr>
 <tr>
-<td style="text-align:center">未来发展</td>
-<td style="text-align:center">是</td>
-<td style="text-align:center"><code>否</code></td>
-<td style="text-align:center">Nacos 2.0主要关注在统一服务管理、服务共享及服务治理体系的开放的服务平台的建设</td>
+<td align="center">未来发展</td>
+<td align="center">是</td>
+<td align="center"><code>否</code></td>
+<td align="center">Nacos 2.0主要关注在统一服务管理、服务共享及服务治理体系的开放的服务平台的建设</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="选型建议"><a href="#选型建议" class="headerlink" title="选型建议"></a>选型建议</h3><p>采用Eureka方案的考虑</p>
 <ul>
 <li>想用Spring Cloud原生全家桶 </li>
@@ -727,13 +722,6 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/posts/33205/" rel="bookmark">Spring Cloud - 如何利用Zuul进行网关开发</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
       <div class="popular-posts-title"><a href="/posts/25628/" rel="bookmark">Spring Cloud - Ribbon在Zuul上实现灰度和版本测试</a></div>
       
     </li>
@@ -742,6 +730,13 @@
       
       
       <div class="popular-posts-title"><a href="/posts/33184/" rel="bookmark">Spring Cloud - 如何利用Zuul实现接口限流</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/33205/" rel="bookmark">Spring Cloud - 如何利用Zuul进行网关开发</a></div>
       
     </li>
   
@@ -919,7 +914,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -944,7 +939,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1011,7 +1012,23 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1098,7 +1115,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">NaNm</span>
+    <span title="站点总字数">57k</span>
   
 
   
@@ -1109,7 +1126,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">NaN:aN</span>
+    <span title="站点阅读时长">51 分钟</span>
   
 </div>
 

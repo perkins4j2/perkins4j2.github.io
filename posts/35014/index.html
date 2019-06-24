@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="Perkins4j2的技术博客">
 <meta property="og:description" content="重排序是编译器和处理器为优化程序性能而对指令进行重新排序的手段。 数据依赖性 写后写;a=1,a=2 写后读;a=1,b=a 读后写;a=b,b=1  以上三种情况存在数据依赖，重排将会引起结果改变。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-29T09:18:49.469Z">
+<meta property="og:updated_time" content="2019-05-29T09:18:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程艺术 - 重排序">
 <meta name="twitter:description" content="重排序是编译器和处理器为优化程序性能而对指令进行重新排序的手段。 数据依赖性 写后写;a=1,a=2 写后读;a=1,b=a 读后写;a=b,b=1  以上三种情况存在数据依赖，重排将会引起结果改变。">
@@ -269,7 +269,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">25</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">33</span></a>
 
   </li>
         
@@ -288,7 +288,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">4</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">7</span></a>
 
   </li>
         
@@ -307,7 +307,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">26</span></a>
 
   </li>
 
@@ -538,10 +538,14 @@
 </ul>
 <p>以上三种情况存在数据依赖，重排将会引起结果改变。</p>
  <a id="more"></a>
+
 <h3 id="as-if-serial"><a href="#as-if-serial" class="headerlink" title="as-if-serial"></a>as-if-serial</h3><p>不管怎么重排序，但不能影响结果，编译器、runtime和处理器都必须遵守这个语义，即可以对不存在数据依赖关系的指令进行重排。</p>
-<p>例如<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a=<span class="number">1</span>;<span class="comment">//操作1</span></span><br><span class="line"><span class="keyword">int</span> b=<span class="number">2</span>;<span class="comment">//操作2</span></span><br><span class="line"><span class="keyword">int</span> c=a+b;<span class="comment">//操作3</span></span><br></pre></td></tr></table></figure></p>
+<p>例如</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a=<span class="number">1</span>;<span class="comment">//操作1</span></span><br><span class="line"><span class="keyword">int</span> b=<span class="number">2</span>;<span class="comment">//操作2</span></span><br><span class="line"><span class="keyword">int</span> c=a+b;<span class="comment">//操作3</span></span><br></pre></td></tr></table></figure>
+
 <p>以上操作1和2可以重排。</p>
 <h3 id="重排对多线程的影响"><a href="#重排对多线程的影响" class="headerlink" title="重排对多线程的影响"></a>重排对多线程的影响</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ReorderExample</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        a = <span class="number">1</span>; <span class="comment">// 1</span></span><br><span class="line">        flag = <span class="keyword">true</span>; <span class="comment">// 2</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reader</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (flag) &#123; <span class="comment">// 3</span></span><br><span class="line">            <span class="keyword">int</span> i = a * a; <span class="comment">// 4</span></span><br><span class="line">            ……</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>在多线程开发中：</p>
 <ul>
 <li>如果线程1对操作1和2进行重排，线程2执行reader的操作3时，变量a可能没有及时同步，结果可能为0而不是1。</li>
@@ -561,27 +565,6 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/posts/49164/" rel="bookmark">Java并发编程艺术 - Java内存模型基础</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/posts/24227/" rel="bookmark">Java并发编程艺术 - 多线程</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/posts/10420/" rel="bookmark">Java并发编程艺术 - 多线程与资源限制</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
       <div class="popular-posts-title"><a href="/posts/43888/" rel="bookmark">Java并发编程艺术 - synchronized使用和原理</a></div>
       
     </li>
@@ -589,7 +572,28 @@
     <li class="popular-posts-item">
       
       
+      <div class="popular-posts-title"><a href="/posts/49164/" rel="bookmark">Java并发编程艺术 - Java内存模型基础</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/28363/" rel="bookmark">Java并发编程艺术 - 原子性及CAS使用和原理</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
       <div class="popular-posts-title"><a href="/posts/34733/" rel="bookmark">Java并发编程艺术 - volatile使用和原理</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/24227/" rel="bookmark">Java并发编程艺术 - 多线程</a></div>
       
     </li>
   
@@ -765,7 +769,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -790,7 +794,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -857,7 +867,23 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -944,7 +970,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">NaNm</span>
+    <span title="站点总字数">57k</span>
   
 
   
@@ -955,7 +981,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">NaN:aN</span>
+    <span title="站点阅读时长">51 分钟</span>
   
 </div>
 

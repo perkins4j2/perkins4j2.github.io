@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="Perkins4j2的技术博客">
 <meta property="og:description" content="原子性处理器保障从系统内存中读取和写入字节是原子的，即其他处理器不能访问该字节地址。 总线锁保障原子性处理器发出Lock#信号到总线上，其他处理器阻塞，该处理器独享内存。 缓存锁保障原子性总线锁把CPU和内存通信锁住，其他CPU无法访问其他内存地址，开销较大。 可以在缓存中，锁定内存地址，保障原子性。 缓存锁定缓存行时，回写内存不声明LOCK#，而是修改内部内存地址，同时通过缓存一致性阻止其他处理">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-05T10:12:03.159Z">
+<meta property="og:updated_time" content="2019-05-05T10:12:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程艺术 - 原子性及CAS使用和原理">
 <meta name="twitter:description" content="原子性处理器保障从系统内存中读取和写入字节是原子的，即其他处理器不能访问该字节地址。 总线锁保障原子性处理器发出Lock#信号到总线上，其他处理器阻塞，该处理器独享内存。 缓存锁保障原子性总线锁把CPU和内存通信锁住，其他CPU无法访问其他内存地址，开销较大。 可以在缓存中，锁定内存地址，保障原子性。 缓存锁定缓存行时，回写内存不声明LOCK#，而是修改内部内存地址，同时通过缓存一致性阻止其他处理">
@@ -269,7 +269,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">25</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">33</span></a>
 
   </li>
         
@@ -288,7 +288,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">4</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">7</span></a>
 
   </li>
         
@@ -307,7 +307,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">18</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">26</span></a>
 
   </li>
 
@@ -536,6 +536,7 @@
 <p>可以在缓存中，锁定内存地址，保障原子性。</p>
 <p>缓存锁定缓存行时，回写内存不声明LOCK#，而是修改内部内存地址，同时通过缓存一致性阻止其他处理器修改；当其他处理器回写<br>，将会无效缓存行，从内存重新加载数据。</p>
 <a id="more"></a>
+
 <h3 id="JAVA实现原子操作"><a href="#JAVA实现原子操作" class="headerlink" title="JAVA实现原子操作"></a>JAVA实现原子操作</h3><h4 id="通过锁实现原子操作"><a href="#通过锁实现原子操作" class="headerlink" title="通过锁实现原子操作"></a>通过锁实现原子操作</h4><p>锁机制保障只有获取锁的线程才能操作内存区域，常见的JVM锁有偏向锁、轻量锁和互斥锁。</p>
 <p>除偏向锁外，其他锁实现都采用CAS进行锁的获取和释放。</p>
 <h4 id="通过CAS实现原子操作"><a href="#通过CAS实现原子操作" class="headerlink" title="通过CAS实现原子操作"></a>通过CAS实现原子操作</h4><p>CAS通过Compare And Swap可以实现原子操作；原子操作即不能被进一步分割的最小粒子。</p>
@@ -561,7 +562,21 @@
     <li class="popular-posts-item">
       
       
+      <div class="popular-posts-title"><a href="/posts/43888/" rel="bookmark">Java并发编程艺术 - synchronized使用和原理</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
       <div class="popular-posts-title"><a href="/posts/49164/" rel="bookmark">Java并发编程艺术 - Java内存模型基础</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/34733/" rel="bookmark">Java并发编程艺术 - volatile使用和原理</a></div>
       
     </li>
   
@@ -576,20 +591,6 @@
       
       
       <div class="popular-posts-title"><a href="/posts/10420/" rel="bookmark">Java并发编程艺术 - 多线程与资源限制</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/posts/43888/" rel="bookmark">Java并发编程艺术 - synchronized使用和原理</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/posts/34733/" rel="bookmark">Java并发编程艺术 - volatile使用和原理</a></div>
       
     </li>
   
@@ -765,7 +766,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -790,7 +791,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -857,7 +864,23 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -944,7 +967,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">NaNm</span>
+    <span title="站点总字数">57k</span>
   
 
   
@@ -955,7 +978,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">NaN:aN</span>
+    <span title="站点阅读时长">51 分钟</span>
   
 </div>
 
