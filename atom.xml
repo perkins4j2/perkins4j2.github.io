@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-08-02T01:37:17.866Z</updated>
+  <updated>2019-08-02T01:53:13.711Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -21,18 +21,15 @@
     <link href="https://perkins4j2.github.io/posts/5308/"/>
     <id>https://perkins4j2.github.io/posts/5308/</id>
     <published>2019-08-02T01:22:03.000Z</published>
-    <updated>2019-08-02T01:37:17.866Z</updated>
+    <updated>2019-08-02T01:53:13.711Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h3 id=&quot;查看进程&quot;&gt;&lt;a href=&quot;#查看进程&quot; class=&quot;headerlink&quot; title=&quot;查看进程&quot;&gt;&lt;/a&gt;查看进程&lt;/h3&gt;&lt;p&gt;docker ps&lt;/p&gt;
-&lt;h3 id=&quot;关闭进程&quot;&gt;&lt;a href=&quot;#关闭进程&quot;
-        
-      
+      &lt;h3 id=&quot;查看进程&quot;&gt;&lt;a href=&quot;#查看进程&quot; class=&quot;headerlink&quot; title=&quot;查看进程&quot;&gt;&lt;/a&gt;查看进程&lt;/h3&gt;&lt;p&gt;docker ps&lt;/p&gt;
+&lt;h3 id=&quot;关闭进程&quot;&gt;&lt;a href=&quot;#关闭进程&quot; class=&quot;headerlink&quot; title=&quot;关闭进程&quot;&gt;&lt;/a&gt;关闭进程&lt;/h3&gt;&lt;p&gt;docker kill -s KILL 376ec4b90&lt;/p&gt;
+&lt;p&gt;docker kill 376ec4b90&lt;/p&gt;
+&lt;p&gt;docker rm 376ec4b90&lt;/p&gt;
+&lt;p&gt;docker restart 376ec4b90&lt;/p&gt;
     
     </summary>
     
@@ -48,17 +45,25 @@
     <link href="https://perkins4j2.github.io/posts/1379/"/>
     <id>https://perkins4j2.github.io/posts/1379/</id>
     <published>2019-08-02T01:21:44.000Z</published>
-    <updated>2019-08-02T01:34:19.575Z</updated>
+    <updated>2019-08-02T01:53:13.704Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;prometheus&quot;&gt;&lt;a href=&quot;#prometheus&quot; class=&quot;headerlink&quot; title=&quot;prometheus&quot;&gt;&lt;/a&gt;prometheus&lt;/h2&gt;&lt;p&gt; &lt;a href=&quot;https://prometheus.io/&quot;
-        
-      
+      &lt;h2 id=&quot;prometheus&quot;&gt;&lt;a href=&quot;#prometheus&quot; class=&quot;headerlink&quot; title=&quot;prometheus&quot;&gt;&lt;/a&gt;prometheus&lt;/h2&gt;&lt;p&gt; &lt;a href=&quot;https://prometheus.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Prometheus&lt;/a&gt;是开源监控报警系统。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;多维度数据模型。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;灵活的查询语言。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;不依赖分布式存储，单个服务器节点是自主的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;通过基于HTTP的pull方式采集时序数据。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;可以通过中间网关进行时序列数据推送。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;通过服务发现或者静态配置来发现目标服务对象。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;支持多种多样的图表和界面展示，比如Grafana等。&lt;/p&gt;
     
     </summary>
     
@@ -76,17 +81,14 @@
     <link href="https://perkins4j2.github.io/posts/4544/"/>
     <id>https://perkins4j2.github.io/posts/4544/</id>
     <published>2019-08-02T01:21:28.000Z</published>
-    <updated>2019-08-02T01:33:03.417Z</updated>
+    <updated>2019-08-02T01:53:13.734Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h3 id=&quot;Http-Server&quot;&gt;&lt;a href=&quot;#Http-Server&quot; class=&quot;headerlink&quot; title=&quot;Http-Server&quot;&gt;&lt;/a&gt;Http-Server&lt;/h3&gt;&lt;p&gt;&lt;a
-        
-      
+      &lt;h3 id=&quot;Http-Server&quot;&gt;&lt;a href=&quot;#Http-Server&quot; class=&quot;headerlink&quot; title=&quot;Http-Server&quot;&gt;&lt;/a&gt;Http-Server&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/http-party/http-server&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http-server&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h4&gt;&lt;p&gt;npm install http-server -g&lt;/p&gt;
+&lt;h4 id=&quot;文件上传&quot;&gt;&lt;a href=&quot;#文件上传&quot; class=&quot;headerlink&quot; title=&quot;文件上传&quot;&gt;&lt;/a&gt;文件上传&lt;/h4&gt;&lt;p&gt;./public&lt;/p&gt;
+&lt;h4 id=&quot;文件下载&quot;&gt;&lt;a href=&quot;#文件下载&quot; class=&quot;headerlink&quot; title=&quot;文件下载&quot;&gt;&lt;/a&gt;文件下载&lt;/h4&gt;&lt;p&gt;wget &lt;a href=&quot;http://172.16.25.70:8080/prometheus.yml&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://172.16.25.70:8080/prometheus.yml&lt;/a&gt;&lt;/p&gt;
     
     </summary>
     
@@ -104,17 +106,11 @@
     <link href="https://perkins4j2.github.io/posts/42635/"/>
     <id>https://perkins4j2.github.io/posts/42635/</id>
     <published>2019-08-02T01:21:12.000Z</published>
-    <updated>2019-08-02T01:33:03.425Z</updated>
+    <updated>2019-08-02T01:53:13.718Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h3 id=&quot;Prometheus集成SpringBoot1-5&quot;&gt;&lt;a href=&quot;#Prometheus集成SpringBoot1-5&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h3 id=&quot;Prometheus集成SpringBoot1-5&quot;&gt;&lt;a href=&quot;#Prometheus集成SpringBoot1-5&quot; class=&quot;headerlink&quot; title=&quot;Prometheus集成SpringBoot1.5&quot;&gt;&lt;/a&gt;Prometheus集成SpringBoot1.5&lt;/h3&gt;&lt;h3 id=&quot;pom&quot;&gt;&lt;a href=&quot;#pom&quot; class=&quot;headerlink&quot; title=&quot;pom&quot;&gt;&lt;/a&gt;pom&lt;/h3&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- Actuator (with security enabled) --&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;org.springframework.boot&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;spring-boot-starter-actuator&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;org.springframework.boot&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;spring-boot-starter-security&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;&amp;lt;!-- Monitoring endpoint - Micrometer + Prometheus --&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;io.micrometer&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;micrometer-registry-prometheus&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;1.0.3&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;exclusions&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;exclusion&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;HdrHistogram&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;org.hdrhistogram&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;exclusion&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;exclusions&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;io.micrometer&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;micrometer-spring-legacy&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;1.0.3&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -132,17 +128,11 @@
     <link href="https://perkins4j2.github.io/posts/15864/"/>
     <id>https://perkins4j2.github.io/posts/15864/</id>
     <published>2019-08-02T01:20:44.000Z</published>
-    <updated>2019-08-02T01:43:24.053Z</updated>
+    <updated>2019-08-02T01:53:13.726Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span
-        
-      
+      &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt; Optional&amp;lt;Tag&amp;gt; tagOptional = handlerContext.getTagList().stream().filter(e -&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                    (e.getType() == tag.getType())).findAny();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (!tagOptional.isPresent()) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     

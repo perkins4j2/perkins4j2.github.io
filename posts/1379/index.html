@@ -107,18 +107,18 @@
 
 
 
-  <meta name="description" content="prometheus Prometheus是开源监控报警系统。  多维度数据模型。 灵活的查询语言。 不依赖分布式存储，单个服务器节点是自主的。 通过基于HTTP的pull方式采集时序数据。 可以通过中间网关进行时序列数据推送。 通过服务发现或者静态配置来发现目标服务对象。 支持多种多样的图表和界面展示，比如Grafana等。  概念Prometheus生态系统由多个组件组成，它们中的一些是可选的">
+  <meta name="description" content="prometheus Prometheus是开源监控报警系统。  多维度数据模型。  灵活的查询语言。  不依赖分布式存储，单个服务器节点是自主的。  通过基于HTTP的pull方式采集时序数据。  可以通过中间网关进行时序列数据推送。  通过服务发现或者静态配置来发现目标服务对象。  支持多种多样的图表和界面展示，比如Grafana等。">
 <meta name="keywords" content="Prometheus,Grafana">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Prometheus与Grafana部署和安装">
 <meta property="og:url" content="https://perkins4j2.github.io/posts/1379/index.html">
 <meta property="og:site_name" content="Perkins4j2的技术博客">
-<meta property="og:description" content="prometheus Prometheus是开源监控报警系统。  多维度数据模型。 灵活的查询语言。 不依赖分布式存储，单个服务器节点是自主的。 通过基于HTTP的pull方式采集时序数据。 可以通过中间网关进行时序列数据推送。 通过服务发现或者静态配置来发现目标服务对象。 支持多种多样的图表和界面展示，比如Grafana等。  概念Prometheus生态系统由多个组件组成，它们中的一些是可选的">
+<meta property="og:description" content="prometheus Prometheus是开源监控报警系统。  多维度数据模型。  灵活的查询语言。  不依赖分布式存储，单个服务器节点是自主的。  通过基于HTTP的pull方式采集时序数据。  可以通过中间网关进行时序列数据推送。  通过服务发现或者静态配置来发现目标服务对象。  支持多种多样的图表和界面展示，比如Grafana等。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-02T01:34:19.575Z">
+<meta property="og:updated_time" content="2019-08-02T01:53:13.704Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Prometheus与Grafana部署和安装">
-<meta name="twitter:description" content="prometheus Prometheus是开源监控报警系统。  多维度数据模型。 灵活的查询语言。 不依赖分布式存储，单个服务器节点是自主的。 通过基于HTTP的pull方式采集时序数据。 可以通过中间网关进行时序列数据推送。 通过服务发现或者静态配置来发现目标服务对象。 支持多种多样的图表和界面展示，比如Grafana等。  概念Prometheus生态系统由多个组件组成，它们中的一些是可选的">
+<meta name="twitter:description" content="prometheus Prometheus是开源监控报警系统。  多维度数据模型。  灵活的查询语言。  不依赖分布式存储，单个服务器节点是自主的。  通过基于HTTP的pull方式采集时序数据。  可以通过中间网关进行时序列数据推送。  通过服务发现或者静态配置来发现目标服务对象。  支持多种多样的图表和界面展示，比如Grafana等。">
 
 
 
@@ -438,7 +438,7 @@
                 
               
 
-              <time title="创建时间：2019-08-02 09:21:44 / 修改时间：09:34:19" itemprop="dateCreated datePublished" datetime="2019-08-02T09:21:44+08:00">2019-08-02</time>
+              <time title="创建时间：2019-08-02 09:21:44 / 修改时间：09:53:13" itemprop="dateCreated datePublished" datetime="2019-08-02T09:21:44+08:00">2019-08-02</time>
             
 
             
@@ -510,7 +510,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">9 分钟</span>
+                <span title="阅读时长">10 分钟</span>
               
             </div>
           
@@ -532,13 +532,22 @@
       
         <h2 id="prometheus"><a href="#prometheus" class="headerlink" title="prometheus"></a>prometheus</h2><p> <a href="https://prometheus.io/" target="_blank" rel="noopener">Prometheus</a>是开源监控报警系统。</p>
 <ol>
-<li>多维度数据模型。</li>
-<li>灵活的查询语言。</li>
-<li>不依赖分布式存储，单个服务器节点是自主的。</li>
-<li>通过基于HTTP的pull方式采集时序数据。</li>
-<li>可以通过中间网关进行时序列数据推送。</li>
-<li>通过服务发现或者静态配置来发现目标服务对象。</li>
-<li>支持多种多样的图表和界面展示，比如Grafana等。</li>
+<li><p>多维度数据模型。</p>
+</li>
+<li><p>灵活的查询语言。</p>
+</li>
+<li><p>不依赖分布式存储，单个服务器节点是自主的。</p>
+</li>
+<li><p>通过基于HTTP的pull方式采集时序数据。</p>
+</li>
+<li><p>可以通过中间网关进行时序列数据推送。</p>
+</li>
+<li><p>通过服务发现或者静态配置来发现目标服务对象。</p>
+</li>
+<li><p>支持多种多样的图表和界面展示，比如Grafana等。</p>
+<a id="more"></a>
+
+</li>
 </ol>
 <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>Prometheus生态系统由多个组件组成，它们中的一些是可选的。多数Prometheus组件是Go语言写的，这使得这些组件很容易编译和部署。</p>
 <h4 id="Prometheus-Server"><a href="#Prometheus-Server" class="headerlink" title="Prometheus Server"></a>Prometheus Server</h4><p>主要负责数据采集和存储，提供PromQL查询语言的支持。</p>

@@ -437,7 +437,7 @@
                 
               
 
-              <time title="创建时间：2019-08-02 09:22:03 / 修改时间：09:37:17" itemprop="dateCreated datePublished" datetime="2019-08-02T09:22:03+08:00">2019-08-02</time>
+              <time title="创建时间：2019-08-02 09:22:03 / 修改时间：09:53:13" itemprop="dateCreated datePublished" datetime="2019-08-02T09:22:03+08:00">2019-08-02</time>
             
 
             
@@ -488,7 +488,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">292</span>
+                <span title="本文字数">310</span>
               
 
               
@@ -523,14 +523,20 @@
 
       
         
-          
-            <h3 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h3><p>docker ps</p>
+          <h3 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h3><p>docker ps</p>
 <h3 id="关闭进程"><a href="#关闭进程" class="headerlink" title="关闭进程"></a>关闭进程</h3><p>docker kill -s KILL 376ec4b90</p>
 <p>docker kill 376ec4b90</p>
 <p>docker rm 376ec4b90</p>
 <p>docker restart 376ec4b90</p>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/posts/5308/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -637,7 +643,7 @@
                 
               
 
-              <time title="创建时间：2019-08-02 09:21:44 / 修改时间：09:34:19" itemprop="dateCreated datePublished" datetime="2019-08-02T09:21:44+08:00">2019-08-02</time>
+              <time title="创建时间：2019-08-02 09:21:44 / 修改时间：09:53:13" itemprop="dateCreated datePublished" datetime="2019-08-02T09:21:44+08:00">2019-08-02</time>
             
 
             
@@ -702,7 +708,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">9 分钟</span>
+                <span title="阅读时长">10 分钟</span>
               
             </div>
           
@@ -723,57 +729,33 @@
 
       
         
-          
-            <h2 id="prometheus"><a href="#prometheus" class="headerlink" title="prometheus"></a>prometheus</h2><p> <a href="https://prometheus.io/" target="_blank" rel="noopener">Prometheus</a>是开源监控报警系统。</p>
+          <h2 id="prometheus"><a href="#prometheus" class="headerlink" title="prometheus"></a>prometheus</h2><p> <a href="https://prometheus.io/" target="_blank" rel="noopener">Prometheus</a>是开源监控报警系统。</p>
 <ol>
-<li>多维度数据模型。</li>
-<li>灵活的查询语言。</li>
-<li>不依赖分布式存储，单个服务器节点是自主的。</li>
-<li>通过基于HTTP的pull方式采集时序数据。</li>
-<li>可以通过中间网关进行时序列数据推送。</li>
-<li>通过服务发现或者静态配置来发现目标服务对象。</li>
-<li>支持多种多样的图表和界面展示，比如Grafana等。</li>
-</ol>
-<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>Prometheus生态系统由多个组件组成，它们中的一些是可选的。多数Prometheus组件是Go语言写的，这使得这些组件很容易编译和部署。</p>
-<h4 id="Prometheus-Server"><a href="#Prometheus-Server" class="headerlink" title="Prometheus Server"></a>Prometheus Server</h4><p>主要负责数据采集和存储，提供PromQL查询语言的支持。</p>
-<h4 id="客户端SDK"><a href="#客户端SDK" class="headerlink" title="客户端SDK"></a>客户端SDK</h4><p>官方提供的客户端类库有go、java、scala、python、ruby，其他还有很多第三方开发的类库，支持nodejs、php、erlang等。</p>
-<h4 id="Push-Gateway"><a href="#Push-Gateway" class="headerlink" title="Push Gateway"></a>Push Gateway</h4><p>支持临时性Job主动推送指标的中间网关。</p>
-<h4 id="PromDash"><a href="#PromDash" class="headerlink" title="PromDash"></a>PromDash</h4><p>使用Rails开发可视化的Dashboard，用于可视化指标数据。</p>
-<h4 id="Exporter"><a href="#Exporter" class="headerlink" title="Exporter"></a>Exporter</h4><p>Exporter是Prometheus的一类数据采集组件的总称。它负责从目标处搜集数据，并将其转化为Prometheus支持的格式。与传统的数据采集组件不同的是，它并不向中央服务器发送数据，而是等待中央服务器主动前来抓取。</p>
-<p>Prometheus提供多种类型的Exporter用于采集各种不同服务的运行状态。目前支持的有数据库、硬件、消息中间件、存储系统、HTTP服务器、JMX等。</p>
-<h4 id="alertmanager"><a href="#alertmanager" class="headerlink" title="alertmanager"></a>alertmanager</h4><p>警告管理器，用来进行报警。</p>
-<h4 id="prometheus-cli"><a href="#prometheus-cli" class="headerlink" title="prometheus_cli"></a>prometheus_cli</h4><p>命令行工具。</p>
-<h4 id="其他辅助性工具"><a href="#其他辅助性工具" class="headerlink" title="其他辅助性工具"></a>其他辅助性工具</h4><p>多种导出工具，可以支持Prometheus存储数据转化为HAProxy、StatsD、Graphite等工具所需要的数据存储格式。</p>
-<h3 id="node-exporter"><a href="#node-exporter" class="headerlink" title="node-exporter"></a>node-exporter</h3><h4 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h4><p>docker pull prom/node-exporter</p>
-<h4 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line"> -p 9090:9090 \</span><br><span class="line"> --net="host" \</span><br><span class="line"> --pid="host" \</span><br><span class="line"> -v "/:/host:ro,rslave" \</span><br><span class="line"> quay.io/prometheus/node-exporter \</span><br><span class="line"> --path.rootfs /host</span><br></pre></td></tr></table></figure>
-
-<h3 id="redis-exporter"><a href="#redis-exporter" class="headerlink" title="redis_exporter"></a>redis_exporter</h3><h4 id="下载镜像-1"><a href="#下载镜像-1" class="headerlink" title="下载镜像"></a>下载镜像</h4><p>docker pull oliver006/redis_exporter</p>
-<h4 id="运行-1"><a href="#运行-1" class="headerlink" title="运行"></a>运行</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--name redis_exporter \</span><br><span class="line">-p 9121:9121 \</span><br><span class="line">oliver006/redis_exporter --redis.addr redis://h:password@192.168.1.41:6380</span><br></pre></td></tr></table></figure>
-
-<p>或者</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/oliver006/redis_exporter/releases/download/v0.13/redis_exporter-v0.13.linux-amd64.tar.gz</span><br><span class="line"></span><br><span class="line">./redis_exporter  -redis.addr 192.168.1.41:6380  -redis.password password  &amp;</span><br></pre></td></tr></table></figure>
-
-<h3 id="mysqld-exporter"><a href="#mysqld-exporter" class="headerlink" title="mysqld-exporter"></a>mysqld-exporter</h3><h4 id="下载镜像-2"><a href="#下载镜像-2" class="headerlink" title="下载镜像"></a>下载镜像</h4><p>docker pull prom/mysqld-exporter</p>
-<h4 id="运行-2"><a href="#运行-2" class="headerlink" title="运行"></a>运行</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  -p 9101:9104 \</span><br><span class="line">  -e DATA_SOURCE_NAME="root:password@(192.168.1.41:3308)/test" \</span><br><span class="line">  prom/mysqld-exporter</span><br></pre></td></tr></table></figure>
-
-<p>或者</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/prometheus/mysqld_exporter/releases/download/v0.10.0/mysqld_exporter-0.10.0.linux-amd64.tar.gz -O mysqld_exporter-0.10.0.linux-amd64.tar.gz</span><br><span class="line"> </span><br><span class="line">cat &lt;&lt; EOF &gt; my.cnf</span><br><span class="line">[client]</span><br><span class="line">user=prom</span><br><span class="line">password=abc123</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line">./mysqld_exporter -config.my-cnf=&quot;my.cnf&quot;</span><br></pre></td></tr></table></figure>
-
-<h3 id="grafana"><a href="#grafana" class="headerlink" title="grafana"></a>grafana</h3><h4 id="下载镜像-3"><a href="#下载镜像-3" class="headerlink" title="下载镜像"></a>下载镜像</h4><p>docker pull grafana/grafana</p>
-<h4 id="运行-3"><a href="#运行-3" class="headerlink" title="运行"></a>运行</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name=grafana -p 3000:3000 grafana/grafana</span><br></pre></td></tr></table></figure>
-
-<h3 id="prometheus-1"><a href="#prometheus-1" class="headerlink" title="prometheus"></a>prometheus</h3><h4 id="下载镜像-4"><a href="#下载镜像-4" class="headerlink" title="下载镜像"></a>下载镜像</h4><p>docker pull prom/prometheus</p>
-<h4 id="运行-4"><a href="#运行-4" class="headerlink" title="运行"></a>运行</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -d \</span><br><span class="line">  -p 9090:9090 \</span><br><span class="line">  -v /home/config/prometheus.yml:/home/config/prometheus.yml \</span><br><span class="line">  quay.io/prometheus/prometheus \</span><br><span class="line">  --config.file=/home/config/prometheus.yml</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>prometheus.yml</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">crape_configs:</span><br><span class="line">  - job_name: <span class="string">'prometheus'</span></span><br><span class="line">    static_configs:</span><br><span class="line">    - targets: [<span class="string">'localhost:9090'</span>]</span><br><span class="line"></span><br><span class="line">  - job_name: <span class="string">'redis-41'</span></span><br><span class="line">    static_configs:</span><br><span class="line">     - targets: [<span class="string">'192.168.1.41:9121'</span>]</span><br><span class="line">       labels:</span><br><span class="line">         instance: redis</span><br><span class="line"></span><br><span class="line">  - job_name: <span class="string">'linux-41'</span></span><br><span class="line">    static_configs:</span><br><span class="line">     - targets: [<span class="string">'192.168.1.41:9100'</span>]</span><br><span class="line">       labels:</span><br><span class="line">         instance: node</span><br><span class="line"></span><br><span class="line">  - job_name: <span class="string">'mysql-41'</span></span><br><span class="line">    static_configs:</span><br><span class="line">     - targets: [<span class="string">'192.168.1.41:9101'</span>]</span><br><span class="line">       labels:</span><br><span class="line">         instance: db</span><br></pre></td></tr></table></figure>
-
-<p> 重启服务<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br><span class="line"></span><br><span class="line">docker restart `prometheus-processid`</span><br></pre></td></tr></table></figure></p>
-<h3 id="登录验证"><a href="#登录验证" class="headerlink" title="登录验证"></a>登录验证</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">prometheus 192.168.1.41:9090</span><br><span class="line">grafana 192.168.1.41:3000  admin/admin</span><br></pre></td></tr></table></figure>
+<li><p>多维度数据模型。</p>
+</li>
+<li><p>灵活的查询语言。</p>
+</li>
+<li><p>不依赖分布式存储，单个服务器节点是自主的。</p>
+</li>
+<li><p>通过基于HTTP的pull方式采集时序数据。</p>
+</li>
+<li><p>可以通过中间网关进行时序列数据推送。</p>
+</li>
+<li><p>通过服务发现或者静态配置来发现目标服务对象。</p>
+</li>
+<li><p>支持多种多样的图表和界面展示，比如Grafana等。</p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/posts/1379/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
-    </div>
+    </li></ol></div>
 
     
 
@@ -877,7 +859,7 @@
                 
               
 
-              <time title="创建时间：2019-08-02 09:21:28 / 修改时间：09:33:03" itemprop="dateCreated datePublished" datetime="2019-08-02T09:21:28+08:00">2019-08-02</time>
+              <time title="创建时间：2019-08-02 09:21:28 / 修改时间：09:53:13" itemprop="dateCreated datePublished" datetime="2019-08-02T09:21:28+08:00">2019-08-02</time>
             
 
             
@@ -928,7 +910,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">613</span>
+                <span title="本文字数">632</span>
               
 
               
@@ -963,13 +945,19 @@
 
       
         
-          
-            <h3 id="Http-Server"><a href="#Http-Server" class="headerlink" title="Http-Server"></a>Http-Server</h3><p><a href="https://github.com/http-party/http-server" target="_blank" rel="noopener">http-server</a></p>
+          <h3 id="Http-Server"><a href="#Http-Server" class="headerlink" title="Http-Server"></a>Http-Server</h3><p><a href="https://github.com/http-party/http-server" target="_blank" rel="noopener">http-server</a></p>
 <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>npm install http-server -g</p>
 <h4 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h4><p>./public</p>
 <h4 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h4><p>wget <a href="http://172.16.25.70:8080/prometheus.yml" target="_blank" rel="noopener">http://172.16.25.70:8080/prometheus.yml</a></p>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/posts/4544/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1076,7 +1064,7 @@
                 
               
 
-              <time title="创建时间：2019-08-02 09:21:12 / 修改时间：09:33:03" itemprop="dateCreated datePublished" datetime="2019-08-02T09:21:12+08:00">2019-08-02</time>
+              <time title="创建时间：2019-08-02 09:21:12 / 修改时间：09:53:13" itemprop="dateCreated datePublished" datetime="2019-08-02T09:21:12+08:00">2019-08-02</time>
             
 
             
@@ -1162,19 +1150,16 @@
 
       
         
+          <h3 id="Prometheus集成SpringBoot1-5"><a href="#Prometheus集成SpringBoot1-5" class="headerlink" title="Prometheus集成SpringBoot1.5"></a>Prometheus集成SpringBoot1.5</h3><h3 id="pom"><a href="#pom" class="headerlink" title="pom"></a>pom</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Actuator (with security enabled) --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-actuator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-security<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Monitoring endpoint - Micrometer + Prometheus --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.micrometer<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>micrometer-registry-prometheus<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>HdrHistogram<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hdrhistogram<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.micrometer<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>micrometer-spring-legacy<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
           
-            <h3 id="Prometheus集成SpringBoot1-5"><a href="#Prometheus集成SpringBoot1-5" class="headerlink" title="Prometheus集成SpringBoot1.5"></a>Prometheus集成SpringBoot1.5</h3><h3 id="pom"><a href="#pom" class="headerlink" title="pom"></a>pom</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Actuator (with security enabled) --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-actuator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-security<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Monitoring endpoint - Micrometer + Prometheus --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.micrometer<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>micrometer-registry-prometheus<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>HdrHistogram<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hdrhistogram<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.micrometer<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>micrometer-spring-legacy<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="bootstrap-yml"><a href="#bootstrap-yml" class="headerlink" title="bootstrap.yml"></a>bootstrap.yml</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">management:</span><br><span class="line">  endpoints:</span><br><span class="line">    web:</span><br><span class="line">      exposure:</span><br><span class="line">        include: &apos;*&apos;</span><br><span class="line">    jmx:</span><br><span class="line">      exposure:</span><br><span class="line">        include: &apos;*&apos;</span><br><span class="line">    shutdown:</span><br><span class="line">      enabled: true</span><br><span class="line">  metrics:</span><br><span class="line">    distribution:</span><br><span class="line">      percentiles-histogram[http.server.requests]: true</span><br><span class="line">  security:</span><br><span class="line">      enabled: false</span><br></pre></td></tr></table></figure>
-
-<h3 id="application-java"><a href="#application-java" class="headerlink" title="application.java"></a>application.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function">MeterRegistryCustomizer <span class="title">meterRegistryCustomizer</span><span class="params">(MeterRegistry meterRegistry)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> meterRegistry1 -&gt; &#123;</span><br><span class="line">        meterRegistry.config()</span><br><span class="line">                .commonTags(<span class="string">"application"</span>, <span class="string">"micrometer-oceanus-chatbot-web"</span>);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>prometheus.yml</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- job_name: <span class="string">'app-41'</span></span><br><span class="line">  metrics_path: <span class="string">'/mgmt/prometheus'</span></span><br><span class="line">  static_configs:</span><br><span class="line">    - targets: [<span class="string">'192.168.1.41:9915'</span>]</span><br></pre></td></tr></table></figure>
-
-<p>重启服务<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br><span class="line"></span><br><span class="line">docker restart `prometheus-processid`</span><br></pre></td></tr></table></figure></p>
-<h3 id="登录验证"><a href="#登录验证" class="headerlink" title="登录验证"></a>登录验证</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">prometheus 192.168.1.41:9090</span><br><span class="line">grafana 192.168.1.41:3000  admin/admin</span><br></pre></td></tr></table></figure>
+            <div class="post-button text-center">
+              <a class="btn" href="/posts/42635/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -1281,7 +1266,7 @@
                 
               
 
-              <time title="创建时间：2019-08-02 09:20:44 / 修改时间：09:43:24" itemprop="dateCreated datePublished" datetime="2019-08-02T09:20:44+08:00">2019-08-02</time>
+              <time title="创建时间：2019-08-02 09:20:44 / 修改时间：09:53:13" itemprop="dateCreated datePublished" datetime="2019-08-02T09:20:44+08:00">2019-08-02</time>
             
 
             
@@ -1367,27 +1352,16 @@
 
       
         
+          <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> Optional&lt;Tag&gt; tagOptional = handlerContext.getTagList().stream().filter(e -&gt;</span><br><span class="line">                    (e.getType() == tag.getType())).findAny();</span><br><span class="line"><span class="keyword">if</span> (!tagOptional.isPresent()) &#123;</span><br><span class="line">                </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
           
-            <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> Optional&lt;Tag&gt; tagOptional = handlerContext.getTagList().stream().filter(e -&gt;</span><br><span class="line">                    (e.getType() == tag.getType())).findAny();</span><br><span class="line"><span class="keyword">if</span> (!tagOptional.isPresent()) &#123;</span><br><span class="line">                </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tagList = list.parallelStream().filter(e -&gt;e.getType() == tag.getType()</span><br><span class="line">                ).collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = tagList.stream().map(Tag::getValue).collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Stream.iterate(<span class="number">0</span>, i -&gt; i + <span class="number">1</span>).limit(tagList.size()).forEach(</span><br><span class="line">                i -&gt; &#123;</span><br><span class="line">                    <span class="keyword">if</span> (i == <span class="number">0</span>) &#123;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (i == (tagList.size() - <span class="number">1</span>)) &#123;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">        );</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tagList().forEach(e -&gt; &#123;</span><br><span class="line">    parse(e);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.sort(Comparator.comparing(e -&gt; e.getPriority()));</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+            <div class="post-button text-center">
+              <a class="btn" href="/posts/15864/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
