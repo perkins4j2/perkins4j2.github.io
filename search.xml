@@ -1,6 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Docker基本操作]]></title>
+    <url>%2Fposts%2F5308%2F</url>
+    <content type="text"><![CDATA[查看进程docker ps 关闭进程docker kill -s KILL 376ec4b90 docker kill 376ec4b90 docker rm 376ec4b90 docker restart 376ec4b90]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Prometheus与Grafana部署和安装]]></title>
+    <url>%2Fposts%2F1379%2F</url>
+    <content type="text"><![CDATA[prometheus Prometheus是开源监控报警系统。 多维度数据模型。 灵活的查询语言。 不依赖分布式存储，单个服务器节点是自主的。 通过基于HTTP的pull方式采集时序数据。 可以通过中间网关进行时序列数据推送。 通过服务发现或者静态配置来发现目标服务对象。 支持多种多样的图表和界面展示，比如Grafana等。 概念Prometheus生态系统由多个组件组成，它们中的一些是可选的。多数Prometheus组件是Go语言写的，这使得这些组件很容易编译和部署。 Prometheus Server主要负责数据采集和存储，提供PromQL查询语言的支持。 客户端SDK官方提供的客户端类库有go、java、scala、python、ruby，其他还有很多第三方开发的类库，支持nodejs、php、erlang等。 Push Gateway支持临时性Job主动推送指标的中间网关。 PromDash使用Rails开发可视化的Dashboard，用于可视化指标数据。 ExporterExporter是Prometheus的一类数据采集组件的总称。它负责从目标处搜集数据，并将其转化为Prometheus支持的格式。与传统的数据采集组件不同的是，它并不向中央服务器发送数据，而是等待中央服务器主动前来抓取。 Prometheus提供多种类型的Exporter用于采集各种不同服务的运行状态。目前支持的有数据库、硬件、消息中间件、存储系统、HTTP服务器、JMX等。 alertmanager警告管理器，用来进行报警。 prometheus_cli命令行工具。 其他辅助性工具多种导出工具，可以支持Prometheus存储数据转化为HAProxy、StatsD、Graphite等工具所需要的数据存储格式。 node-exporter下载镜像docker pull prom/node-exporter 运行1234567docker run -d \ -p 9090:9090 \ --net="host" \ --pid="host" \ -v "/:/host:ro,rslave" \ quay.io/prometheus/node-exporter \ --path.rootfs /host redis_exporter下载镜像docker pull oliver006/redis_exporter 运行1234docker run -d \--name redis_exporter \-p 9121:9121 \oliver006/redis_exporter --redis.addr redis://h:password@192.168.1.41:6380 或者 123wget https://github.com/oliver006/redis_exporter/releases/download/v0.13/redis_exporter-v0.13.linux-amd64.tar.gz./redis_exporter -redis.addr 192.168.1.41:6380 -redis.password password &amp; mysqld-exporter下载镜像docker pull prom/mysqld-exporter 运行1234docker run -d \ -p 9101:9104 \ -e DATA_SOURCE_NAME="root:password@(192.168.1.41:3308)/test" \ prom/mysqld-exporter 或者 123456789wget https://github.com/prometheus/mysqld_exporter/releases/download/v0.10.0/mysqld_exporter-0.10.0.linux-amd64.tar.gz -O mysqld_exporter-0.10.0.linux-amd64.tar.gz cat &lt;&lt; EOF &gt; my.cnf[client]user=prompassword=abc123EOF./mysqld_exporter -config.my-cnf=&quot;my.cnf&quot; grafana下载镜像docker pull grafana/grafana 运行1docker run -d --name=grafana -p 3000:3000 grafana/grafana prometheus下载镜像docker pull prom/prometheus 运行12345sudo docker run -d \ -p 9090:9090 \ -v /home/config/prometheus.yml:/home/config/prometheus.yml \ quay.io/prometheus/prometheus \ --config.file=/home/config/prometheus.yml 配置prometheus.yml 12345678910111213141516171819202122crape_configs: - job_name: 'prometheus' static_configs: - targets: ['localhost:9090'] - job_name: 'redis-41' static_configs: - targets: ['192.168.1.41:9121'] labels: instance: redis - job_name: 'linux-41' static_configs: - targets: ['192.168.1.41:9100'] labels: instance: node - job_name: 'mysql-41' static_configs: - targets: ['192.168.1.41:9101'] labels: instance: db 重启服务 123docker psdocker restart `prometheus-processid` 登录验证12prometheus 192.168.1.41:9090grafana 192.168.1.41:3000 admin/admin]]></content>
+      <categories>
+        <category>工具利器</category>
+      </categories>
+      <tags>
+        <tag>Prometheus</tag>
+        <tag>Grafana</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[搭建Http-Server用于文件传输]]></title>
+    <url>%2Fposts%2F4544%2F</url>
+    <content type="text"><![CDATA[Http-Serverhttp-server 安装npm install http-server -g 文件上传./public 文件下载wget http://172.16.25.70:8080/prometheus.yml]]></content>
+      <categories>
+        <category>工具利器</category>
+      </categories>
+      <tags>
+        <tag>Http-Server</tag>
+        <tag>nodejs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Prometheus集成SpringBoot1.5]]></title>
+    <url>%2Fposts%2F42635%2F</url>
+    <content type="text"><![CDATA[Prometheus集成SpringBoot1.5pom12345678910111213141516171819202122232425262728&lt;!-- Actuator (with security enabled) --&gt;&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;&lt;/dependency&gt;&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-security&lt;/artifactId&gt;&lt;/dependency&gt;&lt;!-- Monitoring endpoint - Micrometer + Prometheus --&gt; &lt;dependency&gt; &lt;groupId&gt;io.micrometer&lt;/groupId&gt; &lt;artifactId&gt;micrometer-registry-prometheus&lt;/artifactId&gt; &lt;version&gt;1.0.3&lt;/version&gt; &lt;exclusions&gt; &lt;exclusion&gt; &lt;artifactId&gt;HdrHistogram&lt;/artifactId&gt; &lt;groupId&gt;org.hdrhistogram&lt;/groupId&gt; &lt;/exclusion&gt; &lt;/exclusions&gt; &lt;/dependency&gt; &lt;dependency&gt; &lt;groupId&gt;io.micrometer&lt;/groupId&gt; &lt;artifactId&gt;micrometer-spring-legacy&lt;/artifactId&gt; &lt;version&gt;1.0.3&lt;/version&gt; &lt;/dependency&gt; bootstrap.yml123456789101112131415management: endpoints: web: exposure: include: &apos;*&apos; jmx: exposure: include: &apos;*&apos; shutdown: enabled: true metrics: distribution: percentiles-histogram[http.server.requests]: true security: enabled: false application.java1234567@BeanMeterRegistryCustomizer meterRegistryCustomizer(MeterRegistry meterRegistry) &#123; return meterRegistry1 -&gt; &#123; meterRegistry.config() .commonTags("application", "micrometer-oceanus-chatbot-web"); &#125;;&#125; 配置prometheus.yml 1234- job_name: 'app-41' metrics_path: '/mgmt/prometheus' static_configs: - targets: ['192.168.1.41:9915'] 重启服务 123docker psdocker restart `prometheus-processid` 登录验证12prometheus 192.168.1.41:9090grafana 192.168.1.41:3000 admin/admin]]></content>
+      <categories>
+        <category>工具利器</category>
+      </categories>
+      <tags>
+        <tag>Prometheus</tag>
+        <tag>SpringBoot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java Lambda8]]></title>
+    <url>%2Fposts%2F15864%2F</url>
+    <content type="text"><![CDATA[12345 Optional&lt;Tag&gt; tagOptional = handlerContext.getTagList().stream().filter(e -&gt; (e.getType() == tag.getType())).findAny();if (!tagOptional.isPresent()) &#123; &#125; 12tagList = list.parallelStream().filter(e -&gt;e.getType() == tag.getType() ).collect(Collectors.toList()); 1List&lt;String&gt; list = tagList.stream().map(Tag::getValue).collect(Collectors.toList()); 123456789Stream.iterate(0, i -&gt; i + 1).limit(tagList.size()).forEach( i -&gt; &#123; if (i == 0) &#123; &#125; else &#123; &#125; if (i == (tagList.size() - 1)) &#123; &#125; &#125; ); 123tagList().forEach(e -&gt; &#123; parse(e);&#125;); 1list.sort(Comparator.comparing(e -&gt; e.getPriority())); 12 12 12 12]]></content>
+      <categories>
+        <category>并发编程</category>
+      </categories>
+      <tags>
+        <tag>Lambda8</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ElasticSearch基本操作]]></title>
     <url>%2Fposts%2F278%2F</url>
     <content type="text"><![CDATA[Dochttps://docs.spring.io/spring-data/elasticsearch/docs/current/reference/html/ 聚合去重http://192.168.1.100:9200/a-b/a_b/_search 123456789101112&#123; &quot;from&quot;: 0, &quot;size&quot;: 0, &quot;aggregations&quot;: &#123; &quot;field1&quot;: &#123; &quot;terms&quot;: &#123; &quot;field&quot;: &quot;xx&quot;, &quot;size&quot;: 21474837 &#125; &#125; &#125; &#125;]]></content>
@@ -134,8 +192,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java并发编程</tag>
         <tag>Java内存模型</tag>
+        <tag>Java并发编程</tag>
       </tags>
   </entry>
   <entry>
@@ -158,8 +216,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>synchronized</tag>
         <tag>Java并发编程</tag>
+        <tag>synchronized</tag>
       </tags>
   </entry>
   <entry>
@@ -183,8 +241,8 @@
       </categories>
       <tags>
         <tag>Spring Cloud</tag>
-        <tag>Zuul</tag>
         <tag>ratelimit</tag>
+        <tag>Zuul</tag>
         <tag>限流</tag>
       </tags>
   </entry>
@@ -210,8 +268,8 @@
       </categories>
       <tags>
         <tag>Spring Cloud</tag>
-        <tag>Ribbon</tag>
         <tag>Zuul</tag>
+        <tag>Ribbon</tag>
         <tag>灰度测试</tag>
       </tags>
   </entry>
