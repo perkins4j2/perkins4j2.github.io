@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-08-02T01:53:13.711Z</updated>
+  <updated>2019-08-05T13:26:21.862Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>File</title>
+    <link href="https://perkins4j2.github.io/posts/32552/"/>
+    <id>https://perkins4j2.github.io/posts/32552/</id>
+    <published>2019-08-05T13:15:29.000Z</published>
+    <updated>2019-08-05T13:26:21.862Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Docker基本操作</title>
@@ -476,9 +490,9 @@
       <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
     
     
-      <category term="Java内存模型" scheme="https://perkins4j2.github.io/tags/Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/"/>
-    
       <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="Java内存模型" scheme="https://perkins4j2.github.io/tags/Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/"/>
     
   </entry>
   
@@ -533,34 +547,9 @@
       <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
     
     
-      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="synchronized" scheme="https://perkins4j2.github.io/tags/synchronized/"/>
     
-  </entry>
-  
-  <entry>
-    <title>Java并发编程艺术 - volatile使用和原理</title>
-    <link href="https://perkins4j2.github.io/posts/34733/"/>
-    <id>https://perkins4j2.github.io/posts/34733/</id>
-    <published>2019-05-05T02:30:33.000Z</published>
-    <updated>2019-06-24T12:03:50.133Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Java代码经过Java编译器编译成字节码，并由类加载器加载到JVM运行时数据区，&lt;br&gt;最终由JVM执行引擎执行字节码，转换为汇编指令在CPU内执行。&lt;/p&gt;
-&lt;p&gt;Java并发机制主要依赖JVM实现和CPU指令。&lt;/p&gt;
-&lt;h3 id=&quot;volatile&quot;&gt;&lt;a href=&quot;#volatile&quot; class=&quot;headerlink&quot; title=&quot;volatile&quot;&gt;&lt;/a&gt;volatile&lt;/h3&gt;&lt;p&gt;volatile修饰变量，提供多处理器并发中共享变量的可见性，是轻量的synchronized。&lt;/p&gt;
-&lt;p&gt;volatile由CPU指令实现，不会引起上下文切换，性能比synchronized高。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-    
       <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="volatile" scheme="https://perkins4j2.github.io/tags/volatile/"/>
     
   </entry>
   
