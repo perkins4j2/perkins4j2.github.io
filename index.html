@@ -304,7 +304,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">33</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">34</span></a>
 
   </li>
 
@@ -392,7 +392,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://perkins4j2.github.io/posts/54901/">
+    <link itemprop="mainEntityOfPage" href="https://perkins4j2.github.io/posts/42366/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Perkins">
@@ -412,7 +412,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/posts/54901/" class="post-title-link" itemprop="url">Java Lambda8原理</a>
+                <a href="/posts/42366/" class="post-title-link" itemprop="url">Java Lambda Stream原理</a>
               
             
           </h1>
@@ -437,12 +437,252 @@
                 
               
 
-              <time title="创建时间：2019-08-07 09:01:11 / 修改时间：09:04:47" itemprop="dateCreated datePublished" datetime="2019-08-07T09:01:11+08:00">2019-08-07</time>
+              <time title="创建时间：2019-08-07 09:05:28" itemprop="dateCreated datePublished" datetime="2019-08-07T09:05:28+08:00">2019-08-07</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-14 10:17:13" itemprop="dateModified" datetime="2019-08-14T10:17:13+08:00">2019-08-14</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发编程/" itemprop="url" rel="index"><span itemprop="name">并发编程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">13k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">12 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List list = <span class="keyword">new</span> ArrayList(<span class="number">1</span>);</span><br><span class="line">        list.add(<span class="number">1</span>);</span><br><span class="line">        list.add(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        list.stream().forEach(</span><br><span class="line">                System.out::println</span><br><span class="line">        );</span><br></pre></td></tr></table></figure>
+
+<h3 id="List-stream方法"><a href="#List-stream方法" class="headerlink" title="List.stream方法"></a>List.stream方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">default</span> Stream&lt;E&gt; <span class="title">stream</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> StreamSupport.stream(spliterator(), <span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">default</span> Spliterator&lt;E&gt; <span class="title">spliterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Spliterators.spliterator(<span class="keyword">this</span>, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">Spliterator&lt;T&gt; <span class="title">spliterator</span><span class="params">(Collection&lt;? extends T&gt; c,</span></span></span><br><span class="line"><span class="function"><span class="params">                                             <span class="keyword">int</span> characteristics)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> IteratorSpliterator&lt;&gt;(Objects.requireNonNull(c),</span><br><span class="line">                                     characteristics);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>List的stream()接口位于java.util.Collection类中；默认实现输入的参数1是拆分方法spliterator，2是并行默认false。<br>spliterator()接口也在该类中，默认实现调用final Spliterators类的spliterator方法，返回IteratorSpliterator。<br>而static IteratorSpliterator类实现了Spliterator。<br>Spliterator提供了tryAdvance处理每个元素、forEachRemaining、trySplit分割拆分等方法。</p>
+<p>也就是说，stream()实际是采用Spliterator对于元素进行遍历、拆分处理。</p>
+<h3 id="StreamSupport-stream"><a href="#StreamSupport-stream" class="headerlink" title="StreamSupport.stream"></a>StreamSupport.stream</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">Stream&lt;T&gt; <span class="title">stream</span><span class="params">(Spliterator&lt;T&gt; spliterator, <span class="keyword">boolean</span> parallel)</span> </span>&#123;</span><br><span class="line">    Objects.requireNonNull(spliterator);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> ReferencePipeline.Head&lt;&gt;(spliterator,</span><br><span class="line">                                        StreamOpFlag.fromCharacteristics(spliterator),</span><br><span class="line">                                        parallel);</span><br><span class="line">&#125;</span><br><span class="line">Head(Spliterator&lt;?&gt; source,</span><br><span class="line">         <span class="keyword">int</span> sourceFlags, <span class="keyword">boolean</span> parallel) &#123;</span><br><span class="line">        <span class="keyword">super</span>(source, sourceFlags, parallel);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">ReferencePipeline(Spliterator&lt;?&gt; source,</span><br><span class="line">                  <span class="keyword">int</span> sourceFlags, <span class="keyword">boolean</span> parallel) &#123;</span><br><span class="line">    <span class="keyword">super</span>(source, sourceFlags, parallel);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>list.stream()方法最终会实例化ReferencePipeline.Head&lt;&gt;对象，Head为pipeline流的头结。<br>Head&lt;E_IN, E_OUT&gt; extends ReferencePipeline&lt;E_IN, E_OUT&gt;，E_IN为上游输入类型，E_OUT为输出类型点。<br>StreamOpFlag.fromCharacteristics(spliterator)，将spliterator字符集转换为带有排序的流标记。<br>ReferencePipeline为继承了AbstractPipeline得抽象类，提供pipeline处理类型的各阶段基类。</p>
+<h3 id="AbstractPipeline"><a href="#AbstractPipeline" class="headerlink" title="AbstractPipeline"></a>AbstractPipeline</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">AbstractPipeline(Spliterator&lt;?&gt; source,</span><br><span class="line">                 <span class="keyword">int</span> sourceFlags, <span class="keyword">boolean</span> parallel) &#123;</span><br><span class="line">    <span class="keyword">this</span>.previousStage = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">this</span>.sourceSpliterator = source;</span><br><span class="line">    <span class="keyword">this</span>.sourceStage = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">this</span>.sourceOrOpFlags = sourceFlags &amp; StreamOpFlag.STREAM_MASK;</span><br><span class="line">    <span class="comment">// The following is an optimization of:</span></span><br><span class="line">    <span class="comment">// StreamOpFlag.combineOpFlags(sourceOrOpFlags, StreamOpFlag.INITIAL_OPS_VALUE);</span></span><br><span class="line">    <span class="keyword">this</span>.combinedFlags = (~(sourceOrOpFlags &lt;&lt; <span class="number">1</span>)) &amp; StreamOpFlag.INITIAL_OPS_VALUE;</span><br><span class="line">    <span class="keyword">this</span>.depth = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">this</span>.parallel = parallel;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>AbstractPipeline为pipeline抽象基类，定义包括前一个、当前、下一个等AbstractPipeline处理流程等。<br>AbstractPipeline继承abstract class PipelineHelper<p_out>，PipelineHelper定义了流的操作、输出、标记和并行等参数。</p_out></p>
+<h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">forEach</span><span class="params">(Consumer&lt;? <span class="keyword">super</span> T&gt; action)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>对流中的每个元素执行操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">forEach</span><span class="params">(Consumer&lt;? <span class="keyword">super</span> E_OUT&gt; action)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!isParallel()) &#123;</span><br><span class="line">        sourceStageSpliterator().forEachRemaining(action);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.forEach(action);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>forEach具体实现位于ReferencePipeline中，执行串行遍历或并行分割处理。</p>
+<h3 id="forEach并行"><a href="#forEach并行" class="headerlink" title="forEach并行"></a>forEach并行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void forEach(Consumer&lt;? super P_OUT&gt; action) &#123;</span><br><span class="line">    evaluate(ForEachOps.makeRef(action, false));</span><br><span class="line">&#125;</span><br><span class="line">final &lt;R&gt; R evaluate(TerminalOp&lt;E_OUT, R&gt; terminalOp) &#123;</span><br><span class="line">    assert getOutputShape() == terminalOp.inputShape();</span><br><span class="line">    if (linkedOrConsumed)</span><br><span class="line">        throw new IllegalStateException(MSG_STREAM_LINKED);</span><br><span class="line">    linkedOrConsumed = true;</span><br><span class="line"></span><br><span class="line">    return isParallel()</span><br><span class="line">           ? terminalOp.evaluateParallel(this, sourceSpliterator(terminalOp.getOpFlags()))</span><br><span class="line">           : terminalOp.evaluateSequential(this, sourceSpliterator(terminalOp.getOpFlags()));</span><br><span class="line">&#125;</span><br><span class="line">default &lt;P_IN&gt; R evaluateParallel(PipelineHelper&lt;E_IN&gt; helper,</span><br><span class="line">                                  Spliterator&lt;P_IN&gt; spliterator) &#123;</span><br><span class="line">    if (Tripwire.ENABLED)</span><br><span class="line">        Tripwire.trip(getClass(), &quot;&#123;0&#125; triggering TerminalOp.evaluateParallel serial default&quot;);</span><br><span class="line">    return evaluateSequential(helper, spliterator);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public &lt;S&gt; Void evaluateSequential(PipelineHelper&lt;T&gt; helper,</span><br><span class="line">                                       Spliterator&lt;S&gt; spliterator) &#123;</span><br><span class="line">        return helper.wrapAndCopyInto(this, spliterator).get();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>forEach并行时，主要采用evaluate方法，在pipeline中采用终止操作处理结果。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+    <div>
+        
+     </div>
+
+    <div>
+        
+    </div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://perkins4j2.github.io/posts/54901/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Perkins">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://img.perkins4j2.com/timg (1).jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Perkins4j2的技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/posts/54901/" class="post-title-link" itemprop="url">Java Lambda FunctionalInterface原理</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-07 09:01:11" itemprop="dateCreated datePublished" datetime="2019-08-07T09:01:11+08:00">2019-08-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-14 10:17:13" itemprop="dateModified" datetime="2019-08-14T10:17:13+08:00">2019-08-14</time>
               
             
           </span>
@@ -656,7 +896,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-06 09:13:40" itemprop="dateModified" datetime="2019-08-06T09:13:40+08:00">2019-08-06</time>
+                <time title="修改时间：2019-08-07 09:04:55" itemprop="dateModified" datetime="2019-08-07T09:04:55+08:00">2019-08-07</time>
               
             
           </span>
@@ -1658,7 +1898,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/posts/15864/" class="post-title-link" itemprop="url">Java Lambda8用法</a>
+                <a href="/posts/15864/" class="post-title-link" itemprop="url">Java Lambda用法</a>
               
             
           </h1>
@@ -1700,7 +1940,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-08-07 09:04:47" itemprop="dateModified" datetime="2019-08-07T09:04:47+08:00">2019-08-07</time>
+                <time title="修改时间：2019-08-14 10:17:13" itemprop="dateModified" datetime="2019-08-14T10:17:13+08:00">2019-08-14</time>
               
             
           </span>
@@ -2254,217 +2494,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://perkins4j2.github.io/posts/49684/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Perkins">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="http://img.perkins4j2.com/timg (1).jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Perkins4j2的技术博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/posts/49684/" class="post-title-link" itemprop="url">IDEA基本配置</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-06-24 20:15:34 / 修改时间：20:33:55" itemprop="dateCreated datePublished" datetime="2019-06-24T20:15:34+08:00">2019-06-24</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具利器/" itemprop="url" rel="index"><span itemprop="name">工具利器</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">2.5k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">2 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="IDEA通用插件安装"><a href="#IDEA通用插件安装" class="headerlink" title="IDEA通用插件安装"></a>IDEA通用插件安装</h3><h4 id="Alibaba-Java-Code-Guidelines"><a href="#Alibaba-Java-Code-Guidelines" class="headerlink" title="Alibaba Java Code Guidelines"></a>Alibaba Java Code Guidelines</h4><ul>
-<li>Preferences &gt;&gt; Plugins &gt;&gt; Marketplace</li>
-<li>查询Alibaba Java Code Guidelines并安装后重启 </li>
-</ul>
-<h3 id="Git-Flow-Integration"><a href="#Git-Flow-Integration" class="headerlink" title="Git Flow Integration"></a>Git Flow Integration</h3><p>git flow集成</p>
-<h3 id="GitToolBox"><a href="#GitToolBox" class="headerlink" title="GitToolBox"></a>GitToolBox</h3><p>行代码给与log历史提示</p>
-<h3 id="类的注释格式"><a href="#类的注释格式" class="headerlink" title="类的注释格式"></a>类的注释格式</h3><ul>
-<li>Preferences &gt;&gt; Editor &gt;&gt; File and Code Templates &gt;&gt; Includes   &gt;&gt; File Header</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* <span class="doctag">@author</span>:  Perkins</span></span><br><span class="line"><span class="comment">* <span class="doctag">@date</span>: $&#123;DATE&#125;</span></span><br><span class="line"><span class="comment">* <span class="doctag">@description</span>: todo</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/posts/49684/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-    <div>
-        
-     </div>
-
-    <div>
-        
-    </div>
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2513,7 +2542,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-count">34</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2713,7 +2742,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">68k</span>
+    <span title="站点总字数">72k</span>
   
 
   
@@ -2724,7 +2753,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">1:02</span>
+    <span title="站点阅读时长">1:06</span>
   
 </div>
 

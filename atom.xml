@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-08-07T01:04:47.808Z</updated>
+  <updated>2019-08-14T02:17:13.594Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Java Lambda8原理</title>
+    <title>Java Lambda Stream原理</title>
+    <link href="https://perkins4j2.github.io/posts/42366/"/>
+    <id>https://perkins4j2.github.io/posts/42366/</id>
+    <published>2019-08-07T01:05:28.000Z</published>
+    <updated>2019-08-14T02:17:13.594Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;举例&quot;&gt;&lt;a href=&quot;#举例&quot; class=&quot;headerlink&quot; title=&quot;举例&quot;&gt;&lt;/a&gt;举例&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Lambda" scheme="https://perkins4j2.github.io/tags/Lambda/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java Lambda FunctionalInterface原理</title>
     <link href="https://perkins4j2.github.io/posts/54901/"/>
     <id>https://perkins4j2.github.io/posts/54901/</id>
     <published>2019-08-07T01:01:11.000Z</published>
-    <updated>2019-08-07T01:04:47.808Z</updated>
+    <updated>2019-08-14T02:17:13.579Z</updated>
     
     <summary type="html">
     
@@ -32,7 +58,7 @@
       <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
     
     
-      <category term="Lambda8" scheme="https://perkins4j2.github.io/tags/Lambda8/"/>
+      <category term="Lambda" scheme="https://perkins4j2.github.io/tags/Lambda/"/>
     
   </entry>
   
@@ -41,7 +67,7 @@
     <link href="https://perkins4j2.github.io/posts/58696/"/>
     <id>https://perkins4j2.github.io/posts/58696/</id>
     <published>2019-08-05T13:15:29.000Z</published>
-    <updated>2019-08-06T01:13:40.587Z</updated>
+    <updated>2019-08-07T01:04:55.642Z</updated>
     
     <summary type="html">
     
@@ -165,11 +191,11 @@
   </entry>
   
   <entry>
-    <title>Java Lambda8用法</title>
+    <title>Java Lambda用法</title>
     <link href="https://perkins4j2.github.io/posts/15864/"/>
     <id>https://perkins4j2.github.io/posts/15864/</id>
     <published>2019-08-02T01:20:44.000Z</published>
-    <updated>2019-08-07T01:04:47.822Z</updated>
+    <updated>2019-08-14T02:17:13.579Z</updated>
     
     <summary type="html">
     
@@ -191,7 +217,7 @@
       <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
     
     
-      <category term="Lambda8" scheme="https://perkins4j2.github.io/tags/Lambda8/"/>
+      <category term="Lambda" scheme="https://perkins4j2.github.io/tags/Lambda/"/>
     
   </entry>
   
@@ -531,32 +557,6 @@
       <category term="Java内存模型" scheme="https://perkins4j2.github.io/tags/Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/"/>
     
       <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java并发编程艺术 - 原子性及CAS使用和原理</title>
-    <link href="https://perkins4j2.github.io/posts/28363/"/>
-    <id>https://perkins4j2.github.io/posts/28363/</id>
-    <published>2019-05-05T02:32:11.000Z</published>
-    <updated>2019-05-05T10:12:03.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;原子性&quot;&gt;&lt;a href=&quot;#原子性&quot; class=&quot;headerlink&quot; title=&quot;原子性&quot;&gt;&lt;/a&gt;原子性&lt;/h3&gt;&lt;p&gt;处理器保障从系统内存中读取和写入字节是原子的，即其他处理器不能访问该字节地址。&lt;/p&gt;
-&lt;h4 id=&quot;总线锁保障原子性&quot;&gt;&lt;a href=&quot;#总线锁保障原子性&quot; class=&quot;headerlink&quot; title=&quot;总线锁保障原子性&quot;&gt;&lt;/a&gt;总线锁保障原子性&lt;/h4&gt;&lt;p&gt;处理器发出Lock#信号到总线上，其他处理器阻塞，该处理器独享内存。&lt;/p&gt;
-&lt;h4 id=&quot;缓存锁保障原子性&quot;&gt;&lt;a href=&quot;#缓存锁保障原子性&quot; class=&quot;headerlink&quot; title=&quot;缓存锁保障原子性&quot;&gt;&lt;/a&gt;缓存锁保障原子性&lt;/h4&gt;&lt;p&gt;总线锁把CPU和内存通信锁住，其他CPU无法访问其他内存地址，开销较大。&lt;/p&gt;
-&lt;p&gt;可以在缓存中，锁定内存地址，保障原子性。&lt;/p&gt;
-&lt;p&gt;缓存锁定缓存行时，回写内存不声明LOCK#，而是修改内部内存地址，同时通过缓存一致性阻止其他处理器修改；当其他处理器回写&lt;br&gt;，将会无效缓存行，从内存重新加载数据。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="CAS" scheme="https://perkins4j2.github.io/tags/CAS/"/>
     
   </entry>
   
