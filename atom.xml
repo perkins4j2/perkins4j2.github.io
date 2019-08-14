@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-08-14T02:17:13.594Z</updated>
+  <updated>2019-08-14T08:39:28.515Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,21 +17,42 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Docker部署和配置Nginx</title>
+    <link href="https://perkins4j2.github.io/posts/29980/"/>
+    <id>https://perkins4j2.github.io/posts/29980/</id>
+    <published>2019-08-14T08:26:05.000Z</published>
+    <updated>2019-08-14T08:39:28.515Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;获取镜像&quot;&gt;&lt;a href=&quot;#获取镜像&quot; class=&quot;headerlink&quot; title=&quot;获取镜像&quot;&gt;&lt;/a&gt;获取镜像&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker search nginx&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;安装官方版本&lt;br&gt;name： docker.io/nginx&lt;br&gt;OFFICIAL： ok&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker pull nginx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker images nginx&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;拉取并查看镜像&lt;br&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="docker" scheme="https://perkins4j2.github.io/tags/docker/"/>
+    
+      <category term="nginx" scheme="https://perkins4j2.github.io/tags/nginx/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java Lambda Stream原理</title>
     <link href="https://perkins4j2.github.io/posts/42366/"/>
     <id>https://perkins4j2.github.io/posts/42366/</id>
     <published>2019-08-07T01:05:28.000Z</published>
-    <updated>2019-08-14T02:17:13.594Z</updated>
+    <updated>2019-08-14T08:28:24.813Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h3 id=&quot;举例&quot;&gt;&lt;a href=&quot;#举例&quot; class=&quot;headerlink&quot; title=&quot;举例&quot;&gt;&lt;/a&gt;举例&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
-        
-      
+      &lt;h3 id=&quot;举例&quot;&gt;&lt;a href=&quot;#举例&quot; class=&quot;headerlink&quot; title=&quot;举例&quot;&gt;&lt;/a&gt;举例&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;List list = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayList(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        list.add(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        list.add(&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        list.stream().forEach(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                System.out::println&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        );&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -148,12 +169,13 @@
     <link href="https://perkins4j2.github.io/posts/4544/"/>
     <id>https://perkins4j2.github.io/posts/4544/</id>
     <published>2019-08-02T01:21:28.000Z</published>
-    <updated>2019-08-02T01:53:13.734Z</updated>
+    <updated>2019-08-14T04:06:36.293Z</updated>
     
     <summary type="html">
     
       &lt;h3 id=&quot;Http-Server&quot;&gt;&lt;a href=&quot;#Http-Server&quot; class=&quot;headerlink&quot; title=&quot;Http-Server&quot;&gt;&lt;/a&gt;Http-Server&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/http-party/http-server&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http-server&lt;/a&gt;&lt;/p&gt;
 &lt;h4 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h4&gt;&lt;p&gt;npm install http-server -g&lt;/p&gt;
+&lt;h4 id=&quot;启动&quot;&gt;&lt;a href=&quot;#启动&quot; class=&quot;headerlink&quot; title=&quot;启动&quot;&gt;&lt;/a&gt;启动&lt;/h4&gt;&lt;p&gt;cd ~/Public/&lt;br&gt;http-server&lt;br&gt;默认是 8080端口，./public文件夹&lt;/p&gt;
 &lt;h4 id=&quot;文件上传&quot;&gt;&lt;a href=&quot;#文件上传&quot; class=&quot;headerlink&quot; title=&quot;文件上传&quot;&gt;&lt;/a&gt;文件上传&lt;/h4&gt;&lt;p&gt;./public&lt;/p&gt;
 &lt;h4 id=&quot;文件下载&quot;&gt;&lt;a href=&quot;#文件下载&quot; class=&quot;headerlink&quot; title=&quot;文件下载&quot;&gt;&lt;/a&gt;文件下载&lt;/h4&gt;&lt;p&gt;wget &lt;a href=&quot;http://172.16.25.70:8080/prometheus.yml&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://172.16.25.70:8080/prometheus.yml&lt;/a&gt;&lt;/p&gt;
     
@@ -529,34 +551,6 @@
       <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
     
       <category term="重排序" scheme="https://perkins4j2.github.io/tags/%E9%87%8D%E6%8E%92%E5%BA%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java并发编程艺术 - Java内存模型基础</title>
-    <link href="https://perkins4j2.github.io/posts/49164/"/>
-    <id>https://perkins4j2.github.io/posts/49164/</id>
-    <published>2019-05-27T03:51:38.000Z</published>
-    <updated>2019-05-30T07:13:00.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;并发编程的两个关键性问题&quot;&gt;&lt;a href=&quot;#并发编程的两个关键性问题&quot; class=&quot;headerlink&quot; title=&quot;并发编程的两个关键性问题&quot;&gt;&lt;/a&gt;并发编程的两个关键性问题&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;线程通信&lt;/li&gt;
-&lt;li&gt;线程同步&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;线程通信&quot;&gt;&lt;a href=&quot;#线程通信&quot; class=&quot;headerlink&quot; title=&quot;线程通信&quot;&gt;&lt;/a&gt;线程通信&lt;/h4&gt;&lt;p&gt; 通信是指线程间的信息交换，主要有两种：共享内存和消息传递。&lt;/p&gt;
-&lt;p&gt; 共享内存是线程利用内存的公共状态进行隐私通信。&lt;/p&gt;
-&lt;p&gt;在Java中主要利用堆内存变量实现共享内存，包括静态域、数据、实例。&lt;br&gt; &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ThreadShare&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//利用内存静态变量进行状态传递&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; num = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;increase&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       num++;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       System.out.println(num);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String[] args)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       ThreadShare threadShare = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ThreadShare();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Thread(threadShare::increase).start();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Thread(threadShare::increase).start();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Java内存模型" scheme="https://perkins4j2.github.io/tags/Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/"/>
-    
-      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
