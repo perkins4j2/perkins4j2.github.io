@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-08-14T08:39:28.515Z</updated>
+  <updated>2019-08-15T01:08:19.596Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,11 +17,42 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Maven配置Profile</title>
+    <link href="https://perkins4j2.github.io/posts/52371/"/>
+    <id>https://perkins4j2.github.io/posts/52371/</id>
+    <published>2019-08-15T01:04:26.000Z</published>
+    <updated>2019-08-15T01:08:19.596Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;项目根据环境不同，设置不同参数&lt;/li&gt;
+&lt;li&gt;实现在代码中无需改动，以防误提交&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;在pom中添加以下配置&lt;/p&gt;
+&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
+        
+      
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="maven" scheme="https://perkins4j2.github.io/tags/maven/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Docker部署和配置Nginx</title>
     <link href="https://perkins4j2.github.io/posts/29980/"/>
     <id>https://perkins4j2.github.io/posts/29980/</id>
     <published>2019-08-14T08:26:05.000Z</published>
-    <updated>2019-08-14T08:39:28.515Z</updated>
+    <updated>2019-08-14T08:40:18.840Z</updated>
     
     <summary type="html">
     
@@ -523,34 +554,6 @@
       <category term="单例模式" scheme="https://perkins4j2.github.io/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="双重检测锁定" scheme="https://perkins4j2.github.io/tags/%E5%8F%8C%E9%87%8D%E6%A3%80%E6%B5%8B%E9%94%81%E5%AE%9A/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java并发编程艺术 - 重排序</title>
-    <link href="https://perkins4j2.github.io/posts/35014/"/>
-    <id>https://perkins4j2.github.io/posts/35014/</id>
-    <published>2019-05-29T08:55:03.000Z</published>
-    <updated>2019-05-29T09:18:49.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;重排序是编译器和处理器为优化程序性能而对指令进行重新排序的手段。&lt;/p&gt;
-&lt;h3 id=&quot;数据依赖性&quot;&gt;&lt;a href=&quot;#数据依赖性&quot; class=&quot;headerlink&quot; title=&quot;数据依赖性&quot;&gt;&lt;/a&gt;数据依赖性&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;写后写;a=1,a=2&lt;/li&gt;
-&lt;li&gt;写后读;a=1,b=a&lt;/li&gt;
-&lt;li&gt;读后写;a=b,b=1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;以上三种情况存在数据依赖，重排将会引起结果改变。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="重排序" scheme="https://perkins4j2.github.io/tags/%E9%87%8D%E6%8E%92%E5%BA%8F/"/>
     
   </entry>
   
