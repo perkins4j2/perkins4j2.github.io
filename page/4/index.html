@@ -266,7 +266,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">43</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">44</span></a>
 
   </li>
         
@@ -304,7 +304,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">36</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">39</span></a>
 
   </li>
 
@@ -376,6 +376,733 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://perkins4j2.github.io/posts/25628/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Perkins">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://img.perkins4j2.com/timg (1).jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Perkins4j2的技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/posts/25628/" class="post-title-link" itemprop="url">Spring Cloud - Ribbon在Zuul上实现灰度和版本测试</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-23 19:34:43" itemprop="dateCreated datePublished" datetime="2019-04-23T19:34:43+08:00">2019-04-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-05 10:26:59" itemprop="dateModified" datetime="2019-05-05T10:26:59+08:00">2019-05-05</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/微服务/" itemprop="url" rel="index"><span itemprop="name">微服务</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">14k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">12 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>本文依赖ribbon实现在Spring Cloud中的灰度测试。</p>
+<h3 id="POM引入"><a href="#POM引入" class="headerlink" title="POM引入"></a>POM引入</h3><p>Zuul及下游服务中均引入包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 实现灰度测试关键包 --&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;io.jmnarloch&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;ribbon-discovery-filter-spring-cloud-starter&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;2.1.0&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/posts/25628/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+    <div>
+        
+     </div>
+
+    <div>
+        
+    </div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://perkins4j2.github.io/posts/35353/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Perkins">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://img.perkins4j2.com/timg (1).jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Perkins4j2的技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/posts/35353/" class="post-title-link" itemprop="url">Spring Cloud - Nacos与Eureka区别及如何选型</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-23 16:02:48" itemprop="dateCreated datePublished" datetime="2019-04-23T16:02:48+08:00">2019-04-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-30 17:03:54" itemprop="dateModified" datetime="2019-04-30T17:03:54+08:00">2019-04-30</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/微服务/" itemprop="url" rel="index"><span itemprop="name">微服务</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">4.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">4 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Nacos与Eureka均提供注册中心和服务治理功能，以下为两则差异和选型方案。</p>
+<h3 id="功能差异"><a href="#功能差异" class="headerlink" title="功能差异"></a>功能差异</h3><table>
+<thead>
+<tr>
+<th align="center">模块</th>
+<th align="center">Nacos</th>
+<th align="center">Eureka</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">注册中心</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">服务治理基本功能，负责服务中心化注册</td>
+</tr>
+<tr>
+<td align="center">配置中心</td>
+<td align="center">是</td>
+<td align="center"><code>否</code></td>
+<td align="center">Eureka需要配合Config实现配置中心，且不提供管理界面</td>
+</tr>
+<tr>
+<td align="center">动态刷新</td>
+<td align="center">是</td>
+<td align="center"><code>否</code></td>
+<td align="center">Eureka需要配合MQ实现配置动态刷新，Nacos采用Netty保持TCP长连接实时推送</td>
+</tr>
+<tr>
+<td align="center">可用区AZ</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">对服务集群划分不同区域，实现区域隔离，并提供容灾自动切换</td>
+</tr>
+<tr>
+<td align="center">分组</td>
+<td align="center">是</td>
+<td align="center"><code>否</code></td>
+<td align="center">Nacos可用根据业务和环境进行分组管理</td>
+</tr>
+<tr>
+<td align="center">元数据</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">提供服务标签数据，例如环境或服务标识</td>
+</tr>
+<tr>
+<td align="center">权重</td>
+<td align="center">是</td>
+<td align="center"><code>否</code></td>
+<td align="center">Nacos默认提供权重设置功能，调整承载流量压力</td>
+</tr>
+<tr>
+<td align="center">健康检查</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">Nacos支持由客户端或服务端发起的健康检查，Eureka是由客户端发起心跳</td>
+</tr>
+<tr>
+<td align="center">负载均衡</td>
+<td align="center">是</td>
+<td align="center">是</td>
+<td align="center">均提供负责均衡策略，Eureka采用Ribion</td>
+</tr>
+<tr>
+<td align="center">管理界面</td>
+<td align="center">是</td>
+<td align="center"><code>否</code></td>
+<td align="center">Nacos支持对服务在线管理，Eureka只是预览服务状态</td>
+</tr>
+</tbody></table>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/posts/35353/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+    <div>
+        
+     </div>
+
+    <div>
+        
+    </div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://perkins4j2.github.io/posts/48230/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Perkins">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://img.perkins4j2.com/timg (1).jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Perkins4j2的技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/posts/48230/" class="post-title-link" itemprop="url">Linux运维常用命令 - grep</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-22 17:15:18" itemprop="dateCreated datePublished" datetime="2019-04-22T17:15:18+08:00">2019-04-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-30 15:16:25" itemprop="dateModified" datetime="2019-05-30T15:16:25+08:00">2019-05-30</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">943</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>以下为Linux开发中常用的命令。</p>
+<h4 id="筛选文本并查看指定上下行数"><a href="#筛选文本并查看指定上下行数" class="headerlink" title="筛选文本并查看指定上下行数"></a>筛选文本并查看指定上下行数</h4><p>常用于筛选日志，并查看上下文</p>
+<p>grep  [选项]  ‘模式’  [文件]  </p>
+<pre><code>选项:
+    -A  后几行
+    -B  前几行
+    -C  前后几行
+
+模式:
+    待筛选文本
+
+文件:
+    待筛选源文件</code></pre><p>举例</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep -A 20 <span class="string">'cat'</span> info.log <span class="comment"># 显示info.log及后20行</span></span><br><span class="line">grep -B 20 <span class="string">'cat'</span> info.log <span class="comment"># 显示info.log及前20行</span></span><br><span class="line">grep -C 20 <span class="string">'cat'</span> info.log <span class="comment"># 显示info.log文件里匹配cat字串行以及上下20行</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/posts/48230/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+    <div>
+        
+     </div>
+
+    <div>
+        
+    </div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1757,7 +2484,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1891,7 +2618,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">43</span>
+                      
+                    
+                    <span class="site-state-item-count">44</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1961,7 +2690,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">76k</span>
+    <span title="站点总字数">84k</span>
   
 
   
@@ -1972,7 +2701,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">1:09</span>
+    <span title="站点阅读时长">1:16</span>
   
 </div>
 

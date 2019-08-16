@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-08-15T01:08:19.596Z</updated>
+  <updated>2019-08-16T01:50:04.897Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,11 +17,99 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java线程池 - ThreadPool自定义封装</title>
+    <link href="https://perkins4j2.github.io/posts/33509/"/>
+    <id>https://perkins4j2.github.io/posts/33509/</id>
+    <published>2019-08-16T01:16:42.000Z</published>
+    <updated>2019-08-16T01:50:04.897Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;自定义线程池，便于调试和控制线程&lt;/li&gt;
+&lt;li&gt;自定义线程数、拒绝策略、关闭等&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="线程池" scheme="https://perkins4j2.github.io/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java线程池 - ThreadFactory封装</title>
+    <link href="https://perkins4j2.github.io/posts/59782/"/>
+    <id>https://perkins4j2.github.io/posts/59782/</id>
+    <published>2019-08-16T01:16:08.000Z</published>
+    <updated>2019-08-16T01:41:42.714Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;自定义ThreadFactory，便于创建自定义线程&lt;/li&gt;
+&lt;li&gt;自定义ThreadGroup，便于对线程分组管理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;ThreadFactory和ThreadGroup封装&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="线程池" scheme="https://perkins4j2.github.io/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java线程池 - Callable和Runnable封装</title>
+    <link href="https://perkins4j2.github.io/posts/9431/"/>
+    <id>https://perkins4j2.github.io/posts/9431/</id>
+    <published>2019-08-16T01:15:15.000Z</published>
+    <updated>2019-08-16T01:31:57.808Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;对Callable和Runnable封装，提供自定义执行接口&lt;/li&gt;
+&lt;li&gt;补充异常处理&lt;h3 id=&quot;Runnable&quot;&gt;&lt;a href=&quot;#Runnable&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="线程池" scheme="https://perkins4j2.github.io/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Maven配置Profile</title>
     <link href="https://perkins4j2.github.io/posts/52371/"/>
     <id>https://perkins4j2.github.io/posts/52371/</id>
     <published>2019-08-15T01:04:26.000Z</published>
-    <updated>2019-08-15T01:08:19.596Z</updated>
+    <updated>2019-08-15T01:08:43.347Z</updated>
     
     <summary type="html">
     
@@ -446,114 +534,6 @@
     
     
       <category term="MongoDB" scheme="https://perkins4j2.github.io/tags/MongoDB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Centos7安装部署 - MySQL</title>
-    <link href="https://perkins4j2.github.io/posts/21810/"/>
-    <id>https://perkins4j2.github.io/posts/21810/</id>
-    <published>2019-06-24T12:13:12.000Z</published>
-    <updated>2019-06-24T12:33:55.519Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;mysql5-7&quot;&gt;&lt;a href=&quot;#mysql5-7&quot; class=&quot;headerlink&quot; title=&quot;mysql5.7&quot;&gt;&lt;/a&gt;mysql5.7&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;下载并安装源&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wget &lt;span class=&quot;string&quot;&gt;&#39;https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;sudo rpm -Uvh mysql57-community-release-el7-11.noarch.rpm&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yum repolist all | grep mysql&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="安装部署" scheme="https://perkins4j2.github.io/categories/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/"/>
-    
-    
-      <category term="MySQL" scheme="https://perkins4j2.github.io/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java并发编程艺术 - 多线程</title>
-    <link href="https://perkins4j2.github.io/posts/24227/"/>
-    <id>https://perkins4j2.github.io/posts/24227/</id>
-    <published>2019-06-03T05:48:17.000Z</published>
-    <updated>2019-06-03T06:36:22.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;启动Java应用程序则是一个进程，一个进程可以启动多个线程，线程是操作系统调度最小单元。线程拥有独立的计数器、栈和局部变量，可以共享堆内存。&lt;/p&gt;
-&lt;p&gt;一个Java程序入口是main主线程，线程优先级从1-10，优先级越高分配时间片越长。&lt;/p&gt;
-&lt;h3 id=&quot;线程状态&quot;&gt;&lt;a href=&quot;#线程状态&quot; class=&quot;headerlink&quot; title=&quot;线程状态&quot;&gt;&lt;/a&gt;线程状态&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;NEW 新建&lt;ul&gt;
-&lt;li&gt;Thread.start();&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;RUNNABLE 运行，包括就绪和运行&lt;ul&gt;
-&lt;li&gt;Thread.run();&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;BLOCKED 阻塞&lt;ul&gt;
-&lt;li&gt;synchronized&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;WAITING 等待，等待其他线程通知和中断&lt;ul&gt;
-&lt;li&gt;Object.wait()&lt;/li&gt;
-&lt;li&gt;Object.join()&lt;/li&gt;
-&lt;li&gt;LockSupport.park(Thread)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;TIME_WAITTING 等待，等待指定时间超时&lt;ul&gt;
-&lt;li&gt;Thread.sleep(long)&lt;/li&gt;
-&lt;li&gt;Object.wait(long)&lt;/li&gt;
-&lt;li&gt;Object.join(long)&lt;/li&gt;
-&lt;li&gt;LockSupport.parkNanos()&lt;/li&gt;
-&lt;li&gt;LockSupport.parkUntil()&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;TERMINATED 终止&lt;ul&gt;
-&lt;li&gt;interrupt(),isInterrupted()和interrupted()&lt;/li&gt;
-&lt;li&gt;suspend()、resume()和stop()&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="多线程" scheme="https://perkins4j2.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java并发编程艺术 - 延迟加载与双重检查锁定double check lock</title>
-    <link href="https://perkins4j2.github.io/posts/31866/"/>
-    <id>https://perkins4j2.github.io/posts/31866/</id>
-    <published>2019-05-30T06:15:24.000Z</published>
-    <updated>2019-05-30T08:10:37.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;类延迟初始化常采用单例模式。&lt;/p&gt;
-&lt;p&gt;方法1：&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Singleton&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; Singleton singleton = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; Singleton &lt;span class=&quot;title&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (singleton == &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;) &amp;#123;&lt;span class=&quot;comment&quot;&gt;//1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            singleton=&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Singleton();&lt;span class=&quot;comment&quot;&gt;//2&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; singleton;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;code&gt;多线程中，步骤1可以同步执行，导致步骤2多次执行。&lt;/code&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="单例模式" scheme="https://perkins4j2.github.io/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
-    
-      <category term="双重检测锁定" scheme="https://perkins4j2.github.io/tags/%E5%8F%8C%E9%87%8D%E6%A3%80%E6%B5%8B%E9%94%81%E5%AE%9A/"/>
     
   </entry>
   
