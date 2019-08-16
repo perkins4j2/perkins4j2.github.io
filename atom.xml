@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-08-16T01:50:04.897Z</updated>
+  <updated>2019-08-16T01:52:00.438Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -21,21 +21,13 @@
     <link href="https://perkins4j2.github.io/posts/33509/"/>
     <id>https://perkins4j2.github.io/posts/33509/</id>
     <published>2019-08-16T01:16:42.000Z</published>
-    <updated>2019-08-16T01:50:04.897Z</updated>
+    <updated>2019-08-16T01:52:00.438Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;ul&gt;
+      &lt;ul&gt;
 &lt;li&gt;自定义线程池，便于调试和控制线程&lt;/li&gt;
-&lt;li&gt;自定义线程数、拒绝策略、关闭等&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
-        
-      
+&lt;li&gt;自定义线程数、拒绝策略、关闭等
     
     </summary>
     
@@ -51,21 +43,13 @@
     <link href="https://perkins4j2.github.io/posts/59782/"/>
     <id>https://perkins4j2.github.io/posts/59782/</id>
     <published>2019-08-16T01:16:08.000Z</published>
-    <updated>2019-08-16T01:41:42.714Z</updated>
+    <updated>2019-08-16T01:51:45.089Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;ul&gt;
+      &lt;ul&gt;
 &lt;li&gt;自定义ThreadFactory，便于创建自定义线程&lt;/li&gt;
-&lt;li&gt;自定义ThreadGroup，便于对线程分组管理&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;ThreadFactory和ThreadGroup封装&quot;&gt;&lt;a
-        
-      
+&lt;li&gt;自定义ThreadGroup，便于对线程分组管理
     
     </summary>
     
@@ -81,19 +65,14 @@
     <link href="https://perkins4j2.github.io/posts/9431/"/>
     <id>https://perkins4j2.github.io/posts/9431/</id>
     <published>2019-08-16T01:15:15.000Z</published>
-    <updated>2019-08-16T01:31:57.808Z</updated>
+    <updated>2019-08-16T01:51:54.041Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;ul&gt;
-&lt;li&gt;对Callable和Runnable封装，提供自定义执行接口&lt;/li&gt;
-&lt;li&gt;补充异常处理&lt;h3 id=&quot;Runnable&quot;&gt;&lt;a href=&quot;#Runnable&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;对Callable和Runnable封装，提供自定义执行接口&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;补充异常处理&lt;/p&gt;
     
     </summary>
     

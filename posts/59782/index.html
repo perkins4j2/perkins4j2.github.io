@@ -107,18 +107,18 @@
 
 
 
-  <meta name="description" content="自定义ThreadFactory，便于创建自定义线程 自定义ThreadGroup，便于对线程分组管理  ThreadFactory和ThreadGroup封装123456789101112131415161718192021222324252627282930313233343536373839404142@Slf4jpublic class BotThreadFactory implemen">
+  <meta name="description" content="自定义ThreadFactory，便于创建自定义线程 自定义ThreadGroup，便于对线程分组管理">
 <meta name="keywords" content="线程池">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java线程池 - ThreadFactory封装">
 <meta property="og:url" content="https://perkins4j2.github.io/posts/59782/index.html">
 <meta property="og:site_name" content="Perkins4j2的技术博客">
-<meta property="og:description" content="自定义ThreadFactory，便于创建自定义线程 自定义ThreadGroup，便于对线程分组管理  ThreadFactory和ThreadGroup封装123456789101112131415161718192021222324252627282930313233343536373839404142@Slf4jpublic class BotThreadFactory implemen">
+<meta property="og:description" content="自定义ThreadFactory，便于创建自定义线程 自定义ThreadGroup，便于对线程分组管理">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-16T01:41:42.714Z">
+<meta property="og:updated_time" content="2019-08-16T01:51:45.089Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java线程池 - ThreadFactory封装">
-<meta name="twitter:description" content="自定义ThreadFactory，便于创建自定义线程 自定义ThreadGroup，便于对线程分组管理  ThreadFactory和ThreadGroup封装123456789101112131415161718192021222324252627282930313233343536373839404142@Slf4jpublic class BotThreadFactory implemen">
+<meta name="twitter:description" content="自定义ThreadFactory，便于创建自定义线程 自定义ThreadGroup，便于对线程分组管理">
 
 
 
@@ -438,7 +438,7 @@
                 
               
 
-              <time title="创建时间：2019-08-16 09:16:08 / 修改时间：09:41:42" itemprop="dateCreated datePublished" datetime="2019-08-16T09:16:08+08:00">2019-08-16</time>
+              <time title="创建时间：2019-08-16 09:16:08 / 修改时间：09:51:45" itemprop="dateCreated datePublished" datetime="2019-08-16T09:16:08+08:00">2019-08-16</time>
             
 
             
@@ -532,10 +532,11 @@
       
         <ul>
 <li>自定义ThreadFactory，便于创建自定义线程</li>
-<li>自定义ThreadGroup，便于对线程分组管理</li>
-</ul>
+<li>自定义ThreadGroup，便于对线程分组管理<a id="more"></a>
 <h3 id="ThreadFactory和ThreadGroup封装"><a href="#ThreadFactory和ThreadGroup封装" class="headerlink" title="ThreadFactory和ThreadGroup封装"></a>ThreadFactory和ThreadGroup封装</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BotThreadFactory</span> <span class="keyword">implements</span> <span class="title">ThreadFactory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> AtomicInteger threadNum = <span class="keyword">new</span> AtomicInteger(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String prefix = <span class="string">"bot-thread-"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Thread <span class="title">newThread</span><span class="params">(Runnable r)</span> </span>&#123;</span><br><span class="line">        String name = prefix + threadNum.getAndIncrement();</span><br><span class="line">        ThreadGroup threadGroup = <span class="keyword">new</span> BotThreadGroup(<span class="string">"BOT_GROUP"</span>);</span><br><span class="line">        <span class="comment">//非守护进程</span></span><br><span class="line">        threadGroup.setDaemon(<span class="keyword">false</span>);</span><br><span class="line">        <span class="comment">//优先执行</span></span><br><span class="line">        threadGroup.setMaxPriority(Thread.MAX_PRIORITY);</span><br><span class="line"></span><br><span class="line">        Thread thread = <span class="keyword">new</span> Thread(threadGroup, r, name);</span><br><span class="line">        <span class="keyword">return</span> thread;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">BotThreadGroup</span> <span class="keyword">extends</span> <span class="title">ThreadGroup</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">BotThreadGroup</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(name);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">BotThreadGroup</span><span class="params">(ThreadGroup parent, String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(parent, name);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 异常处理</span></span><br><span class="line"><span class="comment">         *</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> t</span></span><br><span class="line"><span class="comment">         * <span class="doctag">@param</span> e</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">uncaughtException</span><span class="params">(Thread t, Throwable e)</span> </span>&#123;</span><br><span class="line">            log.error(<span class="string">"线程名称:&#123;&#125;,异常信息:&#123;&#125;,异常栈:&#123;&#125;"</span>,</span><br><span class="line">                    t.getName(), e.getMessage(), e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
 <h3 id="ThreadFactory"><a href="#ThreadFactory" class="headerlink" title="ThreadFactory"></a>ThreadFactory</h3><ul>
 <li>ThreadFactory的作用就是提供创建线程的功能的线程工厂</li>
 <li>它是通过newThread()提供创建线程</li>
