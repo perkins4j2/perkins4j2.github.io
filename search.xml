@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[RPC框架 - Thrift协议定义]]></title>
+    <url>%2Fposts%2F45936%2F</url>
+    <content type="text"><![CDATA[rpcRPC 是远程过程调用（Remote Procedure Call）。 RPC 是指计算机 A 上的进程，调用另外一台计算机 B 上的进程，其中 A 上的调用进程被挂起，而 B 上的被调用进程开始执行，当值返回给 A 时，A 进程继续执行。调用方可以通过使用参数将信息传送给被调用方，而后可以通过传回的结果得到信息。 远程过程调用采用客户机/服务器(C/S)模式。请求程序就是一个客户机，而服务提供程序就是一台服务器。和常规或本地过程调用一样，远程过程调用是同步操作，在远程过程结果返回之前，需要暂时中止请求程序。使用相同地址空间的低权进程或低权线程允许同时运行多个远程过程调用。 编写IDL文件时需要注意的问题 函数的参数要用数字依序标好，序号从1开始，形式为：“序号:参数名” 每个函数的最后要加上“,”，最后一个函数不加 在IDL中可以使用/……/添加注释 IDL支持的数据类型IDL大小写敏感，它共支持以下几种基本的数据类型： string,字符串类型，注意是全部小写形式 i16,16位整形类型，相当于 short 类型 i32，32位整形类型，对应C/C++/java中的int类型 i64，64位整形，对应C/C++/java中的long类型 byte，8位的字符类型，对应C/C++中的char，java中的byte类型 bool, 布尔类型，对应C/C++中的bool，java中的boolean类型 double，双精度浮点类型，对应C/C++/java中的double类型 void，空类型，对应C/C++/java中的void类型；该类型主要用作函数的返回值 注：Thrift 不支持无符号整数类型，因为很多编程语言不存在无符号类型，比如 Java 除上述基本类型外，ID还支持以下类型： map，map类型 set，集合类型 list，列表类型 在Thrift文件中自定义数据类型 枚举类型 结构体类型 thrift定义字段12345- 1:optional a.b c;- 2:required string d;- 3:required i32 e=-1;- 4:optional f g;- 5:optional bool h=false; required: 必须填充，并且会序列化 optional:可以不填充，但是不填充，不会序列化，填充的才会序列化， thrift定义枚举和结构体12345678enum f&#123; x,y,z&#125;struct b&#123; 1:optional i16 o; 2:optional string p; 3:optional double q;&#125; thrift定义接口1234service Service&#123; list&lt;b&gt; getList(1:list&lt;i64&gt; ids); b getInfo(1:i64 id);&#125; 定义类型别名1typedefi32 Integer 就可以为i32类型重新起个名字Integer。 常量12345const string SERVER_IP = "127.0.0.1"const i32 SERVER_PORT = 5900const map&lt;string, string&gt; MAP_CONST = &#123;"hello": "world", "goodnight": "moon"&#125; 异常异常在语法和功能上类似于结构体，差别是异常使用关键字exception，而且异常是继承每种语言的基础异常类。 12345exception Extest &#123;1: i32 errorCode,2: string message,3: StUser userinfo&#125; Namespace和Includes12345namespace java com.xx.xx.xxinclude "xxx.thrift"include "xx.thrift"include "xxx.thrift" Thrift中的命名空间同C++中的namespace和java中的package类似 Thrift允许一个IDL文件包含另一个IDL文件，被包含的文件会在当前目录下查找。在使用被包含文件中的类型时要注意通过文件名前缀来访问。 联合当一个结构体中，field 之间的关系是互斥的，即只能有一个 field 可生效被赋值。我们可以用 union 来声明这个结构体，而不是一堆堆 optional 的 field，语意上也更明确了。例如： 12345678union JavaObjectArg &#123; 1: i32 int_arg; 2: i64 long_arg; 3: string string_arg; 4: bool bool_arg; 5: binary binary_arg; 6: double double_arg;&#125;]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>thrift</tag>
+        <tag>rpc</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Lucene利用Hanlp分词索引和检索]]></title>
     <url>%2Fposts%2F49532%2F</url>
     <content type="text"><![CDATA[包引入 pom引入lucene和hanlp lucene版本为7.4 hanlp分词器版本为1.1.6 1234567891011121314151617&lt;dependency&gt; &lt;groupId&gt;org.apache.lucene&lt;/groupId&gt; &lt;artifactId&gt;lucene-core&lt;/artifactId&gt; &lt;version&gt;7.4.0&lt;/version&gt;&lt;/dependency&gt;&lt;dependency&gt; &lt;groupId&gt;org.apache.lucene&lt;/groupId&gt; &lt;artifactId&gt;lucene-queryparser&lt;/artifactId&gt; &lt;version&gt;7.4.0&lt;/version&gt;&lt;/dependency&gt;&lt;dependency&gt; &lt;groupId&gt;com.hankcs.nlp&lt;/groupId&gt; &lt;artifactId&gt;hanlp-lucene-plugin&lt;/artifactId&gt; &lt;version&gt;1.1.6&lt;/version&gt;&lt;/dependency&gt; 对数据文件进行索引123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354public class DocIndex &#123; // 建立索引文件的目录 public static String indexPath = "/index"; public static void index(String path, Map&lt;String, SugRecord&gt; map, boolean reIndex) &#123; indexPath = path + indexPath; if (!reIndex) &#123; return; &#125; IndexWriter writer = null; try &#123; // 存储索引数据的目录 Directory dir = FSDirectory.open(Paths.get(indexPath)); // 创建分析器 Analyzer analyzer = new HanLPAnalyzer(); IndexWriterConfig iwc = new IndexWriterConfig(analyzer); iwc.setOpenMode(IndexWriterConfig.OpenMode.CREATE); writer = new IndexWriter(dir, iwc); indexDoc(writer, map); writer.close(); &#125; catch (IOException e) &#123; e.printStackTrace(); &#125; &#125; private static void indexDoc(IndexWriter writer, Map&lt;String, SugRecord&gt; map) &#123; map.forEach((k, v) -&gt; &#123; // 创建一个新的空文档 Document doc = new Document(); //创建索引字段 doc.add(new TextField("id", v.getId(), Field.Store.YES)); doc.add(new TextField("question", v.getQueryNorm(), Field.Store.NO)); doc.add(new TextField("query", v.getQuery(), Field.Store.NO)); // 写文档 try &#123; writer.addDocument(doc); &#125; catch (IOException e) &#123; e.printStackTrace(); &#125; &#125;); try &#123; writer.flush(); writer.commit(); writer.close(); &#125; catch (IOException e) &#123; e.printStackTrace(); &#125; &#125;&#125; 对索引进行检索123456789101112131415161718192021222324252627282930313233343536373839404142434445464748@Slf4jpublic class DocSearcher &#123; public static List&lt;SugTerm&gt; search(String content) &#123; IndexReader reader = null; try &#123; reader = DirectoryReader.open(FSDirectory.open(Paths.get(DocIndex.indexPath))); &#125; catch (IOException e) &#123; e.printStackTrace(); &#125; IndexSearcher searcher = new IndexSearcher(reader); //或关系，多域检索 String[] fields = &#123;"question", "query"&#125;; BooleanClause.Occur[] clauses = &#123;BooleanClause.Occur.SHOULD, BooleanClause.Occur.SHOULD&#125;; try &#123; //指定分词器 Query query = MultiFieldQueryParser.parse(content, fields, clauses, new HanLPAnalyzer()); return doPagingSearch(searcher, query); &#125; catch (Exception e) &#123; e.printStackTrace(); &#125; return null; &#125; private static List&lt;SugTerm&gt; doPagingSearch(IndexSearcher searcher, Query query) throws IOException &#123; // TopDocs保存搜索结果 TopDocs results = null; List&lt;SugTerm&gt; sugTermList = new ArrayList&lt;&gt;(); //分页数 results = searcher.search(query, 10); ScoreDoc[] hits = results.scoreDocs; for (ScoreDoc hit : hits) &#123; Document document = searcher.doc(hit.doc); String id = Objects.requireNonNull(document).get("id"); SugRecord sugRecord = KefuBotSug.dataIdx.get(id); SugTerm sugTerm = new SugTerm(); sugTerm.id = sugRecord.getId(); sugTerm.query = sugRecord.getQuery(); sugTerm.question = sugRecord.queryNorm; sugTerm.score = hit.score; sugTermList.add(sugTerm); &#125; log.info(sugTermList.toString()); return sugTermList; &#125;&#125;]]></content>
@@ -293,8 +305,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java并发编程</tag>
         <tag>Java内存模型</tag>
+        <tag>Java并发编程</tag>
       </tags>
   </entry>
   <entry>
@@ -317,8 +329,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>synchronized</tag>
         <tag>Java并发编程</tag>
+        <tag>synchronized</tag>
       </tags>
   </entry>
   <entry>
@@ -369,8 +381,8 @@
       </categories>
       <tags>
         <tag>Spring Cloud</tag>
-        <tag>Zuul</tag>
         <tag>Ribbon</tag>
+        <tag>Zuul</tag>
         <tag>灰度测试</tag>
       </tags>
   </entry>
