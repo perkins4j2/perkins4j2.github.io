@@ -107,18 +107,18 @@
 
 
 
-  <meta name="description" content="包引入 pom引入lucene和hanlp  lucene版本为5.4  hanlp分词器版本为1.1.6 1234567891011121314151617&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.apache.lucene&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;lucene-core&amp;lt;/artifactId&amp;gt">
+  <meta name="description" content="包引入 pom引入lucene和hanlp  lucene版本为7.4  hanlp分词器版本为1.1.6 1234567891011121314151617&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.apache.lucene&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;lucene-core&amp;lt;/artifactId&amp;gt">
 <meta name="keywords" content="lucene,hanlp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lucene利用Hanlp分词索引和检索">
 <meta property="og:url" content="https://perkins4j2.github.io/posts/49532/index.html">
 <meta property="og:site_name" content="Perkins4j2的技术博客">
-<meta property="og:description" content="包引入 pom引入lucene和hanlp  lucene版本为5.4  hanlp分词器版本为1.1.6 1234567891011121314151617&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.apache.lucene&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;lucene-core&amp;lt;/artifactId&amp;gt">
+<meta property="og:description" content="包引入 pom引入lucene和hanlp  lucene版本为7.4  hanlp分词器版本为1.1.6 1234567891011121314151617&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.apache.lucene&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;lucene-core&amp;lt;/artifactId&amp;gt">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-19T01:07:55.412Z">
+<meta property="og:updated_time" content="2019-08-19T01:10:26.539Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lucene利用Hanlp分词索引和检索">
-<meta name="twitter:description" content="包引入 pom引入lucene和hanlp  lucene版本为5.4  hanlp分词器版本为1.1.6 1234567891011121314151617&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.apache.lucene&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;lucene-core&amp;lt;/artifactId&amp;gt">
+<meta name="twitter:description" content="包引入 pom引入lucene和hanlp  lucene版本为7.4  hanlp分词器版本为1.1.6 1234567891011121314151617&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;org.apache.lucene&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;lucene-core&amp;lt;/artifactId&amp;gt">
 
 
 
@@ -438,7 +438,7 @@
                 
               
 
-              <time title="创建时间：2019-08-19 08:58:20 / 修改时间：09:07:55" itemprop="dateCreated datePublished" datetime="2019-08-19T08:58:20+08:00">2019-08-19</time>
+              <time title="创建时间：2019-08-19 08:58:20 / 修改时间：09:10:26" itemprop="dateCreated datePublished" datetime="2019-08-19T08:58:20+08:00">2019-08-19</time>
             
 
             
@@ -533,7 +533,7 @@
         <h3 id="包引入"><a href="#包引入" class="headerlink" title="包引入"></a>包引入</h3><ul>
 <li><p>pom引入lucene和hanlp</p>
 </li>
-<li><p>lucene版本为5.4</p>
+<li><p>lucene版本为7.4</p>
 </li>
 <li><p>hanlp分词器版本为1.1.6</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.lucene<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lucene-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>7.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.lucene<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lucene-queryparser<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>7.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.hankcs.nlp<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hanlp-lucene-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
