@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-08-16T01:52:00.438Z</updated>
+  <updated>2019-08-19T01:06:42.723Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Lucene利用Hanlp分词索引和检索</title>
+    <link href="https://perkins4j2.github.io/posts/49532/"/>
+    <id>https://perkins4j2.github.io/posts/49532/</id>
+    <published>2019-08-19T00:58:20.000Z</published>
+    <updated>2019-08-19T01:06:42.723Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;包引入&quot;&gt;&lt;a href=&quot;#包引入&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="lucene" scheme="https://perkins4j2.github.io/tags/lucene/"/>
+    
+      <category term="hanlp" scheme="https://perkins4j2.github.io/tags/hanlp/"/>
+    
+  </entry>
   
   <entry>
     <title>Java线程池 - ThreadPool自定义封装</title>
@@ -489,30 +517,6 @@
     
     
       <category term="Redis" scheme="https://perkins4j2.github.io/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CentOS7安装部署 - MongoDB</title>
-    <link href="https://perkins4j2.github.io/posts/277/"/>
-    <id>https://perkins4j2.github.io/posts/277/</id>
-    <published>2019-06-24T12:15:24.000Z</published>
-    <updated>2019-06-24T12:33:55.532Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;mogo&quot;&gt;&lt;a href=&quot;#mogo&quot; class=&quot;headerlink&quot; title=&quot;mogo&quot;&gt;&lt;/a&gt;mogo&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;下载&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-4.0.6.tgz ./&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tar xzvf mongodb-linux-x86_64-rhel70-4.0.6.tgz&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mkdir -p data/mongo_data data/logs&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="安装部署" scheme="https://perkins4j2.github.io/categories/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/"/>
-    
-    
-      <category term="MongoDB" scheme="https://perkins4j2.github.io/tags/MongoDB/"/>
     
   </entry>
   

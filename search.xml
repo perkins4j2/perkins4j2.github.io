@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Lucene利用Hanlp分词索引和检索]]></title>
+    <url>%2Fposts%2F49532%2F</url>
+    <content type="text"><![CDATA[包引入 pom引入lucene和hanlp lucene版本为5.4 hanlp分词器版本为1.1.61234567891011121314151617&lt;dependency&gt; &lt;groupId&gt;org.apache.lucene&lt;/groupId&gt; &lt;artifactId&gt;lucene-core&lt;/artifactId&gt; &lt;version&gt;7.4.0&lt;/version&gt;&lt;/dependency&gt;&lt;dependency&gt; &lt;groupId&gt;org.apache.lucene&lt;/groupId&gt; &lt;artifactId&gt;lucene-queryparser&lt;/artifactId&gt; &lt;version&gt;7.4.0&lt;/version&gt;&lt;/dependency&gt;&lt;dependency&gt; &lt;groupId&gt;com.hankcs.nlp&lt;/groupId&gt; &lt;artifactId&gt;hanlp-lucene-plugin&lt;/artifactId&gt; &lt;version&gt;1.1.6&lt;/version&gt;&lt;/dependency&gt; 对数据文件进行索引123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354public class DocIndex &#123; // 建立索引文件的目录 public static String indexPath = "/index"; public static void index(String path, Map&lt;String, SugRecord&gt; map, boolean reIndex) &#123; indexPath = path + indexPath; if (!reIndex) &#123; return; &#125; IndexWriter writer = null; try &#123; // 存储索引数据的目录 Directory dir = FSDirectory.open(Paths.get(indexPath)); // 创建分析器 Analyzer analyzer = new HanLPAnalyzer(); IndexWriterConfig iwc = new IndexWriterConfig(analyzer); iwc.setOpenMode(IndexWriterConfig.OpenMode.CREATE); writer = new IndexWriter(dir, iwc); indexDoc(writer, map); writer.close(); &#125; catch (IOException e) &#123; e.printStackTrace(); &#125; &#125; private static void indexDoc(IndexWriter writer, Map&lt;String, SugRecord&gt; map) &#123; map.forEach((k, v) -&gt; &#123; // 创建一个新的空文档 Document doc = new Document(); //创建索引字段 doc.add(new TextField("id", v.getId(), Field.Store.YES)); doc.add(new TextField("question", v.getQueryNorm(), Field.Store.NO)); doc.add(new TextField("query", v.getQuery(), Field.Store.NO)); // 写文档 try &#123; writer.addDocument(doc); &#125; catch (IOException e) &#123; e.printStackTrace(); &#125; &#125;); try &#123; writer.flush(); writer.commit(); writer.close(); &#125; catch (IOException e) &#123; e.printStackTrace(); &#125; &#125;&#125; 对索引进行检索123456789101112131415161718192021222324252627282930313233343536373839404142434445464748@Slf4jpublic class DocSearcher &#123; public static List&lt;SugTerm&gt; search(String content) &#123; IndexReader reader = null; try &#123; reader = DirectoryReader.open(FSDirectory.open(Paths.get(DocIndex.indexPath))); &#125; catch (IOException e) &#123; e.printStackTrace(); &#125; IndexSearcher searcher = new IndexSearcher(reader); //或关系，多域检索 String[] fields = &#123;"question", "query"&#125;; BooleanClause.Occur[] clauses = &#123;BooleanClause.Occur.SHOULD, BooleanClause.Occur.SHOULD&#125;; try &#123; //指定分词器 Query query = MultiFieldQueryParser.parse(content, fields, clauses, new HanLPAnalyzer()); return doPagingSearch(searcher, query); &#125; catch (Exception e) &#123; e.printStackTrace(); &#125; return null; &#125; private static List&lt;SugTerm&gt; doPagingSearch(IndexSearcher searcher, Query query) throws IOException &#123; // TopDocs保存搜索结果 TopDocs results = null; List&lt;SugTerm&gt; sugTermList = new ArrayList&lt;&gt;(); //分页数 results = searcher.search(query, 10); ScoreDoc[] hits = results.scoreDocs; for (ScoreDoc hit : hits) &#123; Document document = searcher.doc(hit.doc); String id = Objects.requireNonNull(document).get("id"); SugRecord sugRecord = KefuBotSug.dataIdx.get(id); SugTerm sugTerm = new SugTerm(); sugTerm.id = sugRecord.getId(); sugTerm.query = sugRecord.getQuery(); sugTerm.question = sugRecord.queryNorm; sugTerm.score = hit.score; sugTermList.add(sugTerm); &#125; log.info(sugTermList.toString()); return sugTermList; &#125;&#125;]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>lucene</tag>
+        <tag>hanlp</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Java线程池 - ThreadPool自定义封装]]></title>
     <url>%2Fposts%2F33509%2F</url>
     <content type="text"><![CDATA[自定义线程池，便于调试和控制线程 自定义线程数、拒绝策略、关闭等 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142@Slf4jpublic class BotTaskThreadPool implements BotThreadPool &#123; /** * 核心大小 */ private static int CORE_POOLSIZE = Runtime.getRuntime().availableProcessors() * 2; /** * 上限 */ private static int MAX_POOLSIZE = CORE_POOLSIZE * 10; //留存时间ms private static long KEEP_ALIVETIME = 300000L; private static long SHUTDOWN_WAIT_TIME = 300000L; /** * 时间单位 */ private static TimeUnit UNIT = TimeUnit.MILLISECONDS; /** * 队列容量 */ private static int CAPACITY = 20; /** * 队列 */ private static BlockingQueue&lt;Runnable&gt; WORK_QUEUE; /** * 线程工厂 */ private static ThreadFactory THREAD_FACTORY; /** * 默认拒绝策略 */ private static RejectedExecutionHandler REJECTED_EXECUTION_HANDLER; private static ThreadPoolExecutor executor = null; private static class BotTaskThreadPoolFactory &#123; public static BotTaskThreadPool botTaskThreadPool = new BotTaskThreadPool(); &#125; /** * 线程池单例 * * @return */ public static BotTaskThreadPool getInstance() &#123; return BotTaskThreadPoolFactory.botTaskThreadPool; &#125; public BotTaskThreadPool() &#123; if (CORE_POOLSIZE &lt;= 0 || CORE_POOLSIZE &gt; 10) &#123; CORE_POOLSIZE = 4; MAX_POOLSIZE = CORE_POOLSIZE * 10; &#125; THREAD_FACTORY = new BotThreadFactory(); WORK_QUEUE = new ArrayBlockingQueue&lt;&gt;(CAPACITY); REJECTED_EXECUTION_HANDLER = new ThreadPoolExecutor.AbortPolicy(); executor = new ThreadPoolExecutor( CORE_POOLSIZE, MAX_POOLSIZE, KEEP_ALIVETIME, UNIT, WORK_QUEUE, THREAD_FACTORY, REJECTED_EXECUTION_HANDLER ); &#125; static &#123; Runtime.getRuntime().addShutdownHook(new Thread(new BotRunnable() &#123; @Override public void run() &#123; close(); &#125; &#125;)); &#125; private static void close() &#123; try &#123; log.warn("即将关闭线程池，等待:&#123;&#125;ms,活跃:&#123;&#125;,队列:&#123;&#125;,最大完成:&#123;&#125;,未完成:&#123;&#125;,总完成:&#123;&#125;", SHUTDOWN_WAIT_TIME, executor.getActiveCount(), executor.getQueue().size(), executor.getLargestPoolSize(), executor.getTaskCount(), executor.getCompletedTaskCount()); executor.shutdown(); //等待关闭 executor.awaitTermination(SHUTDOWN_WAIT_TIME, UNIT); log.warn("已关闭线程池"); //未完成 List&lt;Runnable&gt; botRunnableList = executor.shutdownNow(); if (!CollectionUtil.isEmpty(botRunnableList)) &#123; botRunnableList.forEach(e -&gt; log.warn("关闭未完成任务:" + e.toString())); &#125; &#125; catch (Exception e) &#123; e.printStackTrace(); &#125; &#125; @Override public boolean execute(Runnable runnable) &#123; try &#123; executor.execute(new BotRunnable(runnable)); &#125; catch (Exception e) &#123; log.error(e.getMessage(), e); return false; &#125; return true; &#125; @Override public &lt;T&gt; Future&lt;T&gt; submit(Callable&lt;T&gt; tCallable) &#123; try &#123; return executor.submit(new BotCallable&lt;T&gt;(tCallable)); &#125; catch (RejectedExecutionException e) &#123; log.error(e.getMessage(), e); &#125; return null; &#125; @Override public void shutDown() &#123; executor.shutdown(); &#125;&#125; 注意 计算密集型 线程数 = CPU核数+1，也可以设置成CPU核数*2，但还要看JDK的版本以及CPU配置(服务器的CPU有超线程)。 IO密集型 线程数 = CPU核心数/(1-阻塞系数) 这个阻塞系数一般为0.8~0.9之间，也可以取0.8或者0.9。套用公式，对于双核CPU来说，它比较理想的线程数就是20，当然这都不是绝对的，需要根据实际情况以及实际业务来调整：final int poolSize = (int)(cpuCore/(1-0.9)) 对于阻塞系数，我们可以先试着猜测，抑或采用一些性能分析工具或java.lang.management API 来确定线程花在系统/IO操作上的时间与CPU密集任务所耗的时间比值。 Runtime.getRuntime().availableProcessors() 因为容器不是物理隔离的，使用Runtime.getRuntime().availableProcessors() ，会拿到物理CPU个数，而不是容器申请时的个数。 例如宿主机器是4核CPU16G内存 java 6/7/8/9 docker run –cpus 1 -m 1G -it adoptopenjdk/openjdk9:latest # 给1核 jshell -J-Xmx512M -v # 启动jshell Runtime.getRuntime().availableProcessors() # 结果是不是1！！！ java 10 docker run –cpus 1 -m 1G -it adoptopenjdk/openjdk10:latest # 给1核 jshell -J-Xmx512M -v # 启动jshell Runtime.getRuntime().availableProcessors() # 结果是1]]></content>
@@ -281,8 +293,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java内存模型</tag>
         <tag>Java并发编程</tag>
+        <tag>Java内存模型</tag>
       </tags>
   </entry>
   <entry>
@@ -305,8 +317,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java并发编程</tag>
         <tag>synchronized</tag>
+        <tag>Java并发编程</tag>
       </tags>
   </entry>
   <entry>
@@ -357,8 +369,8 @@
       </categories>
       <tags>
         <tag>Spring Cloud</tag>
-        <tag>Ribbon</tag>
         <tag>Zuul</tag>
+        <tag>Ribbon</tag>
         <tag>灰度测试</tag>
       </tags>
   </entry>
