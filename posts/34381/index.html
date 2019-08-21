@@ -107,18 +107,18 @@
 
 
 
-  <meta name="description" content="Nacos与Eureka均提供注册中心和服务治理功能，以下为两则差异和选型方案。 功能差异   模块 Nacos Eureka 说明    注册中心 是 是 服务治理基本功能，负责服务中心化注册   配置中心 是 否 Eureka需要配合Config实现配置中心，且不提供管理界面   动态刷新 是 否 Eureka需要配合MQ实现配置动态刷新，Nacos采用Netty保持TCP长连接实时推送">
-<meta name="keywords" content="Spring Cloud,Nacos,Eureka">
+  <meta name="description" content="文件监控1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283@Slf4jpublic class FileWatchTask implem">
+<meta name="keywords" content="WatchService">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring Cloud - Nacos与Eureka区别及如何选型">
-<meta property="og:url" content="https://perkins4j2.github.io/posts/35353/index.html">
+<meta property="og:title" content="WatchService监控目录和文件变化">
+<meta property="og:url" content="https://perkins4j2.github.io/posts/34381/index.html">
 <meta property="og:site_name" content="Perkins4j2的技术博客">
-<meta property="og:description" content="Nacos与Eureka均提供注册中心和服务治理功能，以下为两则差异和选型方案。 功能差异   模块 Nacos Eureka 说明    注册中心 是 是 服务治理基本功能，负责服务中心化注册   配置中心 是 否 Eureka需要配合Config实现配置中心，且不提供管理界面   动态刷新 是 否 Eureka需要配合MQ实现配置动态刷新，Nacos采用Netty保持TCP长连接实时推送">
+<meta property="og:description" content="文件监控1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283@Slf4jpublic class FileWatchTask implem">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-30T09:03:54.000Z">
+<meta property="og:updated_time" content="2019-08-21T12:45:32.816Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring Cloud - Nacos与Eureka区别及如何选型">
-<meta name="twitter:description" content="Nacos与Eureka均提供注册中心和服务治理功能，以下为两则差异和选型方案。 功能差异   模块 Nacos Eureka 说明    注册中心 是 是 服务治理基本功能，负责服务中心化注册   配置中心 是 否 Eureka需要配合Config实现配置中心，且不提供管理界面   动态刷新 是 否 Eureka需要配合MQ实现配置动态刷新，Nacos采用Netty保持TCP长连接实时推送">
+<meta name="twitter:title" content="WatchService监控目录和文件变化">
+<meta name="twitter:description" content="文件监控1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283@Slf4jpublic class FileWatchTask implem">
 
 
 
@@ -128,7 +128,7 @@
 
   
   
-  <link rel="canonical" href="https://perkins4j2.github.io/posts/35353/">
+  <link rel="canonical" href="https://perkins4j2.github.io/posts/34381/">
 
 
 
@@ -138,7 +138,7 @@
   };
 </script>
 
-  <title>Spring Cloud - Nacos与Eureka区别及如何选型 | Perkins4j2的技术博客</title>
+  <title>WatchService监控目录和文件变化 | Perkins4j2的技术博客</title>
   
 
 
@@ -395,7 +395,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://perkins4j2.github.io/posts/35353/">
+    <link itemprop="mainEntityOfPage" href="https://perkins4j2.github.io/posts/34381/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Perkins">
@@ -412,7 +412,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Spring Cloud - Nacos与Eureka区别及如何选型
+          <h1 class="post-title" itemprop="name headline">WatchService监控目录和文件变化
 
               
             
@@ -438,24 +438,12 @@
                 
               
 
-              <time title="创建时间：2019-04-23 16:02:48" itemprop="dateCreated datePublished" datetime="2019-04-23T16:02:48+08:00">2019-04-23</time>
+              <time title="创建时间：2019-08-21 20:06:32 / 修改时间：20:45:32" itemprop="dateCreated datePublished" datetime="2019-08-21T20:06:32+08:00">2019-08-21</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-04-30 17:03:54" itemprop="dateModified" datetime="2019-04-30T17:03:54+08:00">2019-04-30</time>
               
             
           </span>
@@ -472,7 +460,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/微服务/" itemprop="url" rel="index"><span itemprop="name">微服务</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/架构/" itemprop="url" rel="index"><span itemprop="name">架构</span></a></span>
 
                 
                 
@@ -508,7 +496,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.1k</span>
+                <span title="本文字数">15k</span>
               
 
               
@@ -522,7 +510,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">14 分钟</span>
               
             </div>
           
@@ -542,205 +530,17 @@
       
 
       
-        <p>Nacos与Eureka均提供注册中心和服务治理功能，以下为两则差异和选型方案。</p>
-<h3 id="功能差异"><a href="#功能差异" class="headerlink" title="功能差异"></a>功能差异</h3><table>
-<thead>
-<tr>
-<th align="center">模块</th>
-<th align="center">Nacos</th>
-<th align="center">Eureka</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">注册中心</td>
-<td align="center">是</td>
-<td align="center">是</td>
-<td align="center">服务治理基本功能，负责服务中心化注册</td>
-</tr>
-<tr>
-<td align="center">配置中心</td>
-<td align="center">是</td>
-<td align="center"><code>否</code></td>
-<td align="center">Eureka需要配合Config实现配置中心，且不提供管理界面</td>
-</tr>
-<tr>
-<td align="center">动态刷新</td>
-<td align="center">是</td>
-<td align="center"><code>否</code></td>
-<td align="center">Eureka需要配合MQ实现配置动态刷新，Nacos采用Netty保持TCP长连接实时推送</td>
-</tr>
-<tr>
-<td align="center">可用区AZ</td>
-<td align="center">是</td>
-<td align="center">是</td>
-<td align="center">对服务集群划分不同区域，实现区域隔离，并提供容灾自动切换</td>
-</tr>
-<tr>
-<td align="center">分组</td>
-<td align="center">是</td>
-<td align="center"><code>否</code></td>
-<td align="center">Nacos可用根据业务和环境进行分组管理</td>
-</tr>
-<tr>
-<td align="center">元数据</td>
-<td align="center">是</td>
-<td align="center">是</td>
-<td align="center">提供服务标签数据，例如环境或服务标识</td>
-</tr>
-<tr>
-<td align="center">权重</td>
-<td align="center">是</td>
-<td align="center"><code>否</code></td>
-<td align="center">Nacos默认提供权重设置功能，调整承载流量压力</td>
-</tr>
-<tr>
-<td align="center">健康检查</td>
-<td align="center">是</td>
-<td align="center">是</td>
-<td align="center">Nacos支持由客户端或服务端发起的健康检查，Eureka是由客户端发起心跳</td>
-</tr>
-<tr>
-<td align="center">负载均衡</td>
-<td align="center">是</td>
-<td align="center">是</td>
-<td align="center">均提供负责均衡策略，Eureka采用Ribion</td>
-</tr>
-<tr>
-<td align="center">管理界面</td>
-<td align="center">是</td>
-<td align="center"><code>否</code></td>
-<td align="center">Nacos支持对服务在线管理，Eureka只是预览服务状态</td>
-</tr>
-</tbody></table>
-<a id="more"></a>
+        <h3 id="文件监控"><a href="#文件监控" class="headerlink" title="文件监控"></a>文件监控</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FileWatchTask</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String fileDirectory;</span><br><span class="line">    <span class="keyword">private</span> List&lt;String&gt; monitorFileNameList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">private</span> ParseIF parseIF;</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> fileDirectory       监控目录</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> monitorFileNameList 监控文件名</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> parseIF             处理函数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">FileWatchTask</span><span class="params">(String fileDirectory, List&lt;String&gt; monitorFileNameList, ParseIF parseIF)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.fileDirectory = fileDirectory;</span><br><span class="line">        <span class="keyword">if</span> (monitorFileNameList != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">this</span>.monitorFileNameList = monitorFileNameList;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.parseIF = parseIF;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        WatchService service = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//获取当前文件系统的监控对象</span></span><br><span class="line">            service = FileSystems.getDefault().newWatchService();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//获取文件目录下的Path对象注册到 watchService中。</span></span><br><span class="line">            <span class="comment">//监听的事件类型，有创建，删除，以及修改</span></span><br><span class="line">            Paths.get(fileDirectory)</span><br><span class="line">                    .register(service, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE,</span><br><span class="line">                            StandardWatchEventKinds.ENTRY_MODIFY);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            WatchKey key = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">//获取可用key.没有可用的就wait</span></span><br><span class="line">                key = service.take();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (WatchEvent&lt;?&gt; event : key.pollEvents()) &#123;</span><br><span class="line">                log.warn(event.context() + <span class="string">"-"</span> + event.kind() + <span class="string">"-"</span> + event.count());</span><br><span class="line"></span><br><span class="line">                <span class="keyword">final</span> WatchEvent.Kind&lt;?&gt; kind = event.kind();</span><br><span class="line">                <span class="keyword">if</span> (kind == StandardWatchEventKinds.OVERFLOW) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// get the filename for the event</span></span><br><span class="line">                <span class="keyword">final</span> WatchEvent&lt;Path&gt; watchEventPath = (WatchEvent&lt;Path&gt;) event;</span><br><span class="line">                <span class="keyword">final</span> Path fileName = watchEventPath.context();</span><br><span class="line">                <span class="keyword">if</span> (monitorFileNameList.stream().noneMatch(e -&gt; e.equals(fileName.getFileName().toString()))) &#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">//创建事件</span></span><br><span class="line">                <span class="keyword">if</span> (kind == StandardWatchEventKinds.ENTRY_CREATE) &#123;</span><br><span class="line">                    parseIF.parse(FileStatus.CREATE);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//修改事件</span></span><br><span class="line">                <span class="keyword">if</span> (kind == StandardWatchEventKinds.ENTRY_MODIFY) &#123;</span><br><span class="line">                    parseIF.parse(FileStatus.MODIFY);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//删除事件</span></span><br><span class="line">                <span class="keyword">if</span> (kind == StandardWatchEventKinds.ENTRY_DELETE) &#123;</span><br><span class="line">                    parseIF.parse(FileStatus.DELETE);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//重置，这一步很重要，否则当前的key就不再会获取将来发生的事件</span></span><br><span class="line">            <span class="keyword">boolean</span> valid = key.reset();</span><br><span class="line">            <span class="comment">//失效状态，退出监听</span></span><br><span class="line">            <span class="keyword">if</span> (!valid) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="部署安装"><a href="#部署安装" class="headerlink" title="部署安装"></a>部署安装</h3><table>
-<thead>
-<tr>
-<th align="center">模块</th>
-<th align="center">Nacos</th>
-<th align="center">Eureka</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">MySql</td>
-<td align="center">是</td>
-<td align="center"><code>否</code></td>
-<td align="center">Nacos需要采用MySql进行数据进行持久化</td>
-</tr>
-<tr>
-<td align="center">MQ</td>
-<td align="center"><code>否</code></td>
-<td align="center">是</td>
-<td align="center">Eureka需要采用MQ进行配置中心刷新</td>
-</tr>
-<tr>
-<td align="center">配置中心</td>
-<td align="center">是</td>
-<td align="center"><code>否</code></td>
-<td align="center">Eureka结合Config或者Consul实现配置中心</td>
-</tr>
-<tr>
-<td align="center">配置文件</td>
-<td align="center">在线编辑</td>
-<td align="center">本地文件或者Git远程文件</td>
-<td align="center">Eureka结合Config或者Consul</td>
-</tr>
-<tr>
-<td align="center">集群</td>
-<td align="center">是</td>
-<td align="center">是</td>
-<td align="center">Nacos需要配置集群ip再启动</td>
-</tr>
-</tbody></table>
-<h3 id="稳定及扩展性"><a href="#稳定及扩展性" class="headerlink" title="稳定及扩展性"></a>稳定及扩展性</h3><table>
-<thead>
-<tr>
-<th align="center">模块</th>
-<th align="center">Nacos</th>
-<th align="center">Eureka</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">版本</td>
-<td align="center">1.0.0</td>
-<td align="center">1.9.9</td>
-<td align="center">Eureka2.0已停止开发,Nacos处于1.x-2.0开发</td>
-</tr>
-<tr>
-<td align="center">厂商</td>
-<td align="center">阿里巴巴</td>
-<td align="center">Netflix</td>
-<td align="center">Netflix已长期用于生产,阿里刚起步</td>
-</tr>
-<tr>
-<td align="center">生产建议</td>
-<td align="center"><code>否</code></td>
-<td align="center">是</td>
-<td align="center">Nacos0.8以前不可用于生产,建议生产采用Nacos1.0,便于节省配置中心集群和服务管理</td>
-</tr>
-<tr>
-<td align="center">未来发展</td>
-<td align="center">是</td>
-<td align="center"><code>否</code></td>
-<td align="center">Nacos 2.0主要关注在统一服务管理、服务共享及服务治理体系的开放的服务平台的建设</td>
-</tr>
-</tbody></table>
-<h3 id="选型建议"><a href="#选型建议" class="headerlink" title="选型建议"></a>选型建议</h3><p>采用Eureka方案的考虑</p>
-<ul>
-<li>想用Spring Cloud原生全家桶 </li>
-<li>想用本地文件和Git作为配置管理的,将配置与服务分开管理</li>
-<li>考虑短期的稳定性</li>
-</ul>
-<p>采用Nacos方案的考虑</p>
-<ul>
-<li>想在线对服务进行上下线和流量管理</li>
-<li>不想采用MQ实现配置中心动态刷新</li>
-<li>不想新增配置中心生产集群</li>
-<li>考虑引入Spring Cloud Alibaba生态</li>
-</ul>
+<h3 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> FileStatus &#123;</span><br><span class="line">    CREATE, DELETE, MODIFY</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h3 id="处理函数"><a href="#处理函数" class="headerlink" title="处理函数"></a>处理函数</h3><p>@FunctionalInterface<br>public interface ParseIF {<br>    boolean parse(FileStatus type);<br>}</p>
+<h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 目录监控</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">synchronized</span> <span class="keyword">boolean</span> <span class="title">monitor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (monitor) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    monitor = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//因为是线程安全的所以可以放入ThreadPool中使用</span></span><br><span class="line">    ExecutorService cachedThreadPool = newFixedThreadPool(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//监控文件</span></span><br><span class="line">    List&lt;String&gt; monitorFileNameList = Arrays.asList(<span class="string">"a.txt"</span>, <span class="string">"b.txt"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//处理</span></span><br><span class="line">    ParseIF parseIF = (type) -&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (type == FileStatus.CREATE || type == FileStatus.MODIFY) &#123;</span><br><span class="line">            reload(filePath);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//监控目录、文件及处理</span></span><br><span class="line">    cachedThreadPool.execute(<span class="keyword">new</span> FileWatchTask(filePath+<span class="string">"/c"</span>, monitorFileNameList, parseIF));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
     
       
-
-  <div class="popular-posts-header">相关文章</div>
-  <ul class="popular-posts">
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/posts/57096/" rel="bookmark">Spring Cloud - Nacos集群配置和集成</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/posts/33205/" rel="bookmark">Spring Cloud - 如何利用Zuul进行网关开发</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/posts/25628/" rel="bookmark">Spring Cloud - Ribbon在Zuul上实现灰度和版本测试</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/posts/33184/" rel="bookmark">Spring Cloud - 如何利用Zuul实现接口限流</a></div>
-      
-    </li>
-  
-  </ul>
 
 
     
@@ -770,11 +570,11 @@
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>Spring Cloud - Nacos与Eureka区别及如何选型</p>
+  <p><span>本文标题:</span>WatchService监控目录和文件变化</p>
   <p><span>文章作者:</span>Perkins</p>
-  <p><span>发布时间:</span>2019年04月23日</p>
-  <p><span>原始链接:</span><a href="/posts/35353/" title="Spring Cloud - Nacos与Eureka区别及如何选型">https://perkins4j2.github.io/posts/35353/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://perkins4j2.github.io/posts/35353/" aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2019年08月21日</p>
+  <p><span>原始链接:</span><a href="/posts/34381/" title="WatchService监控目录和文件变化">https://perkins4j2.github.io/posts/34381/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://perkins4j2.github.io/posts/34381/" aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
 </div>
@@ -810,11 +610,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Spring-Cloud/" rel="tag"># Spring Cloud</a>
-          
-            <a href="/tags/Nacos/" rel="tag"># Nacos</a>
-          
-            <a href="/tags/Eureka/" rel="tag"># Eureka</a>
+            <a href="/tags/WatchService/" rel="tag"># WatchService</a>
           
         </div>
       
@@ -827,8 +623,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/48230/" rel="next" title="Linux运维常用命令 - grep">
-                <i class="fa fa-chevron-left"></i> Linux运维常用命令 - grep
+              <a href="/posts/45936/" rel="next" title="RPC框架 - Thrift协议定义">
+                <i class="fa fa-chevron-left"></i> RPC框架 - Thrift协议定义
               </a>
             
           </div>
@@ -837,8 +633,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/25628/" rel="prev" title="Spring Cloud - Ribbon在Zuul上实现灰度和版本测试">
-                Spring Cloud - Ribbon在Zuul上实现灰度和版本测试 <i class="fa fa-chevron-right"></i>
+              <a href="/posts/42352/" rel="prev" title="Java双份对象数据热切换">
+                Java双份对象数据热切换 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -1107,7 +903,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#功能差异"><span class="nav-number">1.</span> <span class="nav-text">功能差异</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署安装"><span class="nav-number">2.</span> <span class="nav-text">部署安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#稳定及扩展性"><span class="nav-number">3.</span> <span class="nav-text">稳定及扩展性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选型建议"><span class="nav-number">4.</span> <span class="nav-text">选型建议</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件监控"><span class="nav-number">1.</span> <span class="nav-text">文件监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件类型"><span class="nav-number">2.</span> <span class="nav-text">文件类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理函数"><span class="nav-number">3.</span> <span class="nav-text">处理函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池"><span class="nav-number">4.</span> <span class="nav-text">线程池</span></a></li></ol></div>
             
 
           </div>
