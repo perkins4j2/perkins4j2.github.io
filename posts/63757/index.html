@@ -107,18 +107,18 @@
 
 
 
-  <meta name="description" content="java.lang.IllegalArgumentException: Comparison method violates its general contract!在 JDK 7 版本以上， Comparator 要满足自反性，传递性，对称性，不然Arrays.sort、Collections.sort会报 IllegalArgumentException 异常。 说明：1 ） 自反性： x">
+  <meta name="description" content="java.lang.IllegalArgumentException: Comparison method violates its general contract!在 JDK 7 版本以上， Comparator 要满足自反性，传递性，对称性，不然Arrays.sort、Collections.sort会报 IllegalArgumentException 异常。">
 <meta name="keywords" content="Sort,Comparator">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java Collection Sort之IllegalArgumentException">
 <meta property="og:url" content="https://perkins4j2.github.io/posts/63757/index.html">
 <meta property="og:site_name" content="Perkins4j2的技术博客">
-<meta property="og:description" content="java.lang.IllegalArgumentException: Comparison method violates its general contract!在 JDK 7 版本以上， Comparator 要满足自反性，传递性，对称性，不然Arrays.sort、Collections.sort会报 IllegalArgumentException 异常。 说明：1 ） 自反性： x">
+<meta property="og:description" content="java.lang.IllegalArgumentException: Comparison method violates its general contract!在 JDK 7 版本以上， Comparator 要满足自反性，传递性，对称性，不然Arrays.sort、Collections.sort会报 IllegalArgumentException 异常。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-22T01:12:28.217Z">
+<meta property="og:updated_time" content="2019-08-22T01:13:56.256Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java Collection Sort之IllegalArgumentException">
-<meta name="twitter:description" content="java.lang.IllegalArgumentException: Comparison method violates its general contract!在 JDK 7 版本以上， Comparator 要满足自反性，传递性，对称性，不然Arrays.sort、Collections.sort会报 IllegalArgumentException 异常。 说明：1 ） 自反性： x">
+<meta name="twitter:description" content="java.lang.IllegalArgumentException: Comparison method violates its general contract!在 JDK 7 版本以上， Comparator 要满足自反性，传递性，对称性，不然Arrays.sort、Collections.sort会报 IllegalArgumentException 异常。">
 
 
 
@@ -438,7 +438,7 @@
                 
               
 
-              <time title="创建时间：2019-08-22 08:53:53 / 修改时间：09:12:28" itemprop="dateCreated datePublished" datetime="2019-08-22T08:53:53+08:00">2019-08-22</time>
+              <time title="创建时间：2019-08-22 08:53:53 / 修改时间：09:13:56" itemprop="dateCreated datePublished" datetime="2019-08-22T08:53:53+08:00">2019-08-22</time>
             
 
             
@@ -531,6 +531,8 @@
 
       
         <h3 id="java-lang-IllegalArgumentException-Comparison-method-violates-its-general-contract"><a href="#java-lang-IllegalArgumentException-Comparison-method-violates-its-general-contract" class="headerlink" title="java.lang.IllegalArgumentException: Comparison method violates its general contract!"></a>java.lang.IllegalArgumentException: Comparison method violates its general contract!</h3><p>在 JDK 7 版本以上， Comparator 要满足自反性，传递性，对称性，不然Arrays.sort、Collections.sort会报 IllegalArgumentException 异常。</p>
+<a id="more"></a>
+
 <p>说明：<br>1 ） 自反性： x ， y 的比较结果和 y ， x 的比较结果相反。<br>2 ） 传递性： x &gt; y , y &gt; z ,则 x &gt; z 。<br>3 ） 对称性： x = y ,则 x , z 比较结果和 y ， z 比较结果相同。  </p>
 <p>反例：</p>
 <p>下例中没有处理相等的情况，实际使用中可能会出现异常 </p>

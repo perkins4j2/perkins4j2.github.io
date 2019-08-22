@@ -437,7 +437,7 @@
                 
               
 
-              <time title="创建时间：2019-08-22 08:53:53 / 修改时间：09:12:28" itemprop="dateCreated datePublished" datetime="2019-08-22T08:53:53+08:00">2019-08-22</time>
+              <time title="创建时间：2019-08-22 08:53:53 / 修改时间：09:13:56" itemprop="dateCreated datePublished" datetime="2019-08-22T08:53:53+08:00">2019-08-22</time>
             
 
             
@@ -523,16 +523,16 @@
 
       
         
+          <h3 id="java-lang-IllegalArgumentException-Comparison-method-violates-its-general-contract"><a href="#java-lang-IllegalArgumentException-Comparison-method-violates-its-general-contract" class="headerlink" title="java.lang.IllegalArgumentException: Comparison method violates its general contract!"></a>java.lang.IllegalArgumentException: Comparison method violates its general contract!</h3><p>在 JDK 7 版本以上， Comparator 要满足自反性，传递性，对称性，不然Arrays.sort、Collections.sort会报 IllegalArgumentException 异常。</p>
+          <!--noindex-->
           
-            <h3 id="java-lang-IllegalArgumentException-Comparison-method-violates-its-general-contract"><a href="#java-lang-IllegalArgumentException-Comparison-method-violates-its-general-contract" class="headerlink" title="java.lang.IllegalArgumentException: Comparison method violates its general contract!"></a>java.lang.IllegalArgumentException: Comparison method violates its general contract!</h3><p>在 JDK 7 版本以上， Comparator 要满足自反性，传递性，对称性，不然Arrays.sort、Collections.sort会报 IllegalArgumentException 异常。</p>
-<p>说明：<br>1 ） 自反性： x ， y 的比较结果和 y ， x 的比较结果相反。<br>2 ） 传递性： x &gt; y , y &gt; z ,则 x &gt; z 。<br>3 ） 对称性： x = y ,则 x , z 比较结果和 y ， z 比较结果相同。  </p>
-<p>反例：</p>
-<p>下例中没有处理相等的情况，实际使用中可能会出现异常 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Comparator&lt;Student&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Student o1, Student o2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> o1.getId() &gt; o2.getId() ? <span class="number">1</span> : -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>正例:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 基于某种 Comparable 接口实现一个关键码类，并将所有通常的比较方法封装起来，以支持关键码之间的比较。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Comparator</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 若a&gt;（=或&lt;）b，返回正数、零或负数</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> a</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> b</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Object a, Object b)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <div class="post-button text-center">
+              <a class="btn" href="/posts/63757/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>

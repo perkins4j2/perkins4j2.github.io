@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-08-22T01:12:28.217Z</updated>
+  <updated>2019-08-22T01:13:56.256Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -21,17 +21,11 @@
     <link href="https://perkins4j2.github.io/posts/63757/"/>
     <id>https://perkins4j2.github.io/posts/63757/</id>
     <published>2019-08-22T00:53:53.000Z</published>
-    <updated>2019-08-22T01:12:28.217Z</updated>
+    <updated>2019-08-22T01:13:56.256Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h3 id=&quot;java-lang-IllegalArgumentException-Comparison-method-violates-its-general-contract&quot;&gt;&lt;a
-        
-      
+      &lt;h3 id=&quot;java-lang-IllegalArgumentException-Comparison-method-violates-its-general-contract&quot;&gt;&lt;a href=&quot;#java-lang-IllegalArgumentException-Comparison-method-violates-its-general-contract&quot; class=&quot;headerlink&quot; title=&quot;java.lang.IllegalArgumentException: Comparison method violates its general contract!&quot;&gt;&lt;/a&gt;java.lang.IllegalArgumentException: Comparison method violates its general contract!&lt;/h3&gt;&lt;p&gt;在 JDK 7 版本以上， Comparator 要满足自反性，传递性，对称性，不然Arrays.sort、Collections.sort会报 IllegalArgumentException 异常。&lt;/p&gt;
     
     </summary>
     
