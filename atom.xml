@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-08-21T13:33:46.428Z</updated>
+  <updated>2019-08-22T01:12:28.217Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java Collection Sort之IllegalArgumentException</title>
+    <link href="https://perkins4j2.github.io/posts/63757/"/>
+    <id>https://perkins4j2.github.io/posts/63757/</id>
+    <published>2019-08-22T00:53:53.000Z</published>
+    <updated>2019-08-22T01:12:28.217Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;java-lang-IllegalArgumentException-Comparison-method-violates-its-general-contract&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="https://perkins4j2.github.io/categories/Java/"/>
+    
+    
+      <category term="Sort" scheme="https://perkins4j2.github.io/tags/Sort/"/>
+    
+      <category term="Comparator" scheme="https://perkins4j2.github.io/tags/Comparator/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java双份对象数据热切换</title>
     <link href="https://perkins4j2.github.io/posts/42352/"/>
     <id>https://perkins4j2.github.io/posts/42352/</id>
     <published>2019-08-21T12:07:22.000Z</published>
-    <updated>2019-08-21T13:33:46.428Z</updated>
+    <updated>2019-08-22T00:37:09.165Z</updated>
     
     <summary type="html">
     
@@ -41,7 +69,7 @@
     <link href="https://perkins4j2.github.io/posts/34381/"/>
     <id>https://perkins4j2.github.io/posts/34381/</id>
     <published>2019-08-21T12:06:32.000Z</published>
-    <updated>2019-08-21T12:45:32.816Z</updated>
+    <updated>2019-08-21T13:34:23.788Z</updated>
     
     <summary type="html">
     
@@ -466,7 +494,7 @@
     <link href="https://perkins4j2.github.io/posts/50004/"/>
     <id>https://perkins4j2.github.io/posts/50004/</id>
     <published>2019-06-24T12:15:37.000Z</published>
-    <updated>2019-06-24T12:34:53.822Z</updated>
+    <updated>2019-08-22T01:11:46.396Z</updated>
     
     <summary type="html">
     
@@ -477,38 +505,9 @@
       <category term="Java" scheme="https://perkins4j2.github.io/categories/Java/"/>
     
     
-      <category term="List" scheme="https://perkins4j2.github.io/tags/List/"/>
-    
       <category term="Comparator" scheme="https://perkins4j2.github.io/tags/Comparator/"/>
     
-  </entry>
-  
-  <entry>
-    <title>IDEA基本配置</title>
-    <link href="https://perkins4j2.github.io/posts/49684/"/>
-    <id>https://perkins4j2.github.io/posts/49684/</id>
-    <published>2019-06-24T12:15:34.000Z</published>
-    <updated>2019-06-24T12:33:55.507Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;IDEA通用插件安装&quot;&gt;&lt;a href=&quot;#IDEA通用插件安装&quot; class=&quot;headerlink&quot; title=&quot;IDEA通用插件安装&quot;&gt;&lt;/a&gt;IDEA通用插件安装&lt;/h3&gt;&lt;h4 id=&quot;Alibaba-Java-Code-Guidelines&quot;&gt;&lt;a href=&quot;#Alibaba-Java-Code-Guidelines&quot; class=&quot;headerlink&quot; title=&quot;Alibaba Java Code Guidelines&quot;&gt;&lt;/a&gt;Alibaba Java Code Guidelines&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;Preferences &amp;gt;&amp;gt; Plugins &amp;gt;&amp;gt; Marketplace&lt;/li&gt;
-&lt;li&gt;查询Alibaba Java Code Guidelines并安装后重启 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;Git-Flow-Integration&quot;&gt;&lt;a href=&quot;#Git-Flow-Integration&quot; class=&quot;headerlink&quot; title=&quot;Git Flow Integration&quot;&gt;&lt;/a&gt;Git Flow Integration&lt;/h3&gt;&lt;p&gt;git flow集成&lt;/p&gt;
-&lt;h3 id=&quot;GitToolBox&quot;&gt;&lt;a href=&quot;#GitToolBox&quot; class=&quot;headerlink&quot; title=&quot;GitToolBox&quot;&gt;&lt;/a&gt;GitToolBox&lt;/h3&gt;&lt;p&gt;行代码给与log历史提示&lt;/p&gt;
-&lt;h3 id=&quot;类的注释格式&quot;&gt;&lt;a href=&quot;#类的注释格式&quot; class=&quot;headerlink&quot; title=&quot;类的注释格式&quot;&gt;&lt;/a&gt;类的注释格式&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Preferences &amp;gt;&amp;gt; Editor &amp;gt;&amp;gt; File and Code Templates &amp;gt;&amp;gt; Includes   &amp;gt;&amp;gt; File Header&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/**&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;* &lt;span class=&quot;doctag&quot;&gt;@author&lt;/span&gt;:  Perkins&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;* &lt;span class=&quot;doctag&quot;&gt;@date&lt;/span&gt;: $&amp;#123;DATE&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;* &lt;span class=&quot;doctag&quot;&gt;@description&lt;/span&gt;: todo&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;*/&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
-    
-    
-      <category term="IDEA" scheme="https://perkins4j2.github.io/tags/IDEA/"/>
+      <category term="List" scheme="https://perkins4j2.github.io/tags/List/"/>
     
   </entry>
   
