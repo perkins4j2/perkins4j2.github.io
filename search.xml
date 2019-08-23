@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Maven自定义打包脚本]]></title>
+    <url>%2Fposts%2F26061%2F</url>
+    <content type="text"><![CDATA[利用Maven脚本，实现以下需求: 将第三方lib单独打包 将脚本单独打包 将执行jar单独打包 将配置文件单独打包 自动关闭和启动进程 目录assembly123456789101112131415161718192021222324252627282930313233343536373839404142434445464748&lt;assembly&gt; &lt;id&gt;bin&lt;/id&gt; &lt;formats&gt; &lt;format&gt;zip&lt;/format&gt; &lt;/formats&gt; &lt;dependencySets&gt; &lt;dependencySet&gt; &lt;!--不使用项目的artifact，第三方jar不要解压，打包进zip文件的lib目录--&gt; &lt;useProjectArtifact&gt;false&lt;/useProjectArtifact&gt; &lt;outputDirectory&gt;lib&lt;/outputDirectory&gt; &lt;unpack&gt;false&lt;/unpack&gt; &lt;/dependencySet&gt; &lt;/dependencySets&gt; &lt;fileSets&gt; &lt;!-- 把项目脚本文件，打包进zip文件的根目录 --&gt; &lt;fileSet&gt; &lt;directory&gt;$&#123;project.basedir&#125;/bin&lt;/directory&gt; &lt;outputDirectory&gt;&lt;/outputDirectory&gt; &lt;includes&gt; &lt;include&gt;*.sh&lt;/include&gt; &lt;/includes&gt; &lt;/fileSet&gt; &lt;!-- 把配置文件，打包进zip文件的config目录 --&gt; &lt;fileSet&gt; &lt;directory&gt;$&#123;project.basedir&#125;/src/main/resources&lt;/directory&gt; &lt;outputDirectory&gt;config&lt;/outputDirectory&gt; &lt;includes&gt; &lt;include&gt;**/*&lt;/include&gt; &lt;include&gt;*.xml&lt;/include&gt; &lt;include&gt;*.properties&lt;/include&gt; &lt;include&gt;*.yml&lt;/include&gt; &lt;include&gt;*.key&lt;/include&gt; &lt;/includes&gt; &lt;/fileSet&gt; &lt;!-- 把jar，打进zip文件的根目录 --&gt; &lt;fileSet&gt; &lt;directory&gt;$&#123;project.build.directory&#125;&lt;/directory&gt; &lt;outputDirectory&gt;&lt;/outputDirectory&gt; &lt;includes&gt; &lt;include&gt;*.jar&lt;/include&gt; &lt;/includes&gt; &lt;/fileSet&gt; &lt;/fileSets&gt;&lt;/assembly&gt; bin目录123456789101112131415#!/bin/bashset -xcat xx.pid | xargs kill -9sleep 1nohup java -jar xx.jar &gt;nohup.log 2&gt;&amp;1 &amp;pid=$!echo $pid &gt; xx.pidtail -200f nohup.info]]></content>
+      <categories>
+        <category>工具利器</category>
+      </categories>
+      <tags>
+        <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Java Collection Sort之IllegalArgumentException]]></title>
     <url>%2Fposts%2F63757%2F</url>
     <content type="text"><![CDATA[java.lang.IllegalArgumentException: Comparison method violates its general contract!在 JDK 7 版本以上， Comparator 要满足自反性，传递性，对称性，不然Arrays.sort、Collections.sort会报 IllegalArgumentException 异常。 说明：1 ） 自反性： x ， y 的比较结果和 y ， x 的比较结果相反。2 ） 传递性： x &gt; y , y &gt; z ,则 x &gt; z 。3 ） 对称性： x = y ,则 x , z 比较结果和 y ， z 比较结果相同。 反例： 下例中没有处理相等的情况，实际使用中可能会出现异常 123456new Comparator&lt;Student&gt;() &#123; @Override public int compare(Student o1, Student o2) &#123; return o1.getId() &gt; o2.getId() ? 1 : -1; &#125;&#125; 正例: 12345678910111213/** * 基于某种 Comparable 接口实现一个关键码类，并将所有通常的比较方法封装起来，以支持关键码之间的比较。 */public interface Comparator &#123; /** * 若a&gt;（=或&lt;）b，返回正数、零或负数 * * @param a * @param b * @return */ public int compare(Object a, Object b);&#125;]]></content>
@@ -339,8 +350,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java并发编程</tag>
         <tag>Java内存模型</tag>
+        <tag>Java并发编程</tag>
       </tags>
   </entry>
   <entry>
@@ -363,8 +374,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>synchronized</tag>
         <tag>Java并发编程</tag>
+        <tag>synchronized</tag>
       </tags>
   </entry>
   <entry>
@@ -415,15 +426,15 @@
       </categories>
       <tags>
         <tag>Spring Cloud</tag>
-        <tag>Zuul</tag>
         <tag>Ribbon</tag>
+        <tag>Zuul</tag>
         <tag>灰度测试</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[Spring Cloud - Nacos与Eureka区别及如何选型]]></title>
     <url>%2Fposts%2F35353%2F</url>
-    <content type="text"><![CDATA[Nacos与Eureka均提供注册中心和服务治理功能，以下为两则差异和选型方案。 功能差异 模块 Nacos Eureka 说明 注册中心 是 是 服务治理基本功能，负责服务中心化注册 配置中心 是 否 Eureka需要配合Config实现配置中心，且不提供管理界面 动态刷新 是 否 Eureka需要配合MQ实现配置动态刷新，Nacos采用Netty保持TCP长连接实时推送 可用区AZ 是 是 对服务集群划分不同区域，实现区域隔离，并提供容灾自动切换 分组 是 否 Nacos可用根据业务和环境进行分组管理 元数据 是 是 提供服务标签数据，例如环境或服务标识 权重 是 否 Nacos默认提供权重设置功能，调整承载流量压力 健康检查 是 是 Nacos支持由客户端或服务端发起的健康检查，Eureka是由客户端发起心跳 负载均衡 是 是 均提供负责均衡策略，Eureka采用Ribion 管理界面 是 否 Nacos支持对服务在线管理，Eureka只是预览服务状态 部署安装 模块 Nacos Eureka 说明 MySql 是 否 Nacos需要采用MySql进行数据进行持久化 MQ 否 是 Eureka需要采用MQ进行配置中心刷新 配置中心 是 否 Eureka结合Config或者Consul实现配置中心 配置文件 在线编辑 本地文件或者Git远程文件 Eureka结合Config或者Consul 集群 是 是 Nacos需要配置集群ip再启动 稳定及扩展性 模块 Nacos Eureka 说明 版本 1.0.0 1.9.9 Eureka2.0已停止开发,Nacos处于1.x-2.0开发 厂商 阿里巴巴 Netflix Netflix已长期用于生产,阿里刚起步 生产建议 否 是 Nacos0.8以前不可用于生产,建议生产采用Nacos1.0,便于节省配置中心集群和服务管理 未来发展 是 否 Nacos 2.0主要关注在统一服务管理、服务共享及服务治理体系的开放的服务平台的建设 选型建议采用Eureka方案的考虑 想用Spring Cloud原生全家桶 想用本地文件和Git作为配置管理的,将配置与服务分开管理 考虑短期的稳定性 采用Nacos方案的考虑 想在线对服务进行上下线和流量管理 不想采用MQ实现配置中心动态刷新 不想新增配置中心生产集群 考虑引入Spring Cloud Alibaba生态]]></content>
+    <content type="text"><![CDATA[Nacos与Eureka均提供注册中心和服务治理功能，以下为两者差异和选型方案。 功能差异 模块 Nacos Eureka 说明 注册中心 是 是 服务治理基本功能，负责服务中心化注册 配置中心 是 否 Eureka需要配合Config实现配置中心，且不提供管理界面 动态刷新 是 否 Eureka需要配合MQ实现配置动态刷新，Nacos采用Netty保持TCP长连接实时推送 可用区AZ 是 是 对服务集群划分不同区域，实现区域隔离，并提供容灾自动切换 分组 是 否 Nacos可用根据业务和环境进行分组管理 元数据 是 是 提供服务标签数据，例如环境或服务标识 权重 是 否 Nacos默认提供权重设置功能，调整承载流量压力 健康检查 是 是 Nacos支持由客户端或服务端发起的健康检查，Eureka是由客户端发起心跳 负载均衡 是 是 均提供负责均衡策略，Eureka采用Ribion 管理界面 是 否 Nacos支持对服务在线管理，Eureka只是预览服务状态 部署安装 模块 Nacos Eureka 说明 MySql 是 否 Nacos需要采用MySql进行数据进行持久化 MQ 否 是 Eureka需要采用MQ进行配置中心刷新 配置中心 是 否 Eureka结合Config或者Consul实现配置中心 配置文件 在线编辑 本地文件或者Git远程文件 Eureka结合Config或者Consul 集群 是 是 Nacos需要配置集群ip再启动 稳定及扩展性 模块 Nacos Eureka 说明 版本 1.0.0 1.9.9 Eureka2.0已停止开发,Nacos处于1.x-2.0开发 厂商 阿里巴巴 Netflix Netflix已长期用于生产,阿里刚起步 生产建议 否 是 Nacos0.8以前不可用于生产,建议生产采用Nacos1.0,便于节省配置中心集群和服务管理 未来发展 是 否 Nacos 2.0主要关注在统一服务管理、服务共享及服务治理体系的开放的服务平台的建设 选型建议采用Eureka方案的考虑 想用Spring Cloud原生全家桶 想用本地文件和Git作为配置管理的,将配置与服务分开管理 考虑短期的稳定性 采用Nacos方案的考虑 想在线对服务进行上下线和流量管理 不想采用MQ实现配置中心动态刷新 不想新增配置中心生产集群 考虑引入Spring Cloud Alibaba生态]]></content>
       <categories>
         <category>微服务</category>
       </categories>

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://perkins4j2.github.io/posts/26061/</loc>
+    <lastmod>2019-08-23</lastmod>
+  </url>  <url>
+    <loc>https://perkins4j2.github.io/posts/35353/</loc>
+    <lastmod>2019-08-22</lastmod>
+  </url>  <url>
     <loc>https://perkins4j2.github.io/posts/63757/</loc>
     <lastmod>2019-08-22</lastmod>
   </url>  <url>
@@ -40,10 +46,10 @@
     <loc>https://perkins4j2.github.io/posts/4544/</loc>
     <lastmod>2019-08-14</lastmod>
   </url>  <url>
-    <loc>https://perkins4j2.github.io/posts/15864/</loc>
+    <loc>https://perkins4j2.github.io/posts/54901/</loc>
     <lastmod>2019-08-14</lastmod>
   </url>  <url>
-    <loc>https://perkins4j2.github.io/posts/54901/</loc>
+    <loc>https://perkins4j2.github.io/posts/15864/</loc>
     <lastmod>2019-08-14</lastmod>
   </url>  <url>
     <loc>https://perkins4j2.github.io/posts/58696/</loc>
@@ -129,8 +135,5 @@
   </url>  <url>
     <loc>https://perkins4j2.github.io/posts/25628/</loc>
     <lastmod>2019-05-05</lastmod>
-  </url>  <url>
-    <loc>https://perkins4j2.github.io/posts/35353/</loc>
-    <lastmod>2019-04-30</lastmod>
   </url>
 </urlset>
