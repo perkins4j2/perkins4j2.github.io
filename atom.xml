@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-08-23T01:10:16.587Z</updated>
+  <updated>2019-08-23T01:12:45.311Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://perkins4j2.github.io/posts/26061/"/>
     <id>https://perkins4j2.github.io/posts/26061/</id>
     <published>2019-08-23T01:04:46.000Z</published>
-    <updated>2019-08-23T01:10:16.587Z</updated>
+    <updated>2019-08-23T01:12:45.311Z</updated>
     
     <summary type="html">
     
@@ -31,7 +31,8 @@
 &lt;li&gt;将脚本单独打包&lt;/li&gt;
 &lt;li&gt;将执行jar单独打包&lt;/li&gt;
 &lt;li&gt;将配置文件单独打包&lt;/li&gt;
-&lt;li&gt;自动关闭和启动进程
+&lt;li&gt;自动关闭和启动进程&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
