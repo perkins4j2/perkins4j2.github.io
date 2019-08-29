@@ -437,7 +437,7 @@
                 
               
 
-              <time title="创建时间：2019-08-29 09:22:22 / 修改时间：09:35:57" itemprop="dateCreated datePublished" datetime="2019-08-29T09:22:22+08:00">2019-08-29</time>
+              <time title="创建时间：2019-08-29 09:22:22 / 修改时间：09:42:51" itemprop="dateCreated datePublished" datetime="2019-08-29T09:22:22+08:00">2019-08-29</time>
             
 
             
@@ -523,27 +523,19 @@
 
       
         
-          
-            <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    Runnable target;</span><br><span class="line">    <span class="keyword">char</span>[] name;</span><br><span class="line">    <span class="keyword">boolean</span> daemon;</span><br><span class="line">    <span class="keyword">int</span> priority;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Thread <span class="title">init</span><span class="params">(Runnable target, String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (name == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"name cannot be null"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 当前线程就是该线程的父线程</span></span><br><span class="line">        Thread parent = currentThread();</span><br><span class="line">        <span class="comment">// 将daemon、priority属性设置为父线程的对应属性</span></span><br><span class="line">        <span class="keyword">this</span>.daemon = parent.isDaemon();</span><br><span class="line">        <span class="keyword">this</span>.priority = parent.getPriority();</span><br><span class="line">        <span class="keyword">this</span>.name = name.toCharArray();</span><br><span class="line">        <span class="keyword">this</span>.target = target;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//构造线程组，便于统一管控</span></span><br><span class="line">        ThreadGroup g = <span class="keyword">new</span> ThreadGroup(name + <span class="string">"Group"</span>);</span><br><span class="line">        g.setDaemon(daemon);</span><br><span class="line">        g.setMaxPriority(priority);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//构造线程</span></span><br><span class="line">        Thread thread = <span class="keyword">new</span> Thread(g, target, name);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> thread;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">(Thread thread)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//处于就绪（可运行）状态，并没有运行，一旦得到cpu时间片，就开始执行相应线程的run()方法</span></span><br><span class="line">        thread.start();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//run()就和普通的成员方法一样，可以被重复调用</span></span><br><span class="line">        <span class="comment">//thread.run();</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//执行方法</span></span><br><span class="line">        Runnable runnable = () -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">"Test"</span>);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        ThreadTest threadTest = <span class="keyword">new</span> ThreadTest();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            threadTest.run(threadTest.init(runnable, <span class="string">"Test"</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="构造线程"><a href="#构造线程" class="headerlink" title="构造线程"></a>构造线程</h3><p>在运行线程之前首先要构造一个线程对象，线程对象在构造的时候需要提供线程所需要的属性，如线程所属的线程组、线程优先级、是否是Daemon线程等信息。</p>
-<h3 id="线程启动"><a href="#线程启动" class="headerlink" title="线程启动"></a>线程启动</h3><h4 id="启动方法"><a href="#启动方法" class="headerlink" title="启动方法"></a>启动方法</h4><p>线程对象在初始化完成之后，调用start()方法就可以启动这个线程。</p>
+          <h3 id="构造线程"><a href="#构造线程" class="headerlink" title="构造线程"></a>构造线程</h3><p>在运行线程之前首先要构造一个线程对象，线程对象在构造的时候需要提供线程所需要的属性，如线程所属的线程组、线程优先级、是否是Daemon线程等信息。</p>
+<h3 id="线程启动"><a href="#线程启动" class="headerlink" title="线程启动"></a>线程启动</h3><p>线程对象在初始化完成之后，调用start()方法就可以启动这个线程。</p>
 <p>线程start()方法的含当前线程（即parent线程）同步告知Java虚拟机，只要线程规划器空闲，应立即启动调用()方法的线程。</p>
 <p>注意 启动一个线程前，最好为这个线程设置线程名称，因为这样在使用jstack分析或者进行问题排查时，就会给开发人员提供一些提示，自定义的线程最好能够起个名字。</p>
-<p>实现并启动线程有两种方法</p>
-<ol>
-<li>写一个类继承自Thread类，重写run方法。用start方法启动线程</li>
-<li>写一个类实现Runnable接口，实现run方法。用new Thread(Runnable target).start()方法来启动</li>
-</ol>
-<h4 id="start-和run"><a href="#start-和run" class="headerlink" title="start()和run()"></a>start()和run()</h4><ol>
-<li><p>start启动线程，无需等待run方法体代码执行完毕，可以直接继续执行下面的代码；start()方法来启动一个线程， 这时此线程是处于就绪状态， 并没有运行。 </p>
-<p>然后通过此Thread类调用方法run()来完成其运行操作的， 这里方法run()称为线程体，它包含了要执行的这个线程的内容， Run方法运行结束， 此线程终止。然后CPU再调度其它线程。</p>
-</li>
-<li><p>run方法当作普通方法的方式调用。程序还是要顺序执行，要等待run方法体执行完毕后，才可继续执行下面的代码。</p>
-</li>
-</ol>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/posts/58008/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-08-29T01:35:57.460Z</updated>
+  <updated>2019-08-29T01:42:51.848Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -21,17 +21,14 @@
     <link href="https://perkins4j2.github.io/posts/58008/"/>
     <id>https://perkins4j2.github.io/posts/58008/</id>
     <published>2019-08-29T01:22:22.000Z</published>
-    <updated>2019-08-29T01:35:57.460Z</updated>
+    <updated>2019-08-29T01:42:51.848Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span
-        
-      
+      &lt;h3 id=&quot;构造线程&quot;&gt;&lt;a href=&quot;#构造线程&quot; class=&quot;headerlink&quot; title=&quot;构造线程&quot;&gt;&lt;/a&gt;构造线程&lt;/h3&gt;&lt;p&gt;在运行线程之前首先要构造一个线程对象，线程对象在构造的时候需要提供线程所需要的属性，如线程所属的线程组、线程优先级、是否是Daemon线程等信息。&lt;/p&gt;
+&lt;h3 id=&quot;线程启动&quot;&gt;&lt;a href=&quot;#线程启动&quot; class=&quot;headerlink&quot; title=&quot;线程启动&quot;&gt;&lt;/a&gt;线程启动&lt;/h3&gt;&lt;p&gt;线程对象在初始化完成之后，调用start()方法就可以启动这个线程。&lt;/p&gt;
+&lt;p&gt;线程start()方法的含当前线程（即parent线程）同步告知Java虚拟机，只要线程规划器空闲，应立即启动调用()方法的线程。&lt;/p&gt;
+&lt;p&gt;注意 启动一个线程前，最好为这个线程设置线程名称，因为这样在使用jstack分析或者进行问题排查时，就会给开发人员提供一些提示，自定义的线程最好能够起个名字。&lt;/p&gt;
     
     </summary>
     
