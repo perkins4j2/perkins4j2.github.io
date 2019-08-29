@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-08-23T01:14:33.974Z</updated>
+  <updated>2019-08-29T01:34:52.866Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,11 +17,67 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java并发编程艺术 - 多线程构造和启动</title>
+    <link href="https://perkins4j2.github.io/posts/58008/"/>
+    <id>https://perkins4j2.github.io/posts/58008/</id>
+    <published>2019-08-29T01:22:22.000Z</published>
+    <updated>2019-08-29T01:34:52.866Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="多线程" scheme="https://perkins4j2.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java线程启动和中断</title>
+    <link href="https://perkins4j2.github.io/posts/36024/"/>
+    <id>https://perkins4j2.github.io/posts/36024/</id>
+    <published>2019-08-24T01:07:52.000Z</published>
+    <updated>2019-08-24T01:08:55.627Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;构造线程&quot;&gt;&lt;a href=&quot;#构造线程&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="重排序" scheme="https://perkins4j2.github.io/tags/%E9%87%8D%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Maven自定义打包脚本</title>
     <link href="https://perkins4j2.github.io/posts/26061/"/>
     <id>https://perkins4j2.github.io/posts/26061/</id>
     <published>2019-08-23T01:04:46.000Z</published>
-    <updated>2019-08-23T01:14:33.974Z</updated>
+    <updated>2019-08-27T13:09:14.051Z</updated>
     
     <summary type="html">
     
@@ -454,59 +510,6 @@
       <category term="Prometheus" scheme="https://perkins4j2.github.io/tags/Prometheus/"/>
     
       <category term="SpringBoot" scheme="https://perkins4j2.github.io/tags/SpringBoot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java Lambda用法</title>
-    <link href="https://perkins4j2.github.io/posts/15864/"/>
-    <id>https://perkins4j2.github.io/posts/15864/</id>
-    <published>2019-08-02T01:20:44.000Z</published>
-    <updated>2019-08-14T02:17:13.579Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;特点&quot;&gt;&lt;a href=&quot;#特点&quot; class=&quot;headerlink&quot; title=&quot;特点&quot;&gt;&lt;/a&gt;特点&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;函数传递&lt;/li&gt;
-&lt;li&gt;函数编程&lt;/li&gt;
-&lt;li&gt;闭包&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Java 中的 Lambda 表达式通常使用 (argument) -&amp;gt; (body) 语法书写，例如：&lt;/p&gt;
-&lt;p&gt;(arg1, arg2…) -&amp;gt; { body }&lt;/p&gt;
-&lt;p&gt;(type1 arg1, type2 arg2…) -&amp;gt; { body }&lt;br&gt;以下是一些 Lambda 表达式的例子：&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; a, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; b) -&amp;gt; &amp;#123;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; a + b; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;() -&amp;gt; System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;Hello World&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;(String s) -&amp;gt; &amp;#123; System.out.println(s); &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;() -&amp;gt; &lt;span class=&quot;number&quot;&gt;42&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;() -&amp;gt; &amp;#123; &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;3.1415&lt;/span&gt; &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;每个 Lambda 表达式都能隐式地赋值给函数式接口，例如，我们可以通过 Lambda 表达式创建 Runnable 接口的引用。&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Runnable r = () -&amp;gt; System.out.println(&lt;span class=&quot;string&quot;&gt;&quot;hello world&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Lambda" scheme="https://perkins4j2.github.io/tags/Lambda/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ElasticSearch基本操作</title>
-    <link href="https://perkins4j2.github.io/posts/278/"/>
-    <id>https://perkins4j2.github.io/posts/278/</id>
-    <published>2019-06-24T12:28:19.000Z</published>
-    <updated>2019-06-24T12:36:11.720Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Doc&quot;&gt;&lt;a href=&quot;#Doc&quot; class=&quot;headerlink&quot; title=&quot;Doc&quot;&gt;&lt;/a&gt;Doc&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://docs.spring.io/spring-data/elasticsearch/docs/current/reference/html/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://docs.spring.io/spring-data/elasticsearch/docs/current/reference/html/&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;聚合去重&quot;&gt;&lt;a href=&quot;#聚合去重&quot; class=&quot;headerlink&quot; title=&quot;聚合去重&quot;&gt;&lt;/a&gt;聚合去重&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://192.168.1.100:9200/a-b/a_b/_search&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://192.168.1.100:9200/a-b/a_b/_search&lt;/a&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;from&amp;quot;: 0,  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;size&amp;quot;: 0,  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;quot;aggregations&amp;quot;: &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;quot;field1&amp;quot;: &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;quot;terms&amp;quot;: &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &amp;quot;field&amp;quot;: &amp;quot;xx&amp;quot;,  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                &amp;quot;size&amp;quot;: 21474837  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="ElasticSearch" scheme="https://perkins4j2.github.io/tags/ElasticSearch/"/>
     
   </entry>
   

@@ -107,18 +107,18 @@
 
 
 
-  <meta name="description" content="启动Java应用程序则是一个进程，一个进程可以启动多个线程，线程是操作系统调度最小单元。线程拥有独立的计数器、栈和局部变量，可以共享堆内存。 一个Java程序入口是main主线程，线程优先级从1-10，优先级越高分配时间片越长。 线程状态 NEW 新建 Thread.start();   RUNNABLE 运行，包括就绪和运行 Thread.run();   BLOCKED 阻塞 synchron">
+  <meta name="description" content="启动Java应用程序则是一个进程，一个进程可以启动多个线程，线程是操作系统调度最小单元。线程拥有独立的计数器、栈和局部变量，可以共享堆内存。 一个Java程序入口是main主线程，线程优先级从1-10，优先级越高分配时间片越长。 为什么使用多线程 更多的处理器核心   使用多线程技术，将计算逻辑分配到多个处理器核心上，就会显著减少程序的处理时间，并且随着更多处理器核心的加入而变得更有效率。  更快">
 <meta name="keywords" content="Java并发编程,多线程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发编程艺术 - 多线程">
 <meta property="og:url" content="https://perkins4j2.github.io/posts/24227/index.html">
 <meta property="og:site_name" content="Perkins4j2的技术博客">
-<meta property="og:description" content="启动Java应用程序则是一个进程，一个进程可以启动多个线程，线程是操作系统调度最小单元。线程拥有独立的计数器、栈和局部变量，可以共享堆内存。 一个Java程序入口是main主线程，线程优先级从1-10，优先级越高分配时间片越长。 线程状态 NEW 新建 Thread.start();   RUNNABLE 运行，包括就绪和运行 Thread.run();   BLOCKED 阻塞 synchron">
+<meta property="og:description" content="启动Java应用程序则是一个进程，一个进程可以启动多个线程，线程是操作系统调度最小单元。线程拥有独立的计数器、栈和局部变量，可以共享堆内存。 一个Java程序入口是main主线程，线程优先级从1-10，优先级越高分配时间片越长。 为什么使用多线程 更多的处理器核心   使用多线程技术，将计算逻辑分配到多个处理器核心上，就会显著减少程序的处理时间，并且随着更多处理器核心的加入而变得更有效率。  更快">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-03T06:36:22.000Z">
+<meta property="og:updated_time" content="2019-08-24T01:00:55.885Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程艺术 - 多线程">
-<meta name="twitter:description" content="启动Java应用程序则是一个进程，一个进程可以启动多个线程，线程是操作系统调度最小单元。线程拥有独立的计数器、栈和局部变量，可以共享堆内存。 一个Java程序入口是main主线程，线程优先级从1-10，优先级越高分配时间片越长。 线程状态 NEW 新建 Thread.start();   RUNNABLE 运行，包括就绪和运行 Thread.run();   BLOCKED 阻塞 synchron">
+<meta name="twitter:description" content="启动Java应用程序则是一个进程，一个进程可以启动多个线程，线程是操作系统调度最小单元。线程拥有独立的计数器、栈和局部变量，可以共享堆内存。 一个Java程序入口是main主线程，线程优先级从1-10，优先级越高分配时间片越长。 为什么使用多线程 更多的处理器核心   使用多线程技术，将计算逻辑分配到多个处理器核心上，就会显著减少程序的处理时间，并且随着更多处理器核心的加入而变得更有效率。  更快">
 
 
 
@@ -307,7 +307,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">45</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">47</span></a>
 
   </li>
 
@@ -438,12 +438,24 @@
                 
               
 
-              <time title="创建时间：2019-06-03 13:48:17 / 修改时间：14:36:22" itemprop="dateCreated datePublished" datetime="2019-06-03T13:48:17+08:00">2019-06-03</time>
+              <time title="创建时间：2019-06-03 13:48:17" itemprop="dateCreated datePublished" datetime="2019-06-03T13:48:17+08:00">2019-06-03</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-24 09:00:55" itemprop="dateModified" datetime="2019-08-24T09:00:55+08:00">2019-08-24</time>
               
             
           </span>
@@ -496,7 +508,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">8.1k</span>
+                <span title="本文字数">9.7k</span>
               
 
               
@@ -510,7 +522,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">7 分钟</span>
+                <span title="阅读时长">9 分钟</span>
               
             </div>
           
@@ -532,6 +544,17 @@
       
         <p>启动Java应用程序则是一个进程，一个进程可以启动多个线程，线程是操作系统调度最小单元。线程拥有独立的计数器、栈和局部变量，可以共享堆内存。</p>
 <p>一个Java程序入口是main主线程，线程优先级从1-10，优先级越高分配时间片越长。</p>
+<h3 id="为什么使用多线程"><a href="#为什么使用多线程" class="headerlink" title="为什么使用多线程"></a>为什么使用多线程</h3><ul>
+<li><p>更多的处理器核心</p>
+<p>  使用多线程技术，将计算逻辑分配到多个处理器核心上，就会显著减少程序的处理时间，并且随着更多处理器核心的加入而变得更有效率。</p>
+</li>
+<li><p>更快的响应时间</p>
+<p>  使用多线程技术，即将数据一致性不强的操作派发给其他线程处<br>理（也可以使用消息队列），如生成订单快照、发送邮件等。这样做的好处是响应用户请求的线程能够尽可能快地处理完成，缩短了响应时间，提升了用户体验。</p>
+</li>
+<li><p>更好的编程模型</p>
+<p>Java为多线程编程提供了良好、考究并且一致的编程模型，使开发人员能够更加专注于问题的解决，即为所遇到的问题建立合适的模型，而不是绞尽脑汁地考虑如何将其多线程化。一<br>旦开发人员建立好了模型，稍做修改总是能够方便地映射到Java提供的多线程编程模型上。</p>
+</li>
+</ul>
 <h3 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h3><ul>
 <li>NEW 新建<ul>
 <li>Thread.start();</li>
@@ -561,17 +584,41 @@
 </li>
 <li>TERMINATED 终止<ul>
 <li>interrupt(),isInterrupted()和interrupted()</li>
-<li>suspend()、resume()和stop()</li>
+<li>suspend()、resume()和stop()<br>线程在自身的生命周期中，并不是固定地处于某个状态，而是随着代码的执行在不同的状态之间进行切换<a id="more"></a>
+</li>
 </ul>
 </li>
 </ul>
-<a id="more"></a>
-
+<ul>
+<li><p>线程创建之后，调用start()方法开始运行。</p>
+</li>
+<li><p>当线程执行wait()方法之后，线程进入等待状态。</p>
+</li>
+<li><p>进入等待状态的线程需要依靠其他线程的通知才能够返回到运行状态</p>
+</li>
+<li><p>而超时等待状态相当于在等待状态的基础上增加了超时限制，也就是超时时间到达时将会返回到运行状态。</p>
+</li>
+<li><p>当线程调用同步方法时，在没有获取到锁的情况下，线程将会进入到阻塞状态。</p>
+</li>
+<li><p>线程在执行Runnable的run()方法之后将会进入到终止状态。</p>
+</li>
+<li><p>Java将操作系统中的运行和就绪两个状态合并称为运行状态。</p>
+</li>
+<li><p>阻塞状态是线程阻塞在进入synchronized关键字修饰的方法或代码块（获取锁）时的状态。</p>
+</li>
+<li><p>但是阻塞在java.concurrent包中Lock接口的线程状态却是等待状态，因为java.concurrent包中Lock接口对于阻塞的实现均使用了LockSupport类中的相关方法。</p>
+</li>
+</ul>
 <h3 id="线程优先级"><a href="#线程优先级" class="headerlink" title="线程优先级"></a>线程优先级</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Thread thread = <span class="keyword">new</span> Thread(job, <span class="string">"Thread:"</span> + i);</span><br><span class="line">thread.setPriority(priority);</span><br><span class="line">thread.start();</span><br></pre></td></tr></table></figure>
 
+<p>在Java线程中，通过一个整型成员变量priority来控制优先级，优先级的范围从1~10，在线程构建的时候可以通过setPriority(int)方法来修改优先级，默认优先级是5，优先级高的线程分配时间片的数量要多于优先级低的线程。</p>
+<p>设置线程优先级时，针对频繁阻塞（休眠或者I/O操作）的线程需要设置较高优先级，而偏重计算（需要较多CPU时间或者偏运算）的线程则设置较低的优先级，确保处理器不会被独占。在不同的JVM以及操作系统上，线程规划会存在差异，有些操作系统甚至会忽略对线程优先级的设定。</p>
+<p>线程优先级不能作为程序正确性的依赖，因为操作系统可以完全不用理会Java线程对于优先级的设定。</p>
 <h3 id="Daemon线程"><a href="#Daemon线程" class="headerlink" title="Daemon线程"></a>Daemon线程</h3><p>守护线程，为非Daemon线程提供后台调度和服务，例如GC线程。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Thread thread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> DaemonRunner(), <span class="string">"DaemonRunner"</span>);</span><br><span class="line">thread.setDaemon(<span class="keyword">true</span>);</span><br><span class="line">thread.start();</span><br></pre></td></tr></table></figure>
 
+<p>Daemon线程是一种支持型线程，因为它主要被用作程序中后台调度以及支持性工作。这意味着，当一个Java虚拟机中不存在非Daemon线程的时候，Java虚拟机将会退出。可以通过调用Thread.setDaemon(true)将线程设置为Daemon线程。</p>
+<p>Daemon属性需要在启动线程之前设置，不能在启动线程之后设置。</p>
 <h3 id="线程中断"><a href="#线程中断" class="headerlink" title="线程中断"></a>线程中断</h3><p>其他线程调用该线程的interrupt()方法进行中断，线程本身调用isInterrupted(()判断是否中断，也可以调用Thread.interrupted()对当前线程的中断标识位进行复位。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Thread2</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Runner one = <span class="keyword">new</span> Runner();</span><br><span class="line">        Thread countThread = <span class="keyword">new</span> Thread(one, <span class="string">"CountThread1"</span>);</span><br><span class="line">        countThread.start();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 睡眠1秒，main线程对CountThread进行中断，使CountThread能够感知中断而结束</span></span><br><span class="line">        TimeUnit.SECONDS.sleep(<span class="number">1</span>);</span><br><span class="line">        countThread.interrupt();</span><br><span class="line"></span><br><span class="line">        Runner two = <span class="keyword">new</span> Runner();</span><br><span class="line">        countThread = <span class="keyword">new</span> Thread(two, <span class="string">"CountThread2"</span>);</span><br><span class="line">        countThread.start();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 睡眠1秒，main线程对Runner two进行取消，使CountThread能够感知on为false而结束</span></span><br><span class="line">        TimeUnit.SECONDS.sleep(<span class="number">1</span>);</span><br><span class="line">        two.cancel();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Runner</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">long</span> i;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> on = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">while</span> (on &amp;&amp; !Thread.currentThread().isInterrupted()) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    i++;</span><br><span class="line">                    Thread.sleep(<span class="number">100</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    Thread.currentThread().interrupt();<span class="comment">//重新设置中断标示</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"Count i = "</span> + i + <span class="string">",Name:"</span> + Thread.currentThread().getName());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            on = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -603,6 +650,13 @@
     <li class="popular-posts-item">
       
       
+      <div class="popular-posts-title"><a href="/posts/58008/" rel="bookmark">Java并发编程艺术 - 多线程构造和启动</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
       <div class="popular-posts-title"><a href="/posts/20463/" rel="bookmark">Java并发编程艺术 - 死锁产生及优化</a></div>
       
     </li>
@@ -611,13 +665,6 @@
       
       
       <div class="popular-posts-title"><a href="/posts/49164/" rel="bookmark">Java并发编程艺术 - Java内存模型基础</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/posts/28363/" rel="bookmark">Java并发编程艺术 - 原子性及CAS使用和原理</a></div>
       
     </li>
   
@@ -800,7 +847,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -995,7 +1042,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程状态"><span class="nav-number">1.</span> <span class="nav-text">线程状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程优先级"><span class="nav-number">2.</span> <span class="nav-text">线程优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Daemon线程"><span class="nav-number">3.</span> <span class="nav-text">Daemon线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程中断"><span class="nav-number">4.</span> <span class="nav-text">线程中断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程等待和通知"><span class="nav-number">5.</span> <span class="nav-text">线程等待和通知</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么使用多线程"><span class="nav-number">1.</span> <span class="nav-text">为什么使用多线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程状态"><span class="nav-number">2.</span> <span class="nav-text">线程状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程优先级"><span class="nav-number">3.</span> <span class="nav-text">线程优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Daemon线程"><span class="nav-number">4.</span> <span class="nav-text">Daemon线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程中断"><span class="nav-number">5.</span> <span class="nav-text">线程中断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程等待和通知"><span class="nav-number">6.</span> <span class="nav-text">线程等待和通知</span></a></li></ol></div>
             
 
           </div>
@@ -1037,7 +1084,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">99k</span>
+    <span title="站点总字数">104k</span>
   
 
   
@@ -1048,7 +1095,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">1:30</span>
+    <span title="站点阅读时长">1:34</span>
   
 </div>
 
