@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Java并发编程艺术 - 线程中断]]></title>
+    <url>%2Fposts%2F45493%2F</url>
+    <content type="text"><![CDATA[中断可以理解为线程的一个标识位属性，它表示一个运行中的线程是否被其他线程进行了中断操作。中断好比其他线程对该线程打了个招呼，其他线程通过调用该线程的interrupt()方法对其进行中断操作。 12345678910111213141516171819202122232425262728293031public static void main(String[] args) &#123; AtomicInteger atomicInteger = new AtomicInteger(0); Runnable runnable = () -&gt; &#123; while (true) &#123; atomicInteger.incrementAndGet(); try &#123; //阻塞cpu Thread.sleep(1000); if (atomicInteger.get() &gt; 5) &#123; //中断信号 Thread.currentThread().interrupt(); &#125; &#125; catch (InterruptedException e) &#123; e.printStackTrace(); //异常后的中断标记 System.out.println(Thread.currentThread().isInterrupted() + "-" + atomicInteger.get()); &#125; //输出中断标记 System.out.println(Thread.currentThread().isInterrupted() + "-" + atomicInteger.get()); &#125; &#125;; Thread thread = new Thread(runnable); //就绪，并行；不能直接使用run，run是串行 thread.start(); &#125; 输出 1234567891011false-1false-2false-3false-4false-5true-6java.lang.InterruptedException: sleep interrupted at java.lang.Thread.sleep(Native Method) at ThreadInterrupt.lambda$main$0(ThreadInterrupt.java:19) at java.lang.Thread.run(Thread.java:748)false-7 线程通过检查自身是否被中断来进行响应，线程通过方法isInterrupted()来进行判断是否被中断，也可以调用静态方法Thread.interrupted()对当前线程的中断标识位进行复位true-6。如果该线程已经处于终结状态，即使该线程被中断过，在调用该线程对象的isInterrupted()时依旧会返回false。 从上面false-7可以看到，抛出InterruptedException的方法，Java虚拟机会先将该线程的中断标识位清除，然后抛出InterruptedException，此时调用isInterrupted()方法将会返回false。 123456//中断标记，实例方法，针对线程对象public void interrupt()//中断状态，实例方法，针对线程对象public boolean isInterrupted()//中断状态，静态方法，针对当前线程public static boolean interrupted()]]></content>
+      <categories>
+        <category>并发编程</category>
+      </categories>
+      <tags>
+        <tag>Java并发编程</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Java并发编程艺术 - 多线程构造和启动]]></title>
     <url>%2Fposts%2F58008%2F</url>
     <content type="text"><![CDATA[构造线程在运行线程之前首先要构造一个线程对象，线程对象在构造的时候需要提供线程所需要的属性，如线程所属的线程组、线程优先级、是否是Daemon线程等信息。 线程启动线程对象在初始化完成之后，调用start()方法就可以启动这个线程。 线程start()方法的含当前线程（即parent线程）同步告知Java虚拟机，只要线程规划器空闲，应立即启动调用()方法的线程。 注意 启动一个线程前，最好为这个线程设置线程名称，因为这样在使用jstack分析或者进行问题排查时，就会给开发人员提供一些提示，自定义的线程最好能够起个名字。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152public class ThreadTest &#123; Runnable target; char[] name; boolean daemon; int priority; public Thread init(Runnable target, String name) &#123; if (name == null) &#123; throw new NullPointerException("name cannot be null"); &#125; // 当前线程就是该线程的父线程 Thread parent = currentThread(); // 将daemon、priority属性设置为父线程的对应属性 this.daemon = parent.isDaemon(); this.priority = parent.getPriority(); this.name = name.toCharArray(); this.target = target; //构造线程组，便于统一管控 ThreadGroup g = new ThreadGroup(name + "Group"); g.setDaemon(daemon); g.setMaxPriority(priority); //构造线程 Thread thread = new Thread(g, target, name); return thread; &#125; public void run(Thread thread) &#123; //处于就绪（可运行）状态，并没有运行，一旦得到cpu时间片，就开始执行相应线程的run()方法 thread.start(); //run()就和普通的成员方法一样，可以被重复调用 //thread.run(); &#125; public static void main(String[] args) &#123; //执行方法 Runnable runnable = () -&gt; &#123; System.out.println("Test"); &#125;; ThreadTest threadTest = new ThreadTest(); while (true) &#123; threadTest.run(threadTest.init(runnable, "Test")); &#125; &#125;&#125; 实现并启动线程有两种方法 写一个类继承自Thread类，重写run方法。用start方法启动线程 写一个类实现Runnable接口，实现run方法。用new Thread(Runnable target).start()方法来启动 start()和run() start启动线程，无需等待run方法体代码执行完毕，可以直接继续执行下面的代码；start()方法来启动一个线程， 这时此线程是处于就绪状态， 并没有运行。 然后通过此Thread类调用方法run()来完成其运行操作的， 这里方法run()称为线程体，它包含了要执行的这个线程的内容， Run方法运行结束， 此线程终止。然后CPU再调度其它线程。 run方法当作普通方法的方式调用。程序还是要顺序执行，要等待run方法体执行完毕后，才可继续执行下面的代码。]]></content>
@@ -362,8 +374,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java内存模型</tag>
         <tag>Java并发编程</tag>
+        <tag>Java内存模型</tag>
       </tags>
   </entry>
   <entry>
@@ -386,8 +398,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java并发编程</tag>
         <tag>synchronized</tag>
+        <tag>Java并发编程</tag>
       </tags>
   </entry>
   <entry>
