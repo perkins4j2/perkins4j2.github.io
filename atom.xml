@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-09-05T01:10:32.968Z</updated>
+  <updated>2019-09-05T01:11:08.599Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://perkins4j2.github.io/posts/52791/"/>
     <id>https://perkins4j2.github.io/posts/52791/</id>
     <published>2019-09-05T01:05:00.000Z</published>
-    <updated>2019-09-05T01:10:32.968Z</updated>
+    <updated>2019-09-05T01:11:08.599Z</updated>
     
     <summary type="html">
     
@@ -162,17 +162,25 @@
     <link href="https://perkins4j2.github.io/posts/34381/"/>
     <id>https://perkins4j2.github.io/posts/34381/</id>
     <published>2019-08-21T12:06:32.000Z</published>
-    <updated>2019-08-21T13:34:23.788Z</updated>
+    <updated>2019-09-05T01:20:09.655Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h3 id=&quot;文件监控&quot;&gt;&lt;a href=&quot;#文件监控&quot; class=&quot;headerlink&quot; title=&quot;文件监控&quot;&gt;&lt;/a&gt;文件监控&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
-        
-      
+      &lt;h3 id=&quot;两种监控文件和目录方式&quot;&gt;&lt;a href=&quot;#两种监控文件和目录方式&quot; class=&quot;headerlink&quot; title=&quot;两种监控文件和目录方式&quot;&gt;&lt;/a&gt;两种监控文件和目录方式&lt;/h3&gt;&lt;h4 id=&quot;Commons-io&quot;&gt;&lt;a href=&quot;#Commons-io&quot; class=&quot;headerlink&quot; title=&quot;Commons-io&quot;&gt;&lt;/a&gt;Commons-io&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;在Apache的Commons-io提供文件的监控功能。&lt;/li&gt;
+&lt;li&gt;由文件监控类FileAlterationMonitor中的线程不停的扫描文件观察器FileAlterationObserver。&lt;/li&gt;
+&lt;li&gt;如果有文件的变化，则根据相关的文件比较器，判断文件时新增，还是删除，还是更改。（默认为1000毫秒执行一次扫描）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;WatchService&quot;&gt;&lt;a href=&quot;#WatchService&quot; class=&quot;headerlink&quot; title=&quot;WatchService&quot;&gt;&lt;/a&gt;WatchService&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Java1.7中提供了NIO WatchService来监控系统中文件的变化。&lt;/li&gt;
+&lt;li&gt;该监控是基于操作系统的文件系统监控器，可以监控系统是所有文件的变化，这种监控是无需遍历、无需比较的，是一种基于信号收发的监控。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;整个监控目录文件操作的流程大致如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;获取 WatchService&lt;/li&gt;
+&lt;li&gt;注册指定目录的监视器&lt;/li&gt;
+&lt;li&gt;等待目录下的文件发生变化&lt;/li&gt;
+&lt;li&gt;对发生变化的文件进行操作
     
     </summary>
     
