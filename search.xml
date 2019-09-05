@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Java并发编程艺术 - 线程终结]]></title>
+    <url>%2Fposts%2F52791%2F</url>
+    <content type="text"><![CDATA[中断状态是线程的一个标识位，而中断操作是一种简便的线程间交互方式，而这种交互方式最适合用来取消或停止任务。 除了中断以外，还可以利用一个boolean变量来控制是否需要停止任务并终止该线程。 2种终结方式1234567891011121314151617181920212223242526272829303132333435363738394041424344454647public class ThreadShutdown &#123; public static void main(String[] args) throws InterruptedException &#123; Runner runner1 = new Runner("Runner1"); Thread thread1 = new Thread(runner1.runnable); thread1.start(); //中断方式1 Thread.sleep(1); thread1.interrupt(); Runner runner2 = new Runner("Runner2"); Thread thread2 = new Thread(runner2.runnable); thread2.start(); Thread.sleep(1); //中断方式2 runner2.shutdown(); &#125; @Slf4j public static class Runner &#123; //关闭标记 private AtomicBoolean shutdown = new AtomicBoolean(); //自增 private AtomicInteger num = new AtomicInteger(0); private String name = "Runner"; //运行 Runnable runnable = () -&gt; &#123; //手动关闭 while (!shutdown.get() &amp;&amp; !Thread.currentThread().isInterrupted()) &#123; num.incrementAndGet(); &#125; log.info("name:&#123;&#125;,end:&#123;&#125;", name, num.get()); &#125;; public Runner(String name) &#123; this.name = name; &#125; //关闭 public void shutdown() &#123; shutdown.set(true); &#125; &#125;&#125; 执行结果12[Thread-0] INFO ThreadShutdown$Runner - name:Runner1,end:4361[Thread-1] INFO ThreadShutdown$Runner - name:Runner2,end:64698 main线程通过中断操作和shutdown()方法均可使Runner得以终止。 这种通过标识位或者中断操作的方式能够使线程在终止时有机会去清理资源，而不是武断地将线程停止，因此这种终止线程的做法显得更加安全和优雅]]></content>
+      <categories>
+        <category>并发编程</category>
+      </categories>
+      <tags>
+        <tag>Java并发编程</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Java并发编程艺术 - 线程中断]]></title>
     <url>%2Fposts%2F45493%2F</url>
     <content type="text"><![CDATA[中断可以理解为线程的一个标识位属性，它表示一个运行中的线程是否被其他线程进行了中断操作。中断好比其他线程对该线程打了个招呼，其他线程通过调用该线程的interrupt()方法对其进行中断操作。 12345678910111213141516171819202122232425262728293031public static void main(String[] args) &#123; AtomicInteger atomicInteger = new AtomicInteger(0); Runnable runnable = () -&gt; &#123; while (true) &#123; atomicInteger.incrementAndGet(); try &#123; //阻塞cpu Thread.sleep(1000); if (atomicInteger.get() &gt; 5) &#123; //中断信号 Thread.currentThread().interrupt(); &#125; &#125; catch (InterruptedException e) &#123; e.printStackTrace(); //异常后的中断标记 System.out.println(Thread.currentThread().isInterrupted() + "-" + atomicInteger.get()); &#125; //输出中断标记 System.out.println(Thread.currentThread().isInterrupted() + "-" + atomicInteger.get()); &#125; &#125;; Thread thread = new Thread(runnable); //就绪，并行；不能直接使用run，run是串行 thread.start(); &#125; 输出 1234567891011false-1false-2false-3false-4false-5true-6java.lang.InterruptedException: sleep interrupted at java.lang.Thread.sleep(Native Method) at ThreadInterrupt.lambda$main$0(ThreadInterrupt.java:19) at java.lang.Thread.run(Thread.java:748)false-7 线程通过检查自身是否被中断来进行响应，线程通过方法isInterrupted()来进行判断是否被中断，也可以调用静态方法Thread.interrupted()对当前线程的中断标识位进行复位true-6。如果该线程已经处于终结状态，即使该线程被中断过，在调用该线程对象的isInterrupted()时依旧会返回false。 从上面false-7可以看到，抛出InterruptedException的方法，Java虚拟机会先将该线程的中断标识位清除，然后抛出InterruptedException，此时调用isInterrupted()方法将会返回false。 123456//中断标记，实例方法，针对线程对象public void interrupt()//中断状态，实例方法，针对线程对象public boolean isInterrupted()//中断状态，静态方法，针对当前线程public static boolean interrupted()]]></content>
@@ -374,8 +386,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java并发编程</tag>
         <tag>Java内存模型</tag>
+        <tag>Java并发编程</tag>
       </tags>
   </entry>
   <entry>
@@ -398,8 +410,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>synchronized</tag>
         <tag>Java并发编程</tag>
+        <tag>synchronized</tag>
       </tags>
   </entry>
   <entry>
@@ -423,8 +435,8 @@
       </categories>
       <tags>
         <tag>Spring Cloud</tag>
-        <tag>Zuul</tag>
         <tag>ratelimit</tag>
+        <tag>Zuul</tag>
         <tag>限流</tag>
       </tags>
   </entry>
@@ -450,8 +462,8 @@
       </categories>
       <tags>
         <tag>Spring Cloud</tag>
-        <tag>Ribbon</tag>
         <tag>Zuul</tag>
+        <tag>Ribbon</tag>
         <tag>灰度测试</tag>
       </tags>
   </entry>

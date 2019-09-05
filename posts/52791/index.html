@@ -107,14 +107,18 @@
 
 
 
-  <meta name="keywords" content="perkins4j2,java,spring cloud">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Perkins4j2的技术博客">
-<meta property="og:url" content="https://perkins4j2.github.io/tags/Ribbon/index.html">
+  <meta name="description" content="中断状态是线程的一个标识位，而中断操作是一种简便的线程间交互方式，而这种交互方式最适合用来取消或停止任务。  除了中断以外，还可以利用一个boolean变量来控制是否需要停止任务并终止该线程。">
+<meta name="keywords" content="Java并发编程,多线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java并发编程艺术 - 线程终结">
+<meta property="og:url" content="https://perkins4j2.github.io/posts/52791/index.html">
 <meta property="og:site_name" content="Perkins4j2的技术博客">
+<meta property="og:description" content="中断状态是线程的一个标识位，而中断操作是一种简便的线程间交互方式，而这种交互方式最适合用来取消或停止任务。  除了中断以外，还可以利用一个boolean变量来控制是否需要停止任务并终止该线程。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-05T01:10:32.968Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Perkins4j2的技术博客">
+<meta name="twitter:title" content="Java并发编程艺术 - 线程终结">
+<meta name="twitter:description" content="中断状态是线程的一个标识位，而中断操作是一种简便的线程间交互方式，而这种交互方式最适合用来取消或停止任务。  除了中断以外，还可以利用一个boolean变量来控制是否需要停止任务并终止该线程。">
 
 
 
@@ -124,7 +128,7 @@
 
   
   
-  <link rel="canonical" href="https://perkins4j2.github.io/tags/Ribbon/">
+  <link rel="canonical" href="https://perkins4j2.github.io/posts/52791/">
 
 
 
@@ -134,7 +138,7 @@
   };
 </script>
 
-  <title>标签: Ribbon | Perkins4j2的技术博客</title>
+  <title>Java并发编程艺术 - 线程终结 | Perkins4j2的技术博客</title>
   
 
 
@@ -192,7 +196,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -253,7 +257,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -371,80 +375,343 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Ribbon<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://perkins4j2.github.io/posts/52791/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Perkins">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://img.perkins4j2.com/timg (1).jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Perkins4j2的技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/posts/25628/" itemprop="url">
-            
-              <span itemprop="name">Spring Cloud - Ribbon在Zuul上实现灰度和版本测试</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Java并发编程艺术 - 线程终结
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-23T19:34:43+08:00" content="2019-04-23">
-          04-23
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-05 09:05:00 / 修改时间：09:10:32" itemprop="dateCreated datePublished" datetime="2019-09-05T09:05:00+08:00">2019-09-05</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/并发编程/" itemprop="url" rel="index"><span itemprop="name">并发编程</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">6.6k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">6 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li><p>中断状态是线程的一个标识位，而中断操作是一种简便的线程间交互<br>方式，而这种交互方式最适合用来取消或停止任务。</p>
+</li>
+<li><p>除了中断以外，还可以利用一个boolean变量来控制是否需要停止任务并终止该线程。</p>
+<a id="more"></a>
+<h3 id="2种终结方式"><a href="#2种终结方式" class="headerlink" title="2种终结方式"></a>2种终结方式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadShutdown</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        Runner runner1 = <span class="keyword">new</span> Runner(<span class="string">"Runner1"</span>);</span><br><span class="line"></span><br><span class="line">        Thread thread1 = <span class="keyword">new</span> Thread(runner1.runnable);</span><br><span class="line">        thread1.start();</span><br><span class="line">        <span class="comment">//中断方式1</span></span><br><span class="line">        Thread.sleep(<span class="number">1</span>);</span><br><span class="line">        thread1.interrupt();</span><br><span class="line"></span><br><span class="line">        Runner runner2 = <span class="keyword">new</span> Runner(<span class="string">"Runner2"</span>);</span><br><span class="line">        Thread thread2 = <span class="keyword">new</span> Thread(runner2.runnable);</span><br><span class="line">        thread2.start();</span><br><span class="line">        Thread.sleep(<span class="number">1</span>);</span><br><span class="line">        <span class="comment">//中断方式2</span></span><br><span class="line">        runner2.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Slf</span>4j</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Runner</span> </span>&#123;</span><br><span class="line">        <span class="comment">//关闭标记</span></span><br><span class="line">        <span class="keyword">private</span> AtomicBoolean shutdown = <span class="keyword">new</span> AtomicBoolean();</span><br><span class="line">        <span class="comment">//自增</span></span><br><span class="line">        <span class="keyword">private</span> AtomicInteger num = <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">private</span> String name = <span class="string">"Runner"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//运行</span></span><br><span class="line">        Runnable runnable = () -&gt; &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//手动关闭</span></span><br><span class="line">            <span class="keyword">while</span> (!shutdown.get() &amp;&amp; !Thread.currentThread().isInterrupted()) &#123;</span><br><span class="line">                num.incrementAndGet();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            log.info(<span class="string">"name:&#123;&#125;,end:&#123;&#125;"</span>, name, num.get());</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Runner</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//关闭</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shutdown</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            shutdown.set(<span class="keyword">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[Thread-0] INFO ThreadShutdown$Runner - name:Runner1,end:4361</span><br><span class="line">[Thread-1] INFO ThreadShutdown$Runner - name:Runner2,end:64698</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>main线程通过中断操作和shutdown()方法均可使Runner得以终止。</li>
+<li>这种通过标识位或者中断操作的方式能够使线程在终止时有机会去清理资源，而不是武断地将线程停止，因此这种终止线程的做法显得更加安全和优雅</li>
+</ul>
 
       
     </div>
 
+    
+      
+
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/24227/" rel="bookmark">Java并发编程艺术 - 多线程</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/10420/" rel="bookmark">Java并发编程艺术 - 多线程与资源限制</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/45493/" rel="bookmark">Java并发编程艺术 - 线程中断</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/20463/" rel="bookmark">Java并发编程艺术 - 死锁产生及优化</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/58008/" rel="bookmark">Java并发编程艺术 - 多线程构造和启动</a></div>
+      
+    </li>
+  
+  </ul>
+
+
+    
+
+    
+    
+    
+    <div>
+        
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------ 本文结束------</div>
+    
+</div>
+
+        
+     </div>
+
+    <div>
+        
+            
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>Java并发编程艺术 - 线程终结</p>
+  <p><span>文章作者:</span>Perkins</p>
+  <p><span>发布时间:</span>2019年09月05日</p>
+  <p><span>原始链接:</span><a href="/posts/52791/" title="Java并发编程艺术 - 线程终结">https://perkins4j2.github.io/posts/52791/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://perkins4j2.github.io/posts/52791/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
+</div>
+<script>
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({
+          title: "",
+          text: '复制成功',
+          html: false,
+          timer: 500,
+          showConfirmButton: false
+        });
+      });
+    }));
+</script>
+
+
+        
+    </div>
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java并发编程/" rel="tag"># Java并发编程</a>
+          
+            <a href="/tags/多线程/" rel="tag"># 多线程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/45493/" rel="next" title="Java并发编程艺术 - 线程中断">
+                <i class="fa fa-chevron-left"></i> Java并发编程艺术 - 线程中断
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
 
         </div>
         
@@ -464,8 +731,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -667,6 +943,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#2种终结方式"><span class="nav-number">1.</span> <span class="nav-text">2种终结方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行结果"><span class="nav-number">2.</span> <span class="nav-text">执行结果</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -836,6 +1129,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
 
   
 
@@ -851,6 +1148,37 @@
 
   
 
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: 'ec702536fc9a19f3ebce',
+    clientSecret: '1c71b8e0953b1f237fbcf7fd354a6d1f6d3dc6d8',
+    repo: 'perkins4j2.github.io',
+    owner: 'perkins4j2',
+    admin: ['perkins4j2'],
+    id: md5(location.pathname),
+    
+      language: 'zh-CN',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+  
 
 
   
