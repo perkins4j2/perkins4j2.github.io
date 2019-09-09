@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Java并发编程艺术 - 多线程wait和notify]]></title>
+    <url>%2Fposts%2F48047%2F</url>
+    <content type="text"><![CDATA[等待/通知机制等待/通知机制，是指一个线程A调用了对象O的wait()方法进入等待状态，而另一个线程B调用了对象O的notify()或者notifyAll()方法，线程A收到通知后从对象O的wait()方法返回，进而执行后续操作。 上述两个线程通过对象O来完成交互，而对象上的wait()和notify/notifyAll()的关系就如同开关信号一样，用来完成等待方和通知方之间的交互工作。 利用wait和notify进行交替执行12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758public class ThreadWaitAndNotify &#123; public static void main(String[] args) throws InterruptedException &#123; //对象锁标记 Object lock = new Object(); Runner runner1 = new Runner(lock, "runner1"); Runner runner2 = new Runner(lock, "runner2"); Thread thread1 = new Thread(runner1.runnable); Thread thread2 = new Thread(runner2.runnable); thread1.start(); Thread.sleep(100); thread2.start(); &#125; @Slf4j public static class Runner &#123; //全局自增 private static AtomicInteger num = new AtomicInteger(0); private Object lock; private String name; public Runner(Object lock, String name) &#123; this.lock = lock; this.name = name; &#125; //运行 Runnable runnable = () -&gt; &#123; //先获取锁，才能有锁状态变更 synchronized (lock) &#123; while (true) &#123; //首次：第一个线程为奇数，打印后等待；第二个线程为偶数，打印后通知第一个线程 num.incrementAndGet(); //等待唤醒 try &#123; if (num.get() % 2 == 1) &#123; log.info("name:&#123;&#125;,num:&#123;&#125;", this.name, num.get()); //奇数等待偶数放行通知 lock.wait(); lock.notify(); &#125; else if (num.get() % 2 == 0) &#123; log.info("name:&#123;&#125;,num:&#123;&#125;", this.name, num.get()); //偶数放行，等待奇数执行 lock.notify(); lock.wait(); &#125; Thread.sleep(1000); &#125; catch (InterruptedException e) &#123; e.printStackTrace(); &#125; &#125; &#125; &#125;; &#125;&#125; 交替执行结果 12345678910$Runner - name:runner1,num:1$Runner - name:runner2,num:2$Runner - name:runner1,num:3$Runner - name:runner2,num:4$Runner - name:runner1,num:5$Runner - name:runner2,num:6$Runner - name:runner1,num:7$Runner - name:runner2,num:8$Runner - name:runner1,num:9$Runner - name:runner2,num:10 锁池和等待池每个同步对象都有自己的锁池和等待池。 锁池假设线程A已经拥有了某个对象(注意:不是类)的锁，而其它的线程想要调用这个对象的某个synchronized方法(或者synchronized块)，由于这些线程在进入对象的synchronized方法之前必须先获得该对象的锁的拥有权，但是该对象的锁目前正被线程A拥有，所以这些线程就进入了该对象的锁池中。 等待池假设一个线程A调用了某个对象的wait()方法，线程A就会释放该对象的锁(因为wait()方法必须出现在synchronized中，这样自然在执行wait()方法之前线程A就已经拥有了该对象的锁)，同时线程A就进入到了该对象的等待池中。如果另外的一个线程调用了相同对象的notifyAll()方法，那么处于该对象的等待池中的线程就会全部进入该对象的锁池中，准备争夺锁的拥有权。如果另外的一个线程调用了相同对象的notify()方法，那么仅仅有一个处于该对象的等待池中的线程(随机)会进入该对象的锁池. notify和notifyAll适用场景如上例，使用notify且2个runnner，可认为是一个生产者一个消费者的情况下，生产和消费有条不紊的运行，没有任何问题。 线程调用了wait()方法，便会释放锁，并进入等待池中，不会参与锁的竞争 调用notify()后，等待池中的某个线程(只会有一个)会进入该对象的锁池中参与锁的竞争，若竞争成功，获得锁，竞争失败，继续留在锁池中等待下一次锁的竞争。 调用notifyAll()后，等待池中的所有线程都会进入该对象的锁池中参与锁的竞争。 notify适用于所有等待的线程都是对等的（或者说唤醒顺序对其执行任务无影响），或者适用于本来就只有一个等待线程的场景。 只唤醒其它等待的消费者线程中的一个，如果改成notfiyAll的话就让其它线程被唤醒后立刻进入BLOCKED状态，增加了CPU的开销。 notfiyAll适用于等待的线程有不同的目标，可以并行执行的场景。这样才不至于使所有线程被唤醒后又进入到BLOCKED状态。]]></content>
+      <categories>
+        <category>并发编程</category>
+      </categories>
+      <tags>
+        <tag>Java并发编程</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Java并发编程艺术 - 线程终结]]></title>
     <url>%2Fposts%2F52791%2F</url>
-    <content type="text"><![CDATA[中断状态是线程的一个标识位，而中断操作是一种简便的线程间交互方式，而这种交互方式最适合用来取消或停止任务。 除了中断以外，还可以利用一个boolean变量来控制是否需要停止任务并终止该线程。 2种终结方式1234567891011121314151617181920212223242526272829303132333435363738394041424344454647public class ThreadShutdown &#123; public static void main(String[] args) throws InterruptedException &#123; Runner runner1 = new Runner("Runner1"); Thread thread1 = new Thread(runner1.runnable); thread1.start(); //中断方式1 Thread.sleep(1); thread1.interrupt(); Runner runner2 = new Runner("Runner2"); Thread thread2 = new Thread(runner2.runnable); thread2.start(); Thread.sleep(1); //中断方式2 runner2.shutdown(); &#125; @Slf4j public static class Runner &#123; //关闭标记 private AtomicBoolean shutdown = new AtomicBoolean(); //自增 private AtomicInteger num = new AtomicInteger(0); private String name = "Runner"; //运行 Runnable runnable = () -&gt; &#123; //手动关闭 while (!shutdown.get() &amp;&amp; !Thread.currentThread().isInterrupted()) &#123; num.incrementAndGet(); &#125; log.info("name:&#123;&#125;,end:&#123;&#125;", name, num.get()); &#125;; public Runner(String name) &#123; this.name = name; &#125; //关闭 public void shutdown() &#123; shutdown.set(true); &#125; &#125;&#125; 执行结果12[Thread-0] INFO ThreadShutdown$Runner - name:Runner1,end:4361[Thread-1] INFO ThreadShutdown$Runner - name:Runner2,end:64698 main线程通过中断操作和shutdown()方法均可使Runner得以终止。 这种通过标识位或者中断操作的方式能够使线程在终止时有机会去清理资源，而不是武断地将线程停止，因此这种终止线程的做法显得更加安全和优雅]]></content>
+    <content type="text"><![CDATA[中断状态是线程的一个标识位，而中断操作是一种简便的线程间交互方式，而这种交互方式最适合用来取消或停止任务。 除了中断以外，还可以利用一个boolean变量来控制是否需要停止任务并终止该线程。 2种终结方式1234567891011121314151617181920212223242526272829303132333435363738394041424344454647public class ThreadShutdown &#123; public static void main(String[] args) throws InterruptedException &#123; Runner runner1 = new Runner("Runner1"); Thread thread1 = new Thread(runner1.runnable); thread1.start(); //中断方式1 Thread.sleep(1); thread1.interrupt(); Runner runner2 = new Runner("Runner2"); Thread thread2 = new Thread(runner2.runnable); thread2.start(); Thread.sleep(1); //中断方式2 runner2.shutdown(); &#125; @Slf4j public static class Runner &#123; //关闭标记 private AtomicBoolean shutdown = new AtomicBoolean(); //自增 private AtomicInteger num = new AtomicInteger(0); private String name = "Runner"; //运行 Runnable runnable = () -&gt; &#123; //手动关闭 while (!shutdown.get() &amp;&amp; !Thread.currentThread().isInterrupted()) &#123; num.incrementAndGet(); &#125; log.info("name:&#123;&#125;,end:&#123;&#125;", name, num.get()); &#125;; public Runner(String name) &#123; this.name = name; &#125; //关闭 public void shutdown() &#123; shutdown.set(true); &#125; &#125;&#125; 执行结果12[Thread-0] INFO ThreadShutdown$Runner - name:Runner1,end:4361[Thread-1] INFO ThreadShutdown$Runner - name:Runner2,end:64698 main线程通过中断操作和shutdown()方法均可使Runner得以终止。 这种通过标识位或者中断操作的方式能够使线程在终止时有机会去清理资源，而不是武断地将线程停止，因此这种终止线程的做法显得更加安全和优雅。]]></content>
       <categories>
         <category>并发编程</category>
       </categories>
@@ -435,8 +447,8 @@
       </categories>
       <tags>
         <tag>Spring Cloud</tag>
-        <tag>ratelimit</tag>
         <tag>Zuul</tag>
+        <tag>ratelimit</tag>
         <tag>限流</tag>
       </tags>
   </entry>
@@ -462,8 +474,8 @@
       </categories>
       <tags>
         <tag>Spring Cloud</tag>
-        <tag>Zuul</tag>
         <tag>Ribbon</tag>
+        <tag>Zuul</tag>
         <tag>灰度测试</tag>
       </tags>
   </entry>

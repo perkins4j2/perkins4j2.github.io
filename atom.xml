@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-09-05T01:11:08.599Z</updated>
+  <updated>2019-09-09T01:37:51.404Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java并发编程艺术 - 多线程wait和notify</title>
+    <link href="https://perkins4j2.github.io/posts/48047/"/>
+    <id>https://perkins4j2.github.io/posts/48047/</id>
+    <published>2019-09-09T01:21:33.000Z</published>
+    <updated>2019-09-09T01:37:51.404Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;等待-通知机制&quot;&gt;&lt;a href=&quot;#等待-通知机制&quot; class=&quot;headerlink&quot; title=&quot;等待/通知机制&quot;&gt;&lt;/a&gt;等待/通知机制&lt;/h3&gt;&lt;p&gt;等待/通知机制，是指一个线程A调用了对象O的wait()方法进入等待状态，而另一个线程B调用了对象O的notify()或者notifyAll()方法，线程A收到通知后从对象O的wait()方法返回，进而&lt;br&gt;执行后续操作。&lt;/p&gt;
+&lt;p&gt;上述两个线程通过对象O来完成交互，而对象上的wait()和notify/notifyAll()的&lt;br&gt;关系就如同开关信号一样，用来完成等待方和通知方之间的交互工作。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="多线程" scheme="https://perkins4j2.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java并发编程艺术 - 线程终结</title>
     <link href="https://perkins4j2.github.io/posts/52791/"/>
     <id>https://perkins4j2.github.io/posts/52791/</id>
     <published>2019-09-05T01:05:00.000Z</published>
-    <updated>2019-09-05T01:11:08.599Z</updated>
+    <updated>2019-09-05T01:22:02.944Z</updated>
     
     <summary type="html">
     
@@ -486,32 +509,6 @@
       <category term="Prometheus" scheme="https://perkins4j2.github.io/tags/Prometheus/"/>
     
       <category term="Grafana" scheme="https://perkins4j2.github.io/tags/Grafana/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>搭建Http-Server用于文件传输</title>
-    <link href="https://perkins4j2.github.io/posts/4544/"/>
-    <id>https://perkins4j2.github.io/posts/4544/</id>
-    <published>2019-08-02T01:21:28.000Z</published>
-    <updated>2019-08-14T04:06:36.293Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Http-Server&quot;&gt;&lt;a href=&quot;#Http-Server&quot; class=&quot;headerlink&quot; title=&quot;Http-Server&quot;&gt;&lt;/a&gt;Http-Server&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/http-party/http-server&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http-server&lt;/a&gt;&lt;/p&gt;
-&lt;h4 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h4&gt;&lt;p&gt;npm install http-server -g&lt;/p&gt;
-&lt;h4 id=&quot;启动&quot;&gt;&lt;a href=&quot;#启动&quot; class=&quot;headerlink&quot; title=&quot;启动&quot;&gt;&lt;/a&gt;启动&lt;/h4&gt;&lt;p&gt;cd ~/Public/&lt;br&gt;http-server&lt;br&gt;默认是 8080端口，./public文件夹&lt;/p&gt;
-&lt;h4 id=&quot;文件上传&quot;&gt;&lt;a href=&quot;#文件上传&quot; class=&quot;headerlink&quot; title=&quot;文件上传&quot;&gt;&lt;/a&gt;文件上传&lt;/h4&gt;&lt;p&gt;./public&lt;/p&gt;
-&lt;h4 id=&quot;文件下载&quot;&gt;&lt;a href=&quot;#文件下载&quot; class=&quot;headerlink&quot; title=&quot;文件下载&quot;&gt;&lt;/a&gt;文件下载&lt;/h4&gt;&lt;p&gt;wget &lt;a href=&quot;http://172.16.25.70:8080/prometheus.yml&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://172.16.25.70:8080/prometheus.yml&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
-    
-    
-      <category term="Http-Server" scheme="https://perkins4j2.github.io/tags/Http-Server/"/>
-    
-      <category term="nodejs" scheme="https://perkins4j2.github.io/tags/nodejs/"/>
     
   </entry>
   
