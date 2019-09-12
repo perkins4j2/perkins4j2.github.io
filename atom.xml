@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-09-11T01:23:23.299Z</updated>
+  <updated>2019-09-12T13:10:19.919Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,11 +17,91 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Hazelcast Client配置</title>
+    <link href="https://perkins4j2.github.io/posts/354/"/>
+    <id>https://perkins4j2.github.io/posts/354/</id>
+    <published>2019-09-12T13:08:19.000Z</published>
+    <updated>2019-09-12T13:10:19.919Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;最大value&quot;&gt;&lt;a href=&quot;#最大value&quot; class=&quot;headerlink&quot; title=&quot;最大value&quot;&gt;&lt;/a&gt;最大value&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;单个k-v的操作本身不受数据字节大小限制&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;操作受最大堆内存-Xmx限制&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;操作受超时时间限制hazelcast.max.operation.timeout&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;INFO HazelcastTest - size:273437KB&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;INFO HazelcastTest - elapsed:62ms&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="docker" scheme="https://perkins4j2.github.io/tags/docker/"/>
+    
+      <category term="Hazelcast" scheme="https://perkins4j2.github.io/tags/Hazelcast/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hazelcast性能评估</title>
+    <link href="https://perkins4j2.github.io/posts/19102/"/>
+    <id>https://perkins4j2.github.io/posts/19102/</id>
+    <published>2019-09-12T13:07:31.000Z</published>
+    <updated>2019-09-12T13:10:49.257Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;基准测试&quot;&gt;&lt;a href=&quot;#基准测试&quot; class=&quot;headerlink&quot; title=&quot;基准测试&quot;&gt;&lt;/a&gt;基准测试&lt;/h3&gt;&lt;p&gt;基于benchmarking tool&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;INFO  Performance IntByteMapTest&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Total throughput        100.00%      7,948,805 ops   128,179.66 ops/s&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Agent C_A1            100.00%      7,948,805 ops   128,179.66 ops/s&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;结论&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;int-int每秒可完成17W请求，并发线程10，随机读写，写概率0.1，读0.9&lt;/li&gt;
+&lt;li&gt;int-byte每秒13万请求，value最大2k，并发线程10，随机读写，写概率0.1，读0.9
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="docker" scheme="https://perkins4j2.github.io/tags/docker/"/>
+    
+      <category term="Hazelcast" scheme="https://perkins4j2.github.io/tags/Hazelcast/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker部署Hazelcast</title>
+    <link href="https://perkins4j2.github.io/posts/39886/"/>
+    <id>https://perkins4j2.github.io/posts/39886/</id>
+    <published>2019-09-12T13:07:18.000Z</published>
+    <updated>2019-09-12T13:09:41.489Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Hazelcast-management-center&quot;&gt;&lt;a href=&quot;#Hazelcast-management-center&quot; class=&quot;headerlink&quot; title=&quot;Hazelcast management-center&quot;&gt;&lt;/a&gt;Hazelcast management-center&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker pull hazelcast/management-center&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run -d -p 8200:8080 hazelcast/management-center:latest&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;安装配置管理节点，监控和实时查看缓存情况&lt;br&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="docker" scheme="https://perkins4j2.github.io/tags/docker/"/>
+    
+      <category term="Hazelcast" scheme="https://perkins4j2.github.io/tags/Hazelcast/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java并发编程艺术 - 多线程状态</title>
     <link href="https://perkins4j2.github.io/posts/80/"/>
     <id>https://perkins4j2.github.io/posts/80/</id>
     <published>2019-09-10T01:03:44.000Z</published>
-    <updated>2019-09-11T01:23:23.299Z</updated>
+    <updated>2019-09-11T01:24:38.851Z</updated>
     
     <summary type="html">
     
@@ -50,7 +130,7 @@
     <link href="https://perkins4j2.github.io/posts/19627/"/>
     <id>https://perkins4j2.github.io/posts/19627/</id>
     <published>2019-09-09T11:29:41.000Z</published>
-    <updated>2019-09-09T11:29:41.429Z</updated>
+    <updated>2019-09-11T01:24:38.854Z</updated>
     
     <summary type="html">
     
@@ -64,7 +144,7 @@
     <link href="https://perkins4j2.github.io/posts/36650/"/>
     <id>https://perkins4j2.github.io/posts/36650/</id>
     <published>2019-09-09T11:28:57.000Z</published>
-    <updated>2019-09-11T01:24:01.916Z</updated>
+    <updated>2019-09-11T01:24:38.850Z</updated>
     
     <summary type="html">
     
@@ -85,7 +165,7 @@
     <link href="https://perkins4j2.github.io/posts/18201/"/>
     <id>https://perkins4j2.github.io/posts/18201/</id>
     <published>2019-09-09T11:28:46.000Z</published>
-    <updated>2019-09-09T12:20:53.442Z</updated>
+    <updated>2019-09-11T01:24:38.852Z</updated>
     
     <summary type="html">
     
@@ -418,84 +498,6 @@
     
     
       <category term="线程池" scheme="https://perkins4j2.github.io/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Maven配置Profile</title>
-    <link href="https://perkins4j2.github.io/posts/52371/"/>
-    <id>https://perkins4j2.github.io/posts/52371/</id>
-    <published>2019-08-15T01:04:26.000Z</published>
-    <updated>2019-08-15T01:08:43.347Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;ul&gt;
-&lt;li&gt;项目根据环境不同，设置不同参数&lt;/li&gt;
-&lt;li&gt;实现在代码中无需改动，以防误提交&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;在pom中添加以下配置&lt;/p&gt;
-&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
-        
-      
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="maven" scheme="https://perkins4j2.github.io/tags/maven/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker部署和配置Nginx</title>
-    <link href="https://perkins4j2.github.io/posts/29980/"/>
-    <id>https://perkins4j2.github.io/posts/29980/</id>
-    <published>2019-08-14T08:26:05.000Z</published>
-    <updated>2019-08-14T08:40:18.840Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;获取镜像&quot;&gt;&lt;a href=&quot;#获取镜像&quot; class=&quot;headerlink&quot; title=&quot;获取镜像&quot;&gt;&lt;/a&gt;获取镜像&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker search nginx&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;安装官方版本&lt;br&gt;name： docker.io/nginx&lt;br&gt;OFFICIAL： ok&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker pull nginx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker images nginx&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;拉取并查看镜像&lt;br&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="docker" scheme="https://perkins4j2.github.io/tags/docker/"/>
-    
-      <category term="nginx" scheme="https://perkins4j2.github.io/tags/nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java Lambda Stream原理</title>
-    <link href="https://perkins4j2.github.io/posts/42366/"/>
-    <id>https://perkins4j2.github.io/posts/42366/</id>
-    <published>2019-08-07T01:05:28.000Z</published>
-    <updated>2019-08-14T08:28:24.813Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;举例&quot;&gt;&lt;a href=&quot;#举例&quot; class=&quot;headerlink&quot; title=&quot;举例&quot;&gt;&lt;/a&gt;举例&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;List list = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ArrayList(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        list.add(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        list.add(&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        list.stream().forEach(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                System.out::println&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        );&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Lambda" scheme="https://perkins4j2.github.io/tags/Lambda/"/>
     
   </entry>
   
