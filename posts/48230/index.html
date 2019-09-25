@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="Perkins4j2的技术博客">
 <meta property="og:description" content="以下为Linux开发中常用的命令。 筛选文本并查看指定上下行数常用于筛选日志，并查看上下文 grep  [选项]  ‘模式’  [文件]   选项:     -A  后几行     -B  前几行     -C  前后几行  模式:     待筛选文本  文件:     待筛选源文件举例 123grep -A 20 &apos;cat&apos; info.log # 显示info.log及后20行grep -B 2">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-30T07:16:25.000Z">
+<meta property="og:updated_time" content="2019-09-25T01:10:03.629Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux运维常用命令 - grep">
 <meta name="twitter:description" content="以下为Linux开发中常用的命令。 筛选文本并查看指定上下行数常用于筛选日志，并查看上下文 grep  [选项]  ‘模式’  [文件]   选项:     -A  后几行     -B  前几行     -C  前后几行  模式:     待筛选文本  文件:     待筛选源文件举例 123grep -A 20 &apos;cat&apos; info.log # 显示info.log及后20行grep -B 2">
@@ -267,7 +267,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">52</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">53</span></a>
 
   </li>
         
@@ -305,7 +305,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">56</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">58</span></a>
 
   </li>
 
@@ -453,7 +453,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-30 15:16:25" itemprop="dateModified" datetime="2019-05-30T15:16:25+08:00">2019-05-30</time>
+                <time title="修改时间：2019-09-25 09:10:03" itemprop="dateModified" datetime="2019-09-25T09:10:03+08:00">2019-09-25</time>
               
             
           </span>
@@ -506,7 +506,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">943</span>
+                <span title="本文字数">4.2k</span>
               
 
               
@@ -520,7 +520,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">4 分钟</span>
               
             </div>
           
@@ -556,6 +556,41 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grep -A 20 <span class="string">'cat'</span> info.log <span class="comment"># 显示info.log及后20行</span></span><br><span class="line">grep -B 20 <span class="string">'cat'</span> info.log <span class="comment"># 显示info.log及前20行</span></span><br><span class="line">grep -C 20 <span class="string">'cat'</span> info.log <span class="comment"># 显示info.log文件里匹配cat字串行以及上下20行</span></span><br></pre></td></tr></table></figure>
 
 <a id="more"></a>
+
+<h4 id="查看linux内存使用情况"><a href="#查看linux内存使用情况" class="headerlink" title="查看linux内存使用情况"></a>查看linux内存使用情况</h4><p>命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">free -m</span><br></pre></td></tr></table></figure>
+
+<p>结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">             total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:          64083       42542        6321         210       15219       20451</span><br><span class="line">Swap:             0           0           0</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Mem:内存的使用情况总览表</li>
+<li>totel:机器总的物理内存 单位为：M</li>
+<li>used:用掉的内存</li>
+<li>free:空闲的物理内存</li>
+<li>shared:多个进程共享的内存总和，当前废弃不用</li>
+<li>buffers:缓存内存数</li>
+<li>cached:缓存内存数<br>注：</li>
+<li>物理内存(totel)=系统看到的用掉的内存(used)+系统看到空闲的内存(free)</li>
+<li>程序预留的内存=buffers+cached</li>
+<li>buffer是即将要写入磁盘的，而cache是被从磁盘中读出来的</li>
+</ul>
+<h4 id="进程查看器"><a href="#进程查看器" class="headerlink" title="进程查看器"></a>进程查看器</h4><p>htop</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install htop</span><br></pre></td></tr></table></figure>
+
+<p>界面划分成了四个区域，其中：</p>
+<ul>
+<li><p>上左区：显示了CPU、物理内存和交换分区的信息；</p>
+</li>
+<li><p>上右区：显示了任务数量、平均负载和连接运行时间等信息；平均负载表示的是过去的5分钟、10分钟和15分钟系统的平均负载；</p>
+</li>
+<li><p>进程区域：显示出当前系统中的所有进程；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">PID：进程标志号，是非零正整数</span><br><span class="line">USER：进程所有者的用户名</span><br><span class="line">PR：进程的优先级别</span><br><span class="line">NI：进程的优先级别数值</span><br><span class="line">VIRT：进程占用的虚拟内存值</span><br><span class="line">RES：进程占用的物理内存值</span><br><span class="line">SHR：进程使用的共享内存值</span><br><span class="line">S：进程的状态，其中S表示休眠，R表示正在运行，Z表示僵死状态，N表示该进程优先值是负数</span><br><span class="line">%CPU：该进程占用的CPU使用率</span><br><span class="line">%MEM：该进程占用的物理内存和总内存的百分比</span><br><span class="line">TIME+：该进程启动后占用的总的CPU时间</span><br><span class="line">COMMAND：进程启动的启动命令名称</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>操作提示区：显示了当前界面中F1-F10功能键中定义的快捷功能。</p>
+<h4 id="压缩解压"><a href="#压缩解压" class="headerlink" title="压缩解压"></a>压缩解压</h4><p>.gz</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解压1：gunzip FileName.gz</span><br><span class="line">解压2：gzip -d FileName.gz</span><br><span class="line">压缩：gzip FileName</span><br></pre></td></tr></table></figure></li>
+</ul>
 
       
     </div>
@@ -731,7 +766,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-count">58</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -883,7 +918,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">52</span>
+                      
+                    
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -928,7 +965,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#筛选文本并查看指定上下行数"><span class="nav-number">1.</span> <span class="nav-text">筛选文本并查看指定上下行数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#筛选文本并查看指定上下行数"><span class="nav-number">1.</span> <span class="nav-text">筛选文本并查看指定上下行数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看linux内存使用情况"><span class="nav-number">2.</span> <span class="nav-text">查看linux内存使用情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程查看器"><span class="nav-number">3.</span> <span class="nav-text">进程查看器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#压缩解压"><span class="nav-number">4.</span> <span class="nav-text">压缩解压</span></a></li></ol></div>
             
 
           </div>
@@ -970,7 +1007,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">125k</span>
+    <span title="站点总字数">134k</span>
   
 
   
@@ -981,7 +1018,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">1:54</span>
+    <span title="站点阅读时长">2:02</span>
   
 </div>
 

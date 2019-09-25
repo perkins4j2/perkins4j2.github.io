@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JVM调试命令]]></title>
+    <url>%2Fposts%2F9582%2F</url>
+    <content type="text"><![CDATA[GC日志打开GC日志 1-server -XX:+PrintGCTimeStamps -XX:+PrintGCDetails -Xloggc:./logs/gc.log jmap生成 java 程序的 dump 文件， 也可以查看堆内对象示例的统计信息、查看 ClassLoader 的信息以及 finalizer 队列。 命令1、jmap -histo[:live] 通过histo选项，打印当前java堆中各个对象的数量、大小。 如果添加了live，只会打印活跃的对象。 2、jmap -dump:[live,]format=b,file= 通过-dump选项，把java堆中的对象dump到本地文件，然后使用MAT进行分析。 如果添加了live，只会dump活跃的对象。 jmap -histo 19470 | jmap -histo:live 19470 3、jmap -heap 通过-heap选项，打印java堆的配置情况和使用情况，还有使用的GC算法。 jmap -heap 19470 4、jmap -finalizerinfo 通过-finalizerinfo选项，打印那些正在等待执行finalize方法的对象。 5、jmap -permstat 通过-permstat选项，打印java堆永久代的信息，包括class loader相关的信息,和interned Strings的信息。``` 实现原理通过jmap和jvm之间进行通信，有两种实现方式：attach 和 SA。 attach attach方式，简单来说就是客户端和服务端之间的通信，客户端发送请求，主要逻辑在服务端执行，jmap相当于客户端，JVM相当于服务端。 在JVM中，有一个叫”Attach Listener”的线程，专门负责监听attach的请求，并执行对应的操作。 客户端连接到目标JVM，向其发出一个类似“inspectheap”命令 目标JVM接收到命令，执行JVM内相关函数，将收集到的结果以文本形式返回 客户端接收到返回的文本并将其显示出来；SA 假如执行”jmap -heap 5409″，就不会使用attach方式实现了。 在参数解析中，如果参数是”-heap|-heap:format=b|-permstat|-finalizerinfo”中的一种，或者添加了”-F”，比如”jmap -histo -F 5409″，则使用SA的方式。 SA方式，和attach方式不同的是，相关的主要逻辑都在SA中实现，从JVM中获取数据即可。jps只列出系统中所有的 Java 应用程序。 -q：只输出进程 ID -m：输出传入 main 方法的参数 -l：输出完全的包名，应用主类名，jar的完全路径名 -v：输出jvm参数 -V：输出通过flag文件传递到JVM中的参数 jinfo可以用来查看正在运行的 java 应用程序的扩展参数，包括Java System属性和JVM命令行参数；也可以动态的修改正在运行的 JVM 一些参数。当系统崩溃时，jinfo可以从core文件里面知道崩溃的Java应用程序的配置信息。 jinfo 19470 输出当前 jvm 进程的全部参数和系统属性 参数说明pid 对应jvm的进程id executable core 产生core dump文件 [server-id@]remote server IP or hostname 远程的ip或者hostname，server-id标记服务的唯一性id option no option 输出全部的参数和系统属性 -flag name 输出对应名称的参数 -flag [+|-]name 开启或者关闭对应名称的参数 -flag name=value 设定对应名称的参数 -flags 输出全部的参数 -sysprops 输出系统属性 jstack进程所包含线程情况查询 (位于”jdk_home/bin”目录下)，可以实时监测系统资源占用与jvm运行情况。 jstack 19470 查看当前java进程的堆栈状态 参数说明：-l 长列表. 打印关于锁的附加信息,例如属于java.util.concurrent 的 ownable synchronizers列表. -F 当’jstack [-l] pid’没有相应的时候强制打印栈信息 -m 打印java和native c/c++框架的所有栈信息. -h | -help 打印帮助信息 pid 需要被打印配置信息的java进程id,可以用jps查询. jstatjstat命令可以查看堆内存各部分的使用量，以及加载类的数量。命令的格式如下： jstat [-命令选项] [vmid] [间隔时间/毫秒] [查询次数] // 命令语法结构：Usage: jstat -help|-options jstat - [-t] [-h] [ []]// 参数解释：Options — 选项，我们一般使用 -gcutil 查看gc情况vmid — VM的进程号，即当前运行的java进程号interval– 间隔时间，单位为秒或者毫秒count — 打印次数，如果缺省则打印无数次 S0 — Heap上的 Survivor space 0 区已使用空间的百分比S1 — Heap上的 Survivor space 1 区已使用空间的百分比E — Heap上的 Eden space 区已使用空间的百分比O — Heap上的 Old space 区已使用空间的百分比P — Perm space 区已使用空间的百分比YGC — 从应用程序启动到采样时发生 Young GC 的次数YGCT– 从应用程序启动到采样时 Young GC 所用的时间(单位秒)FGC — 从应用程序启动到采样时发生 Full GC 的次数FGCT– 从应用程序启动到采样时 Full GC 所用的时间(单位秒)GCT — 从应用程序启动到采样时用于垃圾回收的总时间(单位秒)//示例jstat -options -class -compiler -gc -gccapacity -gccause -gcmetacapacity -gcnew -gcnewcapacity -gcold -gcoldcapacity -gcutil -printcompilationjstat -class -t 19470Timestamp Loaded Bytes Unloaded Bytes Time6188.4 3898 7178.4 40 58.3 1.78 jstat -gcutil 19470 1000 5 S0 S1 E O M CCS YGC YGCT FGC FGCT GCT0.00 25.00 98.55 15.37 96.94 94.88 21 0.069 7 0.237 0.3060.00 25.00 99.59 15.37 96.94 94.88 21 0.069 7 0.237 0.3060.00 25.00 99.59 15.37 96.94 94.88 21 0.069 7 0.237 0.3060.00 25.00 100.00 15.37 96.94 94.88 21 0.069 7 0.237 0.306]]></content>
+      <categories>
+        <category>工具利器</category>
+      </categories>
+      <tags>
+        <tag>Java8</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Docker安装Nginx及配置]]></title>
+    <url>%2Fposts%2F65243%2F</url>
+    <content type="text"><![CDATA[Docker安装123456789docker search nginx name docker.io/nginx OFFICIAL okdocker pull nginxdocker images nginxdocker run --name nginx-test -p 9803:80 -d nginx 说明： nginx-test 容器名称。 -d设置容器在在后台一直运行。 -p 端口进行映射，将本地 8081 端口映射到容器内部的 80 端口。测试： curl -l localhost:9803 Docker配置创建目录 1mkdir -p ./nginx/www ./nginx/logs ./nginx/conf www: 目录将映射为 nginx 容器配置的虚拟目录。 logs: 目录将映射为 nginx 容器的日志目录。 conf: 目录里的配置文件将映射为 nginx 容器的配置文件。 配置文件 12345docker psCONTAINER ID 988101b6dbcfdocker cp 988101b6dbcf:/etc/nginx/nginx.conf ./nginx/conf 拷贝容器内 Nginx 默认配置文件到本地当前目录下的 conf 目录，容器 ID 可以查看 docker ps 命令输入中的第一列：重启 123456789docker kill 988101b6dbcfdocker rm 988101b6dbcfdocker run --name nginx-test -p 9803:80 -d -v /home/xxx/nginx/www:/usr/share/nginx/html -v /home/xxx/nginx/conf/nginx.conf:/etc/nginx/nginx.conf -v /home/xxx/nginx/logs:/var/log/nginx nginxc7d0b0a20287e46b759ccd73fe6ec3072695f93900b3d04172f1f34bd0104766curl -l localhost:9803 Nginx配置123cd ./nginx/wwwvi index.html 修改首页 1234567891011 &lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;welcome&lt;/title&gt;&lt;/head&gt;&lt;body&gt; &lt;h1&gt;hello&lt;/h1&gt; &lt;p&gt;world。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt; 修改配置文件 12345vi /home/xxx/nginx/conf/nginx.confinclude /home/xxx/nginx/conf/conf.d/*.conf;cd conf.dvi default.conf 配置 12345678910111213141516171819server&#123; listen 80; server_name localhost; index index.html index.htm; root /home/cuipeijun/nginx/www;#站点目录 location /recommend &#123; proxy_pass http://recommend; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; &#125;&#125;upstream recommend &#123; server 172.16.25.70:9819; server 192.168.1.41:9804 backup;&#125; 配置说明upstream可以为每个设备设置状态值，这些状态值的含义分别如下： down：表示单前的server暂时不参与负载. weight：默认为1.weight越大，负载的权重就越大。 max_fails：允许请求失败的次数默认为1.当超过最大次数时，返回proxy_next_upstream 模块定义的错误. fail_timeout : max_fails次失败后，暂停的时间。 backup： 其它所有的非backup机器down或者忙的时候，请求backup机器。所以这台机器压力会最轻分配策略none（轮询） upstream按照轮询（默认）方式进行负载，每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。虽然这种方式简便、成本低廉。但缺点是：可靠性低和负载分配不均衡。weight（权重） 指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况。例如 server 192.168.61.22 weight = 6; # 60% 请求 server 192.168.61.23 weight = 4; # 40% 请求ip_hash（访问ip） 每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题。 配置只需要在upstream中加入ip_hash;即可。 12345upstream tomcats &#123; ip_hash; server 127.0.0.1:9001; server 127.0.0.1:9002;&#125;fair（第三方） 按后端服务器的响应时间来分配请求，响应时间短的优先分配。与weight分配策略类似。 12345upstream tomcats &#123; server 127.0.0.1:9001; server 127.0.0.1:9002; fair;&#125;url_hash（第三方） 和IP哈希类似，只不过针对请求的url进行hash（基于缓存的server，页面静态化）。模板123456789101112131415161718192021222324252627upstream tomcats &#123; server ip:8080; &#125;server &#123; listen 80; server_name www.xxx.com; location / &#123; proxy_pass http://tomcats; #Proxy Settings proxy_redirect off; proxy_set_header Host $host; proxy_set_header X-Real-IP $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504; proxy_max_temp_file_size 0; proxy_connect_timeout 90; proxy_send_timeout 90; proxy_read_timeout 90; proxy_buffer_size 4k; proxy_buffers 4 32k; proxy_busy_buffers_size 64k; proxy_temp_file_write_size 64k; &#125;&#125;]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[解决MySql死锁脚本]]></title>
+    <url>%2Fposts%2F10641%2F</url>
+    <content type="text"><![CDATA[12345678910111213#!/usr/bin/env bashtmp_file=/tmp/my_process_listHOST='xx-01'USER='xxx'PASS='xxxxxx'mysql -u $&#123;USER&#125; -p $&#123;PASS&#125; -P3306 --protocol=tcp -h $&#123;HOST&#125; mysql -e "show processlist" &gt; $&#123;tmp_file&#125;for l in `grep 'table level lock' $&#123;tmp_file&#125; | grep -v 'system user' | awk '&#123;print $1&#125;'`; do mysql -u $&#123;USER&#125; -p $&#123;PASS&#125; -P3306 --protocol=tcp -h $&#123;HOST&#125; mysql -e "kill $l;"done]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>死锁</tag>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hazelcast Client配置]]></title>
     <url>%2Fposts%2F354%2F</url>
     <content type="text"><![CDATA[最大value 单个k-v的操作本身不受数据字节大小限制 操作受最大堆内存-Xmx限制 操作受超时时间限制hazelcast.max.operation.timeout 12INFO HazelcastTest - size:273437KBINFO HazelcastTest - elapsed:62ms 数量、过期等限制 针对每个map均可限制1234567891011121314151617//限制instruments特定mapMapConfig mCfg = new MapConfig("instruments");//超时时间mCfg.setTimeToLiveSeconds(60);//节点备份数mCfg.setBackupCount(1);//删除策略mCfg.setEvictionPolicy(EvictionPolicy.LRU);//存储模式mCfg.setInMemoryFormat(InMemoryFormat.BINARY);MaxSizeConfig maxSizeConfig = new MaxSizeConfig();//最大数量maxSizeConfig.setSize(1000);//针对节点限制maxSizeConfig.setMaxSizePolicy(MaxSizeConfig.MaxSizePolicy.PER_NODE);mCfg.setMaxSizeConfig(maxSizeConfig); 集群性能 -Xms128M -Xmx256M 2个节点 k:递增,value：1k client并发50 双节点puts平均为290/s，延迟为0.5ms自动扩充 基于广播 基于TCP-IP 基于Eureka 基于Zk]]></content>
@@ -46,11 +81,6 @@
       <tags>
         <tag>Java并发编程</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[threadlocal]]></title>
-    <url>%2Fposts%2F19627%2F</url>
-    <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[Java并发编程艺术 - Join、Yield和Sleep]]></title>
@@ -307,7 +337,7 @@
   <entry>
     <title><![CDATA[搭建Http-Server用于文件传输]]></title>
     <url>%2Fposts%2F4544%2F</url>
-    <content type="text"><![CDATA[Http-Serverhttp-server 安装npm install http-server -g 启动cd ~/Public/http-server默认是 8080端口，./public文件夹 文件上传./public 文件下载wget http://172.16.25.70:8080/prometheus.yml]]></content>
+    <content type="text"><![CDATA[Http-Serverhttp-server 安装npm install http-server -g 启动cd ~/Public/http-server默认是 8080端口，./public文件夹 文件上传./public 文件下载wget http://172.16.25.70:8080/prometheus.yml pm2开机启动github```bashpm2 delete http-localwhich http-serverpm2 start /usr/local/bin/http-server –name http-local – -p 8080pm2 savepm2 startup]]></content>
       <categories>
         <category>工具利器</category>
       </categories>
@@ -473,8 +503,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java并发编程</tag>
         <tag>Java内存模型</tag>
+        <tag>Java并发编程</tag>
       </tags>
   </entry>
   <entry>
@@ -570,7 +600,7 @@
   <entry>
     <title><![CDATA[Linux运维常用命令 - grep]]></title>
     <url>%2Fposts%2F48230%2F</url>
-    <content type="text"><![CDATA[以下为Linux开发中常用的命令。 筛选文本并查看指定上下行数常用于筛选日志，并查看上下文 grep [选项] ‘模式’ [文件] 选项: -A 后几行 -B 前几行 -C 前后几行 模式: 待筛选文本 文件: 待筛选源文件举例 123grep -A 20 'cat' info.log # 显示info.log及后20行grep -B 20 'cat' info.log # 显示info.log及前20行grep -C 20 'cat' info.log # 显示info.log文件里匹配cat字串行以及上下20行]]></content>
+    <content type="text"><![CDATA[以下为Linux开发中常用的命令。 筛选文本并查看指定上下行数常用于筛选日志，并查看上下文 grep [选项] ‘模式’ [文件] 选项: -A 后几行 -B 前几行 -C 前后几行 模式: 待筛选文本 文件: 待筛选源文件举例 123grep -A 20 'cat' info.log # 显示info.log及后20行grep -B 20 'cat' info.log # 显示info.log及前20行grep -C 20 'cat' info.log # 显示info.log文件里匹配cat字串行以及上下20行 查看linux内存使用情况命令 1free -m 结果 123 total used free shared buff/cache availableMem: 64083 42542 6321 210 15219 20451Swap: 0 0 0 Mem:内存的使用情况总览表 totel:机器总的物理内存 单位为：M used:用掉的内存 free:空闲的物理内存 shared:多个进程共享的内存总和，当前废弃不用 buffers:缓存内存数 cached:缓存内存数注： 物理内存(totel)=系统看到的用掉的内存(used)+系统看到空闲的内存(free) 程序预留的内存=buffers+cached buffer是即将要写入磁盘的，而cache是被从磁盘中读出来的 进程查看器htop 1yum install htop 界面划分成了四个区域，其中： 上左区：显示了CPU、物理内存和交换分区的信息； 上右区：显示了任务数量、平均负载和连接运行时间等信息；平均负载表示的是过去的5分钟、10分钟和15分钟系统的平均负载； 进程区域：显示出当前系统中的所有进程； 123456789101112PID：进程标志号，是非零正整数USER：进程所有者的用户名PR：进程的优先级别NI：进程的优先级别数值VIRT：进程占用的虚拟内存值RES：进程占用的物理内存值SHR：进程使用的共享内存值S：进程的状态，其中S表示休眠，R表示正在运行，Z表示僵死状态，N表示该进程优先值是负数%CPU：该进程占用的CPU使用率%MEM：该进程占用的物理内存和总内存的百分比TIME+：该进程启动后占用的总的CPU时间COMMAND：进程启动的启动命令名称 操作提示区：显示了当前界面中F1-F10功能键中定义的快捷功能。 压缩解压.gz 123解压1：gunzip FileName.gz解压2：gzip -d FileName.gz压缩：gzip FileName]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -587,8 +617,8 @@
       </categories>
       <tags>
         <tag>Java并发编程</tag>
-        <tag>多线程</tag>
         <tag>死锁</tag>
+        <tag>多线程</tag>
       </tags>
   </entry>
   <entry>
