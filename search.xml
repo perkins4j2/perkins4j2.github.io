@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Java8处理空对象之Optional]]></title>
+    <url>%2Fposts%2F19687%2F</url>
+    <content type="text"><![CDATA[OptionalJava8中引入java.util.Optional，这是一个封装Optional值的类。 举例来说，如果一个人可能有也可能没有车，那么Person类内部的car变量就不应该声明为Car，遭遇某人没有车时不应该把null引用赋值给它，而是应该将其声明为Optional类型。 在代码中始终如一地使用Optional，能非常清晰地界定出变量值的缺失是结构上的问题，还是算法上的缺陷，抑或是数据中的问题。 引入Optional类的意图并非要消除每一个null引用。与此相反，它的目标是帮助更好地设计出普适的API，以便看到方法签名，就能了解它是否接受一个Optional的值。这种强制会积极的将变量从Optional中解包出来，直面缺失的变量值。 创建Optional对象 Optional.empty，创建一个空的Optional对象 1Optional&lt;Car&gt; optCar = Optional.empty(); Optional.of，依据一个非空值创建一个Optional对象 1Optional&lt;Car&gt; optCar = Optional.of(car); 如果car是一个null，这段代码会立即抛出一个NullPointerException，而不是等到试图访问car的属性值时才返回一个错误。 Optional.ofNullable，创建一个允许null值的Optional对象1Optional&lt;Car&gt; optCar = Optional.ofNullable(car); 如果car是null，那么得到的Optional对象就是个空对象。 不过get()方法在遭遇到空的Optional对象时也会抛出异常，所以不按照约定的方式使用它，又会让再度陷入由null引起的代码维护的梦魇。 使用map从Optional对象中提取和转换值map操作会将提供的函数应用于流的每个元素。你可以把Optional对象看成一种特殊的集合数据，它至多包含一个元素。 如果Optional包含一个值，那函数就将该值作为参数传递给map，对该值进行转换。如 果Optional为空，就什么也不做。 1234String name = null;if(insurance != null)&#123; name = insurance.getName();&#125; 优化 123Optional&lt;Insurance&gt; optInsurance = Optional.ofNullable(insurance); Optional&lt;String&gt; name = optInsurance.map(Insurance::getName); 使用flatMap链接Optional对象使用流时，flatMap方法接受一个函数作为参数，这个函数的返回值是另一个流。 这个方法会应用到流中的每一个元素，最终形成一个新的流。但是flagMap会用流的内容替换每个新生成的流。 12345public String getCarInsuranceName(Optional&lt;Person&gt; person) &#123; return person.flatMap(Person::getCar) .flatMap(Car::getInsurance) .map(Insurance::getName) .orElse("Unknown");&#125; 使用Optional解引用串接对象上例中，以Optional封装的Person入手，对其调用flatMap(Person::getCar)。 flatMap将某个Function作为参数，被传递给Optional封装的Person对象，对其进行转换。Function的具体表现是一个方法引用，即对Person对象的getCar方法进行调用。由于该方法返回一个Optional类型的对象，Optional内的Person也被转换成了这种对象的实例，结果就是一个两层的Optional对象，最终它们会被flagMap操作合并。 可以将这种合并操作简单地看成把两个Optional对象结合在一起，如果其中有一个对象为空，就构成一个空的Optional对象。如果你对一个空的Optional对象调用flatMap，结果不会发生任何改变， 返回值也是个空的Optional对象。 如果Optional封装了一个Person对象，传递给flapMap的Function，就会应用到Person上对其进行处理。这个例子中，由于Function的返回值已经是一个Optional对象，flapMap方法就直接将其返回。 如果调用链上的任何一个方法返回一个空的Optional，那么结果就为空，否则返回的值就是你期望的保险公司的名称。 如何读出这个值呢?毕竟最后得到的这个对象还是个Optional，它可能包含保险公司的名称，也可能为空。可以使用了一个名为orElse的方法，当Optional的值为空时，它会为其设定一个默认值。 无法序列化由于Optional类设计时就没特别考虑将其作为类的字段使用，所以它也并未实现Serializable接口。由于这个原因，如果用了某些要求序列化的库或者框架，在模型中使用Optional，有可能引发应用程序故障。 如果你一定要实现序列化的域模型，作为替代方案，建议像下面这个例子那样，提供一个能访问声明为Optional、变量值可能缺失的接口。 123456public class Person &#123; private Car car; public Optional&lt;Car&gt; getCarAsOptional()&#123; return Optional.ofNullable(car); &#125; &#125; 两个Optional对象的组合12345if (person.isPresent() &amp;&amp; car.isPresent())&#123; return Optional.of(findCheapestInsurance(person.get(), car.get())); &#125; else &#123; return Optional.empty();&#125; 以不解包的方式组合两个Optional对象 1return person.flatMap(p -&gt; car.map(c -&gt; findCheapestInsurance(p, c))); 使用filter剔除特定的值filter方法接受一个谓词作为参数。如果Optional对象的值存在，并且它符合谓词的条件，filter方法就返回其值;否则它就返回一个空的Optional对象。 123if(insurance != null &amp;&amp; "CambridgeInsurance".equals(insurance.getName()))&#123;System.out.println("ok");&#125; 优化 12optInsurance.filter(insurance -&gt; "CambridgeInsurance".equals(insurance.getName())) .ifPresent(x -&gt; System.out.println("ok")); 123456return person.filter(p -&gt; p.getAge() &gt;= minAge) .flatMap(Person::getCar) .flatMap(Car::getInsurance) .map(Insurance::getName) .orElse("Unknown");&#125; 用Optional封装可能为null的值1Object value = map.get("key"); 优化 1Optional&lt;Object&gt; value = Optional.ofNullable(map.get("key")); 1234return Optional.ofNullable(props.getProperty(name)) .flatMap(OptionalUtility::stringToInt) .filter(i -&gt; i &gt; 0) .orElse(0); 异常与Optional的对比12345try &#123; return Optional.of(Integer.parseInt(s));&#125; catch (NumberFormatException e) &#123; return Optional.empty();&#125; 建议将多个类似的方法封装到一个工具类中。 基础类型的Optional对象和避免使用基础类型 OptionalInt OptionalLong OptionalDouble 不推荐使用基础类型的Optional，因为基础类型的Optional不支持map、flatMap以及filter方法，而这些却是Optional类最有用的方法。 Optional类方法 get() 是这些方法中最简单但又最不安全的方法。如果变量存在，它直接返回封装的变量值，否则就抛出一个NoSuchElementException异常。所以，除非非常确定Optional变量一定包含值，否则不使用。此外，这种方式即便相对于嵌套式的null检查，也并未体现出多大的改进。 orElse(T other) 允许在Optional对象不包含值时提供一个默认值。 orElseGet(Supplier&lt;? extends T&gt; other) 是orElse方法的延迟调用版，Supplier方法只有在Optional对象不含值时才执行调用。如果创建默认值是件耗时费力的工作，应该考虑采用这种方式(借此提升程序的性能)，或者需要非常确定某个方法仅在 Optional为空时才进行调用，也可以考虑该方式(这种情况有严格的限制条件)。 orElseThrow(Supplier&lt;? extends X&gt; exceptionSupplier) 和get方法非常类似，它们遭遇Optional对象为空时都会抛出一个异常，但是使用orElseThrow你可以定制希望抛出的异常类型。 ifPresent(Consumer&lt;? super T&gt;) 能在变量值存在时执行一个作为参数传入的方法，否则就不进行任何操作。 of 将指定值用Optional封装之后返回，如果该值为null，则抛出一个NullPointerException异常。 ofNullable 将指定值用Optional封装之后返回，如果该值为null，则返回一个空的Optional对象。 flatMap 如果值存在，就对该值执行提供的mapping函数调用，返回一个 Optional 类型的值，否则就返回一个空的Optional对象 map 如果值存在，就对该值执行提供的mapping函数调用将指定值用Optional封装之后返回，如果该值为null，则返回一个空的 Optional对象。]]></content>
+      <categories>
+        <category>并发编程</category>
+      </categories>
+      <tags>
+        <tag>Java8</tag>
+        <tag>Lambda</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[JVM调试命令]]></title>
     <url>%2Fposts%2F9582%2F</url>
     <content type="text"><![CDATA[GC日志打开GC日志 1-server -XX:+PrintGCTimeStamps -XX:+PrintGCDetails -Xloggc:./logs/gc.log jmap生成 java 程序的 dump 文件， 也可以查看堆内对象示例的统计信息、查看 ClassLoader 的信息以及 finalizer 队列。 命令1、jmap -histo[:live] 通过histo选项，打印当前java堆中各个对象的数量、大小。 如果添加了live，只会打印活跃的对象。 2、jmap -dump:[live,]format=b,file= 通过-dump选项，把java堆中的对象dump到本地文件，然后使用MAT进行分析。 如果添加了live，只会dump活跃的对象。 jmap -histo 19470 | jmap -histo:live 19470 3、jmap -heap 通过-heap选项，打印java堆的配置情况和使用情况，还有使用的GC算法。 jmap -heap 19470 4、jmap -finalizerinfo 通过-finalizerinfo选项，打印那些正在等待执行finalize方法的对象。 5、jmap -permstat 通过-permstat选项，打印java堆永久代的信息，包括class loader相关的信息,和interned Strings的信息。``` 实现原理通过jmap和jvm之间进行通信，有两种实现方式：attach 和 SA。 attach attach方式，简单来说就是客户端和服务端之间的通信，客户端发送请求，主要逻辑在服务端执行，jmap相当于客户端，JVM相当于服务端。 在JVM中，有一个叫”Attach Listener”的线程，专门负责监听attach的请求，并执行对应的操作。 客户端连接到目标JVM，向其发出一个类似“inspectheap”命令 目标JVM接收到命令，执行JVM内相关函数，将收集到的结果以文本形式返回 客户端接收到返回的文本并将其显示出来；SA 假如执行”jmap -heap 5409″，就不会使用attach方式实现了。 在参数解析中，如果参数是”-heap|-heap:format=b|-permstat|-finalizerinfo”中的一种，或者添加了”-F”，比如”jmap -histo -F 5409″，则使用SA的方式。 SA方式，和attach方式不同的是，相关的主要逻辑都在SA中实现，从JVM中获取数据即可。jps只列出系统中所有的 Java 应用程序。 -q：只输出进程 ID -m：输出传入 main 方法的参数 -l：输出完全的包名，应用主类名，jar的完全路径名 -v：输出jvm参数 -V：输出通过flag文件传递到JVM中的参数 jinfo可以用来查看正在运行的 java 应用程序的扩展参数，包括Java System属性和JVM命令行参数；也可以动态的修改正在运行的 JVM 一些参数。当系统崩溃时，jinfo可以从core文件里面知道崩溃的Java应用程序的配置信息。 jinfo 19470 输出当前 jvm 进程的全部参数和系统属性 参数说明pid 对应jvm的进程id executable core 产生core dump文件 [server-id@]remote server IP or hostname 远程的ip或者hostname，server-id标记服务的唯一性id option no option 输出全部的参数和系统属性 -flag name 输出对应名称的参数 -flag [+|-]name 开启或者关闭对应名称的参数 -flag name=value 设定对应名称的参数 -flags 输出全部的参数 -sysprops 输出系统属性 jstack进程所包含线程情况查询 (位于”jdk_home/bin”目录下)，可以实时监测系统资源占用与jvm运行情况。 jstack 19470 查看当前java进程的堆栈状态 参数说明：-l 长列表. 打印关于锁的附加信息,例如属于java.util.concurrent 的 ownable synchronizers列表. -F 当’jstack [-l] pid’没有相应的时候强制打印栈信息 -m 打印java和native c/c++框架的所有栈信息. -h | -help 打印帮助信息 pid 需要被打印配置信息的java进程id,可以用jps查询. jstatjstat命令可以查看堆内存各部分的使用量，以及加载类的数量。命令的格式如下： jstat [-命令选项] [vmid] [间隔时间/毫秒] [查询次数] // 命令语法结构：Usage: jstat -help|-options jstat - [-t] [-h] [ []]// 参数解释：Options — 选项，我们一般使用 -gcutil 查看gc情况vmid — VM的进程号，即当前运行的java进程号interval– 间隔时间，单位为秒或者毫秒count — 打印次数，如果缺省则打印无数次 S0 — Heap上的 Survivor space 0 区已使用空间的百分比S1 — Heap上的 Survivor space 1 区已使用空间的百分比E — Heap上的 Eden space 区已使用空间的百分比O — Heap上的 Old space 区已使用空间的百分比P — Perm space 区已使用空间的百分比YGC — 从应用程序启动到采样时发生 Young GC 的次数YGCT– 从应用程序启动到采样时 Young GC 所用的时间(单位秒)FGC — 从应用程序启动到采样时发生 Full GC 的次数FGCT– 从应用程序启动到采样时 Full GC 所用的时间(单位秒)GCT — 从应用程序启动到采样时用于垃圾回收的总时间(单位秒)//示例jstat -options -class -compiler -gc -gccapacity -gccause -gcmetacapacity -gcnew -gcnewcapacity -gcold -gcoldcapacity -gcutil -printcompilationjstat -class -t 19470Timestamp Loaded Bytes Unloaded Bytes Time6188.4 3898 7178.4 40 58.3 1.78 jstat -gcutil 19470 1000 5 S0 S1 E O M CCS YGC YGCT FGC FGCT GCT0.00 25.00 98.55 15.37 96.94 94.88 21 0.069 7 0.237 0.3060.00 25.00 99.59 15.37 96.94 94.88 21 0.069 7 0.237 0.3060.00 25.00 99.59 15.37 96.94 94.88 21 0.069 7 0.237 0.3060.00 25.00 100.00 15.37 96.94 94.88 21 0.069 7 0.237 0.306]]></content>
@@ -503,8 +515,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java内存模型</tag>
         <tag>Java并发编程</tag>
+        <tag>Java内存模型</tag>
       </tags>
   </entry>
   <entry>
@@ -527,8 +539,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java并发编程</tag>
         <tag>synchronized</tag>
+        <tag>Java并发编程</tag>
       </tags>
   </entry>
   <entry>
@@ -617,8 +629,8 @@
       </categories>
       <tags>
         <tag>Java并发编程</tag>
-        <tag>死锁</tag>
         <tag>多线程</tag>
+        <tag>死锁</tag>
       </tags>
   </entry>
   <entry>

@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="启动Java应用程序则是一个进程，一个进程可以启动多个线程，线程是操作系统调度最小单元。线程拥有独立的计数器、栈和局部变量，可以共享堆内存。 一个Java程序入口是main主线程，线程优先级从1-10，优先级越高分配时间片越长。 为什么使用多线程 更多的处理器核心   使用多线程技术，将计算逻辑分配到多个处理器核心上，就会显著减少程序的处理时间，并且随着更多处理器核心的加入而变得更有效率。  更快">
-<meta name="keywords" content="Java并发编程,多线程">
+  <meta name="description" content="OptionalJava8中引入java.util.Optional，这是一个封装Optional值的类。 举例来说，如果一个人可能有也可能没有车，那么Person类内部的car变量就不应该声明为Car，遭遇某人没有车时不应该把null引用赋值给它，而是应该将其声明为Optional类型。 在代码中始终如一地使用Optional，能非常清晰地界定出变量值的缺失是结构上的问题，还是算法上的缺陷，抑或">
+<meta name="keywords" content="Java8,Lambda">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java并发编程艺术 - 多线程">
-<meta property="og:url" content="https://perkins4j2.github.io/posts/24227/index.html">
+<meta property="og:title" content="Java8处理空对象之Optional">
+<meta property="og:url" content="https://perkins4j2.github.io/posts/19687/index.html">
 <meta property="og:site_name" content="Perkins4j2的技术博客">
-<meta property="og:description" content="启动Java应用程序则是一个进程，一个进程可以启动多个线程，线程是操作系统调度最小单元。线程拥有独立的计数器、栈和局部变量，可以共享堆内存。 一个Java程序入口是main主线程，线程优先级从1-10，优先级越高分配时间片越长。 为什么使用多线程 更多的处理器核心   使用多线程技术，将计算逻辑分配到多个处理器核心上，就会显著减少程序的处理时间，并且随着更多处理器核心的加入而变得更有效率。  更快">
+<meta property="og:description" content="OptionalJava8中引入java.util.Optional，这是一个封装Optional值的类。 举例来说，如果一个人可能有也可能没有车，那么Person类内部的car变量就不应该声明为Car，遭遇某人没有车时不应该把null引用赋值给它，而是应该将其声明为Optional类型。 在代码中始终如一地使用Optional，能非常清晰地界定出变量值的缺失是结构上的问题，还是算法上的缺陷，抑或">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-24T01:00:55.885Z">
+<meta property="og:updated_time" content="2019-09-26T02:12:34.261Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java并发编程艺术 - 多线程">
-<meta name="twitter:description" content="启动Java应用程序则是一个进程，一个进程可以启动多个线程，线程是操作系统调度最小单元。线程拥有独立的计数器、栈和局部变量，可以共享堆内存。 一个Java程序入口是main主线程，线程优先级从1-10，优先级越高分配时间片越长。 为什么使用多线程 更多的处理器核心   使用多线程技术，将计算逻辑分配到多个处理器核心上，就会显著减少程序的处理时间，并且随着更多处理器核心的加入而变得更有效率。  更快">
+<meta name="twitter:title" content="Java8处理空对象之Optional">
+<meta name="twitter:description" content="OptionalJava8中引入java.util.Optional，这是一个封装Optional值的类。 举例来说，如果一个人可能有也可能没有车，那么Person类内部的car变量就不应该声明为Car，遭遇某人没有车时不应该把null引用赋值给它，而是应该将其声明为Optional类型。 在代码中始终如一地使用Optional，能非常清晰地界定出变量值的缺失是结构上的问题，还是算法上的缺陷，抑或">
 
 
 
@@ -126,7 +126,7 @@
 
   
   
-  <link rel="canonical" href="https://perkins4j2.github.io/posts/24227/">
+  <link rel="canonical" href="https://perkins4j2.github.io/posts/19687/">
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Java并发编程艺术 - 多线程 | Perkins4j2的技术博客</title>
+  <title>Java8处理空对象之Optional | Perkins4j2的技术博客</title>
   
 
 
@@ -393,7 +393,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://perkins4j2.github.io/posts/24227/">
+    <link itemprop="mainEntityOfPage" href="https://perkins4j2.github.io/posts/19687/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Perkins">
@@ -410,7 +410,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java并发编程艺术 - 多线程
+          <h1 class="post-title" itemprop="name headline">Java8处理空对象之Optional
 
               
             
@@ -436,24 +436,12 @@
                 
               
 
-              <time title="创建时间：2019-06-03 13:48:17" itemprop="dateCreated datePublished" datetime="2019-06-03T13:48:17+08:00">2019-06-03</time>
+              <time title="创建时间：2019-09-26 10:11:16 / 修改时间：10:12:34" itemprop="dateCreated datePublished" datetime="2019-09-26T10:11:16+08:00">2019-09-26</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-08-24 09:00:55" itemprop="dateModified" datetime="2019-08-24T09:00:55+08:00">2019-08-24</time>
               
             
           </span>
@@ -506,7 +494,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">9.7k</span>
+                <span title="本文字数">13k</span>
               
 
               
@@ -520,7 +508,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">9 分钟</span>
+                <span title="阅读时长">12 分钟</span>
               
             </div>
           
@@ -540,93 +528,88 @@
       
 
       
-        <p>启动Java应用程序则是一个进程，一个进程可以启动多个线程，线程是操作系统调度最小单元。线程拥有独立的计数器、栈和局部变量，可以共享堆内存。</p>
-<p>一个Java程序入口是main主线程，线程优先级从1-10，优先级越高分配时间片越长。</p>
-<h3 id="为什么使用多线程"><a href="#为什么使用多线程" class="headerlink" title="为什么使用多线程"></a>为什么使用多线程</h3><ul>
-<li><p>更多的处理器核心</p>
-<p>  使用多线程技术，将计算逻辑分配到多个处理器核心上，就会显著减少程序的处理时间，并且随着更多处理器核心的加入而变得更有效率。</p>
+        <h3 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h3><p>Java8中引入java.util.Optional<t>，这是一个封装Optional值的类。</t></p>
+<p>举例来说，如果一个人可能有也可能没有车，那么Person类内部的car变量就不应该声明为Car，遭遇某人没有车时不应该把null引用赋值给它，而是应该将其声明为Optional<car>类型。</car></p>
+<p>在代码中始终如一地使用Optional，能非常清晰地界定出变量值的缺失是结构上的问题，还是算法上的缺陷，抑或是数据中的问题。</p>
+<p>引入Optional类的意图并非要消除每一个null引用。与此相反，它的目标是帮助更好地设计出普适的API，以便看到方法签名，就能了解它是否接受一个Optional的值。这种强制会积极的将变量从Optional中解包出来，直面缺失的变量值。<br> <a id="more"></a></p>
+<h3 id="创建Optional对象"><a href="#创建Optional对象" class="headerlink" title="创建Optional对象"></a>创建Optional对象</h3><ul>
+<li><p>Optional.empty，创建一个空的Optional对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Car&gt; optCar = Optional.empty();</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>更快的响应时间</p>
-<p>  使用多线程技术，即将数据一致性不强的操作派发给其他线程处<br>理（也可以使用消息队列），如生成订单快照、发送邮件等。这样做的好处是响应用户请求的线程能够尽可能快地处理完成，缩短了响应时间，提升了用户体验。</p>
-</li>
-<li><p>更好的编程模型</p>
-<p>Java为多线程编程提供了良好、考究并且一致的编程模型，使开发人员能够更加专注于问题的解决，即为所遇到的问题建立合适的模型，而不是绞尽脑汁地考虑如何将其多线程化。一<br>旦开发人员建立好了模型，稍做修改总是能够方便地映射到Java提供的多线程编程模型上。</p>
-</li>
-</ul>
-<h3 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h3><ul>
-<li>NEW 新建<ul>
-<li>Thread.start();</li>
-</ul>
-</li>
-<li>RUNNABLE 运行，包括就绪和运行<ul>
-<li>Thread.run();</li>
-</ul>
-</li>
-<li>BLOCKED 阻塞<ul>
-<li>synchronized</li>
-</ul>
-</li>
-<li>WAITING 等待，等待其他线程通知和中断<ul>
-<li>Object.wait()</li>
-<li>Object.join()</li>
-<li>LockSupport.park(Thread)</li>
-</ul>
-</li>
-<li>TIME_WAITTING 等待，等待指定时间超时<ul>
-<li>Thread.sleep(long)</li>
-<li>Object.wait(long)</li>
-<li>Object.join(long)</li>
-<li>LockSupport.parkNanos()</li>
-<li>LockSupport.parkUntil()</li>
-</ul>
-</li>
-<li>TERMINATED 终止<ul>
-<li>interrupt(),isInterrupted()和interrupted()</li>
-<li>suspend()、resume()和stop()<br>线程在自身的生命周期中，并不是固定地处于某个状态，而是随着代码的执行在不同的状态之间进行切换<a id="more"></a>
+<li><p>Optional.of，依据一个非空值创建一个Optional对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Car&gt; optCar = Optional.of(car);</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-</li>
-</ul>
+<p>如果car是一个null，这段代码会立即抛出一个NullPointerException，而不是等到试图访问car的属性值时才返回一个错误。</p>
 <ul>
-<li><p>线程创建之后，调用start()方法开始运行。</p>
-</li>
-<li><p>当线程执行wait()方法之后，线程进入等待状态。</p>
-</li>
-<li><p>进入等待状态的线程需要依靠其他线程的通知才能够返回到运行状态</p>
-</li>
-<li><p>而超时等待状态相当于在等待状态的基础上增加了超时限制，也就是超时时间到达时将会返回到运行状态。</p>
-</li>
-<li><p>当线程调用同步方法时，在没有获取到锁的情况下，线程将会进入到阻塞状态。</p>
-</li>
-<li><p>线程在执行Runnable的run()方法之后将会进入到终止状态。</p>
-</li>
-<li><p>Java将操作系统中的运行和就绪两个状态合并称为运行状态。</p>
-</li>
-<li><p>阻塞状态是线程阻塞在进入synchronized关键字修饰的方法或代码块（获取锁）时的状态。</p>
-</li>
-<li><p>但是阻塞在java.concurrent包中Lock接口的线程状态却是等待状态，因为java.concurrent包中Lock接口对于阻塞的实现均使用了LockSupport类中的相关方法。</p>
+<li>Optional.ofNullable，创建一个允许null值的Optional对象<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Car&gt; optCar = Optional.ofNullable(car);</span><br></pre></td></tr></table></figure>
+
 </li>
 </ul>
-<h3 id="线程优先级"><a href="#线程优先级" class="headerlink" title="线程优先级"></a>线程优先级</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Thread thread = <span class="keyword">new</span> Thread(job, <span class="string">"Thread:"</span> + i);</span><br><span class="line">thread.setPriority(priority);</span><br><span class="line">thread.start();</span><br></pre></td></tr></table></figure>
+<p>如果car是null，那么得到的Optional对象就是个空对象。</p>
+<p>不过get()方法在遭遇到空的Optional对象时也会抛出异常，所以不按照约定的方式使用它，又会让再度陷入由null引起的代码维护的梦魇。</p>
+<h3 id="使用map从Optional对象中提取和转换值"><a href="#使用map从Optional对象中提取和转换值" class="headerlink" title="使用map从Optional对象中提取和转换值"></a>使用map从Optional对象中提取和转换值</h3><p>map操作会将提供的函数应用于流的每个元素。你可以把Optional对象看成一种特殊的集合数据，它至多包含一个元素。</p>
+<p>如果Optional包含一个值，那函数就将该值作为参数传递给map，对该值进行转换。如 果Optional为空，就什么也不做。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String name = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">if</span>(insurance != <span class="keyword">null</span>)&#123;</span><br><span class="line">    name = insurance.getName();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>在Java线程中，通过一个整型成员变量priority来控制优先级，优先级的范围从1~10，在线程构建的时候可以通过setPriority(int)方法来修改优先级，默认优先级是5，优先级高的线程分配时间片的数量要多于优先级低的线程。</p>
-<p>设置线程优先级时，针对频繁阻塞（休眠或者I/O操作）的线程需要设置较高优先级，而偏重计算（需要较多CPU时间或者偏运算）的线程则设置较低的优先级，确保处理器不会被独占。在不同的JVM以及操作系统上，线程规划会存在差异，有些操作系统甚至会忽略对线程优先级的设定。</p>
-<p>线程优先级不能作为程序正确性的依赖，因为操作系统可以完全不用理会Java线程对于优先级的设定。</p>
-<h3 id="Daemon线程"><a href="#Daemon线程" class="headerlink" title="Daemon线程"></a>Daemon线程</h3><p>守护线程，为非Daemon线程提供后台调度和服务，例如GC线程。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Thread thread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> DaemonRunner(), <span class="string">"DaemonRunner"</span>);</span><br><span class="line">thread.setDaemon(<span class="keyword">true</span>);</span><br><span class="line">thread.start();</span><br></pre></td></tr></table></figure>
+<p>优化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Insurance&gt; optInsurance = Optional.ofNullable(insurance); </span><br><span class="line"></span><br><span class="line">Optional&lt;String&gt; name = optInsurance.map(Insurance::getName);</span><br></pre></td></tr></table></figure>
 
-<p>Daemon线程是一种支持型线程，因为它主要被用作程序中后台调度以及支持性工作。这意味着，当一个Java虚拟机中不存在非Daemon线程的时候，Java虚拟机将会退出。可以通过调用Thread.setDaemon(true)将线程设置为Daemon线程。</p>
-<p>Daemon属性需要在启动线程之前设置，不能在启动线程之后设置。</p>
-<h3 id="线程中断"><a href="#线程中断" class="headerlink" title="线程中断"></a>线程中断</h3><p>其他线程调用该线程的interrupt()方法进行中断，线程本身调用isInterrupted(()判断是否中断，也可以调用Thread.interrupted()对当前线程的中断标识位进行复位。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Thread2</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Runner one = <span class="keyword">new</span> Runner();</span><br><span class="line">        Thread countThread = <span class="keyword">new</span> Thread(one, <span class="string">"CountThread1"</span>);</span><br><span class="line">        countThread.start();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 睡眠1秒，main线程对CountThread进行中断，使CountThread能够感知中断而结束</span></span><br><span class="line">        TimeUnit.SECONDS.sleep(<span class="number">1</span>);</span><br><span class="line">        countThread.interrupt();</span><br><span class="line"></span><br><span class="line">        Runner two = <span class="keyword">new</span> Runner();</span><br><span class="line">        countThread = <span class="keyword">new</span> Thread(two, <span class="string">"CountThread2"</span>);</span><br><span class="line">        countThread.start();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 睡眠1秒，main线程对Runner two进行取消，使CountThread能够感知on为false而结束</span></span><br><span class="line">        TimeUnit.SECONDS.sleep(<span class="number">1</span>);</span><br><span class="line">        two.cancel();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Runner</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">long</span> i;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">boolean</span> on = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">while</span> (on &amp;&amp; !Thread.currentThread().isInterrupted()) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    i++;</span><br><span class="line">                    Thread.sleep(<span class="number">100</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    Thread.currentThread().interrupt();<span class="comment">//重新设置中断标示</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"Count i = "</span> + i + <span class="string">",Name:"</span> + Thread.currentThread().getName());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">cancel</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            on = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用flatMap链接Optional对象"><a href="#使用flatMap链接Optional对象" class="headerlink" title="使用flatMap链接Optional对象"></a>使用flatMap链接Optional对象</h3><p>使用流时，flatMap方法接受一个函数作为参数，这个函数的返回值是另一个流。</p>
+<p>这个方法会应用到流中的每一个元素，最终形成一个新的流。但是flagMap会用流的内容替换每个新生成的流。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getCarInsuranceName</span><span class="params">(Optional&lt;Person&gt; person)</span> </span>&#123; <span class="keyword">return</span> person.flatMap(Person::getCar)</span><br><span class="line">                     .flatMap(Car::getInsurance)</span><br><span class="line">                     .map(Insurance::getName)</span><br><span class="line">                     .orElse(<span class="string">"Unknown"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="线程等待和通知"><a href="#线程等待和通知" class="headerlink" title="线程等待和通知"></a>线程等待和通知</h3><ul>
-<li>notify() 随机通知在对象上等待的另一个线程，使其在wait()状态上尝试获取锁，如获取锁成功则返回</li>
-<li>notifyAll() 通知在对象上等待的所有线程，竞争锁</li>
-<li>wait() 进入WAITING状态，等待通知或中断，会释放锁</li>
-<li>wait(long) 进入TIME_WAITTING状态，等待超时</li>
-<li>join() 进入WAITING状态，等待其他线程终止后返回，不释放锁</li>
-<li>join(long) 进入TIME_WAITTING状态，等待其他线程终止后返回，不释放锁</li>
+<h3 id="使用Optional解引用串接对象"><a href="#使用Optional解引用串接对象" class="headerlink" title="使用Optional解引用串接对象"></a>使用Optional解引用串接对象</h3><p>上例中，以Optional封装的Person入手，对其调用flatMap(Person::getCar)。</p>
+<p>flatMap将某个Function作为参数，被传递给Optional封装的Person对象，对其进行转换。Function的具体表现是一个方法引用，即对Person对象的getCar方法进行调用。由于该方法返回一个Optional<car>类型的对象，Optional内的Person也被转换成了这种对象的实例，结果就是一个两层的Optional对象，最终它们会被flagMap操作合并。</car></p>
+<p>可以将这种合并操作简单地看成把两个Optional对象结合在一起，如果其中有一个对象为空，就构成一个空的Optional对象。如果你对一个空的Optional对象调用flatMap，结果不会发生任何改变， 返回值也是个空的Optional对象。</p>
+<p>如果Optional封装了一个Person对象，传递给flapMap的Function，就会应用到Person上对其进行处理。这个例子中，由于Function的返回值已经是一个Optional对象，flapMap方法就直接将其返回。</p>
+<p>如果调用链上的任何一个方法返回一个空的Optional，那么结果就为空，否则返回的值就是你期望的保险公司的名称。</p>
+<p>如何读出这个值呢?毕竟最后得到的这个对象还是个Optional<string>，它可能包含保险公司的名称，也可能为空。可以使用了一个名为orElse的方法，当Optional的值为空时，它会为其设定一个默认值。</string></p>
+<h3 id="无法序列化"><a href="#无法序列化" class="headerlink" title="无法序列化"></a>无法序列化</h3><p>由于Optional类设计时就没特别考虑将其作为类的字段使用，所以它也并未实现Serializable接口。由于这个原因，如果用了某些要求序列化的库或者框架，在模型中使用Optional，有可能引发应用程序故障。</p>
+<p>如果你一定要实现序列化的域模型，作为替代方案，建议像下面这个例子那样，提供一个能访问声明为Optional、变量值可能缺失的接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Car car;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Optional&lt;Car&gt; <span class="title">getCarAsOptional</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Optional.ofNullable(car);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="两个Optional对象的组合"><a href="#两个Optional对象的组合" class="headerlink" title="两个Optional对象的组合"></a>两个Optional对象的组合</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (person.isPresent() &amp;&amp; car.isPresent())&#123;</span><br><span class="line">    <span class="keyword">return</span> Optional.of(findCheapestInsurance(person.get(), car.get())); </span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Optional.empty();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以不解包的方式组合两个Optional对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> person.flatMap(p -&gt; car.map(c -&gt; findCheapestInsurance(p, c)));</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用filter剔除特定的值"><a href="#使用filter剔除特定的值" class="headerlink" title="使用filter剔除特定的值"></a>使用filter剔除特定的值</h3><p>filter方法接受一个谓词作为参数。如果Optional对象的值存在，并且它符合谓词的条件，filter方法就返回其值;否则它就返回一个空的Optional对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(insurance != <span class="keyword">null</span> &amp;&amp; <span class="string">"CambridgeInsurance"</span>.equals(insurance.getName()))&#123;</span><br><span class="line">System.out.println(<span class="string">"ok"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>优化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">optInsurance.filter(insurance -&gt;              <span class="string">"CambridgeInsurance"</span>.equals(insurance.getName()))</span><br><span class="line">            .ifPresent(x -&gt; System.out.println(<span class="string">"ok"</span>));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> person.filter(p -&gt; p.getAge() &gt;= minAge)</span><br><span class="line">            .flatMap(Person::getCar)</span><br><span class="line">            .flatMap(Car::getInsurance)</span><br><span class="line">            .map(Insurance::getName)</span><br><span class="line">            .orElse(<span class="string">"Unknown"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="用Optional封装可能为null的值"><a href="#用Optional封装可能为null的值" class="headerlink" title="用Optional封装可能为null的值"></a>用Optional封装可能为null的值</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object value = map.get(<span class="string">"key"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>优化</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Object&gt; value = Optional.ofNullable(map.get(<span class="string">"key"</span>));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> Optional.ofNullable(props.getProperty(name))</span><br><span class="line">        .flatMap(OptionalUtility::stringToInt)</span><br><span class="line">        .filter(i -&gt; i &gt; <span class="number">0</span>)</span><br><span class="line">        .orElse(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="异常与Optional的对比"><a href="#异常与Optional的对比" class="headerlink" title="异常与Optional的对比"></a>异常与Optional的对比</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> Optional.of(Integer.parseInt(s));</span><br><span class="line">&#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line">    <span class="keyword">return</span> Optional.empty();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>建议将多个类似的方法封装到一个工具类中。</p>
+<h3 id="基础类型的Optional对象和避免使用"><a href="#基础类型的Optional对象和避免使用" class="headerlink" title="基础类型的Optional对象和避免使用"></a>基础类型的Optional对象和避免使用</h3><p>基础类型</p>
+<ul>
+<li>OptionalInt</li>
+<li>OptionalLong</li>
+<li>OptionalDouble</li>
+</ul>
+<p>不推荐使用基础类型的Optional，因为基础类型的Optional不支持map、flatMap以及filter方法，而这些却是Optional类最有用的方法。</p>
+<h3 id="Optional类方法"><a href="#Optional类方法" class="headerlink" title="Optional类方法"></a>Optional类方法</h3><ul>
+<li>get()<br>  是这些方法中最简单但又最不安全的方法。如果变量存在，它直接返回封装的变量值，否则就抛出一个NoSuchElementException异常。所以，除非非常确定Optional变量一定包含值，否则不使用。此外，这种方式即便相对于嵌套式的null检查，也并未体现出多大的改进。</li>
+<li>orElse(T other)<br>  允许在Optional对象不包含值时提供一个默认值。</li>
+<li>orElseGet(Supplier&lt;? extends T&gt; other)<br>  是orElse方法的延迟调用版，Supplier方法只有在Optional对象不含值时才执行调用。如果创建默认值是件耗时费力的工作，应该考虑采用这种方式(借此提升程序的性能)，或者需要非常确定某个方法仅在 Optional为空时才进行调用，也可以考虑该方式(这种情况有严格的限制条件)。</li>
+<li>orElseThrow(Supplier&lt;? extends X&gt; exceptionSupplier)<br>  和get方法非常类似，它们遭遇Optional对象为空时都会抛出一个异常，但是使用orElseThrow你可以定制希望抛出的异常类型。</li>
+<li>ifPresent(Consumer&lt;? super T&gt;)<br>  能在变量值存在时执行一个作为参数传入的方法，否则就不进行任何操作。</li>
+<li>of<br>  将指定值用Optional封装之后返回，如果该值为null，则抛出一个NullPointerException异常。</li>
+<li>ofNullable<br>  将指定值用Optional封装之后返回，如果该值为null，则返回一个空的Optional对象。</li>
+<li>flatMap<br>  如果值存在，就对该值执行提供的mapping函数调用，返回一个 Optional 类型的值，否则就返回一个空的Optional对象</li>
+<li>map<br>  如果值存在，就对该值执行提供的mapping函数调用将指定值用Optional封装之后返回，如果该值为null，则返回一个空的 Optional对象。</li>
 </ul>
 
       
@@ -641,35 +624,35 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/posts/48047/" rel="bookmark">Java并发编程艺术 - 多线程wait和notify</a></div>
+      <div class="popular-posts-title"><a href="/posts/9582/" rel="bookmark">JVM调试命令</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/posts/10420/" rel="bookmark">Java并发编程艺术 - 多线程与资源限制</a></div>
+      <div class="popular-posts-title"><a href="/posts/58696/" rel="bookmark">Java8常用文件处理方法</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/posts/58008/" rel="bookmark">Java并发编程艺术 - 多线程构造和启动</a></div>
+      <div class="popular-posts-title"><a href="/posts/15864/" rel="bookmark">Java Lambda用法</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/posts/20463/" rel="bookmark">Java并发编程艺术 - 死锁产生及优化</a></div>
+      <div class="popular-posts-title"><a href="/posts/54901/" rel="bookmark">Java Lambda FunctionalInterface原理</a></div>
       
     </li>
   
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/posts/18201/" rel="bookmark">Java并发编程艺术 - 管道输入和输出流</a></div>
+      <div class="popular-posts-title"><a href="/posts/42366/" rel="bookmark">Java Lambda Stream原理</a></div>
       
     </li>
   
@@ -703,11 +686,11 @@
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>Java并发编程艺术 - 多线程</p>
+  <p><span>本文标题:</span>Java8处理空对象之Optional</p>
   <p><span>文章作者:</span>Perkins</p>
-  <p><span>发布时间:</span>2019年06月03日</p>
-  <p><span>原始链接:</span><a href="/posts/24227/" title="Java并发编程艺术 - 多线程">https://perkins4j2.github.io/posts/24227/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://perkins4j2.github.io/posts/24227/" aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2019年09月26日</p>
+  <p><span>原始链接:</span><a href="/posts/19687/" title="Java8处理空对象之Optional">https://perkins4j2.github.io/posts/19687/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://perkins4j2.github.io/posts/19687/" aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
 </div>
@@ -743,9 +726,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java并发编程/" rel="tag"># Java并发编程</a>
+            <a href="/tags/Java8/" rel="tag"># Java8</a>
           
-            <a href="/tags/多线程/" rel="tag"># 多线程</a>
+            <a href="/tags/Lambda/" rel="tag"># Lambda</a>
           
         </div>
       
@@ -758,8 +741,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/31866/" rel="next" title="Java并发编程艺术 - 延迟加载与双重检查锁定double check lock">
-                <i class="fa fa-chevron-left"></i> Java并发编程艺术 - 延迟加载与双重检查锁定double check lock
+              <a href="/posts/9582/" rel="next" title="JVM调试命令">
+                <i class="fa fa-chevron-left"></i> JVM调试命令
               </a>
             
           </div>
@@ -767,10 +750,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/21810/" rel="prev" title="Centos7安装部署 - MySQL">
-                Centos7安装部署 - MySQL <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -1044,7 +1023,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么使用多线程"><span class="nav-number">1.</span> <span class="nav-text">为什么使用多线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程状态"><span class="nav-number">2.</span> <span class="nav-text">线程状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程优先级"><span class="nav-number">3.</span> <span class="nav-text">线程优先级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Daemon线程"><span class="nav-number">4.</span> <span class="nav-text">Daemon线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程中断"><span class="nav-number">5.</span> <span class="nav-text">线程中断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程等待和通知"><span class="nav-number">6.</span> <span class="nav-text">线程等待和通知</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Optional"><span class="nav-number">1.</span> <span class="nav-text">Optional</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建Optional对象"><span class="nav-number">2.</span> <span class="nav-text">创建Optional对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用map从Optional对象中提取和转换值"><span class="nav-number">3.</span> <span class="nav-text">使用map从Optional对象中提取和转换值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用flatMap链接Optional对象"><span class="nav-number">4.</span> <span class="nav-text">使用flatMap链接Optional对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Optional解引用串接对象"><span class="nav-number">5.</span> <span class="nav-text">使用Optional解引用串接对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无法序列化"><span class="nav-number">6.</span> <span class="nav-text">无法序列化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两个Optional对象的组合"><span class="nav-number">7.</span> <span class="nav-text">两个Optional对象的组合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用filter剔除特定的值"><span class="nav-number">8.</span> <span class="nav-text">使用filter剔除特定的值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用Optional封装可能为null的值"><span class="nav-number">9.</span> <span class="nav-text">用Optional封装可能为null的值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常与Optional的对比"><span class="nav-number">10.</span> <span class="nav-text">异常与Optional的对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基础类型的Optional对象和避免使用"><span class="nav-number">11.</span> <span class="nav-text">基础类型的Optional对象和避免使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Optional类方法"><span class="nav-number">12.</span> <span class="nav-text">Optional类方法</span></a></li></ol></div>
             
 
           </div>

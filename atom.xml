@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-09-25T01:34:33.900Z</updated>
+  <updated>2019-09-26T02:12:34.261Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java8处理空对象之Optional</title>
+    <link href="https://perkins4j2.github.io/posts/19687/"/>
+    <id>https://perkins4j2.github.io/posts/19687/</id>
+    <published>2019-09-26T02:11:16.000Z</published>
+    <updated>2019-09-26T02:12:34.261Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Optional&quot;&gt;&lt;a href=&quot;#Optional&quot; class=&quot;headerlink&quot; title=&quot;Optional&quot;&gt;&lt;/a&gt;Optional&lt;/h3&gt;&lt;p&gt;Java8中引入java.util.Optional&lt;t&gt;，这是一个封装Optional值的类。&lt;/t&gt;&lt;/p&gt;
+&lt;p&gt;举例来说，如果一个人可能有也可能没有车，那么Person类内部的car变量就不应该声明为Car，遭遇某人没有车时不应该把null引用赋值给它，而是应该将其声明为Optional&lt;car&gt;类型。&lt;/car&gt;&lt;/p&gt;
+&lt;p&gt;在代码中始终如一地使用Optional，能非常清晰地界定出变量值的缺失是结构上的问题，还是算法上的缺陷，抑或是数据中的问题。&lt;/p&gt;
+&lt;p&gt;引入Optional类的意图并非要消除每一个null引用。与此相反，它的目标是帮助更好地设计出普适的API，以便看到方法签名，就能了解它是否接受一个Optional的值。这种强制会积极的将变量从Optional中解包出来，直面缺失的变量值。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Java8" scheme="https://perkins4j2.github.io/tags/Java8/"/>
+    
+      <category term="Lambda" scheme="https://perkins4j2.github.io/tags/Lambda/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JVM调试命令</title>
     <link href="https://perkins4j2.github.io/posts/9582/"/>
     <id>https://perkins4j2.github.io/posts/9582/</id>
     <published>2019-09-25T00:49:03.000Z</published>
-    <updated>2019-09-25T01:34:33.900Z</updated>
+    <updated>2019-09-25T01:49:47.551Z</updated>
     
     <summary type="html">
     
@@ -44,7 +69,7 @@
     <link href="https://perkins4j2.github.io/posts/65243/"/>
     <id>https://perkins4j2.github.io/posts/65243/</id>
     <published>2019-09-25T00:48:40.000Z</published>
-    <updated>2019-09-25T01:46:00.727Z</updated>
+    <updated>2019-09-25T01:49:47.550Z</updated>
     
     <summary type="html">
     
@@ -66,7 +91,7 @@
     <link href="https://perkins4j2.github.io/posts/10641/"/>
     <id>https://perkins4j2.github.io/posts/10641/</id>
     <published>2019-09-25T00:48:13.000Z</published>
-    <updated>2019-09-25T01:47:47.764Z</updated>
+    <updated>2019-09-25T01:49:47.552Z</updated>
     
     <summary type="html">
     
@@ -484,28 +509,6 @@
       <category term="lucene" scheme="https://perkins4j2.github.io/tags/lucene/"/>
     
       <category term="hanlp" scheme="https://perkins4j2.github.io/tags/hanlp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java线程池 - ThreadPool自定义封装</title>
-    <link href="https://perkins4j2.github.io/posts/33509/"/>
-    <id>https://perkins4j2.github.io/posts/33509/</id>
-    <published>2019-08-16T01:16:42.000Z</published>
-    <updated>2019-08-20T01:35:01.157Z</updated>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;自定义线程池，便于调试和控制线程&lt;/li&gt;
-&lt;li&gt;自定义线程数、拒绝策略、关闭等
-    
-    </summary>
-    
-      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="线程池" scheme="https://perkins4j2.github.io/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
     
   </entry>
   
