@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[IDEA自定义Archetype]]></title>
+    <url>%2Fposts%2F31081%2F</url>
+    <content type="text"><![CDATA[创建自定义骨架生成骨架在maven项目下，执行mvn archetype:create-from-project，在target/generated-sources/archetype目录下生成Archetype project 安装骨架到本地cd target/generated-sources/archetype后，mvn install安装archetype project到本地仓库 ps：如果是maven多模块项目，在根目录下执行mvn archetype:create-from-project mvn install后，会在本地的maven仓库，按照maven坐标创建对应的archetype文件 注意：骨架的ArtifactId默认使用当前且添加后缀-archetype 使用自定义模板查看本地在当前的目录下，mvn archetype:generate -DarchetypeCatalog=local，查看本地archetype列表 选择使用choose number，按步骤输入基本参数groupId/artifactId/version/package 随后在当前目录下，以artifactId为目录创建一个新的项目 IDEA使用自定义模板添加到IDEA File-&gt;New-&gt; Project 选择Create from archetype Add Archetype 输入刚创建的骨架 1234GroupId：xx.xx.xxArtifactId：xx-xx-archetypeVersion：1.0-SNAPSHOTRepository(option)：local 随后点击Next 输入新的项目标识,groupId/artifactId/version 修改生成的项目结构为所需]]></content>
+      <categories>
+        <category>工具利器</category>
+      </categories>
+      <tags>
+        <tag>IDEA</tag>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Java8处理空对象之Optional]]></title>
     <url>%2Fposts%2F19687%2F</url>
     <content type="text"><![CDATA[OptionalJava8中引入java.util.Optional，这是一个封装Optional值的类。 举例来说，如果一个人可能有也可能没有车，那么Person类内部的car变量就不应该声明为Car，遭遇某人没有车时不应该把null引用赋值给它，而是应该将其声明为Optional类型。 在代码中始终如一地使用Optional，能非常清晰地界定出变量值的缺失是结构上的问题，还是算法上的缺陷，抑或是数据中的问题。 引入Optional类的意图并非要消除每一个null引用。与此相反，它的目标是帮助更好地设计出普适的API，以便看到方法签名，就能了解它是否接受一个Optional的值。这种强制会积极的将变量从Optional中解包出来，直面缺失的变量值。 创建Optional对象 Optional.empty，创建一个空的Optional对象 1Optional&lt;Car&gt; optCar = Optional.empty(); Optional.of，依据一个非空值创建一个Optional对象 1Optional&lt;Car&gt; optCar = Optional.of(car); 如果car是一个null，这段代码会立即抛出一个NullPointerException，而不是等到试图访问car的属性值时才返回一个错误。 Optional.ofNullable，创建一个允许null值的Optional对象1Optional&lt;Car&gt; optCar = Optional.ofNullable(car); 如果car是null，那么得到的Optional对象就是个空对象。 不过get()方法在遭遇到空的Optional对象时也会抛出异常，所以不按照约定的方式使用它，又会让再度陷入由null引起的代码维护的梦魇。 使用map从Optional对象中提取和转换值map操作会将提供的函数应用于流的每个元素。你可以把Optional对象看成一种特殊的集合数据，它至多包含一个元素。 如果Optional包含一个值，那函数就将该值作为参数传递给map，对该值进行转换。如 果Optional为空，就什么也不做。 1234String name = null;if(insurance != null)&#123; name = insurance.getName();&#125; 优化 123Optional&lt;Insurance&gt; optInsurance = Optional.ofNullable(insurance); Optional&lt;String&gt; name = optInsurance.map(Insurance::getName); 使用flatMap链接Optional对象使用流时，flatMap方法接受一个函数作为参数，这个函数的返回值是另一个流。 这个方法会应用到流中的每一个元素，最终形成一个新的流。但是flagMap会用流的内容替换每个新生成的流。 12345public String getCarInsuranceName(Optional&lt;Person&gt; person) &#123; return person.flatMap(Person::getCar) .flatMap(Car::getInsurance) .map(Insurance::getName) .orElse("Unknown");&#125; 使用Optional解引用串接对象上例中，以Optional封装的Person入手，对其调用flatMap(Person::getCar)。 flatMap将某个Function作为参数，被传递给Optional封装的Person对象，对其进行转换。Function的具体表现是一个方法引用，即对Person对象的getCar方法进行调用。由于该方法返回一个Optional类型的对象，Optional内的Person也被转换成了这种对象的实例，结果就是一个两层的Optional对象，最终它们会被flagMap操作合并。 可以将这种合并操作简单地看成把两个Optional对象结合在一起，如果其中有一个对象为空，就构成一个空的Optional对象。如果你对一个空的Optional对象调用flatMap，结果不会发生任何改变， 返回值也是个空的Optional对象。 如果Optional封装了一个Person对象，传递给flapMap的Function，就会应用到Person上对其进行处理。这个例子中，由于Function的返回值已经是一个Optional对象，flapMap方法就直接将其返回。 如果调用链上的任何一个方法返回一个空的Optional，那么结果就为空，否则返回的值就是你期望的保险公司的名称。 如何读出这个值呢?毕竟最后得到的这个对象还是个Optional，它可能包含保险公司的名称，也可能为空。可以使用了一个名为orElse的方法，当Optional的值为空时，它会为其设定一个默认值。 无法序列化由于Optional类设计时就没特别考虑将其作为类的字段使用，所以它也并未实现Serializable接口。由于这个原因，如果用了某些要求序列化的库或者框架，在模型中使用Optional，有可能引发应用程序故障。 如果你一定要实现序列化的域模型，作为替代方案，建议像下面这个例子那样，提供一个能访问声明为Optional、变量值可能缺失的接口。 123456public class Person &#123; private Car car; public Optional&lt;Car&gt; getCarAsOptional()&#123; return Optional.ofNullable(car); &#125; &#125; 两个Optional对象的组合12345if (person.isPresent() &amp;&amp; car.isPresent())&#123; return Optional.of(findCheapestInsurance(person.get(), car.get())); &#125; else &#123; return Optional.empty();&#125; 以不解包的方式组合两个Optional对象 1return person.flatMap(p -&gt; car.map(c -&gt; findCheapestInsurance(p, c))); 使用filter剔除特定的值filter方法接受一个谓词作为参数。如果Optional对象的值存在，并且它符合谓词的条件，filter方法就返回其值;否则它就返回一个空的Optional对象。 123if(insurance != null &amp;&amp; "CambridgeInsurance".equals(insurance.getName()))&#123;System.out.println("ok");&#125; 优化 12optInsurance.filter(insurance -&gt; "CambridgeInsurance".equals(insurance.getName())) .ifPresent(x -&gt; System.out.println("ok")); 123456return person.filter(p -&gt; p.getAge() &gt;= minAge) .flatMap(Person::getCar) .flatMap(Car::getInsurance) .map(Insurance::getName) .orElse("Unknown");&#125; 用Optional封装可能为null的值1Object value = map.get("key"); 优化 1Optional&lt;Object&gt; value = Optional.ofNullable(map.get("key")); 1234return Optional.ofNullable(props.getProperty(name)) .flatMap(OptionalUtility::stringToInt) .filter(i -&gt; i &gt; 0) .orElse(0); 异常与Optional的对比12345try &#123; return Optional.of(Integer.parseInt(s));&#125; catch (NumberFormatException e) &#123; return Optional.empty();&#125; 建议将多个类似的方法封装到一个工具类中。 基础类型的Optional对象和避免使用基础类型 OptionalInt OptionalLong OptionalDouble 不推荐使用基础类型的Optional，因为基础类型的Optional不支持map、flatMap以及filter方法，而这些却是Optional类最有用的方法。 Optional类方法 get() 是这些方法中最简单但又最不安全的方法。如果变量存在，它直接返回封装的变量值，否则就抛出一个NoSuchElementException异常。所以，除非非常确定Optional变量一定包含值，否则不使用。此外，这种方式即便相对于嵌套式的null检查，也并未体现出多大的改进。 orElse(T other) 允许在Optional对象不包含值时提供一个默认值。 orElseGet(Supplier&lt;? extends T&gt; other) 是orElse方法的延迟调用版，Supplier方法只有在Optional对象不含值时才执行调用。如果创建默认值是件耗时费力的工作，应该考虑采用这种方式(借此提升程序的性能)，或者需要非常确定某个方法仅在 Optional为空时才进行调用，也可以考虑该方式(这种情况有严格的限制条件)。 orElseThrow(Supplier&lt;? extends X&gt; exceptionSupplier) 和get方法非常类似，它们遭遇Optional对象为空时都会抛出一个异常，但是使用orElseThrow你可以定制希望抛出的异常类型。 ifPresent(Consumer&lt;? super T&gt;) 能在变量值存在时执行一个作为参数传入的方法，否则就不进行任何操作。 of 将指定值用Optional封装之后返回，如果该值为null，则抛出一个NullPointerException异常。 ofNullable 将指定值用Optional封装之后返回，如果该值为null，则返回一个空的Optional对象。 flatMap 如果值存在，就对该值执行提供的mapping函数调用，返回一个 Optional 类型的值，否则就返回一个空的Optional对象 map 如果值存在，就对该值执行提供的mapping函数调用将指定值用Optional封装之后返回，如果该值为null，则返回一个空的 Optional对象。]]></content>
@@ -539,8 +551,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>synchronized</tag>
         <tag>Java并发编程</tag>
+        <tag>synchronized</tag>
       </tags>
   </entry>
   <entry>
@@ -551,8 +563,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java并发编程</tag>
         <tag>volatile</tag>
+        <tag>Java并发编程</tag>
       </tags>
   </entry>
   <entry>
