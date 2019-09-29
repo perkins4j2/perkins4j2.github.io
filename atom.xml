@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-09-29T01:09:52.209Z</updated>
+  <updated>2019-09-29T01:12:40.822Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -21,18 +21,15 @@
     <link href="https://perkins4j2.github.io/posts/44441/"/>
     <id>https://perkins4j2.github.io/posts/44441/</id>
     <published>2019-09-29T01:04:30.000Z</published>
-    <updated>2019-09-29T01:09:52.209Z</updated>
+    <updated>2019-09-29T01:12:40.822Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h3 id=&quot;更新源&quot;&gt;&lt;a href=&quot;#更新源&quot; class=&quot;headerlink&quot; title=&quot;更新源&quot;&gt;&lt;/a&gt;更新源&lt;/h3&gt;&lt;p&gt;如果是新系统，请先刷新软件源及更新软件&lt;/p&gt;
-&lt;figure class=&quot;highlight
-        
-      
+      &lt;h3 id=&quot;更新源&quot;&gt;&lt;a href=&quot;#更新源&quot; class=&quot;headerlink&quot; title=&quot;更新源&quot;&gt;&lt;/a&gt;更新源&lt;/h3&gt;&lt;p&gt;如果是新系统，请先刷新软件源及更新软件&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;Ubuntu 14.04 和 Ubuntu 16.04 用户需新增 PPA 源&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-get install software-properties-common &amp;amp;&amp;amp; sudo add-apt-repository ppa:max-c-lv/shadowsocks-libev &amp;amp;&amp;amp; sudo apt-get update&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     

@@ -435,7 +435,7 @@
                 
               
 
-              <time title="创建时间：2019-09-29 09:04:30 / 修改时间：09:09:52" itemprop="dateCreated datePublished" datetime="2019-09-29T09:04:30+08:00">2019-09-29</time>
+              <time title="创建时间：2019-09-29 09:04:30 / 修改时间：09:12:40" itemprop="dateCreated datePublished" datetime="2019-09-29T09:04:30+08:00">2019-09-29</time>
             
 
             
@@ -486,7 +486,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.2k</span>
+                <span title="本文字数">6.2k</span>
               
 
               
@@ -500,7 +500,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">5 分钟</span>
+                <span title="阅读时长">6 分钟</span>
               
             </div>
           
@@ -521,36 +521,20 @@
 
       
         
-          
-            <h3 id="更新源"><a href="#更新源" class="headerlink" title="更新源"></a>更新源</h3><p>如果是新系统，请先刷新软件源及更新软件</p>
+          <h3 id="更新源"><a href="#更新源" class="headerlink" title="更新源"></a>更新源</h3><p>如果是新系统，请先刷新软件源及更新软件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update &amp;&amp; sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
 
 <p>Ubuntu 14.04 和 Ubuntu 16.04 用户需新增 PPA 源</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install software-properties-common &amp;&amp; sudo add-apt-repository ppa:max-c-lv/shadowsocks-libev &amp;&amp; sudo apt-get update</span><br></pre></td></tr></table></figure>
-
-<h3 id="安装-Shadowsocks-libev"><a href="#安装-Shadowsocks-libev" class="headerlink" title="安装 Shadowsocks-libev"></a>安装 Shadowsocks-libev</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install shadowsocks-libev</span><br></pre></td></tr></table></figure>
-
-<p>安装 simple-obfs（依次运行）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install --no-install-recommends build-essential autoconf libtool libssl-dev libpcre3-dev libc-ares-dev libev-dev asciidoc xmlto automake git</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/shadowsocks/simple-obfs.git</span><br><span class="line"><span class="built_in">cd</span> simple-obfs</span><br><span class="line">git submodule update --init --recursive</span><br><span class="line">./autogen.sh</span><br><span class="line">./configure &amp;&amp; make</span><br><span class="line">sudo make install</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">rm -rf simple-obfs</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>编辑配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/shadowsocks-libev/config.json</span><br><span class="line">&#123;</span><br><span class="line">    &quot;server”:”0.0.0.0”,</span><br><span class="line">    &quot;server_port&quot;:8588,</span><br><span class="line">    &quot;local_port&quot;:7080,</span><br><span class="line">    &quot;password&quot;:&quot;xxx&quot;,</span><br><span class="line">    &quot;timeout&quot;:600,</span><br><span class="line">    &quot;method&quot;:&quot;chacha20-ietf-poly1305&quot;,</span><br><span class="line">    &quot;mode&quot;:&quot;tcp_and_udp&quot;,</span><br><span class="line">    &quot;plugin&quot;:&quot;/usr/local/bin/obfs-server&quot;,</span><br><span class="line">    &quot;plugin_opts&quot;:&quot;obfs=http&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><p>查看插件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/Library/Application Support/ShadowsocksX-NG/plugins/</span><br></pre></td></tr></table></figure>
-
-<p>插件配置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plugin：simple-obfs</span><br><span class="line">plugin_opts：obfs=http;obfs-host=www.baidu.com</span><br></pre></td></tr></table></figure>
-
-<h3 id="管理"><a href="#管理" class="headerlink" title="管理"></a>管理</h3><h1 id="开启服务"><a href="#开启服务" class="headerlink" title="开启服务"></a>开启服务</h1><p>sudo systemctl start shadowsocks-libev</p>
-<h1 id="停止服务"><a href="#停止服务" class="headerlink" title="停止服务"></a>停止服务</h1><p>sudo systemctl stop shadowsocks-libev</p>
-<h1 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h1><p>sudo systemctl restart shadowsocks-libev</p>
-<h1 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h1><p>sudo systemctl enable shadowsocks-libev</p>
-<h1 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h1><p>systemctl status shadowsocks-libev</p>
-<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>ss-server -c /etc/shadowsocks-libev/config.json  start -v</p>
-<h1 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h1><p>ps -ef | grep -v grep | grep “server”</p>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/posts/44441/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>

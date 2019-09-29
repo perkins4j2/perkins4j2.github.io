@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="Perkins4j2的技术博客">
 <meta property="og:description" content="更新源如果是新系统，请先刷新软件源及更新软件 1sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade  Ubuntu 14.04 和 Ubuntu 16.04 用户需新增 PPA 源 1sudo apt-get install software-properties-common &amp;amp;&amp;amp; sudo add-apt-repository">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-29T01:09:52.209Z">
+<meta property="og:updated_time" content="2019-09-29T01:12:40.822Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shadowsocks配置">
 <meta name="twitter:description" content="更新源如果是新系统，请先刷新软件源及更新软件 1sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade  Ubuntu 14.04 和 Ubuntu 16.04 用户需新增 PPA 源 1sudo apt-get install software-properties-common &amp;amp;&amp;amp; sudo add-apt-repository">
@@ -436,7 +436,7 @@
                 
               
 
-              <time title="创建时间：2019-09-29 09:04:30 / 修改时间：09:09:52" itemprop="dateCreated datePublished" datetime="2019-09-29T09:04:30+08:00">2019-09-29</time>
+              <time title="创建时间：2019-09-29 09:04:30 / 修改时间：09:12:40" itemprop="dateCreated datePublished" datetime="2019-09-29T09:04:30+08:00">2019-09-29</time>
             
 
             
@@ -494,7 +494,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.2k</span>
+                <span title="本文字数">6.2k</span>
               
 
               
@@ -508,7 +508,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">5 分钟</span>
+                <span title="阅读时长">6 分钟</span>
               
             </div>
           
@@ -534,6 +534,8 @@
 <p>Ubuntu 14.04 和 Ubuntu 16.04 用户需新增 PPA 源</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install software-properties-common &amp;&amp; sudo add-apt-repository ppa:max-c-lv/shadowsocks-libev &amp;&amp; sudo apt-get update</span><br></pre></td></tr></table></figure>
 
+ <a id="more"></a>
+
 <h3 id="安装-Shadowsocks-libev"><a href="#安装-Shadowsocks-libev" class="headerlink" title="安装 Shadowsocks-libev"></a>安装 Shadowsocks-libev</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install shadowsocks-libev</span><br></pre></td></tr></table></figure>
 
 <p>安装 simple-obfs（依次运行）</p>
@@ -548,13 +550,28 @@
 <p>插件配置</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plugin：simple-obfs</span><br><span class="line">plugin_opts：obfs=http;obfs-host=www.baidu.com</span><br></pre></td></tr></table></figure>
 
-<h3 id="管理"><a href="#管理" class="headerlink" title="管理"></a>管理</h3><h1 id="开启服务"><a href="#开启服务" class="headerlink" title="开启服务"></a>开启服务</h1><p>sudo systemctl start shadowsocks-libev</p>
-<h1 id="停止服务"><a href="#停止服务" class="headerlink" title="停止服务"></a>停止服务</h1><p>sudo systemctl stop shadowsocks-libev</p>
-<h1 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h1><p>sudo systemctl restart shadowsocks-libev</p>
-<h1 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h1><p>sudo systemctl enable shadowsocks-libev</p>
-<h1 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h1><p>systemctl status shadowsocks-libev</p>
-<h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><p>ss-server -c /etc/shadowsocks-libev/config.json  start -v</p>
-<h1 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h1><p>ps -ef | grep -v grep | grep “server”</p>
+<h3 id="管理"><a href="#管理" class="headerlink" title="管理"></a>管理</h3><ul>
+<li><p>开启服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start shadowsocks-libev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>停止服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop shadowsocks-libev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart shadowsocks-libev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开机启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> shadowsocks-libev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>日志</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status shadowsocks-libev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ss-server -c /etc/shadowsocks-libev/config.json  start -v</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ps</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep -v grep | grep <span class="string">"server"</span></span><br></pre></td></tr></table></figure></li>
+</ul>
 
       
     </div>
@@ -927,7 +944,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#更新源"><span class="nav-number">1.</span> <span class="nav-text">更新源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Shadowsocks-libev"><span class="nav-number">2.</span> <span class="nav-text">安装 Shadowsocks-libev</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">3.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端"><span class="nav-number">4.</span> <span class="nav-text">客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管理"><span class="nav-number">5.</span> <span class="nav-text">管理</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#开启服务"><span class="nav-number"></span> <span class="nav-text">开启服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#停止服务"><span class="nav-number"></span> <span class="nav-text">停止服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重启服务"><span class="nav-number"></span> <span class="nav-text">重启服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开机启动"><span class="nav-number"></span> <span class="nav-text">开机启动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#日志"><span class="nav-number"></span> <span class="nav-text">日志</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试"><span class="nav-number"></span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ps"><span class="nav-number"></span> <span class="nav-text">ps</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#更新源"><span class="nav-number">1.</span> <span class="nav-text">更新源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装-Shadowsocks-libev"><span class="nav-number">2.</span> <span class="nav-text">安装 Shadowsocks-libev</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">3.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端"><span class="nav-number">4.</span> <span class="nav-text">客户端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管理"><span class="nav-number">5.</span> <span class="nav-text">管理</span></a></li></ol></div>
             
 
           </div>
