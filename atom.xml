@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-09-27T00:56:28.974Z</updated>
+  <updated>2019-09-29T01:09:52.209Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Shadowsocks配置</title>
+    <link href="https://perkins4j2.github.io/posts/44441/"/>
+    <id>https://perkins4j2.github.io/posts/44441/</id>
+    <published>2019-09-29T01:04:30.000Z</published>
+    <updated>2019-09-29T01:09:52.209Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;更新源&quot;&gt;&lt;a href=&quot;#更新源&quot; class=&quot;headerlink&quot; title=&quot;更新源&quot;&gt;&lt;/a&gt;更新源&lt;/h3&gt;&lt;p&gt;如果是新系统，请先刷新软件源及更新软件&lt;/p&gt;
+&lt;figure class=&quot;highlight
+        
+      
+    
+    </summary>
+    
+      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
+    
+    
+      <category term="Shadowsocks" scheme="https://perkins4j2.github.io/tags/Shadowsocks/"/>
+    
+  </entry>
+  
+  <entry>
     <title>IDEA自定义Archetype</title>
     <link href="https://perkins4j2.github.io/posts/31081/"/>
     <id>https://perkins4j2.github.io/posts/31081/</id>
     <published>2019-09-27T00:55:33.000Z</published>
-    <updated>2019-09-27T00:56:28.974Z</updated>
+    <updated>2019-09-27T01:29:34.715Z</updated>
     
     <summary type="html">
     
@@ -479,30 +506,6 @@
     
     
       <category term="WatchService" scheme="https://perkins4j2.github.io/tags/WatchService/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>RPC框架 - Thrift协议定义</title>
-    <link href="https://perkins4j2.github.io/posts/45936/"/>
-    <id>https://perkins4j2.github.io/posts/45936/</id>
-    <published>2019-08-19T01:12:30.000Z</published>
-    <updated>2019-08-19T01:43:26.987Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;rpc&quot;&gt;&lt;a href=&quot;#rpc&quot; class=&quot;headerlink&quot; title=&quot;rpc&quot;&gt;&lt;/a&gt;rpc&lt;/h3&gt;&lt;p&gt;RPC 是远程过程调用（Remote Procedure Call）。&lt;/p&gt;
-&lt;p&gt;RPC 是指计算机 A 上的进程，调用另外一台计算机 B 上的进程，其中 A 上的调用进程被挂起，而 B 上的被调用进程开始执行，当值返回给 A 时，A 进程继续执行。调用方可以通过使用参数将信息传送给被调用方，而后可以通过传回的结果得到信息。&lt;/p&gt;
-&lt;p&gt;远程过程调用采用客户机/服务器(C/S)模式。请求程序就是一个客户机，而服务提供程序就是一台服务器。和常规或本地过程调用一样，远程过程调用是同步操作，在远程过程结果返回之前，需要暂时中止请求程序。使用相同地址空间的低权进程或低权线程允许同时运行多个远程过程调用。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="thrift" scheme="https://perkins4j2.github.io/tags/thrift/"/>
-    
-      <category term="rpc" scheme="https://perkins4j2.github.io/tags/rpc/"/>
     
   </entry>
   

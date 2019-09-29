@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Shadowsocks配置]]></title>
+    <url>%2Fposts%2F44441%2F</url>
+    <content type="text"><![CDATA[更新源如果是新系统，请先刷新软件源及更新软件 1sudo apt-get update &amp;&amp; sudo apt-get upgrade Ubuntu 14.04 和 Ubuntu 16.04 用户需新增 PPA 源 1sudo apt-get install software-properties-common &amp;&amp; sudo add-apt-repository ppa:max-c-lv/shadowsocks-libev &amp;&amp; sudo apt-get update 安装 Shadowsocks-libev1sudo apt install shadowsocks-libev 安装 simple-obfs（依次运行） 123456789sudo apt-get install --no-install-recommends build-essential autoconf libtool libssl-dev libpcre3-dev libc-ares-dev libev-dev asciidoc xmlto automake gitgit clone https://github.com/shadowsocks/simple-obfs.gitcd simple-obfsgit submodule update --init --recursive./autogen.sh./configure &amp;&amp; makesudo make installcd ..rm -rf simple-obfs 配置编辑配置文件 123456789101112sudo vim /etc/shadowsocks-libev/config.json&#123; &quot;server”:”0.0.0.0”, &quot;server_port&quot;:8588, &quot;local_port&quot;:7080, &quot;password&quot;:&quot;xxx&quot;, &quot;timeout&quot;:600, &quot;method&quot;:&quot;chacha20-ietf-poly1305&quot;, &quot;mode&quot;:&quot;tcp_and_udp&quot;, &quot;plugin&quot;:&quot;/usr/local/bin/obfs-server&quot;, &quot;plugin_opts&quot;:&quot;obfs=http&quot;&#125; 客户端查看插件 1~/Library/Application Support/ShadowsocksX-NG/plugins/ 插件配置 12plugin：simple-obfsplugin_opts：obfs=http;obfs-host=www.baidu.com 管理开启服务sudo systemctl start shadowsocks-libev 停止服务sudo systemctl stop shadowsocks-libev 重启服务sudo systemctl restart shadowsocks-libev 开机启动sudo systemctl enable shadowsocks-libev 日志systemctl status shadowsocks-libev 测试ss-server -c /etc/shadowsocks-libev/config.json start -v psps -ef | grep -v grep | grep “server”]]></content>
+      <categories>
+        <category>工具利器</category>
+      </categories>
+      <tags>
+        <tag>Shadowsocks</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[IDEA自定义Archetype]]></title>
     <url>%2Fposts%2F31081%2F</url>
     <content type="text"><![CDATA[创建自定义骨架生成骨架在maven项目下，执行mvn archetype:create-from-project，在target/generated-sources/archetype目录下生成Archetype project 安装骨架到本地cd target/generated-sources/archetype后，mvn install安装archetype project到本地仓库 ps：如果是maven多模块项目，在根目录下执行mvn archetype:create-from-project mvn install后，会在本地的maven仓库，按照maven坐标创建对应的archetype文件 注意：骨架的ArtifactId默认使用当前且添加后缀-archetype 使用自定义模板查看本地在当前的目录下，mvn archetype:generate -DarchetypeCatalog=local，查看本地archetype列表 选择使用choose number，按步骤输入基本参数groupId/artifactId/version/package 随后在当前目录下，以artifactId为目录创建一个新的项目 IDEA使用自定义模板添加到IDEA File-&gt;New-&gt; Project 选择Create from archetype Add Archetype 输入刚创建的骨架 1234GroupId：xx.xx.xxArtifactId：xx-xx-archetypeVersion：1.0-SNAPSHOTRepository(option)：local 随后点击Next 输入新的项目标识,groupId/artifactId/version 修改生成的项目结构为所需]]></content>
@@ -563,8 +574,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>volatile</tag>
         <tag>Java并发编程</tag>
+        <tag>volatile</tag>
       </tags>
   </entry>
   <entry>
