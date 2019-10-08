@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Hazelcast部署方案]]></title>
+    <url>%2Fposts%2F34736%2F</url>
+    <content type="text"><![CDATA[启动在/bin目录下 start.sh / start.bat: 使用默认配置启动成员实例。 stop.sh / stop.bat: 停止成员实例。 cluster.sh: 集群管理, 例如获取和改变集群状态, 关闭或删除数据等。 start.sh / start.bat 启动一个实例。可以解压Hazelcast ZIP 或 TAR.GZ 在多个目录下，启动多个实例。 配置文件配置文件位于/bin目录下： hazelcast.xml: 默认配置文件，适合大多数场景。 hazelcast.yaml: yaml形式配置文件，等同于hazelcast.xml。 hazelcast-full-example.xml: Hazelcast配置中所有的配置元素、属性和描述，是hazelcast.xml的超集，用于学习和配置参考。 hazelcast-full-example.yaml: 等同于hazelcast-full-example.xml。 hazelcast-client-full-example.xml: Java client配置样例。 hazelcast-client-full-example.yaml: 等同于hazelcast-client-full-example.xml。 部署方式部署集群有两种方式: Embedded 嵌入式 Client/Serve 如果应用聚焦点是异步、高性能计算或大量任务处理，可以选择嵌入式。 将成员的数据和服务嵌入在应用内，可以支持低延迟的数据访问。 如果选择Client/Server部署，Hazelcast数据和服务分布在一个或多个成员中，应用根据Client进行连接。 可以独立提供和扩展成员集群，客户端将连接各成员的数据和服务。 Hazelcast 提供clients包括 (Java, .NET and C++), Memcache and REST clients, Scala, Pythonand Node.js client 各种实现方式. Client/Server有利于高可靠的集群性能，易于辨别问题，最重要的就是也支持扩展性. 当需要扩展集群成员时, 只需要启动更多的Hazelcast server 成员，可以将客户端和服务端扩展分离。 注意： Hazelcast 成员包仅支持Java。因此, 嵌入式成员部署仅支持Java应用。 如果既响应数据的低延迟访问，也想要成员部署的可扩展性，可以考虑在Client使用Near Caches，将频繁访问的数据在客户端本地内存中进行缓存。]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>Hazelcast</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hazelcast介绍和优势]]></title>
+    <url>%2Fposts%2F2412%2F</url>
+    <content type="text"><![CDATA[Hazelcast介绍全称是Hazelcast IMDG (In-Memory Data Grid)，内存数据网格。 特点 开源 仅需要JAR文件，无需安装其他软件。 提供类库，不影响业务架构。 提供开箱即用的分布式数据结构，例如Map, Queue, MultiMap, Topic, Lock and Executor。 无主概念，没有单点故障，成员都是对等。 集群动态扩展，新增成员可以弹性提高内存和计算能力。 数据相互冗余和备份，防止成员宕机导致的数据丢失。 成员相互感知，区别于传统的kv缓存解决方案。 可使用SPI构建自定义分布式数据结构 开源社区长久持续开发 适合选型 应用分析，需要大数据分区处理 网格化数据读取 缓存，且支持JCache及弹性分布式扩展 数据存储，支持高性能、可扩展、低延迟 基于内存NoSQL-kv存储 发布/订阅，应用间支持高传播和可用性 在分布式云环境支持弹性扩展 高可用cache 支持Coherence and Terracotta 优势 支持并发数据结构，提供Java常用的数据结构，例如 Map, Queue, ExecutorService, Lock and JCache。 轻量级、易用，提供JAR可快速集成，无需额外依赖。 支持分布式缓存, 同步, 集群, 发布/订阅等, 部署简单，启动hazelcast.jar即可快速扩展分布式集群。 去中心化，点对点。无master 和 slave，无单点故障，所有成员数据对等。可以在程序中引入server或client。 自动扩展，可以支持成百上千集群，支持成员自动发信和线性增长内存和处理能力，成员间在TCP层进行连接。 快速查询和更新，内存存储。 冗余，多成员间互相冗余数据，成员宕机后由副本成员提供不间断的操作支持。 数据上报Hazelcast内部采用Phone Home进行内部实例初始化和集群同步的情况上报；上报时间为启动时和每隔24小时。 上报地址是：http://phonehome.hazelcast.com/ping（版本3.6+） 上报内容是： Hazelcast IMDG 版本 Hazelcast IMDG 成员id 集群hash值 集群启动时间 .. 关闭上报：hazelcast.phone.home.enabled=false JDK版本兼容Hazelcast3.11+，支持JDK6-11]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>Hazelcast</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Shadowsocks配置]]></title>
     <url>%2Fposts%2F44441%2F</url>
     <content type="text"><![CDATA[更新源如果是新系统，请先刷新软件源及更新软件 1sudo apt-get update &amp;&amp; sudo apt-get upgrade Ubuntu 14.04 和 Ubuntu 16.04 用户需新增 PPA 源 1sudo apt-get install software-properties-common &amp;&amp; sudo add-apt-repository ppa:max-c-lv/shadowsocks-libev &amp;&amp; sudo apt-get update 安装 Shadowsocks-libev1sudo apt install shadowsocks-libev 安装 simple-obfs（依次运行） 123456789sudo apt-get install --no-install-recommends build-essential autoconf libtool libssl-dev libpcre3-dev libc-ares-dev libev-dev asciidoc xmlto automake gitgit clone https://github.com/shadowsocks/simple-obfs.gitcd simple-obfsgit submodule update --init --recursive./autogen.sh./configure &amp;&amp; makesudo make installcd ..rm -rf simple-obfs 配置编辑配置文件 123456789101112sudo vim /etc/shadowsocks-libev/config.json&#123; &quot;server”:”0.0.0.0”, &quot;server_port&quot;:8588, &quot;local_port&quot;:7080, &quot;password&quot;:&quot;xxx&quot;, &quot;timeout&quot;:600, &quot;method&quot;:&quot;chacha20-ietf-poly1305&quot;, &quot;mode&quot;:&quot;tcp_and_udp&quot;, &quot;plugin&quot;:&quot;/usr/local/bin/obfs-server&quot;, &quot;plugin_opts&quot;:&quot;obfs=http&quot;&#125; 客户端查看插件 1~/Library/Application Support/ShadowsocksX-NG/plugins/ 插件配置 12plugin：simple-obfsplugin_opts：obfs=http;obfs-host=www.baidu.com 管理 开启服务 1sudo systemctl start shadowsocks-libev 停止服务 1sudo systemctl stop shadowsocks-libev 重启服务 1sudo systemctl restart shadowsocks-libev 开机启动 1sudo systemctl enable shadowsocks-libev 日志 1systemctl status shadowsocks-libev 测试 1ss-server -c /etc/shadowsocks-libev/config.json start -v ps 1ps -ef | grep -v grep | grep "server"]]></content>
@@ -538,8 +560,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java并发编程</tag>
         <tag>Java内存模型</tag>
+        <tag>Java并发编程</tag>
       </tags>
   </entry>
   <entry>

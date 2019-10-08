@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-09-29T01:12:40.822Z</updated>
+  <updated>2019-10-08T01:10:32.956Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,11 +17,70 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Hazelcast部署方案</title>
+    <link href="https://perkins4j2.github.io/posts/34736/"/>
+    <id>https://perkins4j2.github.io/posts/34736/</id>
+    <published>2019-10-08T01:09:26.000Z</published>
+    <updated>2019-10-08T01:10:32.956Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;启动&quot;&gt;&lt;a href=&quot;#启动&quot; class=&quot;headerlink&quot; title=&quot;启动&quot;&gt;&lt;/a&gt;启动&lt;/h3&gt;&lt;p&gt;在/bin目录下&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;start.sh / start.bat: 使用默认配置启动成员实例。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;stop.sh / stop.bat: 停止成员实例。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;cluster.sh: 集群管理, 例如获取和改变集群状态, 关闭或删除数据等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;start.sh / start.bat 启动一个实例。可以解压Hazelcast ZIP 或 TAR.GZ 在多个目录下，启动多个实例。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="Hazelcast" scheme="https://perkins4j2.github.io/tags/Hazelcast/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hazelcast介绍和优势</title>
+    <link href="https://perkins4j2.github.io/posts/2412/"/>
+    <id>https://perkins4j2.github.io/posts/2412/</id>
+    <published>2019-10-08T01:09:19.000Z</published>
+    <updated>2019-10-08T01:10:04.695Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Hazelcast介绍&quot;&gt;&lt;a href=&quot;#Hazelcast介绍&quot; class=&quot;headerlink&quot; title=&quot;Hazelcast介绍&quot;&gt;&lt;/a&gt;Hazelcast介绍&lt;/h3&gt;&lt;p&gt;全称是Hazelcast IMDG (In-Memory Data Grid)，内存数据网格。&lt;/p&gt;
+&lt;h3 id=&quot;特点&quot;&gt;&lt;a href=&quot;#特点&quot; class=&quot;headerlink&quot; title=&quot;特点&quot;&gt;&lt;/a&gt;特点&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;开源&lt;/li&gt;
+&lt;li&gt;仅需要JAR文件，无需安装其他软件。&lt;/li&gt;
+&lt;li&gt;提供类库，不影响业务架构。&lt;/li&gt;
+&lt;li&gt;提供开箱即用的分布式数据结构，例如Map, Queue, MultiMap, Topic, Lock and Executor。&lt;/li&gt;
+&lt;li&gt;无主概念，没有单点故障，成员都是对等。&lt;/li&gt;
+&lt;li&gt;集群动态扩展，新增成员可以弹性提高内存和计算能力。&lt;/li&gt;
+&lt;li&gt;数据相互冗余和备份，防止成员宕机导致的数据丢失。&lt;/li&gt;
+&lt;li&gt;成员相互感知，区别于传统的kv缓存解决方案。&lt;/li&gt;
+&lt;li&gt;可使用SPI构建自定义分布式数据结构&lt;/li&gt;
+&lt;li&gt;开源社区长久持续开发
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="Hazelcast" scheme="https://perkins4j2.github.io/tags/Hazelcast/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Shadowsocks配置</title>
     <link href="https://perkins4j2.github.io/posts/44441/"/>
     <id>https://perkins4j2.github.io/posts/44441/</id>
     <published>2019-09-29T01:04:30.000Z</published>
-    <updated>2019-09-29T01:12:40.822Z</updated>
+    <updated>2019-09-29T01:13:01.839Z</updated>
     
     <summary type="html">
     
@@ -449,60 +508,6 @@
       <category term="Sort" scheme="https://perkins4j2.github.io/tags/Sort/"/>
     
       <category term="Comparator" scheme="https://perkins4j2.github.io/tags/Comparator/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java双份对象数据热切换</title>
-    <link href="https://perkins4j2.github.io/posts/42352/"/>
-    <id>https://perkins4j2.github.io/posts/42352/</id>
-    <published>2019-08-21T12:07:22.000Z</published>
-    <updated>2019-08-22T00:37:09.165Z</updated>
-    
-    <summary type="html">
-    
-      &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//当前副本&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; List&amp;lt;String&amp;gt; r1 = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//第二个副本&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; List&amp;lt;String&amp;gt; r2 = &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; AtomicBoolean replicationIsEmpty = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; AtomicBoolean();&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="数据切换" scheme="https://perkins4j2.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%87%E6%8D%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>WatchService监控目录和文件变化</title>
-    <link href="https://perkins4j2.github.io/posts/34381/"/>
-    <id>https://perkins4j2.github.io/posts/34381/</id>
-    <published>2019-08-21T12:06:32.000Z</published>
-    <updated>2019-09-05T01:20:09.655Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;两种监控文件和目录方式&quot;&gt;&lt;a href=&quot;#两种监控文件和目录方式&quot; class=&quot;headerlink&quot; title=&quot;两种监控文件和目录方式&quot;&gt;&lt;/a&gt;两种监控文件和目录方式&lt;/h3&gt;&lt;h4 id=&quot;Commons-io&quot;&gt;&lt;a href=&quot;#Commons-io&quot; class=&quot;headerlink&quot; title=&quot;Commons-io&quot;&gt;&lt;/a&gt;Commons-io&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;在Apache的Commons-io提供文件的监控功能。&lt;/li&gt;
-&lt;li&gt;由文件监控类FileAlterationMonitor中的线程不停的扫描文件观察器FileAlterationObserver。&lt;/li&gt;
-&lt;li&gt;如果有文件的变化，则根据相关的文件比较器，判断文件时新增，还是删除，还是更改。（默认为1000毫秒执行一次扫描）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;WatchService&quot;&gt;&lt;a href=&quot;#WatchService&quot; class=&quot;headerlink&quot; title=&quot;WatchService&quot;&gt;&lt;/a&gt;WatchService&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;Java1.7中提供了NIO WatchService来监控系统中文件的变化。&lt;/li&gt;
-&lt;li&gt;该监控是基于操作系统的文件系统监控器，可以监控系统是所有文件的变化，这种监控是无需遍历、无需比较的，是一种基于信号收发的监控。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;整个监控目录文件操作的流程大致如下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;获取 WatchService&lt;/li&gt;
-&lt;li&gt;注册指定目录的监视器&lt;/li&gt;
-&lt;li&gt;等待目录下的文件发生变化&lt;/li&gt;
-&lt;li&gt;对发生变化的文件进行操作
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="WatchService" scheme="https://perkins4j2.github.io/tags/WatchService/"/>
     
   </entry>
   
