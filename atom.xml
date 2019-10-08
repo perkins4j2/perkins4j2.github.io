@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-10-08T01:10:32.956Z</updated>
+  <updated>2019-10-08T08:25:09.564Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Hazelcast超时配置</title>
+    <link href="https://perkins4j2.github.io/posts/63914/"/>
+    <id>https://perkins4j2.github.io/posts/63914/</id>
+    <published>2019-10-08T08:24:18.000Z</published>
+    <updated>2019-10-08T08:25:09.564Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;超时错误&quot;&gt;&lt;a href=&quot;#超时错误&quot; class=&quot;headerlink&quot; title=&quot;超时错误&quot;&gt;&lt;/a&gt;超时错误&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;processor error:com.hazelcast.client.HazelcastClientNotActiveException: Client is shutting down&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+&lt;li&gt;若Hazelcast中成员全部断开，Client则抛出以上异常，此时，连接池连接已无效&lt;/li&gt;
+&lt;li&gt;Hazelcast成员重启后，Client继续抛出以上异常，无法重新初始化连接池&lt;/li&gt;
+&lt;li&gt;为重新初始化连接，则需要修改重试策略，以便重启成员，且无需重启Client
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Hazelcast部署方案</title>
     <link href="https://perkins4j2.github.io/posts/34736/"/>
     <id>https://perkins4j2.github.io/posts/34736/</id>
     <published>2019-10-08T01:09:26.000Z</published>
-    <updated>2019-10-08T01:10:32.956Z</updated>
+    <updated>2019-10-08T08:22:47.856Z</updated>
     
     <summary type="html">
     
@@ -49,7 +70,7 @@
     <link href="https://perkins4j2.github.io/posts/2412/"/>
     <id>https://perkins4j2.github.io/posts/2412/</id>
     <published>2019-10-08T01:09:19.000Z</published>
-    <updated>2019-10-08T01:10:04.695Z</updated>
+    <updated>2019-10-08T01:10:50.969Z</updated>
     
     <summary type="html">
     
@@ -486,28 +507,6 @@
     
     
       <category term="Maven" scheme="https://perkins4j2.github.io/tags/Maven/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java Collection Sort之IllegalArgumentException</title>
-    <link href="https://perkins4j2.github.io/posts/63757/"/>
-    <id>https://perkins4j2.github.io/posts/63757/</id>
-    <published>2019-08-22T00:53:53.000Z</published>
-    <updated>2019-08-22T01:13:56.256Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;java-lang-IllegalArgumentException-Comparison-method-violates-its-general-contract&quot;&gt;&lt;a href=&quot;#java-lang-IllegalArgumentException-Comparison-method-violates-its-general-contract&quot; class=&quot;headerlink&quot; title=&quot;java.lang.IllegalArgumentException: Comparison method violates its general contract!&quot;&gt;&lt;/a&gt;java.lang.IllegalArgumentException: Comparison method violates its general contract!&lt;/h3&gt;&lt;p&gt;在 JDK 7 版本以上， Comparator 要满足自反性，传递性，对称性，不然Arrays.sort、Collections.sort会报 IllegalArgumentException 异常。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Java" scheme="https://perkins4j2.github.io/categories/Java/"/>
-    
-    
-      <category term="Sort" scheme="https://perkins4j2.github.io/tags/Sort/"/>
-    
-      <category term="Comparator" scheme="https://perkins4j2.github.io/tags/Comparator/"/>
     
   </entry>
   
