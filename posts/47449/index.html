@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="最大value 单个k-v的操作本身不受数据字节大小限制  操作受最大堆内存-Xmx限制  操作受超时时间限制hazelcast.max.operation.timeout 12INFO HazelcastTest - size:273437KBINFO HazelcastTest - elapsed:62ms">
-<meta name="keywords" content="docker,Hazelcast">
+  <meta name="description" content="Hazelcast分片Hazelcast分片被称为分区。 Hazelcast默认有271个分区。给定key，Hazelcast进行序列化、hash并根据分区数量取模，获取key对应的分区。 集群内成员的分区是对等的。Hazelcast将分区数据在成员间的区分内进行分布备份和冗余。">
+<meta name="keywords" content="Hazelcast">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hazelcast Client配置">
-<meta property="og:url" content="https://perkins4j2.github.io/posts/354/index.html">
+<meta property="og:title" content="Hazelcast分区原理">
+<meta property="og:url" content="https://perkins4j2.github.io/posts/47449/index.html">
 <meta property="og:site_name" content="Perkins4j2的技术博客">
-<meta property="og:description" content="最大value 单个k-v的操作本身不受数据字节大小限制  操作受最大堆内存-Xmx限制  操作受超时时间限制hazelcast.max.operation.timeout 12INFO HazelcastTest - size:273437KBINFO HazelcastTest - elapsed:62ms">
+<meta property="og:description" content="Hazelcast分片Hazelcast分片被称为分区。 Hazelcast默认有271个分区。给定key，Hazelcast进行序列化、hash并根据分区数量取模，获取key对应的分区。 集群内成员的分区是对等的。Hazelcast将分区数据在成员间的区分内进行分布备份和冗余。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-12T13:11:23.754Z">
+<meta property="og:updated_time" content="2019-10-08T09:22:28.132Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hazelcast Client配置">
-<meta name="twitter:description" content="最大value 单个k-v的操作本身不受数据字节大小限制  操作受最大堆内存-Xmx限制  操作受超时时间限制hazelcast.max.operation.timeout 12INFO HazelcastTest - size:273437KBINFO HazelcastTest - elapsed:62ms">
+<meta name="twitter:title" content="Hazelcast分区原理">
+<meta name="twitter:description" content="Hazelcast分片Hazelcast分片被称为分区。 Hazelcast默认有271个分区。给定key，Hazelcast进行序列化、hash并根据分区数量取模，获取key对应的分区。 集群内成员的分区是对等的。Hazelcast将分区数据在成员间的区分内进行分布备份和冗余。">
 
 
 
@@ -126,7 +126,7 @@
 
   
   
-  <link rel="canonical" href="https://perkins4j2.github.io/posts/354/">
+  <link rel="canonical" href="https://perkins4j2.github.io/posts/47449/">
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Hazelcast Client配置 | Perkins4j2的技术博客</title>
+  <title>Hazelcast分区原理 | Perkins4j2的技术博客</title>
   
 
 
@@ -393,7 +393,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://perkins4j2.github.io/posts/354/">
+    <link itemprop="mainEntityOfPage" href="https://perkins4j2.github.io/posts/47449/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Perkins">
@@ -410,7 +410,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hazelcast Client配置
+          <h1 class="post-title" itemprop="name headline">Hazelcast分区原理
 
               
             
@@ -436,7 +436,7 @@
                 
               
 
-              <time title="创建时间：2019-09-12 21:08:19 / 修改时间：21:11:23" itemprop="dateCreated datePublished" datetime="2019-09-12T21:08:19+08:00">2019-09-12</time>
+              <time title="创建时间：2019-10-08 17:21:54 / 修改时间：17:22:28" itemprop="dateCreated datePublished" datetime="2019-10-08T17:21:54+08:00">2019-10-08</time>
             
 
             
@@ -494,7 +494,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3k</span>
+                <span title="本文字数">2.2k</span>
               
 
               
@@ -508,7 +508,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">3 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -528,34 +528,39 @@
       
 
       
-        <h3 id="最大value"><a href="#最大value" class="headerlink" title="最大value"></a>最大value</h3><ul>
-<li><p>单个k-v的操作本身不受数据字节大小限制</p>
-</li>
-<li><p>操作受最大堆内存-Xmx限制</p>
-</li>
-<li><p>操作受超时时间限制hazelcast.max.operation.timeout</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INFO HazelcastTest - size:273437KB</span><br><span class="line">INFO HazelcastTest - elapsed:62ms</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-</li>
+        <h3 id="Hazelcast分片"><a href="#Hazelcast分片" class="headerlink" title="Hazelcast分片"></a>Hazelcast分片</h3><p>Hazelcast分片被称为分区。</p>
+<p>Hazelcast默认有271个分区。给定key，Hazelcast进行序列化、hash并根据分区数量取模，获取key对应的分区。</p>
+<p>集群内成员的分区是对等的。Hazelcast将分区数据在成员间的区分内进行分布备份和冗余。<br> <a id="more"></a></p>
+<h3 id="数据分发"><a href="#数据分发" class="headerlink" title="数据分发"></a>数据分发</h3><p>Hazelcast 没有主成员，每个成员在功能上都是对等的。</p>
+<p>最先启动的成员会自动的将数据同步到集群其他成员中，如果最先启动成员宕机，由第二最先启动成员执行数据分发操作。</p>
+<p>Hazelcast存储全部数据在内存，因此速度快。一旦有成员crash，也不会有数据丢失，因为有数据拷贝在其他成员中。</p>
+<p>Hazelcast提供分布式数据结构和分布式计算工具，提供了丰富的访问分布式集群内存和CPU计算的能力。</p>
+<h3 id="分区过程"><a href="#分区过程" class="headerlink" title="分区过程"></a>分区过程</h3><p>Hazelcast分区是内存段，每段都包含成百上千个数据实体，依赖于系统的内存能力。</p>
+<p>每个分区都有多个副本，分布在集群成员中。副本中有一个是主副本，其他的是备份副本。</p>
+<p>拥有主副本的集群成员被称为分区owner。当读或写入数据实体时，实际是与拥有该数据主副本的分区交互。</p>
+<p>Hazelcast默认是每个成员拥有271个分区，当集群中只有一个成员时，也就意味着该成员有271个分区，且拥有所有分区的主副本。</p>
+<p>在一个只有一个成员的Hazelcast集群中，当启动第二个成员时，分区复制过程如下：</p>
+<ul>
+<li>正常情况下，分区复制没有顺序，而是随机，每个分布式分区之间也没有顺序，因此成员间的主分区和备份复制都是对等的。</li>
+<li>当添加更多成员时，Hazelcast逐步移动主和复制分区复制到新成员中，确保所有的成员是对等和冗余的。由于持久性hash算法，仅有最小数量的分区被移动以扩展集群。</li>
+<li>Hazelcast分布式分区中的主、备的复制在成员中是相同的，备份复制分区用于维持冗余。</li>
 </ul>
-<h3 id="数量、过期等限制"><a href="#数量、过期等限制" class="headerlink" title="数量、过期等限制"></a>数量、过期等限制</h3><ul>
-<li>针对每个map均可限制<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//限制instruments特定map</span></span><br><span class="line">MapConfig mCfg = <span class="keyword">new</span> MapConfig(<span class="string">"instruments"</span>);</span><br><span class="line"><span class="comment">//超时时间</span></span><br><span class="line">mCfg.setTimeToLiveSeconds(<span class="number">60</span>);</span><br><span class="line"><span class="comment">//节点备份数</span></span><br><span class="line">mCfg.setBackupCount(<span class="number">1</span>);</span><br><span class="line"><span class="comment">//删除策略</span></span><br><span class="line">mCfg.setEvictionPolicy(EvictionPolicy.LRU);</span><br><span class="line"><span class="comment">//存储模式</span></span><br><span class="line">mCfg.setInMemoryFormat(InMemoryFormat.BINARY);</span><br><span class="line"></span><br><span class="line">MaxSizeConfig maxSizeConfig = <span class="keyword">new</span> MaxSizeConfig();</span><br><span class="line"><span class="comment">//最大数量</span></span><br><span class="line">maxSizeConfig.setSize(<span class="number">1000</span>);</span><br><span class="line"><span class="comment">//针对节点限制</span></span><br><span class="line">maxSizeConfig.setMaxSizePolicy(MaxSizeConfig.MaxSizePolicy.PER_NODE);</span><br><span class="line">mCfg.setMaxSizeConfig(maxSizeConfig);</span><br></pre></td></tr></table></figure>
-
-</li>
+<p>Hazelcast提供<code>lite</code>成员，这些成员没有自己的分区。<code>lite</code>成员是用于重量型计算任务的执行和监听注册。尽管没有分区，他们也可访问集群中其他成员的分区。</p>
+<p>Hazelcast分布式数据实体到分区中是根据hash算法。根据给定的对象key或对象名：</p>
+<ul>
+<li>key或名进行序列化，转换成字节数组</li>
+<li>将字节数组进行hash</li>
+<li>hash值对分区数量MOD取模</li>
 </ul>
-<h3 id="集群性能"><a href="#集群性能" class="headerlink" title="集群性能"></a>集群性能</h3><ul>
-<li>-Xms128M -Xmx256M</li>
-<li>2个节点</li>
-<li>k:递增,value：1k</li>
-<li>client并发50</li>
-<li>双节点puts平均为290/s，延迟为0.5ms<h3 id="自动扩充"><a href="#自动扩充" class="headerlink" title="自动扩充"></a>自动扩充</h3></li>
-<li>基于广播</li>
-<li>基于TCP-IP</li>
-<li>基于Eureka</li>
-<li>基于Zk</li>
-</ul>
+<p>取模结果为该数据应该存储的分区Id，在集群所有成员中，指定key的分区Id一定是相同的。</p>
+<h3 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a>分区表</h3><p>启动成员后，分区表就会创建。</p>
+<p>分区表存储分区id列表和他们归属的集群成员。分区表用于确保所有的成员包括lite成员，在集群中有相同的信息量，并确保每个成员间互相可知数据存储地址。</p>
+<p>集群最早的成员即第一个启动的，发送分区表到所有成员。每个成员都被通知，分区的任何变更，变更包括成员加入、离开等。</p>
+<p>加入最早的成员crash，第二早的成员发送分区表到其他成员。</p>
+<p>可以配置分区表发送频度，通过<code>hazelcast.partition.table.send.interval</code>系统参数，默认是15秒。</p>
+<h3 id="重新分区"><a href="#重新分区" class="headerlink" title="重新分区"></a>重新分区</h3><p>重新分区是重新分布式分区的过程。在成员加入和离开时，Hazelcast执行重新分区操作，且最早的成员将会更新分区表信息。</p>
+<p>lite成员因为没有分区，则不进行重新分区。</p>
+<p>Hazelcast可以用于:<br>• 共享服务配置和信息<br>• 事件通知<br>• Near Cache<br>• 任务调度<br>• 共享用户信息、队列等<br>• 提供Web服务key<br>• 分布式消息订阅服务<br>• 分布式数据和id<br>• 多租户map<br>• 数据集<br>• Spring框架前置的缓存层<br>• 近实时流<br>• 会话存储</p>
 
       
     </div>
@@ -576,6 +581,20 @@
     <li class="popular-posts-item">
       
       
+      <div class="popular-posts-title"><a href="/posts/354/" rel="bookmark">Hazelcast Client配置</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
+      <div class="popular-posts-title"><a href="/posts/2412/" rel="bookmark">Hazelcast介绍和优势</a></div>
+      
+    </li>
+  
+    <li class="popular-posts-item">
+      
+      
       <div class="popular-posts-title"><a href="/posts/19102/" rel="bookmark">Hazelcast性能评估</a></div>
       
     </li>
@@ -583,21 +602,7 @@
     <li class="popular-posts-item">
       
       
-      <div class="popular-posts-title"><a href="/posts/5308/" rel="bookmark">Docker基本操作</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/posts/65243/" rel="bookmark">Docker安装Nginx及配置</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/posts/29980/" rel="bookmark">Docker部署和配置Nginx</a></div>
+      <div class="popular-posts-title"><a href="/posts/34736/" rel="bookmark">Hazelcast部署方案</a></div>
       
     </li>
   
@@ -631,11 +636,11 @@
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>Hazelcast Client配置</p>
+  <p><span>本文标题:</span>Hazelcast分区原理</p>
   <p><span>文章作者:</span>Perkins</p>
-  <p><span>发布时间:</span>2019年09月12日</p>
-  <p><span>原始链接:</span><a href="/posts/354/" title="Hazelcast Client配置">https://perkins4j2.github.io/posts/354/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://perkins4j2.github.io/posts/354/" aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2019年10月08日</p>
+  <p><span>原始链接:</span><a href="/posts/47449/" title="Hazelcast分区原理">https://perkins4j2.github.io/posts/47449/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://perkins4j2.github.io/posts/47449/" aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
 </div>
@@ -671,8 +676,6 @@
       
         <div class="post-tags">
           
-            <a href="/tags/docker/" rel="tag"># docker</a>
-          
             <a href="/tags/Hazelcast/" rel="tag"># Hazelcast</a>
           
         </div>
@@ -686,8 +689,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/19102/" rel="next" title="Hazelcast性能评估">
-                <i class="fa fa-chevron-left"></i> Hazelcast性能评估
+              <a href="/posts/63914/" rel="next" title="Hazelcast超时配置">
+                <i class="fa fa-chevron-left"></i> Hazelcast超时配置
               </a>
             
           </div>
@@ -695,10 +698,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/10641/" rel="prev" title="解决MySql死锁脚本">
-                解决MySql死锁脚本 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -974,7 +973,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#最大value"><span class="nav-number">1.</span> <span class="nav-text">最大value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数量、过期等限制"><span class="nav-number">2.</span> <span class="nav-text">数量、过期等限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群性能"><span class="nav-number">3.</span> <span class="nav-text">集群性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动扩充"><span class="nav-number">4.</span> <span class="nav-text">自动扩充</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hazelcast分片"><span class="nav-number">1.</span> <span class="nav-text">Hazelcast分片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据分发"><span class="nav-number">2.</span> <span class="nav-text">数据分发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分区过程"><span class="nav-number">3.</span> <span class="nav-text">分区过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分区表"><span class="nav-number">4.</span> <span class="nav-text">分区表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重新分区"><span class="nav-number">5.</span> <span class="nav-text">重新分区</span></a></li></ol></div>
             
 
           </div>

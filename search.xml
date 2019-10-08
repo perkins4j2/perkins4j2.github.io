@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Hazelcast分区原理]]></title>
+    <url>%2Fposts%2F47449%2F</url>
+    <content type="text"><![CDATA[Hazelcast分片Hazelcast分片被称为分区。 Hazelcast默认有271个分区。给定key，Hazelcast进行序列化、hash并根据分区数量取模，获取key对应的分区。 集群内成员的分区是对等的。Hazelcast将分区数据在成员间的区分内进行分布备份和冗余。 数据分发Hazelcast 没有主成员，每个成员在功能上都是对等的。 最先启动的成员会自动的将数据同步到集群其他成员中，如果最先启动成员宕机，由第二最先启动成员执行数据分发操作。 Hazelcast存储全部数据在内存，因此速度快。一旦有成员crash，也不会有数据丢失，因为有数据拷贝在其他成员中。 Hazelcast提供分布式数据结构和分布式计算工具，提供了丰富的访问分布式集群内存和CPU计算的能力。 分区过程Hazelcast分区是内存段，每段都包含成百上千个数据实体，依赖于系统的内存能力。 每个分区都有多个副本，分布在集群成员中。副本中有一个是主副本，其他的是备份副本。 拥有主副本的集群成员被称为分区owner。当读或写入数据实体时，实际是与拥有该数据主副本的分区交互。 Hazelcast默认是每个成员拥有271个分区，当集群中只有一个成员时，也就意味着该成员有271个分区，且拥有所有分区的主副本。 在一个只有一个成员的Hazelcast集群中，当启动第二个成员时，分区复制过程如下： 正常情况下，分区复制没有顺序，而是随机，每个分布式分区之间也没有顺序，因此成员间的主分区和备份复制都是对等的。 当添加更多成员时，Hazelcast逐步移动主和复制分区复制到新成员中，确保所有的成员是对等和冗余的。由于持久性hash算法，仅有最小数量的分区被移动以扩展集群。 Hazelcast分布式分区中的主、备的复制在成员中是相同的，备份复制分区用于维持冗余。 Hazelcast提供lite成员，这些成员没有自己的分区。lite成员是用于重量型计算任务的执行和监听注册。尽管没有分区，他们也可访问集群中其他成员的分区。 Hazelcast分布式数据实体到分区中是根据hash算法。根据给定的对象key或对象名： key或名进行序列化，转换成字节数组 将字节数组进行hash hash值对分区数量MOD取模 取模结果为该数据应该存储的分区Id，在集群所有成员中，指定key的分区Id一定是相同的。 分区表启动成员后，分区表就会创建。 分区表存储分区id列表和他们归属的集群成员。分区表用于确保所有的成员包括lite成员，在集群中有相同的信息量，并确保每个成员间互相可知数据存储地址。 集群最早的成员即第一个启动的，发送分区表到所有成员。每个成员都被通知，分区的任何变更，变更包括成员加入、离开等。 加入最早的成员crash，第二早的成员发送分区表到其他成员。 可以配置分区表发送频度，通过hazelcast.partition.table.send.interval系统参数，默认是15秒。 重新分区重新分区是重新分布式分区的过程。在成员加入和离开时，Hazelcast执行重新分区操作，且最早的成员将会更新分区表信息。 lite成员因为没有分区，则不进行重新分区。 Hazelcast可以用于:• 共享服务配置和信息• 事件通知• Near Cache• 任务调度• 共享用户信息、队列等• 提供Web服务key• 分布式消息订阅服务• 分布式数据和id• 多租户map• 数据集• Spring框架前置的缓存层• 近实时流• 会话存储]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>Hazelcast</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hazelcast超时配置]]></title>
     <url>%2Fposts%2F63914%2F</url>
     <content type="text"><![CDATA[超时错误1processor error:com.hazelcast.client.HazelcastClientNotActiveException: Client is shutting down 若Hazelcast中成员全部断开，Client则抛出以上异常，此时，连接池连接已无效 Hazelcast成员重启后，Client继续抛出以上异常，无法重新初始化连接池 为重新初始化连接，则需要修改重试策略，以便重启成员，且无需重启Client 默认重试网络重试 1234&lt;!--6s--&gt;&lt;connection-timeout&gt;6000&lt;/connection-timeout&gt;&lt;!--1day:14400--&gt;&lt;connection-attempt-limit&gt;14400&lt;/connection-attempt-limit&gt; timeout，超时时间 limit，超时次数 limit可以设置无限大，以保障服务重连；若超过次数，则断开该连接 重试策略细粒度的重试策略配置，若开启则忽略网络重试。 1234567891011&lt;connection-strategy async-start="true" reconnect-mode="ASYNC"&gt; &lt;connection-retry enabled="true"&gt; &lt;!--first time:1s --&gt; &lt;initial-backoff-millis&gt;1000&lt;/initial-backoff-millis&gt; &lt;!--max time:1s --&gt; &lt;max-backoff-millis&gt;1000&lt;/max-backoff-millis&gt; &lt;multiplier&gt;2&lt;/multiplier&gt; &lt;fail-on-max-backoff&gt;false&lt;/fail-on-max-backoff&gt; &lt;jitter&gt;0.5&lt;/jitter&gt; &lt;/connection-retry&gt; &lt;/connection-strategy&gt; async，异步连接，不阻塞当前线程，默认同步 initial，第一次超时时间 max，最大超时时间 multiplier，乘数因子，以扩大下一次连接时间，默认2 fail，超过最大连接时间后是否失败，如不失败，继续重连，默认继续重连 jitter，选择随机重试成员的权重，默认0.2 心跳配置1234&lt;properties&gt; &lt;property name="hazelcast.client.heartbeat.timeout"&gt;6000&lt;/property&gt; &lt;property name="hazelcast.client.heartbeat.interval"&gt;5000&lt;/property&gt;&lt;/properties&gt; timeout，心跳超时时间 interval，心跳频率 interval需小于timeout]]></content>

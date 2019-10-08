@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-10-08T08:25:21.884Z</updated>
+  <updated>2019-10-08T09:22:28.132Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hazelcast分区原理</title>
+    <link href="https://perkins4j2.github.io/posts/47449/"/>
+    <id>https://perkins4j2.github.io/posts/47449/</id>
+    <published>2019-10-08T09:21:54.000Z</published>
+    <updated>2019-10-08T09:22:28.132Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Hazelcast分片&quot;&gt;&lt;a href=&quot;#Hazelcast分片&quot; class=&quot;headerlink&quot; title=&quot;Hazelcast分片&quot;&gt;&lt;/a&gt;Hazelcast分片&lt;/h3&gt;&lt;p&gt;Hazelcast分片被称为分区。&lt;/p&gt;
+&lt;p&gt;Hazelcast默认有271个分区。给定key，Hazelcast进行序列化、hash并根据分区数量取模，获取key对应的分区。&lt;/p&gt;
+&lt;p&gt;集群内成员的分区是对等的。Hazelcast将分区数据在成员间的区分内进行分布备份和冗余。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="Hazelcast" scheme="https://perkins4j2.github.io/tags/Hazelcast/"/>
+    
+  </entry>
   
   <entry>
     <title>Hazelcast超时配置</title>
@@ -480,33 +502,6 @@
       <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
     
       <category term="多线程" scheme="https://perkins4j2.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Maven自定义打包脚本</title>
-    <link href="https://perkins4j2.github.io/posts/26061/"/>
-    <id>https://perkins4j2.github.io/posts/26061/</id>
-    <published>2019-08-23T01:04:46.000Z</published>
-    <updated>2019-08-27T13:09:14.051Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;利用Maven脚本，实现以下需求:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;将第三方lib单独打包&lt;/li&gt;
-&lt;li&gt;将脚本单独打包&lt;/li&gt;
-&lt;li&gt;将执行jar单独打包&lt;/li&gt;
-&lt;li&gt;将配置文件单独打包&lt;/li&gt;
-&lt;li&gt;自动关闭和启动进程&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
-    
-    
-      <category term="Maven" scheme="https://perkins4j2.github.io/tags/Maven/"/>
     
   </entry>
   
