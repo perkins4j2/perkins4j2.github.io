@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[SaaS多租户数据库方案]]></title>
+    <url>%2Fposts%2F20124%2F</url>
+    <content type="text"><![CDATA[方案选择独立数据库一个租户一个数据库，这种方案的用户数据隔离级别最高，安全性最好，但成本较高。 优点：为不同的租户提供独立的数据库，有助于简化数据模型的扩展设计，满足不同租户的独特需求；如果出现故障，恢复数据比较简单。 缺点：增多了数据库的安装数量，随之带来维护成本和购置成本的增加。 这种方案与传统的一个客户、一套数据、一套部署类似，差别只在于软件统一部署在运营商那里。 如果面对的是银行、医院等需要非常高数据隔离级别的租户，可以选择这种模式，提高租用的定价。如果定价较低，产品走低价路线，这种方案一般对运营商来说是无法承受的。 共享数据库，隔离数据架构多个或所有租户共享Database，但是每个租户一个Schema（也可叫表）。 优点： 为安全性要求较高的租户提供了一定程度的逻辑数据隔离，并不是完全隔离；每个数据库可支持更多的租户数量。 缺点：如果出现故障，数据恢复比较困难，因为恢复数据库将牵涉到其他租户的数据；如果需要跨租户统计数据，存在一定困难。 共享数据库，共享数据架构租户共享同一个Database、同一个Schema，但在表中增加TenantID多租户的数据字段。 这是共享程度最高、隔离级别最低的模式。 优点： 三种方案比较，第三种方案的维护和购置成本最低，允许每个数据库支持的租户数量最多。 缺点： 隔离级别最低，安全性最低，需要在设计开发时加大对安全的开发量； 数据备份和恢复最困难，需要逐表逐条备份和还原。 如果希望以最少的服务器为最多的租户提供服务，并且租户接受牺牲隔离级别换取降低成本，这种方案最适合。 综合考量考量成本角度因素，隔离性越好，设计和实现的难度和成本越高，初始成本越高。共享性越好，同一运营成本下支持的用户越多，运营成本越低。 考量安全因素要，考虑业务和客户的安全方面的要求。安全性要求越高，越要倾向于隔离。 考量可能的租户越多，越倾向于共享。 考量平均每个租户要存储数据需要的空间大小。存贮的数据越多，越倾向于隔离。 每个租户的同时访问系统的最终用户数量。需要支持的越多，越倾向于隔离。 是否想针对每一租户提供附加的服务，例如数据的备份和恢复等。这方面的需求越多，越倾向于隔离。]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>多租户</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[SpringBoot+Mybatis+Mycat多租户数据库实现]]></title>
+    <url>%2Fposts%2F64375%2F</url>
+    <content type="text"><![CDATA[Mycat下载1wget http://dl.mycat.io/1.6.7.3/20190927161129/Mycat-server-1.6.7.3-release-20190927161129-linux.tar.gz 配置server.xml，Mycat服务器配置，默认端口8066 12345678910111213141516171819202122232425&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;!DOCTYPE mycat:server SYSTEM "server.dtd"&gt;&lt;mycat:server xmlns:mycat="http://io.mycat/"&gt; &lt;system&gt; &lt;property name="useSqlStat"&gt;0&lt;/property&gt; &lt;property name="useGlobleTableCheck"&gt;0&lt;/property&gt; &lt;property name="sequnceHandlerType"&gt;2&lt;/property&gt; &lt;property name="handleDistributedTransactions"&gt;0&lt;/property&gt; &lt;property name="useOffHeapForMerge"&gt;1&lt;/property&gt; &lt;property name="memoryPageSize"&gt;1m&lt;/property&gt; &lt;property name="spillsFileBufferSize"&gt;1k&lt;/property&gt; &lt;property name="useStreamOutput"&gt;0&lt;/property&gt; &lt;property name="systemReserveMemorySize"&gt;384m&lt;/property&gt; &lt;property name="useZKSwitch"&gt;true&lt;/property&gt; &lt;/system&gt; &lt;!--Mycat用户名--&gt; &lt;user name="root"&gt; &lt;!--Mycat密码--&gt; &lt;property name="password"&gt;root&lt;/property&gt; &lt;!--Mycat数据库名--&gt; &lt;property name="schemas"&gt;mycat_test&lt;/property&gt; &lt;/user&gt;&lt;/mycat:server&gt; schema.xml，Mycat和Mysql节点映射配置 12345678910111213141516171819202122&lt;?xml version="1.0"?&gt;&lt;!DOCTYPE mycat:schema SYSTEM "schema.dtd"&gt;&lt;mycat:schema xmlns:mycat="http://io.mycat/"&gt; &lt;!--Mycat数据库名--&gt; &lt;schema name="mycat_test" checkSQLschema="true" sqlMaxLimit="100"&gt; &lt;!--Mycat表名，节点名称列表--&gt; &lt;table name="mycat_test_student" dataNode="dn1,dn2"/&gt; &lt;/schema&gt; &lt;!--Mycat节点名称、节点地址、mysql数据库名--&gt; &lt;dataNode name="dn1" dataHost="localhost1" database="db01" /&gt; &lt;dataNode name="dn2" dataHost="localhost1" database="db02" /&gt; &lt;!--Mycat节点地址--&gt; &lt;dataHost name="localhost1" maxCon="1000" minCon="10" balance="0" writeType="0" dbType="mysql" dbDriver="native" switchType="1" slaveThreshold="100"&gt; &lt;heartbeat&gt;select user()&lt;/heartbeat&gt; &lt;!-- mysql数据库服务器、账户、密码 --&gt; &lt;writeHost host="hostM1" url="192.168.1.71:3306" user="test" password="test@1234"&gt; &lt;/writeHost&gt; &lt;/dataHost&gt;&lt;/mycat:schema&gt; Spring Boot数据源配置12345678//mycat连接信息spring.datasource.url=jdbc:mysql://localhost:8066/mycat_test?serverTimezone=GMTspring.datasource.username=rootspring.datasource.password=rootspring.datasource.driver-class-name=com.mysql.jdbc.Driver//mybatis拦截器配置mybatis.config-location=classpath:mybatis.xml Mybatismybatis.xml插件配置 12345678910111213141516171819202122&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;&lt;configuration&gt; &lt;settings&gt; &lt;!-- 打印查询语句 --&gt; &lt;setting name="logImpl" value="STDOUT_LOGGING" /&gt; &lt;/settings&gt; &lt;typeAliases&gt; &lt;typeAlias alias="TestPojo" type="xx.xx.TestPojo"/&gt; &lt;/typeAliases&gt; &lt;!-- 拦截器插件，改写sql --&gt; &lt;plugins&gt; &lt;plugin interceptor="xx.interceptor.MyInterceptor"&gt; &lt;/plugin&gt; &lt;/plugins&gt;&lt;/configuration&gt; 拦截器12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152//拦截StatementHandler的prepare方法@Intercepts(value = &#123; @Signature(type = StatementHandler.class, method = "prepare", args = &#123;Connection.class,Integer.class&#125;)&#125;)public class MyInterceptor implements Interceptor &#123; // 修改sql，添加前后缀 private static final String preState="/*!mycat:datanode="; private static final String afterState="*/"; @Override public Object intercept(Invocation invocation) throws Throwable &#123; StatementHandler statementHandler=(StatementHandler)invocation.getTarget(); MetaObject metaStatementHandler=SystemMetaObject.forObject(statementHandler); Object object=null; //分离代理对象链 while(metaStatementHandler.hasGetter("h"))&#123; object=metaStatementHandler.getValue("h"); metaStatementHandler=SystemMetaObject.forObject(object); &#125; //获取sql String sql=(String)metaStatementHandler.getValue("delegate.boundSql.sql"); //根据会话上下文，获取节点标识 String node=(String) SessionUtil.getSession().getAttribute("appId"); if(node!=null) &#123; //重写sql，适配mycat sql = preState + node + afterState + sql; &#125; System.out.println("sql is "+sql); metaStatementHandler.setValue("delegate.boundSql.sql",sql); Object result = invocation.proceed(); System.out.println("Invocation.proceed()"); return result; &#125; // 返回当前拦截的对象(StatementHandler)的动态代理 // 当拦截对象的方法被执行时, 动态代理中执行拦截器intercept方法. @Override public Object plugin(Object target) &#123; return Plugin.wrap(target, this); &#125; @Override public void setProperties(Properties properties) &#123; String prop1 = properties.getProperty("prop1"); String prop2 = properties.getProperty("prop2"); System.out.println(prop1 + "------" + prop2); &#125;&#125; 总结以上为关键实现，主要过程如下： 搭建Mycat服务，设置提供的数据库信息 配置Mycat动态映射的两个节点，Mycat根据sql语句中的/*!mycat:datanode=dn1*/进行动态切换数据源后执行sql 配置SpringBoot的Mycat数据源连接 配置Mybatis的拦截器插件 配置Mybatis拦截器实现，根据上下文节点，改写sql 注意 生产可采用Mycat集群，集群用ZK管理，以动态实例化数据源]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>多租户</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hazelcast分区原理]]></title>
     <url>%2Fposts%2F47449%2F</url>
     <content type="text"><![CDATA[Hazelcast分片Hazelcast分片被称为分区。 Hazelcast默认有271个分区。给定key，Hazelcast进行序列化、hash并根据分区数量取模，获取key对应的分区。 集群内成员的分区是对等的。Hazelcast将分区数据在成员间的区分内进行分布备份和冗余。 数据分发Hazelcast 没有主成员，每个成员在功能上都是对等的。 最先启动的成员会自动的将数据同步到集群其他成员中，如果最先启动成员宕机，由第二最先启动成员执行数据分发操作。 Hazelcast存储全部数据在内存，因此速度快。一旦有成员crash，也不会有数据丢失，因为有数据拷贝在其他成员中。 Hazelcast提供分布式数据结构和分布式计算工具，提供了丰富的访问分布式集群内存和CPU计算的能力。 分区过程Hazelcast分区是内存段，每段都包含成百上千个数据实体，依赖于系统的内存能力。 每个分区都有多个副本，分布在集群成员中。副本中有一个是主副本，其他的是备份副本。 拥有主副本的集群成员被称为分区owner。当读或写入数据实体时，实际是与拥有该数据主副本的分区交互。 Hazelcast默认是每个成员拥有271个分区，当集群中只有一个成员时，也就意味着该成员有271个分区，且拥有所有分区的主副本。 在一个只有一个成员的Hazelcast集群中，当启动第二个成员时，分区复制过程如下： 正常情况下，分区复制没有顺序，而是随机，每个分布式分区之间也没有顺序，因此成员间的主分区和备份复制都是对等的。 当添加更多成员时，Hazelcast逐步移动主和复制分区复制到新成员中，确保所有的成员是对等和冗余的。由于持久性hash算法，仅有最小数量的分区被移动以扩展集群。 Hazelcast分布式分区中的主、备的复制在成员中是相同的，备份复制分区用于维持冗余。 Hazelcast提供lite成员，这些成员没有自己的分区。lite成员是用于重量型计算任务的执行和监听注册。尽管没有分区，他们也可访问集群中其他成员的分区。 Hazelcast分布式数据实体到分区中是根据hash算法。根据给定的对象key或对象名： key或名进行序列化，转换成字节数组 将字节数组进行hash hash值对分区数量MOD取模 取模结果为该数据应该存储的分区Id，在集群所有成员中，指定key的分区Id一定是相同的。 分区表启动成员后，分区表就会创建。 分区表存储分区id列表和他们归属的集群成员。分区表用于确保所有的成员包括lite成员，在集群中有相同的信息量，并确保每个成员间互相可知数据存储地址。 集群最早的成员即第一个启动的，发送分区表到所有成员。每个成员都被通知，分区的任何变更，变更包括成员加入、离开等。 加入最早的成员crash，第二早的成员发送分区表到其他成员。 可以配置分区表发送频度，通过hazelcast.partition.table.send.interval系统参数，默认是15秒。 重新分区重新分区是重新分布式分区的过程。在成员加入和离开时，Hazelcast执行重新分区操作，且最早的成员将会更新分区表信息。 lite成员因为没有分区，则不进行重新分区。 Hazelcast可以用于:• 共享服务配置和信息• 事件通知• Near Cache• 任务调度• 共享用户信息、队列等• 提供Web服务key• 分布式消息订阅服务• 分布式数据和id• 多租户map• 数据集• Spring框架前置的缓存层• 近实时流• 会话存储]]></content>
@@ -576,8 +598,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java内存模型</tag>
         <tag>Java并发编程</tag>
+        <tag>Java内存模型</tag>
       </tags>
   </entry>
   <entry>
@@ -600,8 +622,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java并发编程</tag>
         <tag>synchronized</tag>
+        <tag>Java并发编程</tag>
       </tags>
   </entry>
   <entry>

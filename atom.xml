@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-10-08T09:22:28.132Z</updated>
+  <updated>2019-10-10T03:36:01.749Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,11 +17,57 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>SaaS多租户数据库方案</title>
+    <link href="https://perkins4j2.github.io/posts/20124/"/>
+    <id>https://perkins4j2.github.io/posts/20124/</id>
+    <published>2019-10-10T03:35:03.000Z</published>
+    <updated>2019-10-10T03:36:01.749Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;方案选择&quot;&gt;&lt;a href=&quot;#方案选择&quot; class=&quot;headerlink&quot; title=&quot;方案选择&quot;&gt;&lt;/a&gt;方案选择&lt;/h3&gt;&lt;h4 id=&quot;独立数据库&quot;&gt;&lt;a href=&quot;#独立数据库&quot; class=&quot;headerlink&quot; title=&quot;独立数据库&quot;&gt;&lt;/a&gt;独立数据库&lt;/h4&gt;&lt;p&gt;一个租户一个数据库，这种方案的用户数据隔离级别最高，安全性最好，但成本较高。 &lt;/p&gt;
+&lt;p&gt;优点：为不同的租户提供独立的数据库，有助于简化数据模型的扩展设计，满足不同租户的独特需求；如果出现故障，恢复数据比较简单。 &lt;/p&gt;
+&lt;p&gt;缺点：增多了数据库的安装数量，随之带来维护成本和购置成本的增加。&lt;/p&gt;
+&lt;p&gt;这种方案与传统的一个客户、一套数据、一套部署类似，差别只在于软件统一部署在运营商那里。&lt;/p&gt;
+&lt;p&gt;如果面对的是银行、医院等需要非常高数据隔离级别的租户，可以选择这种模式，提高租用的定价。如果定价较低，产品走低价路线，这种方案一般对运营商来说是无法承受的。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="多租户" scheme="https://perkins4j2.github.io/tags/%E5%A4%9A%E7%A7%9F%E6%88%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot+Mybatis+Mycat多租户数据库实现</title>
+    <link href="https://perkins4j2.github.io/posts/64375/"/>
+    <id>https://perkins4j2.github.io/posts/64375/</id>
+    <published>2019-10-10T03:34:49.000Z</published>
+    <updated>2019-10-10T03:36:44.596Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Mycat&quot;&gt;&lt;a href=&quot;#Mycat&quot; class=&quot;headerlink&quot; title=&quot;Mycat&quot;&gt;&lt;/a&gt;Mycat&lt;/h3&gt;&lt;h4 id=&quot;下载&quot;&gt;&lt;a href=&quot;#下载&quot; class=&quot;headerlink&quot; title=&quot;下载&quot;&gt;&lt;/a&gt;下载&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wget http://dl.mycat.io/1.6.7.3/20190927161129/Mycat-server-1.6.7.3-release-20190927161129-linux.tar.gz&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h4 id=&quot;配置&quot;&gt;&lt;a href=&quot;#配置&quot; class=&quot;headerlink&quot; title=&quot;配置&quot;&gt;&lt;/a&gt;配置&lt;/h4&gt;&lt;p&gt;server.xml，Mycat服务器配置，默认端口8066&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="多租户" scheme="https://perkins4j2.github.io/tags/%E5%A4%9A%E7%A7%9F%E6%88%B7/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hazelcast分区原理</title>
     <link href="https://perkins4j2.github.io/posts/47449/"/>
     <id>https://perkins4j2.github.io/posts/47449/</id>
     <published>2019-10-08T09:21:54.000Z</published>
-    <updated>2019-10-08T09:22:28.132Z</updated>
+    <updated>2019-10-08T09:22:37.962Z</updated>
     
     <summary type="html">
     
@@ -446,53 +492,6 @@
 &lt;li&gt;&lt;p&gt;中断状态是线程的一个标识位，而中断操作是一种简便的线程间交互&lt;br&gt;方式，而这种交互方式最适合用来取消或停止任务。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;除了中断以外，还可以利用一个boolean变量来控制是否需要停止任务并终止该线程。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="多线程" scheme="https://perkins4j2.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java并发编程艺术 - 线程中断</title>
-    <link href="https://perkins4j2.github.io/posts/45493/"/>
-    <id>https://perkins4j2.github.io/posts/45493/</id>
-    <published>2019-09-03T01:09:41.000Z</published>
-    <updated>2019-09-11T01:12:11.432Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;中断可以理解为线程的一个标识位属性，它表示一个运行中的线程是否被其他线程进行了中断操作。中断好比其他线程对该线程打了个招呼，其他线程通过调用该线程的interrupt()&lt;br&gt;方法对其进行中断操作。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="多线程" scheme="https://perkins4j2.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java并发编程艺术 - 多线程构造和启动</title>
-    <link href="https://perkins4j2.github.io/posts/58008/"/>
-    <id>https://perkins4j2.github.io/posts/58008/</id>
-    <published>2019-08-29T01:22:22.000Z</published>
-    <updated>2019-08-29T01:42:51.848Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;构造线程&quot;&gt;&lt;a href=&quot;#构造线程&quot; class=&quot;headerlink&quot; title=&quot;构造线程&quot;&gt;&lt;/a&gt;构造线程&lt;/h3&gt;&lt;p&gt;在运行线程之前首先要构造一个线程对象，线程对象在构造的时候需要提供线程所需要的属性，如线程所属的线程组、线程优先级、是否是Daemon线程等信息。&lt;/p&gt;
-&lt;h3 id=&quot;线程启动&quot;&gt;&lt;a href=&quot;#线程启动&quot; class=&quot;headerlink&quot; title=&quot;线程启动&quot;&gt;&lt;/a&gt;线程启动&lt;/h3&gt;&lt;p&gt;线程对象在初始化完成之后，调用start()方法就可以启动这个线程。&lt;/p&gt;
-&lt;p&gt;线程start()方法的含当前线程（即parent线程）同步告知Java虚拟机，只要线程规划器空闲，应立即启动调用()方法的线程。&lt;/p&gt;
-&lt;p&gt;注意 启动一个线程前，最好为这个线程设置线程名称，因为这样在使用jstack分析或者进行问题排查时，就会给开发人员提供一些提示，自定义的线程最好能够起个名字。&lt;/p&gt;
     
     </summary>
     
