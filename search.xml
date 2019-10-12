@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[NPM包管理工具]]></title>
+    <url>%2Fposts%2F45569%2F</url>
+    <content type="text"><![CDATA[介绍npm 是JavaScript 世界的包管理工具，并且是Node.js 平台的默认包管理工具。通过npm 可以安装、共享、分发代码，管理项目依赖关系。 npm 由三个独立的部分组成： 网站；网站 是开发者查找包（package）、设置参数以及管理 npm 使用体验的主要途径。 注册表（registry）；注册表 是一个巨大的数据库，保存了每个包（package）的信息。 命令行工具 (CLI)；CLI 通过命令行或终端运行。开发者通过 CLI 与 npm 打交道。 安装 安装Node.js和NPM Node.js download page安装后运行 node -v，版本应该是v8.9.1或更高。 更新 npm npm -v npm install npm@latest -g #最新的官方和测试版 npm install npm@next -g #更新将来下一版 命令 版本npm -v 升级sudo npm install npm -g 国内源npm install -g cnpm –registry=https://registry.npm.taobao.orgcnpm: npm 客户端( cnpmjs.org )淘宝 NPM 镜像，同步频率目前为 10分钟 一次以保证尽量与官方服务同步。 安装模块npm install # 本地安装npm install express -g # 全局安装 卸载模块npm uninstall express 查看安装信息npm list -g #查看所有全局安装的模块npm ls #本地安装npm list grunt #如果要查看某个模块的版本号 更新模块npm update express 搜索模块npm search express 创建模块npm init，输入模块信息和生成 package.json 文件npm adduser，在 npm 资源库中注册用户npm publish，发布模块 删除以前安装npm cache clean package.jsonpackage.json 位于模块的目录下，用于定义包的属性。Package.json 属性说明name - 包名。 version - 包的版本号。 description - 包的描述。 homepage - 包的官网 url 。 author - 包的作者姓名。 contributors - 包的其他贡献者姓名。 dependencies - 依赖包列表。如果依赖包没有安装，npm 会自动将依赖包安装在 node_module 目录下。 repository - 包代码存放的地方的类型，可以是 git 或 svn，git 可在 Github 上。 main - main 字段指定了程序的主入口文件，require(‘moduleName’) 就会加载这个文件。这个字段的默认值是模块根目录下面的 index.js。 keywords - 关键字]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>NPM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[SpringBoot+JPA实体自动生成数据库]]></title>
     <url>%2Fposts%2F4871%2F</url>
     <content type="text"><![CDATA[POM1234&lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;&lt;/dependency&gt; 引入SpringBoot 引入Jpa 配置1234spring.jpa.database=mysqlspring.jpa.database-platform: org.hibernate.dialect.MySQL5InnoDBDialect# 自动检查实体和数据库表是否一致，如果不一致则会进行更新数据库表spring.jpa.hibernate.ddl-auto=update MySQL5InnoDBDialect数据库引擎 ddl-auto validate 加载 Hibernate 时，验证创建数据库表结构 create 每次加载 Hibernate ，重新创建数据库表结构 create-drop 加载 Hibernate 时创建，sessionFactory关闭退出时删除表结构 update 加载 Hibernate 自动更新数据库结构开启12345678@SpringBootApplication//自动填充或更新实体中的CreateDate、CreatedBy@EnableJpaAuditingpublic class Startup &#123; public static void main(String[] args) &#123; SpringApplication.run(Startup.class, args); &#125;&#125; EnableJpaAuditing审计注解 公共实体12345678910111213141516@Data//该注解标注的类不会映射到数据库中单独的表，该类所拥有的属性都将映射到其子类@MappedSuperclasspublic abstract class CommonEntity &#123; @Id @Column(columnDefinition = "varchar(20) comment '主键'") private String id; @Column(columnDefinition = "int(11) default 0 comment '乐观锁'") private int version; @Column(columnDefinition = "timestamp default CURRENT_TIMESTAMP comment '创建时间'") private LocalDateTime createDate; @Column(columnDefinition = "timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '最后修改时间'") private LocalDateTime lastModifiedDate; @Column(columnDefinition = "int(2) default 0 comment '状态:0-有效，1-无效'") private int status;&#125; 超类，公共实体 Column定义字段、Id定义唯一标识 columnDefinition定义字段类型、长度、默认值、注释 CURRENT_TIMESTAMP定义默认的创建和修改时间 审计字段123456@Versionprivate Long version;@CreatedDateprivate LocalDateTime createDate;@LastModifiedDateprivate LocalDateTime lastModifiedDate; 乐观锁 创建时间 修改时间 ### 123456789101112@Data@ToString@Entity(name = "xx")@Table(appliesTo = "xx", comment = "xx表")public class XXEntity extends CommonEntity &#123; @Column(columnDefinition = "varchar(50) COMMENT 'xx'", unique = true) private String name; @Column(columnDefinition = "varchar(20) COMMENT 'xx'") @Index(name = "idx_projectId") private String projectId;&#125; 数据库定义 表定义、注释，Table为org.hibernate.annotations.Table 索引定义 唯一约束]]></content>
@@ -384,7 +395,7 @@
         <category>架构</category>
       </categories>
       <tags>
-        <tag>maven</tag>
+        <tag>Maven</tag>
       </tags>
   </entry>
   <entry>
@@ -673,8 +684,8 @@
       </categories>
       <tags>
         <tag>Spring Cloud</tag>
-        <tag>Zuul</tag>
         <tag>ratelimit</tag>
+        <tag>Zuul</tag>
         <tag>限流</tag>
       </tags>
   </entry>
@@ -700,8 +711,8 @@
       </categories>
       <tags>
         <tag>Spring Cloud</tag>
-        <tag>Ribbon</tag>
         <tag>Zuul</tag>
+        <tag>Ribbon</tag>
         <tag>灰度测试</tag>
       </tags>
   </entry>

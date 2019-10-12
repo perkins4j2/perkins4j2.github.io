@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-10-12T08:06:30.050Z</updated>
+  <updated>2019-10-12T10:24:58.274Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NPM包管理工具</title>
+    <link href="https://perkins4j2.github.io/posts/45569/"/>
+    <id>https://perkins4j2.github.io/posts/45569/</id>
+    <published>2019-10-12T10:23:51.000Z</published>
+    <updated>2019-10-12T10:24:58.274Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h3&gt;&lt;p&gt;npm 是JavaScript 世界的包管理工具，并且是Node.js 平台的默认包管理工具。通过npm 可以安装、共享、分发代码，管理项目依赖关系。&lt;/p&gt;
+&lt;p&gt;npm 由三个独立的部分组成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;网站；网站 是开发者查找包（package）、设置参数以及管理 npm 使用体验的主要途径。&lt;/li&gt;
+&lt;li&gt;注册表（registry）；注册表 是一个巨大的数据库，保存了每个包（package）的信息。&lt;/li&gt;
+&lt;li&gt;命令行工具 (CLI)；CLI 通过命令行或终端运行。开发者通过 CLI 与 npm 打交道。
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="NPM" scheme="https://perkins4j2.github.io/tags/NPM/"/>
+    
+  </entry>
   
   <entry>
     <title>SpringBoot+JPA实体自动生成数据库</title>
@@ -481,30 +506,6 @@
     
     
       <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java并发编程艺术 - 管道输入和输出流</title>
-    <link href="https://perkins4j2.github.io/posts/18201/"/>
-    <id>https://perkins4j2.github.io/posts/18201/</id>
-    <published>2019-09-09T11:28:46.000Z</published>
-    <updated>2019-09-11T01:24:38.852Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Java管道&quot;&gt;&lt;a href=&quot;#Java管道&quot; class=&quot;headerlink&quot; title=&quot;Java管道&quot;&gt;&lt;/a&gt;Java管道&lt;/h3&gt;&lt;p&gt;管道连接输入流和输出流。&lt;/p&gt;
-&lt;p&gt;管道I/O基于生产者 - 消费者模式，其中生产者产生数据，而消费者消费数据。在管道I/O中，创建两个流代表管道的两端。&lt;/p&gt;
-&lt;p&gt;PipedOutputStream对象表示流的一端，PipedInputStream对象则表示流的另一端。使用两个对象的connect()方法连接两端。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="多线程" scheme="https://perkins4j2.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
   </entry>
   
