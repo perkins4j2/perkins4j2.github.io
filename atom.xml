@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-10-12T10:24:58.274Z</updated>
+  <updated>2019-10-12T12:11:35.582Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Gradle安装和IDEA配置</title>
+    <link href="https://perkins4j2.github.io/posts/52236/"/>
+    <id>https://perkins4j2.github.io/posts/52236/</id>
+    <published>2019-10-12T12:10:58.000Z</published>
+    <updated>2019-10-12T12:11:35.582Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;下载&quot;&gt;&lt;a href=&quot;#下载&quot; class=&quot;headerlink&quot; title=&quot;下载&quot;&gt;&lt;/a&gt;下载&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;下载地址&lt;/p&gt;
+&lt;p&gt;  &lt;a href=&quot;https://gradle.org/releases/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;gradle&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;选择&lt;a href=&quot;https://gradle.org/next-steps/?version=5.6.2&amp;format=bin&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;二进制包&lt;/a&gt;，包括文档和源码&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;下载V5.6.2，后解压&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="Gradle" scheme="https://perkins4j2.github.io/tags/Gradle/"/>
+    
+  </entry>
+  
+  <entry>
     <title>NPM包管理工具</title>
     <link href="https://perkins4j2.github.io/posts/45569/"/>
     <id>https://perkins4j2.github.io/posts/45569/</id>
     <published>2019-10-12T10:23:51.000Z</published>
-    <updated>2019-10-12T10:24:58.274Z</updated>
+    <updated>2019-10-12T10:25:07.893Z</updated>
     
     <summary type="html">
     
@@ -478,27 +504,6 @@
 &lt;li&gt;Runnable
         
       
-    
-    </summary>
-    
-      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java并发编程艺术 - Join、Yield和Sleep</title>
-    <link href="https://perkins4j2.github.io/posts/36650/"/>
-    <id>https://perkins4j2.github.io/posts/36650/</id>
-    <published>2019-09-09T11:28:57.000Z</published>
-    <updated>2019-09-11T01:24:38.850Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Join&quot;&gt;&lt;a href=&quot;#Join&quot; class=&quot;headerlink&quot; title=&quot;Join&quot;&gt;&lt;/a&gt;Join&lt;/h3&gt;&lt;p&gt;join() 的作用：让“主线程”等待“子线程”结束之后才能继续运行。&lt;/p&gt;
-&lt;p&gt;son.join()被调用的地方是发生在“Father主线程”中，但是son.join()是通过“子线程son”去调用的join()，父线程调用wait()的作用是让“当前线程”等待，而这里的“当前线程”是指当前在CPU上运行的线程。所以，虽然是调用子线程的wait()方法，但是它是通过“主线程”去调用的；所以，休眠的是主线程，而不是“子线程”！&lt;/p&gt;
     
     </summary>
     
