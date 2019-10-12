@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-10-10T03:37:14.678Z</updated>
+  <updated>2019-10-12T08:06:16.105Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringBoot+JPA实体自动生成数据库</title>
+    <link href="https://perkins4j2.github.io/posts/4871/"/>
+    <id>https://perkins4j2.github.io/posts/4871/</id>
+    <published>2019-10-12T08:04:53.000Z</published>
+    <updated>2019-10-12T08:06:16.105Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;POM&quot;&gt;&lt;a href=&quot;#POM&quot; class=&quot;headerlink&quot; title=&quot;POM&quot;&gt;&lt;/a&gt;POM&lt;/h3&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;org.springframework.boot&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;spring-boot-starter-data-jpa&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+&lt;li&gt;引入SpringBoot&lt;/li&gt;
+&lt;li&gt;引入Jpa
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="SpringBoot" scheme="https://perkins4j2.github.io/tags/SpringBoot/"/>
+    
+      <category term="JPA" scheme="https://perkins4j2.github.io/tags/JPA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Maven自定义parent并集成SpringBoot</title>
+    <link href="https://perkins4j2.github.io/posts/53117/"/>
+    <id>https://perkins4j2.github.io/posts/53117/</id>
+    <published>2019-10-12T02:54:02.000Z</published>
+    <updated>2019-10-12T06:03:29.976Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;自定义parent&quot;&gt;&lt;a href=&quot;#自定义parent&quot; class=&quot;headerlink&quot; title=&quot;自定义parent&quot;&gt;&lt;/a&gt;自定义parent&lt;/h3&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
+        
+      
+    
+    </summary>
+    
+      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
+    
+    
+      <category term="Maven" scheme="https://perkins4j2.github.io/tags/Maven/"/>
+    
+  </entry>
   
   <entry>
     <title>SaaS多租户数据库方案</title>
@@ -45,7 +97,7 @@
     <link href="https://perkins4j2.github.io/posts/64375/"/>
     <id>https://perkins4j2.github.io/posts/64375/</id>
     <published>2019-10-10T03:34:49.000Z</published>
-    <updated>2019-10-10T03:37:14.679Z</updated>
+    <updated>2019-10-12T08:05:56.255Z</updated>
     
     <summary type="html">
     
@@ -58,7 +110,13 @@
       <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
     
     
+      <category term="SpringBoot" scheme="https://perkins4j2.github.io/tags/SpringBoot/"/>
+    
       <category term="多租户" scheme="https://perkins4j2.github.io/tags/%E5%A4%9A%E7%A7%9F%E6%88%B7/"/>
+    
+      <category term="Mybatis" scheme="https://perkins4j2.github.io/tags/Mybatis/"/>
+    
+      <category term="Mycat" scheme="https://perkins4j2.github.io/tags/Mycat/"/>
     
   </entry>
   
@@ -444,54 +502,6 @@
       &lt;h3 id=&quot;Java管道&quot;&gt;&lt;a href=&quot;#Java管道&quot; class=&quot;headerlink&quot; title=&quot;Java管道&quot;&gt;&lt;/a&gt;Java管道&lt;/h3&gt;&lt;p&gt;管道连接输入流和输出流。&lt;/p&gt;
 &lt;p&gt;管道I/O基于生产者 - 消费者模式，其中生产者产生数据，而消费者消费数据。在管道I/O中，创建两个流代表管道的两端。&lt;/p&gt;
 &lt;p&gt;PipedOutputStream对象表示流的一端，PipedInputStream对象则表示流的另一端。使用两个对象的connect()方法连接两端。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="多线程" scheme="https://perkins4j2.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java并发编程艺术 - 多线程wait和notify</title>
-    <link href="https://perkins4j2.github.io/posts/48047/"/>
-    <id>https://perkins4j2.github.io/posts/48047/</id>
-    <published>2019-09-09T01:21:33.000Z</published>
-    <updated>2019-09-09T01:38:08.651Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;等待-通知机制&quot;&gt;&lt;a href=&quot;#等待-通知机制&quot; class=&quot;headerlink&quot; title=&quot;等待/通知机制&quot;&gt;&lt;/a&gt;等待/通知机制&lt;/h3&gt;&lt;p&gt;等待/通知机制，是指一个线程A调用了对象O的wait()方法进入等待状态，而另一个线程B调用了对象O的notify()或者notifyAll()方法，线程A收到通知后从对象O的wait()方法返回，进而&lt;br&gt;执行后续操作。&lt;/p&gt;
-&lt;p&gt;上述两个线程通过对象O来完成交互，而对象上的wait()和notify/notifyAll()的&lt;br&gt;关系就如同开关信号一样，用来完成等待方和通知方之间的交互工作。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="多线程" scheme="https://perkins4j2.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java并发编程艺术 - 线程终结</title>
-    <link href="https://perkins4j2.github.io/posts/52791/"/>
-    <id>https://perkins4j2.github.io/posts/52791/</id>
-    <published>2019-09-05T01:05:00.000Z</published>
-    <updated>2019-09-05T01:22:02.944Z</updated>
-    
-    <summary type="html">
-    
-      &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;中断状态是线程的一个标识位，而中断操作是一种简便的线程间交互&lt;br&gt;方式，而这种交互方式最适合用来取消或停止任务。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;除了中断以外，还可以利用一个boolean变量来控制是否需要停止任务并终止该线程。&lt;/p&gt;
     
     </summary>
     
