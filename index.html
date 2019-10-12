@@ -435,7 +435,7 @@
                 
               
 
-              <time title="创建时间：2019-10-12 16:04:53 / 修改时间：16:06:16" itemprop="dateCreated datePublished" datetime="2019-10-12T16:04:53+08:00">2019-10-12</time>
+              <time title="创建时间：2019-10-12 16:04:53 / 修改时间：16:06:30" itemprop="dateCreated datePublished" datetime="2019-10-12T16:04:53+08:00">2019-10-12</time>
             
 
             
@@ -616,7 +616,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/posts/53117/" class="post-title-link" itemprop="url">Maven自定义parent并集成SpringBoot</a>
+                <a href="/posts/53117/" class="post-title-link" itemprop="url">Maven自定义Parent并集成SpringBoot</a>
               
             
           </h1>
@@ -641,7 +641,7 @@
                 
               
 
-              <time title="创建时间：2019-10-12 10:54:02 / 修改时间：14:03:29" itemprop="dateCreated datePublished" datetime="2019-10-12T10:54:02+08:00">2019-10-12</time>
+              <time title="创建时间：2019-10-12 10:54:02 / 修改时间：16:31:47" itemprop="dateCreated datePublished" datetime="2019-10-12T10:54:02+08:00">2019-10-12</time>
             
 
             
@@ -727,15 +727,16 @@
 
       
         
+          <h3 id="自定义Parent"><a href="#自定义Parent" class="headerlink" title="自定义Parent"></a>自定义Parent</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.xx.xx<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xx-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">packaging</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
           
-            <h3 id="自定义parent"><a href="#自定义parent" class="headerlink" title="自定义parent"></a>自定义parent</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.xx.xx<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xx-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">packaging</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="parent依赖管理集成springboot"><a href="#parent依赖管理集成springboot" class="headerlink" title="parent依赖管理集成springboot"></a>parent依赖管理集成springboot</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencyManagement&gt;</span><br><span class="line">     &lt;dependencies&gt;</span><br><span class="line">         &lt;dependency&gt;</span><br><span class="line">             &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">             &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">             &lt;version&gt;2.0.5.RELEASE&lt;/version&gt;</span><br><span class="line">             &lt;type&gt;pom&lt;/type&gt;</span><br><span class="line">             &lt;scope&gt;import&lt;/scope&gt;</span><br><span class="line">         &lt;/dependency&gt;</span><br><span class="line">     &lt;/dependencies&gt;</span><br><span class="line"> &lt;/dependencyManagement&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="子项目继承和使用"><a href="#子项目继承和使用" class="headerlink" title="子项目继承和使用"></a>子项目继承和使用</h3><h4 id="继承parent"><a href="#继承parent" class="headerlink" title="继承parent"></a>继承parent</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xx-xx<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xx-xx<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.xx.xx<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="使用springboot"><a href="#使用springboot" class="headerlink" title="使用springboot"></a>使用springboot</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+            <div class="post-button text-center">
+              <a class="btn" href="/posts/53117/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
