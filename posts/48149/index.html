@@ -108,14 +108,14 @@
   <meta name="description" content="队列和订阅区别 队列是queue，订阅是topic 队列是只能被消费一次，订阅是被消费多次 队列消费是主动轮询take，订阅是消息被动通知  队列实现 采用FIFO先进先出顺序消费 元素没有批量处理，只能迭代逐个take 元素被复制到本地处理 可能使用ItemListener监听队列新增和删除操作">
 <meta name="keywords" content="Hazelcast">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hazelcast队列和订阅实现">
+<meta property="og:title" content="Hazelcast队列和发布订阅实现">
 <meta property="og:url" content="https://perkins4j2.github.io/posts/48149/index.html">
 <meta property="og:site_name" content="Perkins4j2的技术博客">
 <meta property="og:description" content="队列和订阅区别 队列是queue，订阅是topic 队列是只能被消费一次，订阅是被消费多次 队列消费是主动轮询take，订阅是消息被动通知  队列实现 采用FIFO先进先出顺序消费 元素没有批量处理，只能迭代逐个take 元素被复制到本地处理 可能使用ItemListener监听队列新增和删除操作">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-16T01:56:04.680Z">
+<meta property="og:updated_time" content="2019-10-16T01:57:06.962Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hazelcast队列和订阅实现">
+<meta name="twitter:title" content="Hazelcast队列和发布订阅实现">
 <meta name="twitter:description" content="队列和订阅区别 队列是queue，订阅是topic 队列是只能被消费一次，订阅是被消费多次 队列消费是主动轮询take，订阅是消息被动通知  队列实现 采用FIFO先进先出顺序消费 元素没有批量处理，只能迭代逐个take 元素被复制到本地处理 可能使用ItemListener监听队列新增和删除操作">
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Hazelcast队列和订阅实现 | Perkins4j2的技术博客</title>
+  <title>Hazelcast队列和发布订阅实现 | Perkins4j2的技术博客</title>
   
 
 
@@ -410,7 +410,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hazelcast队列和订阅实现
+          <h1 class="post-title" itemprop="name headline">Hazelcast队列和发布订阅实现
 
               
             
@@ -436,7 +436,7 @@
                 
               
 
-              <time title="创建时间：2019-10-16 09:55:40 / 修改时间：09:56:04" itemprop="dateCreated datePublished" datetime="2019-10-16T09:55:40+08:00">2019-10-16</time>
+              <time title="创建时间：2019-10-16 09:55:40 / 修改时间：09:57:06" itemprop="dateCreated datePublished" datetime="2019-10-16T09:55:40+08:00">2019-10-16</time>
             
 
             
@@ -674,10 +674,10 @@
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>Hazelcast队列和订阅实现</p>
+  <p><span>本文标题:</span>Hazelcast队列和发布订阅实现</p>
   <p><span>文章作者:</span>Perkins</p>
   <p><span>发布时间:</span>2019年10月16日</p>
-  <p><span>原始链接:</span><a href="/posts/48149/" title="Hazelcast队列和订阅实现">https://perkins4j2.github.io/posts/48149/</a>
+  <p><span>原始链接:</span><a href="/posts/48149/" title="Hazelcast队列和发布订阅实现">https://perkins4j2.github.io/posts/48149/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://perkins4j2.github.io/posts/48149/" aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>

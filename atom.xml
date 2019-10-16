@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-10-16T01:56:04.680Z</updated>
+  <updated>2019-10-16T01:57:06.962Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hazelcast队列和订阅实现</title>
+    <title>Hazelcast队列和发布订阅实现</title>
     <link href="https://perkins4j2.github.io/posts/48149/"/>
     <id>https://perkins4j2.github.io/posts/48149/</id>
     <published>2019-10-16T01:55:40.000Z</published>
-    <updated>2019-10-16T01:56:04.680Z</updated>
+    <updated>2019-10-16T01:57:06.962Z</updated>
     
     <summary type="html">
     
