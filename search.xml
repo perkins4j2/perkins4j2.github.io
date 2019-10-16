@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Hazelcast队列和订阅实现]]></title>
+    <url>%2Fposts%2F48149%2F</url>
+    <content type="text"><![CDATA[队列和订阅区别 队列是queue，订阅是topic 队列是只能被消费一次，订阅是被消费多次 队列消费是主动轮询take，订阅是消息被动通知 队列实现 采用FIFO先进先出顺序消费 元素没有批量处理，只能迭代逐个take 元素被复制到本地处理 可能使用ItemListener监听队列新增和删除操作 生产123456789101112public class ProducerMember &#123; public static void main( String[] args ) throws Exception &#123; HazelcastInstance hz = Hazelcast.newHazelcastInstance(); IQueue&lt;Integer&gt; queue = hz.getQueue( "queue" ); for ( int k = 1; k &lt; 100; k++ ) &#123; queue.put( k ); System.out.println( "Producing: " + k ); Thread.sleep(1000); &#125; queue.put( -1 ); System.out.println( "Producer Finished!" );&#125; &#125; 消费123456789101112131415public class ConsumerMember &#123; public static void main( String[] args ) throws Exception &#123; HazelcastInstance hz = Hazelcast.newHazelcastInstance(); IQueue&lt;Integer&gt; queue = hz.getQueue( "queue" ); while ( true ) &#123; int item = queue.take(); System.out.println( "Consumed: " + item ); if ( item == -1 ) &#123; queue.put( -1 );break; &#125; Thread.sleep( 5000 ); &#125; System.out.println( "Consumer Finished!" ); &#125;&#125; 效率提升 提供多个消费者 非严格顺序，可以创建多个队列分别生产和消费 消费者可以启动定时任务，提高消费频度 可靠性 一个队列成员，会有一个备份 队列元素使用全局递增itemId，不会重复 QueueStore提供队列内存时，同时也持久化，在超内存限制时数据也会持久化 max-size可以设置队列长度，多余元素put会被阻塞，直到有队列空间 高吞吐量时，可支持多个消费者并发 网络分区故障时，提供Split-Brain脑裂保护，避免仅部分员执行操作成功 订阅实现 发布/订阅模型，发布是异步操作 订阅同一个topic，所有订阅者均收到消息 支持全局顺序 实现发布 1234567public class TopicPublisher &#123; public static void main(String[] args) &#123; HazelcastInstance hz = Hazelcast.newHazelcastInstance(); ITopic&lt;Date&gt; topic = hz.getTopic("topic"); topic.publish(new Date()); &#125; &#125; 订阅 12345678910111213public class TopicSubscriber &#123; public static void main(String[] args) &#123; HazelcastInstance hz = Hazelcast.newHazelcastInstance(); ITopic&lt;Date&gt; topic = hz.getTopic("topic"); topic.addMessageListener(new MessageListenerImpl()); System.out.println("Subscribed"); &#125; private static class MessageListenerImpl implements MessageListener&lt;Date&gt; &#123; public void onMessage(Message&lt;Date&gt; m) &#123; System.out.println("Received: " + m.getMessageObject()); &#125; &#125;&#125; MessageListener 可以监听和消费具体消息 全局顺序 消息是顺序发布，订阅者是顺序接受 消息也可能是全局顺序，所有订阅者接受多个发布者消息的顺序都是一致 例如有3个成员，member1发布消息a1 和 a2. Member3 发布消息 c1 and c2. 可能有以下顺序： member1 → c1, a1, a2, c2 member2 → c1, c2, a1, a2 开启 globalOrderEnabled 如果member1 → a1, c1, a2, c2 则member2 → a1, c1, a2, c2 确保所有成员接受所有消息的顺序是一致，而非来自某个发布者。 StripedExecutor 有很多线程，负责消息的全局顺序发布。 hazelcast.event.thread.count是线程数量。 Topic的名称取hash%线程数量，即为处理该Topic的线程id Reliable Topic Reliable Topic 根据Ringbuffer数据结构进行备份 可靠性高，解决事件丢失问题 快速消费，更稳定和安全 1ITopic&lt;Long&gt; topic = hz.getReliableTopic("sometopic"); TopicOverloadPolicy 超过容量可以设置过载策略，DISCARD_OLDEST丢失最老、DISCARD_NEWEST丢弃最新、BLOCK阻塞直到超时、ERROR抛出异常 read-batch-size，支持批量读取消息]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>Hazelcast</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Gradle安装和IDEA配置]]></title>
     <url>%2Fposts%2F52236%2F</url>
     <content type="text"><![CDATA[下载 下载地址 gradle 选择二进制包，包括文档和源码 下载V5.6.2，后解压 安装 环境变量 export PATH=$PATH:/opt/gradle/gradle-5.6.2/bin 测试 $ gradle -v Gradle 5.6.2 配置创建.gradle目录 ~/.gradle/ 设置源 vi ~/.gradle/init.gradle 1234567891011121314151617181920212223allprojects&#123; repositories &#123; def ALIYUN_REPOSITORY_URL = &apos;http://maven.aliyun.com/nexus/content/groups/public&apos; def ALIYUN_JCENTER_URL = &apos;http://maven.aliyun.com/nexus/content/repositories/jcenter&apos; all &#123; ArtifactRepository repo -&gt; if(repo instanceof MavenArtifactRepository)&#123; def url = repo.url.toString() if (url.startsWith(&apos;https://repo1.maven.org/maven2&apos;)) &#123; project.logger.lifecycle &quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_REPOSITORY_URL.&quot; remove repo &#125; if (url.startsWith(&apos;https://jcenter.bintray.com/&apos;)) &#123; project.logger.lifecycle &quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_JCENTER_URL.&quot; remove repo &#125; &#125; &#125; maven &#123; url ALIYUN_REPOSITORY_URL url ALIYUN_JCENTER_URL &#125; &#125;&#125; IDEA 打开file-&gt;setting-&gt;Build,Execution,Deployment-&gt;Gradle 配置Gradle home，选择用本地Gradle，输入Gradle安装目录 配置Service directory path，指定gradle数据目录]]></content>
@@ -64,8 +75,8 @@
         <category>架构</category>
       </categories>
       <tags>
-        <tag>SpringBoot</tag>
         <tag>多租户</tag>
+        <tag>SpringBoot</tag>
         <tag>Mybatis</tag>
         <tag>Mycat</tag>
       </tags>
@@ -646,8 +657,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java内存模型</tag>
         <tag>Java并发编程</tag>
+        <tag>Java内存模型</tag>
       </tags>
   </entry>
   <entry>
@@ -695,8 +706,8 @@
       </categories>
       <tags>
         <tag>Spring Cloud</tag>
-        <tag>Zuul</tag>
         <tag>ratelimit</tag>
+        <tag>Zuul</tag>
         <tag>限流</tag>
       </tags>
   </entry>
@@ -722,8 +733,8 @@
       </categories>
       <tags>
         <tag>Spring Cloud</tag>
-        <tag>Ribbon</tag>
         <tag>Zuul</tag>
+        <tag>Ribbon</tag>
         <tag>灰度测试</tag>
       </tags>
   </entry>

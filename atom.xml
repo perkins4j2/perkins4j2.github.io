@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-10-12T12:11:44.106Z</updated>
+  <updated>2019-10-16T01:56:04.680Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hazelcast队列和订阅实现</title>
+    <link href="https://perkins4j2.github.io/posts/48149/"/>
+    <id>https://perkins4j2.github.io/posts/48149/</id>
+    <published>2019-10-16T01:55:40.000Z</published>
+    <updated>2019-10-16T01:56:04.680Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;队列和订阅区别&quot;&gt;&lt;a href=&quot;#队列和订阅区别&quot; class=&quot;headerlink&quot; title=&quot;队列和订阅区别&quot;&gt;&lt;/a&gt;队列和订阅区别&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;队列是queue，订阅是topic&lt;/li&gt;
+&lt;li&gt;队列是只能被消费一次，订阅是被消费多次&lt;/li&gt;
+&lt;li&gt;队列消费是主动轮询take，订阅是消息被动通知&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;队列实现&quot;&gt;&lt;a href=&quot;#队列实现&quot; class=&quot;headerlink&quot; title=&quot;队列实现&quot;&gt;&lt;/a&gt;队列实现&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;采用FIFO先进先出顺序消费&lt;/li&gt;
+&lt;li&gt;元素没有批量处理，只能迭代逐个take&lt;/li&gt;
+&lt;li&gt;元素被复制到本地处理&lt;/li&gt;
+&lt;li&gt;可能使用ItemListener监听队列新增和删除操作
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="Hazelcast" scheme="https://perkins4j2.github.io/tags/Hazelcast/"/>
+    
+  </entry>
   
   <entry>
     <title>Gradle安装和IDEA配置</title>
@@ -155,9 +184,9 @@
       <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
     
     
-      <category term="SpringBoot" scheme="https://perkins4j2.github.io/tags/SpringBoot/"/>
-    
       <category term="多租户" scheme="https://perkins4j2.github.io/tags/%E5%A4%9A%E7%A7%9F%E6%88%B7/"/>
+    
+      <category term="SpringBoot" scheme="https://perkins4j2.github.io/tags/SpringBoot/"/>
     
       <category term="Mybatis" scheme="https://perkins4j2.github.io/tags/Mybatis/"/>
     
@@ -482,35 +511,6 @@
       <category term="docker" scheme="https://perkins4j2.github.io/tags/docker/"/>
     
       <category term="Hazelcast" scheme="https://perkins4j2.github.io/tags/Hazelcast/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java并发编程艺术 - 多线程状态</title>
-    <link href="https://perkins4j2.github.io/posts/80/"/>
-    <id>https://perkins4j2.github.io/posts/80/</id>
-    <published>2019-09-10T01:03:44.000Z</published>
-    <updated>2019-09-11T01:24:38.851Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h3 id=&quot;6种状态&quot;&gt;&lt;a href=&quot;#6种状态&quot; class=&quot;headerlink&quot; title=&quot;6种状态&quot;&gt;&lt;/a&gt;6种状态&lt;/h3&gt;&lt;p&gt;线程可以有如下6种状态:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;New (新创建)&lt;/li&gt;
-&lt;li&gt;Runnable
-        
-      
-    
-    </summary>
-    
-      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Java并发编程" scheme="https://perkins4j2.github.io/tags/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
