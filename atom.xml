@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-10-16T01:57:06.962Z</updated>
+  <updated>2019-10-24T01:29:20.159Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java8新变化</title>
+    <link href="https://perkins4j2.github.io/posts/3769/"/>
+    <id>https://perkins4j2.github.io/posts/3769/</id>
+    <published>2019-10-24T01:27:30.000Z</published>
+    <updated>2019-10-24T01:29:20.159Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Java8优势&quot;&gt;&lt;a href=&quot;#Java8优势&quot; class=&quot;headerlink&quot; title=&quot;Java8优势&quot;&gt;&lt;/a&gt;Java8优势&lt;/h3&gt;&lt;p&gt;自1998年JDK1.0（Java1.0）发布以来,从Java1.1（1997年）-Java7（2011年），Java不断升级,Java8则是在2014年3月发布。&lt;/p&gt;
+&lt;h4 id=&quot;流处理&quot;&gt;&lt;a href=&quot;#流处理&quot; class=&quot;headerlink&quot; title=&quot;流处理&quot;&gt;&lt;/a&gt;流处理&lt;/h4&gt;&lt;p&gt;Java 8在java.util.stream中添加了一个Stream API;Stream&lt;t&gt;可以看成一种迭代器。&lt;/t&gt;&lt;/p&gt;
+&lt;p&gt;Stream API的可以链接形成一个复杂的流水线，就像Unix命令。&lt;/p&gt;
+&lt;p&gt;可以在一个更高的抽象层次上写Java8程序，把这样的流变成那样的流(就像写数据库查询语句时的那种思路)，而不是一次只处理一个项目。&lt;/p&gt;
+&lt;p&gt;Java8可以透明地把输入的不相关部分拿到几个CPU内核上去分别执行。Stream操作流水线——这是几乎免费的并行，用不着去费劲搞Thread。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
+    
+    
+      <category term="Java8" scheme="https://perkins4j2.github.io/tags/Java8/"/>
+    
+  </entry>
   
   <entry>
     <title>Hazelcast队列和发布订阅实现</title>
@@ -478,30 +502,6 @@
 &lt;ul&gt;
 &lt;li&gt;int-int每秒可完成17W请求，并发线程10，随机读写，写概率0.1，读0.9&lt;/li&gt;
 &lt;li&gt;int-byte每秒13万请求，value最大2k，并发线程10，随机读写，写概率0.1，读0.9
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="docker" scheme="https://perkins4j2.github.io/tags/docker/"/>
-    
-      <category term="Hazelcast" scheme="https://perkins4j2.github.io/tags/Hazelcast/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker部署Hazelcast</title>
-    <link href="https://perkins4j2.github.io/posts/39886/"/>
-    <id>https://perkins4j2.github.io/posts/39886/</id>
-    <published>2019-09-12T13:07:18.000Z</published>
-    <updated>2019-09-12T13:11:23.753Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Hazelcast-management-center&quot;&gt;&lt;a href=&quot;#Hazelcast-management-center&quot; class=&quot;headerlink&quot; title=&quot;Hazelcast management-center&quot;&gt;&lt;/a&gt;Hazelcast management-center&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker pull hazelcast/management-center&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run -d -p 8200:8080 hazelcast/management-center:latest&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;安装配置管理节点，监控和实时查看缓存情况&lt;br&gt;
     
     </summary>
     
