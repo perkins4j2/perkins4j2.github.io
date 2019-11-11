@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-10-24T01:29:20.159Z</updated>
+  <updated>2019-11-11T09:16:24.665Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Hazelcast持久化及优化</title>
+    <link href="https://perkins4j2.github.io/posts/53779/"/>
+    <id>https://perkins4j2.github.io/posts/53779/</id>
+    <published>2019-11-11T09:15:18.000Z</published>
+    <updated>2019-11-11T09:16:24.665Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;数据内存格式&quot;&gt;&lt;a href=&quot;#数据内存格式&quot; class=&quot;headerlink&quot; title=&quot;数据内存格式&quot;&gt;&lt;/a&gt;数据内存格式&lt;/h3&gt;&lt;p&gt;参数:in-memory-format,有3种。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;BINARY&lt;br&gt;  默认，数据k-v均二进制。&lt;br&gt;  适合绝大多数put、get等操作，效率最高。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;OBJECT&lt;br&gt;  数据存储为对象反序列化，适合对象复杂查询操作，避免反序列时间消耗。&lt;br&gt;  k为二进制，v为对象。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;NATIVE&lt;br&gt;  企业版，二进制格式，存储在非堆空间，避免GC。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="Hazelcast" scheme="https://perkins4j2.github.io/tags/Hazelcast/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java8新变化</title>
     <link href="https://perkins4j2.github.io/posts/3769/"/>
     <id>https://perkins4j2.github.io/posts/3769/</id>
     <published>2019-10-24T01:27:30.000Z</published>
-    <updated>2019-10-24T01:29:20.159Z</updated>
+    <updated>2019-10-24T01:29:52.726Z</updated>
     
     <summary type="html">
     
@@ -208,9 +234,9 @@
       <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
     
     
-      <category term="多租户" scheme="https://perkins4j2.github.io/tags/%E5%A4%9A%E7%A7%9F%E6%88%B7/"/>
-    
       <category term="SpringBoot" scheme="https://perkins4j2.github.io/tags/SpringBoot/"/>
+    
+      <category term="多租户" scheme="https://perkins4j2.github.io/tags/%E5%A4%9A%E7%A7%9F%E6%88%B7/"/>
     
       <category term="Mybatis" scheme="https://perkins4j2.github.io/tags/Mybatis/"/>
     
@@ -245,7 +271,7 @@
     <link href="https://perkins4j2.github.io/posts/63914/"/>
     <id>https://perkins4j2.github.io/posts/63914/</id>
     <published>2019-10-08T08:24:18.000Z</published>
-    <updated>2019-10-08T08:25:21.884Z</updated>
+    <updated>2019-11-11T09:16:06.941Z</updated>
     
     <summary type="html">
     
@@ -258,6 +284,10 @@
     
     </summary>
     
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="Hazelcast" scheme="https://perkins4j2.github.io/tags/Hazelcast/"/>
     
   </entry>
   
@@ -474,34 +504,6 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;操作受超时时间限制hazelcast.max.operation.timeout&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;INFO HazelcastTest - size:273437KB&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;INFO HazelcastTest - elapsed:62ms&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="docker" scheme="https://perkins4j2.github.io/tags/docker/"/>
-    
-      <category term="Hazelcast" scheme="https://perkins4j2.github.io/tags/Hazelcast/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hazelcast性能评估</title>
-    <link href="https://perkins4j2.github.io/posts/19102/"/>
-    <id>https://perkins4j2.github.io/posts/19102/</id>
-    <published>2019-09-12T13:07:31.000Z</published>
-    <updated>2019-09-12T13:11:23.755Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;基准测试&quot;&gt;&lt;a href=&quot;#基准测试&quot; class=&quot;headerlink&quot; title=&quot;基准测试&quot;&gt;&lt;/a&gt;基准测试&lt;/h3&gt;&lt;p&gt;基于benchmarking tool&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;INFO  Performance IntByteMapTest&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Total throughput        100.00%      7,948,805 ops   128,179.66 ops/s&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Agent C_A1            100.00%      7,948,805 ops   128,179.66 ops/s&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;结论&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;int-int每秒可完成17W请求，并发线程10，随机读写，写概率0.1，读0.9&lt;/li&gt;
-&lt;li&gt;int-byte每秒13万请求，value最大2k，并发线程10，随机读写，写概率0.1，读0.9
     
     </summary>
     
