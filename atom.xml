@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-11-11T09:16:24.665Z</updated>
+  <updated>2019-11-18T02:24:22.879Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,11 +17,83 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Snowflake根据设备生成15位ID</title>
+    <link href="https://perkins4j2.github.io/posts/19968/"/>
+    <id>https://perkins4j2.github.io/posts/19968/</id>
+    <published>2019-11-18T02:23:35.000Z</published>
+    <updated>2019-11-18T02:24:22.879Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Snowflake&quot;&gt;&lt;a href=&quot;#Snowflake&quot; class=&quot;headerlink&quot; title=&quot;Snowflake&quot;&gt;&lt;/a&gt;Snowflake&lt;/h3&gt;&lt;p&gt;snowflake是Twitter开源的分布式ID生成算法，结果是一个long型的ID。&lt;/p&gt;
+&lt;p&gt;其核心思想是，生成64位即一个long类型的递增序列Id，保障有序及不重复，具体如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用41bit作为毫秒数，&lt;/li&gt;
+&lt;li&gt;10bit作为机器的ID，5个bit是数据中心，5个bit的机器ID&lt;/li&gt;
+&lt;li&gt;12bit作为毫秒内的流水号，意味着每个节点在每毫秒可以产生 4096个ID&lt;/li&gt;
+&lt;li&gt;最后还有一个符号位，永远是0
+    
+    </summary>
+    
+      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
+    
+    
+      <category term="Snowflake" scheme="https://perkins4j2.github.io/tags/Snowflake/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git操作</title>
+    <link href="https://perkins4j2.github.io/posts/53101/"/>
+    <id>https://perkins4j2.github.io/posts/53101/</id>
+    <published>2019-11-18T01:01:37.000Z</published>
+    <updated>2019-11-18T01:03:23.642Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;分支&quot;&gt;&lt;a href=&quot;#分支&quot; class=&quot;headerlink&quot; title=&quot;分支&quot;&gt;&lt;/a&gt;分支&lt;/h3&gt;&lt;h4 id=&quot;创建分支&quot;&gt;&lt;a href=&quot;#创建分支&quot; class=&quot;headerlink&quot; title=&quot;创建分支&quot;&gt;&lt;/a&gt;创建分支&lt;/h4&gt;&lt;p&gt;&lt;code&gt;git branch &amp;lt;branch-name&amp;gt;&lt;/code&gt;&lt;br&gt;如git branch testing&lt;/p&gt;
+&lt;h4 id=&quot;切换分支&quot;&gt;&lt;a href=&quot;#切换分支&quot; class=&quot;headerlink&quot; title=&quot;切换分支&quot;&gt;&lt;/a&gt;切换分支&lt;/h4&gt;&lt;p&gt;从当前所处的分支切换到其他分支&lt;br&gt;&lt;code&gt;git checkout &amp;lt;branch-name&amp;gt;&lt;/code&gt;&lt;br&gt;如git checkout testing；&lt;br&gt;
+    
+    </summary>
+    
+      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
+    
+    
+      <category term="Git" scheme="https://perkins4j2.github.io/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Canal日志增量订阅和消费</title>
+    <link href="https://perkins4j2.github.io/posts/53545/"/>
+    <id>https://perkins4j2.github.io/posts/53545/</id>
+    <published>2019-11-18T01:00:24.000Z</published>
+    <updated>2019-11-18T01:02:05.342Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;基于日志增量订阅和消费的业务&quot;&gt;&lt;a href=&quot;#基于日志增量订阅和消费的业务&quot; class=&quot;headerlink&quot; title=&quot;基于日志增量订阅和消费的业务&quot;&gt;&lt;/a&gt;基于日志增量订阅和消费的业务&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;数据库镜像&lt;/li&gt;
+&lt;li&gt;数据库实时备份&lt;/li&gt;
+&lt;li&gt;索引构建和实时维护(拆分异构索引、倒排索引等)&lt;/li&gt;
+&lt;li&gt;业务 cache 刷新&lt;/li&gt;
+&lt;li&gt;带业务逻辑的增量数据处理
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="Canal" scheme="https://perkins4j2.github.io/tags/Canal/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hazelcast持久化及优化</title>
     <link href="https://perkins4j2.github.io/posts/53779/"/>
     <id>https://perkins4j2.github.io/posts/53779/</id>
     <published>2019-11-11T09:15:18.000Z</published>
-    <updated>2019-11-11T09:16:24.665Z</updated>
+    <updated>2019-11-11T09:17:06.635Z</updated>
     
     <summary type="html">
     
@@ -441,78 +513,6 @@
     
     
       <category term="Java8" scheme="https://perkins4j2.github.io/tags/Java8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker安装Nginx及配置</title>
-    <link href="https://perkins4j2.github.io/posts/65243/"/>
-    <id>https://perkins4j2.github.io/posts/65243/</id>
-    <published>2019-09-25T00:48:40.000Z</published>
-    <updated>2019-09-25T01:49:47.550Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Docker安装&quot;&gt;&lt;a href=&quot;#Docker安装&quot; class=&quot;headerlink&quot; title=&quot;Docker安装&quot;&gt;&lt;/a&gt;Docker安装&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker search nginx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    name docker.io/nginx &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    OFFICIAL ok&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker pull nginx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker images nginx&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run --name nginx-test -p 9803:80 -d nginx&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="docker" scheme="https://perkins4j2.github.io/tags/docker/"/>
-    
-      <category term="nginx" scheme="https://perkins4j2.github.io/tags/nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解决MySql死锁脚本</title>
-    <link href="https://perkins4j2.github.io/posts/10641/"/>
-    <id>https://perkins4j2.github.io/posts/10641/</id>
-    <published>2019-09-25T00:48:13.000Z</published>
-    <updated>2019-09-25T01:49:47.552Z</updated>
-    
-    <summary type="html">
-    
-      &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;tmp_file=/tmp/my_process_list&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;HOST=&lt;span class=&quot;string&quot;&gt;&#39;xx-01&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;USER=&lt;span class=&quot;string&quot;&gt;&#39;xxx&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;PASS=&lt;span class=&quot;string&quot;&gt;&#39;xxxxxx&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;mysql -u &lt;span class=&quot;variable&quot;&gt;$&amp;#123;USER&amp;#125;&lt;/span&gt; -p &lt;span class=&quot;variable&quot;&gt;$&amp;#123;PASS&amp;#125;&lt;/span&gt; -P3306 --protocol=tcp -h &lt;span class=&quot;variable&quot;&gt;$&amp;#123;HOST&amp;#125;&lt;/span&gt; mysql -e &lt;span class=&quot;string&quot;&gt;&quot;show processlist&quot;&lt;/span&gt; &amp;gt; &lt;span class=&quot;variable&quot;&gt;$&amp;#123;tmp_file&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; l &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; `grep &lt;span class=&quot;string&quot;&gt;&#39;table level lock&#39;&lt;/span&gt; &lt;span class=&quot;variable&quot;&gt;$&amp;#123;tmp_file&amp;#125;&lt;/span&gt; | grep -v &lt;span class=&quot;string&quot;&gt;&#39;system user&#39;&lt;/span&gt; | awk &lt;span class=&quot;string&quot;&gt;&#39;&amp;#123;print $1&amp;#125;&#39;&lt;/span&gt;`; &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; mysql -u &lt;span class=&quot;variable&quot;&gt;$&amp;#123;USER&amp;#125;&lt;/span&gt; -p &lt;span class=&quot;variable&quot;&gt;$&amp;#123;PASS&amp;#125;&lt;/span&gt; -P3306 --protocol=tcp -h &lt;span class=&quot;variable&quot;&gt;$&amp;#123;HOST&amp;#125;&lt;/span&gt; mysql -e &lt;span class=&quot;string&quot;&gt;&quot;kill &lt;span class=&quot;variable&quot;&gt;$l&lt;/span&gt;;&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;done&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="死锁" scheme="https://perkins4j2.github.io/tags/%E6%AD%BB%E9%94%81/"/>
-    
-      <category term="mysql" scheme="https://perkins4j2.github.io/tags/mysql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hazelcast Client配置</title>
-    <link href="https://perkins4j2.github.io/posts/354/"/>
-    <id>https://perkins4j2.github.io/posts/354/</id>
-    <published>2019-09-12T13:08:19.000Z</published>
-    <updated>2019-09-12T13:11:23.754Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;最大value&quot;&gt;&lt;a href=&quot;#最大value&quot; class=&quot;headerlink&quot; title=&quot;最大value&quot;&gt;&lt;/a&gt;最大value&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;单个k-v的操作本身不受数据字节大小限制&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;操作受最大堆内存-Xmx限制&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;操作受超时时间限制hazelcast.max.operation.timeout&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;INFO HazelcastTest - size:273437KB&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;INFO HazelcastTest - elapsed:62ms&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="docker" scheme="https://perkins4j2.github.io/tags/docker/"/>
-    
-      <category term="Hazelcast" scheme="https://perkins4j2.github.io/tags/Hazelcast/"/>
     
   </entry>
   
