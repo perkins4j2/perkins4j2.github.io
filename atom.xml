@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-11-18T02:24:22.879Z</updated>
+  <updated>2019-11-18T12:14:16.948Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,11 +17,100 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>散列算法</title>
+    <link href="https://perkins4j2.github.io/posts/64783/"/>
+    <id>https://perkins4j2.github.io/posts/64783/</id>
+    <published>2019-11-18T12:13:12.000Z</published>
+    <updated>2019-11-18T12:14:16.948Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;何为散列&quot;&gt;&lt;a href=&quot;#何为散列&quot; class=&quot;headerlink&quot; title=&quot;何为散列&quot;&gt;&lt;/a&gt;何为散列&lt;/h3&gt;&lt;p&gt;散列（Hash）也称为哈希，就是把任意长度的输入，通过散列算法，变换成固定长度的输出，这个输出值就是散列值。&lt;/p&gt;
+&lt;p&gt;散列算法的宗旨就是：构造冲突较低的散列地址，保证散列表中数据的离散度。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
+    
+    
+      <category term="散列" scheme="https://perkins4j2.github.io/tags/%E6%95%A3%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kafka消费配置</title>
+    <link href="https://perkins4j2.github.io/posts/39128/"/>
+    <id>https://perkins4j2.github.io/posts/39128/</id>
+    <published>2019-11-18T12:10:58.000Z</published>
+    <updated>2019-11-18T12:12:11.024Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;offset&quot;&gt;&lt;a href=&quot;#offset&quot; class=&quot;headerlink&quot; title=&quot;offset&quot;&gt;&lt;/a&gt;offset&lt;/h3&gt;&lt;p&gt;在Kafka中无论是producer往topic中写数据,还是consumer从topic中读数据,都避免不了和offset打交道,关于offset主要有以下几个概念。&lt;/p&gt;
+&lt;p&gt;Last Committed Offset&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;consumer group最新一次 commit 的 offset，表示这个 group 已经把 Last Committed Offset 之前的数据都消费成功了。
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="kafka" scheme="https://perkins4j2.github.io/tags/kafka/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Consumer手动提交Kafka偏移量和Rebalance</title>
+    <link href="https://perkins4j2.github.io/posts/32177/"/>
+    <id>https://perkins4j2.github.io/posts/32177/</id>
+    <published>2019-11-18T12:07:45.000Z</published>
+    <updated>2019-11-18T12:12:15.482Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;再均衡是指分区的所属权从一个消费者转移到另一个消费者的行为，再均衡期间，消费组内的消费组无法读取消息。&lt;/p&gt;
+&lt;p&gt;消费者需要自己保留一个offset，从kafka 获取消息时，只拉去当前offset以后的消息。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="kafka" scheme="https://perkins4j2.github.io/tags/kafka/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二进制按位与&amp;及求余数</title>
+    <link href="https://perkins4j2.github.io/posts/19120/"/>
+    <id>https://perkins4j2.github.io/posts/19120/</id>
+    <published>2019-11-18T06:06:00.000Z</published>
+    <updated>2019-11-18T06:06:55.214Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;按位与-amp&quot;&gt;&lt;a href=&quot;#按位与-amp&quot; class=&quot;headerlink&quot; title=&quot;按位与&amp;amp;&quot;&gt;&lt;/a&gt;按位与&amp;amp;&lt;/h3&gt;&lt;h4 id=&quot;移位&quot;&gt;&lt;a href=&quot;#移位&quot; class=&quot;headerlink&quot; title=&quot;移位&quot;&gt;&lt;/a&gt;移位&lt;/h4&gt;&lt;p&gt;运算规则：0&amp;amp;0=0; 0&amp;amp;1=0; 1&amp;amp;0=0; 1&amp;amp;1=1;&lt;/p&gt;
+&lt;p&gt;在移位运算中我们可知，计算机中的数据都是0和1的序列，当我们把某个数字左移一位，该数字会扩大为原来的2倍；而将其右移一位时，该数字就会缩小为原来的1/2，即相当于对该数字做了一次被2整除的运算。&lt;/p&gt;
+&lt;p&gt;举例说明：&lt;/p&gt;
+&lt;p&gt;11的二进制是1011，如果右移一位的话，将变成0101，也就是5。&lt;/p&gt;
+&lt;p&gt;现在我们考虑11除以8的余数，很显然是3；因为8是2的3次幂，求余时相当于除以2的3次幂，也就是把1011右移3位，该过程会把1011的低3位011给移走，事实上，这个被移走的011就是11除以8的余数！&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
+    
+    
+      <category term="按位与" scheme="https://perkins4j2.github.io/tags/%E6%8C%89%E4%BD%8D%E4%B8%8E/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Snowflake根据设备生成15位ID</title>
     <link href="https://perkins4j2.github.io/posts/19968/"/>
     <id>https://perkins4j2.github.io/posts/19968/</id>
     <published>2019-11-18T02:23:35.000Z</published>
-    <updated>2019-11-18T02:24:22.879Z</updated>
+    <updated>2019-11-18T02:24:38.567Z</updated>
     
     <summary type="html">
     
@@ -47,7 +136,7 @@
     <link href="https://perkins4j2.github.io/posts/53101/"/>
     <id>https://perkins4j2.github.io/posts/53101/</id>
     <published>2019-11-18T01:01:37.000Z</published>
-    <updated>2019-11-18T01:03:23.642Z</updated>
+    <updated>2019-11-18T02:24:38.565Z</updated>
     
     <summary type="html">
     
@@ -68,7 +157,7 @@
     <link href="https://perkins4j2.github.io/posts/53545/"/>
     <id>https://perkins4j2.github.io/posts/53545/</id>
     <published>2019-11-18T01:00:24.000Z</published>
-    <updated>2019-11-18T01:02:05.342Z</updated>
+    <updated>2019-11-18T02:24:38.562Z</updated>
     
     <summary type="html">
     
@@ -419,100 +508,6 @@
     
     
       <category term="Hazelcast" scheme="https://perkins4j2.github.io/tags/Hazelcast/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Shadowsocks配置</title>
-    <link href="https://perkins4j2.github.io/posts/44441/"/>
-    <id>https://perkins4j2.github.io/posts/44441/</id>
-    <published>2019-09-29T01:04:30.000Z</published>
-    <updated>2019-09-29T01:13:01.839Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;更新源&quot;&gt;&lt;a href=&quot;#更新源&quot; class=&quot;headerlink&quot; title=&quot;更新源&quot;&gt;&lt;/a&gt;更新源&lt;/h3&gt;&lt;p&gt;如果是新系统，请先刷新软件源及更新软件&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;Ubuntu 14.04 和 Ubuntu 16.04 用户需新增 PPA 源&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;sudo apt-get install software-properties-common &amp;amp;&amp;amp; sudo add-apt-repository ppa:max-c-lv/shadowsocks-libev &amp;amp;&amp;amp; sudo apt-get update&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
-    
-    
-      <category term="Shadowsocks" scheme="https://perkins4j2.github.io/tags/Shadowsocks/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IDEA自定义Archetype</title>
-    <link href="https://perkins4j2.github.io/posts/31081/"/>
-    <id>https://perkins4j2.github.io/posts/31081/</id>
-    <published>2019-09-27T00:55:33.000Z</published>
-    <updated>2019-09-27T01:29:34.715Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;创建自定义骨架&quot;&gt;&lt;a href=&quot;#创建自定义骨架&quot; class=&quot;headerlink&quot; title=&quot;创建自定义骨架&quot;&gt;&lt;/a&gt;创建自定义骨架&lt;/h3&gt;&lt;h4 id=&quot;生成骨架&quot;&gt;&lt;a href=&quot;#生成骨架&quot; class=&quot;headerlink&quot; title=&quot;生成骨架&quot;&gt;&lt;/a&gt;生成骨架&lt;/h4&gt;&lt;p&gt;在maven项目下，执行mvn archetype:create-from-project，在target/generated-sources/archetype目录下生成Archetype project&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
-    
-    
-      <category term="IDEA" scheme="https://perkins4j2.github.io/tags/IDEA/"/>
-    
-      <category term="工具" scheme="https://perkins4j2.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java8处理空对象之Optional</title>
-    <link href="https://perkins4j2.github.io/posts/19687/"/>
-    <id>https://perkins4j2.github.io/posts/19687/</id>
-    <published>2019-09-26T02:11:16.000Z</published>
-    <updated>2019-09-26T02:13:09.896Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Optional&quot;&gt;&lt;a href=&quot;#Optional&quot; class=&quot;headerlink&quot; title=&quot;Optional&quot;&gt;&lt;/a&gt;Optional&lt;/h3&gt;&lt;p&gt;Java8中引入java.util.Optional&lt;t&gt;，这是一个封装Optional值的类。&lt;/t&gt;&lt;/p&gt;
-&lt;p&gt;举例来说，如果一个人可能有也可能没有车，那么Person类内部的car变量就不应该声明为Car，遭遇某人没有车时不应该把null引用赋值给它，而是应该将其声明为Optional&lt;car&gt;类型。&lt;/car&gt;&lt;/p&gt;
-&lt;p&gt;在代码中始终如一地使用Optional，能非常清晰地界定出变量值的缺失是结构上的问题，还是算法上的缺陷，抑或是数据中的问题。&lt;/p&gt;
-&lt;p&gt;引入Optional类的意图并非要消除每一个null引用。与此相反，它的目标是帮助更好地设计出普适的API，以便看到方法签名，就能了解它是否接受一个Optional的值。这种强制会积极的将变量从Optional中解包出来，直面缺失的变量值。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="并发编程" scheme="https://perkins4j2.github.io/categories/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-    
-      <category term="Java8" scheme="https://perkins4j2.github.io/tags/Java8/"/>
-    
-      <category term="Lambda" scheme="https://perkins4j2.github.io/tags/Lambda/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JVM调试命令</title>
-    <link href="https://perkins4j2.github.io/posts/9582/"/>
-    <id>https://perkins4j2.github.io/posts/9582/</id>
-    <published>2019-09-25T00:49:03.000Z</published>
-    <updated>2019-09-25T01:49:47.551Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;GC日志&quot;&gt;&lt;a href=&quot;#GC日志&quot; class=&quot;headerlink&quot; title=&quot;GC日志&quot;&gt;&lt;/a&gt;GC日志&lt;/h3&gt;&lt;p&gt;打开GC日志&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;-server -XX:+PrintGCTimeStamps -XX:+PrintGCDetails -Xloggc:./logs/gc.log&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;h3 id=&quot;jmap&quot;&gt;&lt;a href=&quot;#jmap&quot; class=&quot;headerlink&quot; title=&quot;jmap&quot;&gt;&lt;/a&gt;jmap&lt;/h3&gt;&lt;p&gt;生成 java 程序的 dump 文件， 也可以查看堆内对象示例的统计信息、查看 ClassLoader 的信息以及 finalizer 队列。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
-    
-    
-      <category term="Java8" scheme="https://perkins4j2.github.io/tags/Java8/"/>
     
   </entry>
   
