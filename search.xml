@@ -1,6 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ThreadLocal原理]]></title>
+    <url>%2Fposts%2F46263%2F</url>
+    <content type="text"><![CDATA[使用定义123456private static ThreadLocal&lt;String&gt; CHARSET = new ThreadLocal&lt;String&gt;() &#123; @Override protected String initialValue() &#123; return "utf-8"; &#125; &#125;; 或者 1private static ThreadLocal&lt;String&gt; CHARSET = ThreadLocal.withInitial(() -&gt; "utf-8"); 销毁1CHARSET.remove(); 原理 一个线程Thread包含一个ThreadLocalMap变量 一个ThreadLocal包含一个ThreadLocalMap内部类 一个ThreadLocalMap包含一个Entry内部类 一个ThreadLocalMap的key为ThreadLocal对象 一个ThreadLocalMap的value为Entry的数组 初始化1234567891011121314private T setInitialValue() &#123; //默认null T value = initialValue(); //native方法，返回线程对象引用 Thread t = Thread.currentThread(); //默认null ThreadLocalMap map = getMap(t); if (map != null) map.set(this, value); else //创建ThreadLocalMap createMap(t, value); return value;&#125; setInitialValue为ThreadLocal方法，负责 初始化线程变量 初始化线程变量值 123public class Thread implements Runnable &#123;ThreadLocal.ThreadLocalMap threadLocals = null;&#125; threadLocals属于当前线程，负责 记录线程变量 保持多线程隔离1234567891011public class ThreadLocal&lt;T&gt; &#123; void createMap(Thread t, T firstValue) &#123; //初始化值到map中，this为ThreadLocal对象 //threadLocals为线程变量 t.threadLocals = new ThreadLocalMap(this, firstValue); &#125; ThreadLocalMap getMap(Thread t) &#123; //获取本线程变量map return t.threadLocals; &#125;&#125; createMap为ThreadLocal方法，负责创建线程变量map 12345678910111213141516171819public class ThreadLocal&lt;T&gt; &#123; static class ThreadLocalMap &#123; //构造方法 ThreadLocalMap(ThreadLocal&lt;?&gt; firstKey, Object firstValue) &#123; //创建table，初始容量16 table = new Entry[INITIAL_CAPACITY]; //索引位置 int i = firstKey.threadLocalHashCode &amp; (INITIAL_CAPACITY - 1); //填充 table[i] = new Entry(firstKey, firstValue); //当前大小 size = 1; //resize 阈值,2/3 //threshold = len * 2 / 3; setThreshold(INITIAL_CAPACITY); &#125; &#125; &#125;&#125; ThreadLocalMap为ThreadLocal静态类，key为ThreadLocal对象，提供 当前线程内，所有变量和值得map 设置索引位置，设置resize阈值 setThreadLocal方法 12345678910public void set(T value) &#123; //当前线程对象 Thread t = Thread.currentThread(); //获取线程内的变量map ThreadLocalMap map = getMap(t); if (map != null) //赋值 map.set(this, value); else createMap(t, value); 赋值 123456789101112131415161718192021222324252627282930private void set(ThreadLocal&lt;?&gt; key, Object value) &#123; Entry[] tab = table; int len = tab.length; //取余 int i = key.threadLocalHashCode &amp; (len-1); //存在该索引值 for (Entry e = tab[i]; e != null; e = tab[i = nextIndex(i, len)]) &#123; ThreadLocal&lt;?&gt; k = e.get(); //找到key if (k == key) &#123; //替换 e.value = value; return; &#125; //k为null，即弱引用的垃圾回收，则清除旧值并替换设置值 if (k == null) &#123; replaceStaleEntry(key, value, i); return; &#125; &#125; //不存在则新建 tab[i] = new Entry(key, value); //当前大小+1 int sz = ++size; //清除弱引用无用数据并确定是否扩容 if (!cleanSomeSlots(i, sz) &amp;&amp; sz &gt;= threshold) rehash(); &#125; 负责设置变量值 get123456789101112131415161718192021222324252627public T get() &#123; //当前线程 Thread t = Thread.currentThread(); //线程内变量map ThreadLocalMap map = getMap(t); if (map != null) &#123; //获取值对象 ThreadLocalMap.Entry e = map.getEntry(this); if (e != null) &#123; @SuppressWarnings("unchecked") T result = (T)e.value; return result; &#125; &#125; //初始化 return setInitialValue();&#125;private Entry getEntry(ThreadLocal&lt;?&gt; key) &#123; //索引位置 int i = key.threadLocalHashCode &amp; (table.length - 1); //数组取值 Entry e = table[i]; if (e != null &amp;&amp; e.get() == key) return e; else return getEntryAfterMiss(key, i, e);&#125; hash和索引计算firstKey.threadLocalHashCode，获取线程变量hashcode 12345private final int threadLocalHashCode = nextHashCode();private static final int HASH_INCREMENT = 0x61c88647;private static int nextHashCode() &#123; return nextHashCode.getAndAdd(HASH_INCREMENT);&#125; 0x61c88647，斐波那契散列即黄金分割 HASH_INCREMENT的0x61c88647对应的十进制为1640531527 0x61c88647与一个神奇的数字产生关系，就是 (Math.sqrt(5) - 1)/2。也就是传说中的黄金比例 0.618（0.618 只是一个粗略值），即0x61c88647 = 2^32 * 黄金分割比。 通过HASH_INCREMENT再借助一定的算法，就可以将哈希码能均匀的分布在2的N次方的数组里，保证了散列表的离散度，从而降低了冲突几率。 用0x61c88647作为魔数累加为每个ThreadLocal分配各自的ID也就是threadLocalHashCode再与2的幂取模，得到的结果分布很均匀。 firstKey.threadLocalHashCode &amp; (INITIAL_CAPACITY - 1)即求余]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>ThreadLocal</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Canal配置]]></title>
+    <url>%2Fposts%2F60983%2F</url>
+    <content type="text"><![CDATA[新增用户和权限1234567891011# 新增用户CREATE USER canal IDENTIFIED BY 'canal';&lt;!--more--&gt;# 授权REPLICATION权限GRANT SELECT, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO 'canal'@'%'; FLUSH PRIVILEGES; # checkshow grants for 'canal';# 查看当前db binlog文件show binary logs ; 编译包编译 123git clone git@github.com:alibaba/canal.gitgit co canal-$version #切换到对应的版本上mvn clean install -Denv=release 解压部署 1234# 启动./startup.sh# 关闭./stop.sh canal配置文件：canal.properties canal.destinations当前server上部署的instance列表，多个以逗号隔开 canal.ipcanal server绑定的本地IP信息，如果不配置，默认选择一个本机IP进行启动服务 canal.register.ipcanal server注册到外部zookeeper、admin的ip信息 (针对docker的外部可见ip) canal.portcanal server提供socket服务的端口，默认11111 canal.instance.memory.batch.modecanal内存store中数据缓存模式 ITEMSIZE : 根据buffer.size进行限制，只限制记录的数量 MEMSIZE : 根据buffer.size * buffer.memunit的大小，限制缓存记录的大小 canal.instance.memory.buffer.sizecanal内存store中可缓存buffer记录数，需要为2的指数 canal.instance.memory.buffer.memunit内存记录的单位大小，默认1024即1KB，和buffer.size组合决定最终的内存使用大小 canal.instance.filter.query.dcl是否忽略dcl语句，默认false，比如grant/create user等 canal.instance.filter.query.dml是否忽略DML的query语句，比如insert/update/delete table。 canal.instance.filter.query.ddl是否忽略DDL的query语句，比如create table/alater table/drop table/rename table/create index/drop index。(目前支持的ddl类型主要为table级别的操作，create databases/trigger/procedure暂时划分为dcl类型) canal.instance.binlog.format支持的binlogFormat,如果设置会执行强校验。默认无，可以设置ROW,STATEMENT,MIXED。 canal.instance.filter.rows是否忽略dml的数据变更事件(主要针对用户只订阅ddl/dcl的操作) canal.usercanal数据端口订阅的ACL配置；如果为空，代表不开启 canal.passwdcanal数据端口订阅的ACL配置；如果为空，代表不开启 instance配置文件：instance.properties参数列表： canal.instance.master.addressmysql主库链接地址 canal.instance.master.journal.namemysql主库链接时起始的binlog文件 canal.instance.master.positionmysql主库链接时起始的binlog偏移量 canal.instance.master.timestampmysql主库链接时起始的binlog的时间戳 canal.instance.dbUsernamemysql数据库帐号 canal.instance.dbPasswordmysql数据库密码 canal.instance.defaultDatabaseNamemysql链接时默认schema canal.instance.filter.regex mysql 数据解析关注的表，Perl正则表达式. 多个正则之间以逗号(,)分隔，转义符需要双斜杠(\) 常见例子： 所有表：.* or .\.. canal schema下所有表： canal\..* canal下的以canal打头的表：canal\.canal.* canal schema下的一张表：canal\.test1 多个规则组合使用：canal\..*,mysql.test1,mysql.test2 (逗号分隔) canal.instance.filter.black.regexmysql数据解析表的黑名单，表达式规则见白名单的规则 起始位置canal.instance.master.journal.name+canal.instance.master.position精确指定一个binlog位点，进行启动 canal.instance.master.timestamp指定一个时间戳，canal会自动遍历mysql binlog，找到对应时间戳的binlog位点后，进行启动。 不指定任何信息默认从当前数据库的位点，进行启动。(show master status)]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>Canal</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Docker搭建kafka]]></title>
+    <url>%2Fposts%2F58214%2F</url>
+    <content type="text"><![CDATA[搭建zookeeper环境1234567891011docker pull zookeeperdocker run -d \ --restart=always \ -v /opt/docker/zookeeper/zoo1/data:/data \ -v /opt/docker/zookeeper/zoo1/datalog:/datalog \ -e ZOO_MY_ID=1 \ -e ZOO_SERVERS="server.1=zookeeper-A:2888:3888 server.2=zookeeper-B:2888:3888 server.3=zookeeper-C:2888:3888" \ --name=zookeeper-A \ --net=host \ --privileged \ zookeeper 指定了–net=host和–privileged选项，使得容器可以使用主机的ip地址和端口进行通信。 restart=always当Docker重启时，容器能自动启动 2181：对client端提供服务 3888：选举leader使用 2888：集群内机器通讯使用（Leader监听此端口） 创建kafka环境12docker pull wurstmeister/kafkadocker run -d --name kafka -p 9092:9092 --env KAFKA_ADVERTISED_HOST_NAME=localhost -e KAFKA_ZOOKEEPER_CONNECT=192.168.9.219:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.9.219:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -e KAFKA_HEAP_OPTS="-Xmx256M -Xms128M" --net=host wurstmeister/kafka Kafka命令并创建topic 生产者 1234docker exec -it kafka bashcd /opt/kafka_2.11-2.0.0/bin/./kafka-topics.sh --create --zookeeper 192.168.1.43:2181 --replication-factor 1 --partitions 8 --topic test./kafka-console-producer.sh --broker-list localhost:9092 --topic test 创建kafka消费者消费消息 123docker exec -it kafka bashcd /opt/kafka_2.11-2.0.0/bin/./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning 搭建kafka-manager 123docker pull sheepkiller/kafka-managerdocker run -it -d --rm -p 9000:9000 -e ZK_HOSTS="192.168.1.43:2181" --net=host sheepkiller/kafka-managerfirewall-cmd --add-port=9000/tcp 查看消息主题列表 1./kafka-topics.sh --list --zookeeper zookeeper:2181 test 查看指定topic信息 1./kafka-topics.sh --describe --zookeeper zookeeper:2181 --topic test]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>kafka</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[SQL-Server备份]]></title>
+    <url>%2Fposts%2F9251%2F</url>
+    <content type="text"><![CDATA[备份方案 SSIS（SQL Server Integration Services） 分区文件组等备份方案 备份策略 数据归档 数据压缩 后续处理 数据备份至ES或Solr集群 备份文件上传HDFS]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>SqlServer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Log工具类打印调用者信息]]></title>
+    <url>%2Fposts%2F38650%2F</url>
+    <content type="text"><![CDATA[方法调用栈方法调用栈，在Java 中可以通过两种方法获取到方法调用栈的信息 (new Throwable()).getStackTrace() Thread.currentThread().getStackTrace() 这两种方式都能返回一个 StackTraceElement 数组，StackTraceElement 对象中包含了类名、方法名、文件名、代码行号这样的信息。 区别(new Throwable()).getStackTrace()调用native StackTraceElement getStackTraceElement(int index); Thread.currentThread().getStackTrace()调用return (new Exception()).getStackTrace(); 也就是说第一张方式比第二种少一个层级 获取上级调用者 (new Throwable()).getStackTrace()[1] Thread.currentThread().getStackTrace()[2] 示例1234567891011121314151617181920package com.okada.go;public class StackTraceDemo &#123; public static void main(String[] args) &#123; method(); &#125; private static void method() &#123; StackTraceElement[] stackTraceElements = (new Throwable()).getStackTrace(); for (int i = 0; i &lt; stackTraceElements.length; i++) &#123; StackTraceElement stackTraceElement = stackTraceElements[i]; System.out.println("index=" + i + "----------------------------------"); System.out.println("className=" + stackTraceElement.getClassName()); System.out.println("fileName=" + stackTraceElement.getFileName()); System.out.println("methodName=" + stackTraceElement.getMethodName()); System.out.println("lineNumber=" + stackTraceElement.getLineNumber()); &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>log</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Protobuf和JSON]]></title>
+    <url>%2Fposts%2F3676%2F</url>
+    <content type="text"><![CDATA[ProtobufProtobuf是用于允许对结构化数据进行序列化和反序列化。Google开发它的目的是提供一种比XML更好的方法来使系统进行通信。因此，他们专注于使其比XML更简单，更小，更快和更可维护，甚至以更好的性能，更好的可维护性和更小的大小超过了JSON。 Protobuf具有三个主要组件： 消息描述符。使用Protobuf时，我们必须在.proto文件中定义消息结构。 消息实现。消息定义不足以用任何编程语言表示和交换数据。我们必须生成类/对象来处理所选编程语言中的数据。幸运的是，Google为最常见的编程语言提供了代码生成器。 解析和序列化。定义和创建Protobuf消息后，我们需要能够交换这些消息。只要我们使用一种受支持的编程语言， 与JSON有何不同尽管JSON和Protobuf消息可以互换使用，但是这些技术的设计目的不同。 JSON（JavaScript对象表示法）的简称，它只是一种消息格式，源于JavaScript编程语言的子集。 JSON消息以文本格式交换，如今，它们是完全独立的，并且几乎受所有编程语言的支持。 Protobuf不仅是消息格式，还是定义和交换这些消息的一组规则和工具。 该协议的创建者Google已使其成为开源软件，并提供了工具来为诸如JavaScript，Java，PHP，C＃，Ruby，Objective C，Python，C ++和Go之类的最常用的编程语言生成代码。 除此之外，Protobuf具有比JSON更多的数据类型，例如枚举和方法，并且也大量用于RPC（远程过程调用）上。 缺点 缺乏资源。有关Protobuf的使用和开发的资源少。 较小的社区。可能是第一个劣势的根本原因。例如，在Stack Overflow上，会发现大约1.500个带有Protobuf标签的问题。JSON在同一平台上有18万多个问题。 缺乏支持。Google不提供对其他编程语言（如Swift，R，Scala等）的支持。但是，有时，您可以使用第三方库（如Apple提供的Swift Protobuf）克服此问题。 非人类可读性。JSON以文本格式交换并且具有简单的结构，很容易被人阅读和分析。二进制格式不是这种情况。 优点 正式格式。格式是自描述的。 RPC支持。服务器RPC接口可以声明为协议文件的一部分。 结构验证。与JSON相比，具有预定义且更大的数据类型集，可以通过负责交换它们的代码自动验证在Protobuf上序列化的消息 性能Protobuf是Google创建的一种二进制格式，用于序列化不同服务之间的数据。Google将该协议开源，现在它提供了对大多数常用语言（如JavaScript，Java，C＃，Ruby和其他语言）的支持。测试中，证明该协议的执行速度比JSON快6倍。 Protobuf/JSON性能及压缩比较 Java通信如果仅使用JavaScript环境（例如Node.js应用程序和Web浏览器）作为接口，那么在花时间学习和将端点迁移到Protobuf之前，会三思而后行。但是，当开始添加其他平台（例如Java，Android，Python等）时，将开始看到使用Protobuf的真正好处 当拥有不是JSON原生部分的环境时，性能将得到极大改善。因此，每当遇到JSON的某些延迟问题时，请考虑迁移到Protobuf。 用Java解析和序列化123protobuf-javaprotobuf-java-utilprotobuf-java-format 使用JavaScript进行解析和序列化使用的库protobuf.js帮助我将.proto消息编译为JavaScript并交换了这些消息。我要做的第一件事是将其安装为依赖项。]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>protobuf</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Canal及MQ顺序性]]></title>
+    <url>%2Fposts%2F47529%2F</url>
+    <content type="text"><![CDATA[顺序性Binlog本身是有序的，写入到mq之后需要保障顺序。 方案Canal目前选择支持Kafka/Rocketmq，本质上都是基于本地文件的方式来支持了分区级的顺序消息的能力。 也就是Binlog写入mq是可以有一些顺序性保障，这个取决于用户的一些参数选择。 Canal支持MQ数据的几种路由方式： 单topic单分区，可以严格保证与binlog相同的顺序，但效率比较低，TPS只有2~3K。 多topic单分区，由于是按照表划分topic，因此可以保证表级别的有序性，但是每个表的热度不一样，对于热点表仍然会有性能问题。 单/多topic多分区，按照给定的hash方法来划分partition，性能无疑是最好的。但必须要多加小心，每个表的hash依据都必须是其主键或者主键组。只有保证每表每主键binlog的顺序性，才能准确恢复变动数据。 多线程消费为了保证一个消费者中多个线程去处理时，不会使得消息的顺序被打乱，则可以在消费者中，消息分发至不同的线程时，加一个队列，消费者去做hash分发，将需要放在一起的数据，分发至同一个队列中，最后多个线程从队列中取数据。 生产指定分区DefaultPartitioner默认的分区策略 如果key为null 则先根据topic名获取上次计算分区时使用的一个整数并加一。然后判断topic的可用分区数是否大于0，如果大于0则使用获取的nextValue的值和可用分区数进行取模操作。 如果topic的可用分区数小于等于0，则用获取的nextValue的值和总分区数进行取模操作（其实就是随机选择了一个不可用分区）。 但是消息的key不为空，则基于key的哈希值来选择一个分区。 如果既没有指定分区，且消息的key也是空，则用轮询的方式选择一个分区。 如果在发消息的时候指定了分区，则消息投递到指定的分区。 自定义分区策略 1props.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, CustomPartition.class.getName()); 123456789101112131415161718192021222324public static class CustomPartition implements Partitioner &#123; @Override public int partition(String s, Object o, byte[] bytes, Object o1, byte[] bytes1, Cluster cluster) &#123; if (null == o) &#123; return 0; &#125; long id = getPartitionByKey(String.valueOf(o)); return (int) id; &#125; private long getPartitionByKey(String key) &#123; long id = key.hashCode(); // key取模 int partition = (int) (id &amp; (BusConfig.partitionNum - 1)); return Math.abs(partition); &#125; @Override public void close() &#123; &#125; @Override public void configure(Map&lt;String, ?&gt; map)&#123; &#125;&#125;]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>Canal</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[散列算法]]></title>
     <url>%2Fposts%2F64783%2F</url>
     <content type="text"><![CDATA[何为散列散列（Hash）也称为哈希，就是把任意长度的输入，通过散列算法，变换成固定长度的输出，这个输出值就是散列值。 散列算法的宗旨就是：构造冲突较低的散列地址，保证散列表中数据的离散度。 除法散列法散列长度 m, 对于一个小于 m 的数 p 取模，所得结果为散列地址。对 p 的选择很重要，一般取素数或 m 公式：f(k) = k % p （p&lt;=m） 因为求模数其实是通过一个除法运算得到的，所以叫“除法散列法” 先通过求关键字的平方值扩大相近数的差别，然后根据表长度取中间的几位数作为散列函数值。又因为一个乘积的中间几位数和乘数的每一位都相关，所以由此产生的散列地址较为均匀。 公式：f(k) = ((k * k) &gt;&gt; X) &lt;&lt; Y对于常见的32位整数而言，也就是 f(k) = (k * k) &gt;&gt; 28 平方散列法（平方取中法）先通过求关键字的平方值扩大相近数的差别，然后根据表长度取中间的几位数作为散列函数值。又因为一个乘积的中间几位数和乘数的每一位都相关，所以由此产生的散列地址较为均匀。 公式：f(k) = ((k * k) &gt;&gt; X) &lt;&lt; Y对于常见的32位整数而言，也就是 f(k) = (k * k) &gt;&gt; 28 斐波那契（Fibonacci）散列法和平方散列法类似，此种方法使用斐波那契数列的值作为乘数而不是自己。 对于 16 位整数而言，这个乘数是 40503。对于 32 位整数而言，这个乘数是 2654435769。对于 64 位整数而言，这个乘数是 11400714819323198485。 公式：f(k) = ((k * 2654435769) &gt;&gt; X) &lt;&lt; Y对于常见的32位整数而言，也就是 f(k) = (k * 2654435769) &gt;&gt; 28 可以发现 0x61c88647 与一个神奇的数字产生了关系，它就是 (Math.sqrt(5) - 1)/2。也就是传说中的黄金比例 0.618（0.618 只是一个粗略值），即0x61c88647 = 2^32 * 黄金分割比。同时也对应上了上文所提到的斐波那契散列法。 随机数法选择一随机函数，取关键字的随机值作为散列地址，通常用于关键字长度不同的场合。 公式：f(k) = random(k) 链地址法（拉链法）懂了散列算法，我们再来了解下拉链法。拉链法是为了 HashMap 中降低冲突，除了拉链法，还可以使用开放寻址法、再散列法、链地址法、公共溢出区等方法。这里就只简单介绍了拉链法。 把具有相同散列地址的关键字(同义词)值放在同一个单链表中，称为同义词链表。有 m 个散列地址就有 m 个链表，同时用指针数组 T[0..m-1] 存放各个链表的头指针，凡是散列地址为 i 的记录都以结点方式插入到以 T[i] 为指针的单链表中。T 中各分量的初值应为空指针。]]></content>
@@ -58,7 +136,7 @@
   <entry>
     <title><![CDATA[Git操作]]></title>
     <url>%2Fposts%2F53101%2F</url>
-    <content type="text"><![CDATA[分支创建分支git branch &lt;branch-name&gt;如git branch testing 切换分支从当前所处的分支切换到其他分支git checkout &lt;branch-name&gt;如git checkout testing； 新建并切换新建并切换到新建分支上git checkout -b &lt;branch-name&gt; 分支合并将当前分支与指定分支进行合并git merge &lt;branch-name&gt; 显示本地仓库的所有分支git branch 分支历史查看各个分支最后一个提交对象的信息git branch -v 标签标签信息列出现在所有的标签git tag 查看相应标签的版本信息，并连同显示打标签时的提交对象git show v1.4 创建标签创建一个含附注类型的标签，需要加-a参数git tag -a v1.4 -m &quot;my version 1.4&quot; 将标签推送到远程仓库中git push origin如git push origin v1.5]]></content>
+    <content type="text"><![CDATA[分支创建分支git branch &lt;branch-name&gt;如git branch testing 切换分支从当前所处的分支切换到其他分支git checkout &lt;branch-name&gt;如git checkout testing； 新建并切换新建并切换到新建分支上git checkout -b &lt;branch-name&gt; 分支合并将当前分支与指定分支进行合并git merge &lt;branch-name&gt; 显示本地仓库的所有分支git branch 分支历史查看各个分支最后一个提交对象的信息git branch -v 标签标签信息列出现在所有的标签git tag 查看相应标签的版本信息，并连同显示打标签时的提交对象git show v1.4 创建标签创建一个含附注类型的标签，需要加-a参数git tag -a v1.4 -m &quot;my version 1.4&quot; 将标签推送到远程仓库中git push origin如git push origin v1.5 上传已有仓库1234567cd existing_git_repogit remote add origin git@xx.gitgit push -u origin mastergit push --all origin 如果当前分支与多个主机存在追踪关系，那么这个时候-u选项会指定一个默认主机，这样后面就可以不加任何参数使用git push。 如果当前分支与多个主机存在追踪关系，那么这个时候-u选项会指定一个默认主机，这样后面就可以不加任何参数使用git push。 添加多个远程仓库1234567git remote -vgit remote set-url --add origin git@xx.com:xx.gitgit remote -vgit push --all 查看存储库中的大文件git rev-list –objects –all | grep -E git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -10 | awk &#39;{print$1}&#39; | sed &#39;:a;N;$!ba;s/\n/|/g&#39;]]></content>
       <categories>
         <category>工具利器</category>
       </categories>
@@ -69,7 +147,7 @@
   <entry>
     <title><![CDATA[Canal日志增量订阅和消费]]></title>
     <url>%2Fposts%2F53545%2F</url>
-    <content type="text"><![CDATA[基于日志增量订阅和消费的业务 数据库镜像 数据库实时备份 索引构建和实时维护(拆分异构索引、倒排索引等) 业务 cache 刷新 带业务逻辑的增量数据处理 MySQL主备复制原理 MySQL master 将数据变更写入二进制日志( binary log, 其中记录叫做二进制日志事件binary log events，可以通过 show binlog events 进行查看) MySQL slave 将 master 的 binary log events 拷贝到它的中继日志(relay log) MySQL slave 重放 relay log 中事件，将数据变更反映它自己的数据 binlogmysql的binlog是多文件存储，定位一个LogEvent需要通过binlog filename + binlog position，进行定位 mysql的binlog数据格式，按照生成的方式，主要分为：statement-based、row-based、mixed。 1234567mysql&gt; show variables like 'binlog_format';+---------------+-------+| Variable_name | Value |+---------------+-------+| binlog_format | ROW |+---------------+-------+1 row in set (0.00 sec) 目前canal支持所有模式的增量订阅(但配合同步时，因为statement只有sql，没有数据，无法获取原始的变更日志，所以一般建议为ROW模式) canal 工作原理 canal 模拟 MySQL slave 的交互协议，伪装自己为 MySQL slave ，向 MySQL master 发送dump 协议 MySQL master 收到 dump 请求，开始推送 binary log 给 slave (即 canal ) canal 解析 binary log 对象(原始为 byte 流) 架构说明： server代表一个canal运行实例，对应于一个jvm instance对应于一个数据队列 （1个server对应1..n个instance) instance模块： eventParser (数据源接入，模拟slave协议和master进行交互，协议解析) eventSink (Parser和Store链接器，进行数据过滤，加工，分发的工作) eventStore (数据存储) metaManager (增量订阅&amp;消费信息管理器) canal-adminv1.1.4+，引入canal-admin工程，支持面向WebUI的canal管理能力 get/ack/rollback协议介绍 Message getWithoutAck(int batchSize)，允许指定batchSize，一次可以获取多条，每次返回的对象为Message，包含的内容为：a. batch id 唯一标识b. entries 具体的数据对象，对应的数据对象格式：EntryProtocol.proto void rollback(long batchId)，顾命思议，回滚上次的get请求，重新获取数据。基于get获取的batchId进行提交，避免误操作 void ack(long batchId)，顾命思议，确认已经消费成功，通知server删除数据。基于get获取的batchId进行提交，避免误操作 关键配置服务配置canal.properties 12//实例名称canal.destinations = example 实例配置instance.properties 12345678//mysql地址canal.instance.master.address=192.168.x.x:3306//数据库名canal.instance.dbUsername=x//数据库密码canal.instance.dbPassword=x//监听的schema筛选canal.instance.filter.regex=x.* 关键代码12345&lt;dependency&gt; &lt;groupId&gt;com.alibaba.otter&lt;/groupId&gt; &lt;artifactId&gt;canal.client&lt;/artifactId&gt; &lt;version&gt;1.1.4&lt;/version&gt;&lt;/dependency&gt; 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061 //获取地址 public List&lt;InetSocketAddress&gt; getAddress() &#123; return BinlogConfig.ips.stream() .map(e -&gt; &#123; String[] ip = e.split(":"); return new InetSocketAddress(ip[0], Integer.parseInt(ip[1])); &#125;) .collect(Collectors.toList()); &#125; //创建连接 private boolean createConnector() &#123; log.info("create connector ..."); connector = CanalConnectors.newClusterConnector(getAddress(), BinlogConfig.destination, BinlogConfig.username, BinlogConfig.password); log.info("create connector success"); return true; &#125; //连接 private boolean connect() &#123; log.info("connect ..."); connector.connect(); connector.subscribe(); log.info("connect success"); return true; &#125; //处理过程 public void process() &#123; while (BinlogConfig.running) &#123; log.info("processing ..."); // 获取指定数量的数据 Message message = connector.get(BinlogConfig.batchSize); long batchId = message.getId(); //过滤有效待处理消息 List&lt;CanalEntry.Entry&gt; entries = message.getEntries().stream() .filter(e -&gt; e.getEntryType() == CanalEntry.EntryType.ROWDATA) .collect(Collectors.toList()); if (batchId != -1 &amp;&amp; !CollectionUtil.isEmpty(entries)) &#123; int size = entries.size(); long memSize = entries .stream() .mapToLong(e -&gt; e.getHeader().getEventLength()) .sum(); log.info(receiveInfo, batchId, size, memSize); BinlogConfig.parseFunction.apply(entries); //确认 connector.ack(batchId); &#125; else &#123; try &#123; //惩罚等待TimeUnit.SECONDS.sleep(BinlogConfig.waitSeconds); &#125; catch (InterruptedException e)&#123; e.printStackTrace(); &#125; &#125; &#125; &#125;]]></content>
+    <content type="text"><![CDATA[基于日志增量订阅和消费的业务 数据库镜像 数据库实时备份 索引构建和实时维护(拆分异构索引、倒排索引等) 业务 cache 刷新 带业务逻辑的增量数据处理 MySQL主备复制原理 MySQL master 将数据变更写入二进制日志( binary log, 其中记录叫做二进制日志事件binary log events，可以通过 show binlog events 进行查看) MySQL slave 将 master 的 binary log events 拷贝到它的中继日志(relay log) MySQL slave 重放 relay log 中事件，将数据变更反映它自己的数据 binlogmysql的binlog是多文件存储，定位一个LogEvent需要通过binlog filename + binlog position，进行定位 mysql的binlog数据格式，按照生成的方式，主要分为：statement-based、row-based、mixed。 1234567mysql&gt; show variables like 'binlog_format';+---------------+-------+| Variable_name | Value |+---------------+-------+| binlog_format | ROW |+---------------+-------+1 row in set (0.00 sec) 目前canal支持所有模式的增量订阅(但配合同步时，因为statement只有sql，没有数据，无法获取原始的变更日志，所以一般建议为ROW模式) canal 工作原理 canal 模拟 MySQL slave 的交互协议，伪装自己为 MySQL slave ，向 MySQL master 发送dump 协议 MySQL master 收到 dump 请求，开始推送 binary log 给 slave (即 canal ) canal 解析 binary log 对象(原始为 byte 流) 架构说明： server代表一个canal运行实例，对应于一个jvm instance对应于一个数据队列 （1个server对应1..n个instance) instance模块： eventParser (数据源接入，模拟slave协议和master进行交互，协议解析) eventSink (Parser和Store链接器，进行数据过滤，加工，分发的工作) eventStore (数据存储) metaManager (增量订阅&amp;消费信息管理器) canal-adminv1.1.4+，引入canal-admin工程，支持面向WebUI的canal管理能力 get/ack/rollback协议介绍 Message getWithoutAck(int batchSize)，允许指定batchSize，一次可以获取多条，每次返回的对象为Message，包含的内容为：a. batch id 唯一标识b. entries 具体的数据对象，对应的数据对象格式：EntryProtocol.proto void rollback(long batchId)，顾命思议，回滚上次的get请求，重新获取数据。基于get获取的batchId进行提交，避免误操作 void ack(long batchId)，顾命思议，确认已经消费成功，通知server删除数据。基于get获取的batchId进行提交，避免误操作 关键配置服务配置canal.properties 12//实例名称canal.destinations = example 实例配置instance.properties 12345678//mysql地址canal.instance.master.address=192.168.x.x:3306//数据库名canal.instance.dbUsername=x//数据库密码canal.instance.dbPassword=x//监听的schema筛选canal.instance.filter.regex=x.* 关键代码12345&lt;dependency&gt; &lt;groupId&gt;com.alibaba.otter&lt;/groupId&gt; &lt;artifactId&gt;canal.client&lt;/artifactId&gt; &lt;version&gt;1.1.4&lt;/version&gt;&lt;/dependency&gt; 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859 //获取地址 public List&lt;InetSocketAddress&gt; getAddress() &#123; return BinlogConfig.ips.stream() .map(e -&gt; &#123; String[] ip = e.split(":"); return new InetSocketAddress(ip[0], Integer.parseInt(ip[1])); &#125;) .collect(Collectors.toList()); &#125; //创建连接 private boolean createConnector() &#123; log.info("create connector ..."); connector = CanalConnectors.newClusterConnector(getAddress(), BinlogConfig.destination, BinlogConfig.username, BinlogConfig.password); log.info("create connector success"); return true; &#125; //连接 private boolean connect() &#123; log.info("connect ..."); connector.connect(); connector.subscribe(); log.info("connect success"); return true; &#125; //处理过程 public void process() &#123; while (BinlogConfig.running) &#123; log.info("processing ..."); // 获取指定数量的数据 Message message = connector.get(BinlogConfig.batchSize); long batchId = message.getId(); //过滤有效待处理消息 List&lt;CanalEntry.Entry&gt; entries = message.getEntries().stream() .filter(e -&gt; e.getEntryType() == CanalEntry.EntryType.ROWDATA) .collect(Collectors.toList()); if (batchId != -1 &amp;&amp; !CollectionUtil.isEmpty(entries)) &#123; int size = entries.size(); long memSize = entries .stream() .mapToLong(e -&gt; e.getHeader().getEventLength()) .sum(); log.info(receiveInfo, batchId, size, memSize); BinlogConfig.parseFunction.apply(entries); &#125; else &#123; try &#123; //惩罚等待TimeUnit.SECONDS.sleep(BinlogConfig.waitSeconds); &#125; catch (InterruptedException e)&#123; e.printStackTrace(); &#125; &#125; &#125; &#125; 注意，get方法和getWithoutAck方法的区别是： get方法会立即调用ack getWithoutAck方法不会调用ack]]></content>
       <categories>
         <category>架构</category>
       </categories>
@@ -665,7 +743,7 @@
   <entry>
     <title><![CDATA[Maven基本操作]]></title>
     <url>%2Fposts%2F725%2F</url>
-    <content type="text"><![CDATA[Maven环境变量配置 创建文件 123cd ~touch .bash_profileopen -e .bash_profile 写入bash_profile 12345M2_HOME=/Users/work/apache-maven-3.5.0/PATH=$M2_HOME/bin:$PATHexport M2_HOMEexport PATH 执行 1source .bash_profile 测试 1mvn -v 安装jar和源码至本地仓库 jarmvn install:install-file -Dfile=/Users/xx-1.0.1.jar -DgroupId=xx -DartifactId=xx -Dversion=1.0.1 -Dpackaging=jar sourcemvn install:install-file -Dfile=/Users/xx-1.0.1-sources.jar -DgroupId=xx -DartifactId=xx -Dversion=1.0.1 -Dpackaging=jar -Dclassifier=sources scope12345&lt;dependency&gt; &lt;groupId&gt;xx.xx.xx&lt;/groupId&gt; &lt;artifactId&gt;xx-xx&lt;/artifactId&gt; &lt;scope&gt;provided&lt;/scope&gt; &lt;/dependency&gt; 值 说明 provided 打包时不包含，认为容器会提供 compile 默认，在编译、测试和打包阶段均有效 runtime 跳过编译，直接参与运行和测试 test 依赖性参与测试工作，包括测试代码的编译和运行，例如junit system 包来自本地系统文件 打包命令 值 说明 package 测试、打包 install 测试、打包并安装至本地仓库 deploy 测试、打包并安装至本地仓库，且上传至Maven中央服务器]]></content>
+    <content type="text"><![CDATA[Maven环境变量配置 创建文件 123cd ~touch .bash_profileopen -e .bash_profile 写入bash_profile 12345M2_HOME=/Users/work/apache-maven-3.5.0/PATH=$M2_HOME/bin:$PATHexport M2_HOMEexport PATH 执行 1source .bash_profile 测试 1mvn -v 安装jar和源码至本地仓库 jarmvn install:install-file -Dfile=/Users/xx-1.0.1.jar -DgroupId=xx -DartifactId=xx -Dversion=1.0.1 -Dpackaging=jar sourcemvn install:install-file -Dfile=/Users/xx-1.0.1-sources.jar -DgroupId=xx -DartifactId=xx -Dversion=1.0.1 -Dpackaging=jar -Dclassifier=sources scope12345&lt;dependency&gt; &lt;groupId&gt;xx.xx.xx&lt;/groupId&gt; &lt;artifactId&gt;xx-xx&lt;/artifactId&gt; &lt;scope&gt;provided&lt;/scope&gt; &lt;/dependency&gt; 值 说明 provided 打包时不包含，认为容器会提供 compile 默认，在编译、测试和打包阶段均有效 runtime 跳过编译，直接参与运行和测试 test 依赖性参与测试工作，包括测试代码的编译和运行，例如junit system 包来自本地系统文件 打包命令 值 说明 package 测试、打包 install 测试、打包并安装至本地仓库 deploy 测试、打包并安装至本地仓库，且上传至Maven中央服务器 打包指定项目-N，–Non-recursive，表示不递归子模块-pl Module，–projects，选项后可跟随{groupId}:{artifactId}或者所选模块的相对路径(多个模块以逗号分隔)-am，–also-make，表示同时处理选定模块所依赖的模块]]></content>
       <categories>
         <category>工具利器</category>
       </categories>
@@ -786,8 +864,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java并发编程</tag>
         <tag>synchronized</tag>
+        <tag>Java并发编程</tag>
       </tags>
   </entry>
   <entry>
@@ -811,8 +889,8 @@
       </categories>
       <tags>
         <tag>Spring Cloud</tag>
-        <tag>ratelimit</tag>
         <tag>Zuul</tag>
+        <tag>ratelimit</tag>
         <tag>限流</tag>
       </tags>
   </entry>
@@ -838,8 +916,8 @@
       </categories>
       <tags>
         <tag>Spring Cloud</tag>
-        <tag>Zuul</tag>
         <tag>Ribbon</tag>
+        <tag>Zuul</tag>
         <tag>灰度测试</tag>
       </tags>
   </entry>
