@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="新增用户和权限1234567891011# 新增用户CREATE USER canal IDENTIFIED BY &apos;canal&apos;;&amp;lt;!--more--&amp;gt;# 授权REPLICATION权限GRANT SELECT, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO &apos;canal&apos;@&apos;%&apos;;  FLUSH PRIVILEGES; # chec">
+  <meta name="description" content="新增用户和权限12345678910# 新增用户CREATE USER canal IDENTIFIED BY &apos;canal&apos;;# 授权REPLICATION权限GRANT SELECT, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO &apos;canal&apos;@&apos;%&apos;;  FLUSH PRIVILEGES; # checkshow grants for &apos;c">
 <meta name="keywords" content="Canal">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Canal配置">
 <meta property="og:url" content="https://perkins4j2.github.io/posts/60983/index.html">
 <meta property="og:site_name" content="Perkins4j2的技术博客">
-<meta property="og:description" content="新增用户和权限1234567891011# 新增用户CREATE USER canal IDENTIFIED BY &apos;canal&apos;;&amp;lt;!--more--&amp;gt;# 授权REPLICATION权限GRANT SELECT, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO &apos;canal&apos;@&apos;%&apos;;  FLUSH PRIVILEGES; # chec">
+<meta property="og:description" content="新增用户和权限12345678910# 新增用户CREATE USER canal IDENTIFIED BY &apos;canal&apos;;# 授权REPLICATION权限GRANT SELECT, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO &apos;canal&apos;@&apos;%&apos;;  FLUSH PRIVILEGES; # checkshow grants for &apos;c">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-29T07:47:11.106Z">
+<meta property="og:updated_time" content="2019-11-29T08:03:34.534Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Canal配置">
-<meta name="twitter:description" content="新增用户和权限1234567891011# 新增用户CREATE USER canal IDENTIFIED BY &apos;canal&apos;;&amp;lt;!--more--&amp;gt;# 授权REPLICATION权限GRANT SELECT, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO &apos;canal&apos;@&apos;%&apos;;  FLUSH PRIVILEGES; # chec">
+<meta name="twitter:description" content="新增用户和权限12345678910# 新增用户CREATE USER canal IDENTIFIED BY &apos;canal&apos;;# 授权REPLICATION权限GRANT SELECT, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO &apos;canal&apos;@&apos;%&apos;;  FLUSH PRIVILEGES; # checkshow grants for &apos;c">
 
 
 
@@ -436,7 +436,7 @@
                 
               
 
-              <time title="创建时间：2019-11-29 15:46:44 / 修改时间：15:47:11" itemprop="dateCreated datePublished" datetime="2019-11-29T15:46:44+08:00">2019-11-29</time>
+              <time title="创建时间：2019-11-29 15:46:44 / 修改时间：16:03:34" itemprop="dateCreated datePublished" datetime="2019-11-29T15:46:44+08:00">2019-11-29</time>
             
 
             
@@ -528,7 +528,9 @@
       
 
       
-        <h3 id="新增用户和权限"><a href="#新增用户和权限" class="headerlink" title="新增用户和权限"></a>新增用户和权限</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 新增用户</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> canal <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'canal'</span>;</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 授权REPLICATION权限</span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>, <span class="keyword">REPLICATION</span> <span class="keyword">SLAVE</span>, <span class="keyword">REPLICATION</span> <span class="keyword">CLIENT</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'canal'</span>@<span class="string">'%'</span>;  </span><br><span class="line"><span class="keyword">FLUSH</span> <span class="keyword">PRIVILEGES</span>; </span><br><span class="line"><span class="comment"># check</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">grants</span> <span class="keyword">for</span> <span class="string">'canal'</span>;</span><br><span class="line"><span class="comment"># 查看当前db binlog文件</span></span><br><span class="line"><span class="keyword">show</span> <span class="built_in">binary</span> <span class="keyword">logs</span> ;</span><br></pre></td></tr></table></figure>
+        <h3 id="新增用户和权限"><a href="#新增用户和权限" class="headerlink" title="新增用户和权限"></a>新增用户和权限</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 新增用户</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> canal <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'canal'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 授权REPLICATION权限</span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>, <span class="keyword">REPLICATION</span> <span class="keyword">SLAVE</span>, <span class="keyword">REPLICATION</span> <span class="keyword">CLIENT</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'canal'</span>@<span class="string">'%'</span>;  </span><br><span class="line"><span class="keyword">FLUSH</span> <span class="keyword">PRIVILEGES</span>; </span><br><span class="line"><span class="comment"># check</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">grants</span> <span class="keyword">for</span> <span class="string">'canal'</span>;</span><br><span class="line"><span class="comment"># 查看当前db binlog文件</span></span><br><span class="line"><span class="keyword">show</span> <span class="built_in">binary</span> <span class="keyword">logs</span> ;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
 
 <h3 id="编译包"><a href="#编译包" class="headerlink" title="编译包"></a>编译包</h3><p>编译</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:alibaba/canal.git</span><br><span class="line">git co canal-<span class="variable">$version</span> <span class="comment">#切换到对应的版本上</span></span><br><span class="line">mvn clean install -Denv=release</span><br></pre></td></tr></table></figure>
@@ -1086,7 +1088,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">3:12</span>
+    <span title="站点阅读时长">3:11</span>
   
 </div>
 

@@ -435,7 +435,7 @@
                 
               
 
-              <time title="创建时间：2019-11-29 15:56:37 / 修改时间：15:59:29" itemprop="dateCreated datePublished" datetime="2019-11-29T15:56:37+08:00">2019-11-29</time>
+              <time title="创建时间：2019-11-29 15:56:37 / 修改时间：16:01:08" itemprop="dateCreated datePublished" datetime="2019-11-29T15:56:37+08:00">2019-11-29</time>
             
 
             
@@ -637,7 +637,7 @@
                 
               
 
-              <time title="创建时间：2019-11-29 15:46:44 / 修改时间：15:47:11" itemprop="dateCreated datePublished" datetime="2019-11-29T15:46:44+08:00">2019-11-29</time>
+              <time title="创建时间：2019-11-29 15:46:44 / 修改时间：16:03:34" itemprop="dateCreated datePublished" datetime="2019-11-29T15:46:44+08:00">2019-11-29</time>
             
 
             
@@ -723,89 +723,16 @@
 
       
         
+          <h3 id="新增用户和权限"><a href="#新增用户和权限" class="headerlink" title="新增用户和权限"></a>新增用户和权限</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 新增用户</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> canal <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'canal'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 授权REPLICATION权限</span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>, <span class="keyword">REPLICATION</span> <span class="keyword">SLAVE</span>, <span class="keyword">REPLICATION</span> <span class="keyword">CLIENT</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'canal'</span>@<span class="string">'%'</span>;  </span><br><span class="line"><span class="keyword">FLUSH</span> <span class="keyword">PRIVILEGES</span>; </span><br><span class="line"><span class="comment"># check</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">grants</span> <span class="keyword">for</span> <span class="string">'canal'</span>;</span><br><span class="line"><span class="comment"># 查看当前db binlog文件</span></span><br><span class="line"><span class="keyword">show</span> <span class="built_in">binary</span> <span class="keyword">logs</span> ;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
           
-            <h3 id="新增用户和权限"><a href="#新增用户和权限" class="headerlink" title="新增用户和权限"></a>新增用户和权限</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 新增用户</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> canal <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'canal'</span>;</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 授权REPLICATION权限</span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>, <span class="keyword">REPLICATION</span> <span class="keyword">SLAVE</span>, <span class="keyword">REPLICATION</span> <span class="keyword">CLIENT</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'canal'</span>@<span class="string">'%'</span>;  </span><br><span class="line"><span class="keyword">FLUSH</span> <span class="keyword">PRIVILEGES</span>; </span><br><span class="line"><span class="comment"># check</span></span><br><span class="line"><span class="keyword">show</span> <span class="keyword">grants</span> <span class="keyword">for</span> <span class="string">'canal'</span>;</span><br><span class="line"><span class="comment"># 查看当前db binlog文件</span></span><br><span class="line"><span class="keyword">show</span> <span class="built_in">binary</span> <span class="keyword">logs</span> ;</span><br></pre></td></tr></table></figure>
-
-<h3 id="编译包"><a href="#编译包" class="headerlink" title="编译包"></a>编译包</h3><p>编译</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> git@github.com:alibaba/canal.git</span><br><span class="line">git co canal-<span class="variable">$version</span> <span class="comment">#切换到对应的版本上</span></span><br><span class="line">mvn clean install -Denv=release</span><br></pre></td></tr></table></figure>
-
-<p>解压部署</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 启动</span><br><span class="line">./startup.sh</span><br><span class="line"># 关闭</span><br><span class="line">./stop.sh</span><br></pre></td></tr></table></figure>
-
-<h3 id="canal配置"><a href="#canal配置" class="headerlink" title="canal配置"></a>canal配置</h3><p>文件：canal.properties</p>
-<ul>
-<li><p>canal.destinations<br>当前server上部署的instance列表，多个以逗号隔开</p>
-</li>
-<li><p>canal.ip<br>canal server绑定的本地IP信息，如果不配置，默认选择一个本机IP进行启动服务    </p>
-</li>
-<li><p>canal.register.ip<br>canal server注册到外部zookeeper、admin的ip信息 (针对docker的外部可见ip)    </p>
-</li>
-<li><p>canal.port<br>canal server提供socket服务的端口，默认11111</p>
-</li>
-<li><p>canal.instance.memory.batch.mode<br>canal内存store中数据缓存模式</p>
-<ul>
-<li>ITEMSIZE : 根据buffer.size进行限制，只限制记录的数量</li>
-<li>MEMSIZE : 根据buffer.size  * buffer.memunit的大小，限制缓存记录的大小</li>
-</ul>
-</li>
-<li><p>canal.instance.memory.buffer.size<br>canal内存store中可缓存buffer记录数，需要为2的指数    </p>
-</li>
-<li><p>canal.instance.memory.buffer.memunit<br>内存记录的单位大小，默认1024即1KB，和buffer.size组合决定最终的内存使用大小    </p>
-</li>
-<li><p>canal.instance.filter.query.dcl<br>是否忽略dcl语句，默认false，比如grant/create user等    </p>
-</li>
-<li><p>canal.instance.filter.query.dml<br>是否忽略DML的query语句，比如insert/update/delete table。</p>
-</li>
-<li><p>canal.instance.filter.query.ddl<br>是否忽略DDL的query语句，比如create table/alater table/drop table/rename table/create index/drop index。(目前支持的ddl类型主要为table级别的操作，create databases/trigger/procedure暂时划分为dcl类型)    </p>
-</li>
-<li><p>canal.instance.binlog.format<br>支持的binlogFormat,如果设置会执行强校验。默认无，可以设置ROW,STATEMENT,MIXED。</p>
-</li>
-<li><p>canal.instance.filter.rows<br>是否忽略dml的数据变更事件(主要针对用户只订阅ddl/dcl的操作)</p>
-</li>
-<li><p>canal.user<br>canal数据端口订阅的ACL配置；如果为空，代表不开启</p>
-</li>
-<li><p>canal.passwd<br>canal数据端口订阅的ACL配置；如果为空，代表不开启</p>
-</li>
-</ul>
-<h3 id="instance配置"><a href="#instance配置" class="headerlink" title="instance配置"></a>instance配置</h3><p>文件：instance.properties参数列表：</p>
-<ul>
-<li><p>canal.instance.master.address<br>mysql主库链接地址    </p>
-</li>
-<li><p>canal.instance.master.journal.name<br>mysql主库链接时起始的binlog文件    </p>
-</li>
-<li><p>canal.instance.master.position<br>mysql主库链接时起始的binlog偏移量    </p>
-</li>
-<li><p>canal.instance.master.timestamp<br>mysql主库链接时起始的binlog的时间戳    </p>
-</li>
-<li><p>canal.instance.dbUsername<br>mysql数据库帐号    </p>
-</li>
-<li><p>canal.instance.dbPassword<br>mysql数据库密码    </p>
-</li>
-<li><p>canal.instance.defaultDatabaseName<br>mysql链接时默认schema    </p>
-</li>
-<li><p>canal.instance.filter.regex<br>  mysql 数据解析关注的表，Perl正则表达式.<br>  多个正则之间以逗号(,)分隔，转义符需要双斜杠(\)
-  常见例子：</p>
-<ol>
-<li><p>所有表：.*   or  .<em>\..</em></p>
-</li>
-<li><p>canal schema下所有表： canal\..*</p>
-</li>
-<li><p>canal下的以canal打头的表：canal\.canal.*</p>
-</li>
-<li><p>canal schema下的一张表：canal\.test1</p>
-</li>
-<li><p>多个规则组合使用：canal\..*,mysql.test1,mysql.test2 (逗号分隔)</p>
-</li>
-</ol>
-</li>
-<li><p>canal.instance.filter.black.regex<br>mysql数据解析表的黑名单，表达式规则见白名单的规则</p>
-</li>
-</ul>
-<h3 id="起始位置"><a href="#起始位置" class="headerlink" title="起始位置"></a>起始位置</h3><p>canal.instance.master.journal.name+canal.instance.master.position<br>精确指定一个binlog位点，进行启动</p>
-<p>canal.instance.master.timestamp<br>指定一个时间戳，canal会自动遍历mysql binlog，找到对应时间戳的binlog位点后，进行启动。</p>
-<p>不指定任何信息<br>默认从当前数据库的位点，进行启动。(show master status)</p>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/posts/60983/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -912,7 +839,7 @@
                 
               
 
-              <time title="创建时间：2019-11-29 15:45:03 / 修改时间：15:45:51" itemprop="dateCreated datePublished" datetime="2019-11-29T15:45:03+08:00">2019-11-29</time>
+              <time title="创建时间：2019-11-29 15:45:03 / 修改时间：16:01:08" itemprop="dateCreated datePublished" datetime="2019-11-29T15:45:03+08:00">2019-11-29</time>
             
 
             
@@ -1121,7 +1048,7 @@
                 
               
 
-              <time title="创建时间：2019-11-29 15:44:04 / 修改时间：15:44:42" itemprop="dateCreated datePublished" datetime="2019-11-29T15:44:04+08:00">2019-11-29</time>
+              <time title="创建时间：2019-11-29 15:44:04 / 修改时间：16:01:08" itemprop="dateCreated datePublished" datetime="2019-11-29T15:44:04+08:00">2019-11-29</time>
             
 
             
@@ -1324,7 +1251,7 @@
                 
               
 
-              <time title="创建时间：2019-11-29 15:43:24 / 修改时间：15:43:51" itemprop="dateCreated datePublished" datetime="2019-11-29T15:43:24+08:00">2019-11-29</time>
+              <time title="创建时间：2019-11-29 15:43:24 / 修改时间：16:01:08" itemprop="dateCreated datePublished" datetime="2019-11-29T15:43:24+08:00">2019-11-29</time>
             
 
             
@@ -1531,7 +1458,7 @@
                 
               
 
-              <time title="创建时间：2019-11-29 15:41:33 / 修改时间：15:42:22" itemprop="dateCreated datePublished" datetime="2019-11-29T15:41:33+08:00">2019-11-29</time>
+              <time title="创建时间：2019-11-29 15:41:33 / 修改时间：16:01:08" itemprop="dateCreated datePublished" datetime="2019-11-29T15:41:33+08:00">2019-11-29</time>
             
 
             
@@ -1733,7 +1660,7 @@
                 
               
 
-              <time title="创建时间：2019-11-29 15:39:54 / 修改时间：15:40:22" itemprop="dateCreated datePublished" datetime="2019-11-29T15:39:54+08:00">2019-11-29</time>
+              <time title="创建时间：2019-11-29 15:39:54 / 修改时间：16:01:08" itemprop="dateCreated datePublished" datetime="2019-11-29T15:39:54+08:00">2019-11-29</time>
             
 
             
@@ -2802,7 +2729,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">3:12</span>
+    <span title="站点阅读时长">3:11</span>
   
 </div>
 

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-11-29T07:59:29.114Z</updated>
+  <updated>2019-11-29T08:01:08.756Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://perkins4j2.github.io/posts/46263/"/>
     <id>https://perkins4j2.github.io/posts/46263/</id>
     <published>2019-11-29T07:56:37.000Z</published>
-    <updated>2019-11-29T07:59:29.114Z</updated>
+    <updated>2019-11-29T08:01:08.756Z</updated>
     
     <summary type="html">
     
@@ -41,17 +41,11 @@
     <link href="https://perkins4j2.github.io/posts/60983/"/>
     <id>https://perkins4j2.github.io/posts/60983/</id>
     <published>2019-11-29T07:46:44.000Z</published>
-    <updated>2019-11-29T07:47:11.106Z</updated>
+    <updated>2019-11-29T08:03:34.534Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h3 id=&quot;新增用户和权限&quot;&gt;&lt;a href=&quot;#新增用户和权限&quot; class=&quot;headerlink&quot; title=&quot;新增用户和权限&quot;&gt;&lt;/a&gt;新增用户和权限&lt;/h3&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
-        
-      
+      &lt;h3 id=&quot;新增用户和权限&quot;&gt;&lt;a href=&quot;#新增用户和权限&quot; class=&quot;headerlink&quot; title=&quot;新增用户和权限&quot;&gt;&lt;/a&gt;新增用户和权限&lt;/h3&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 新增用户&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;USER&lt;/span&gt; canal &lt;span class=&quot;keyword&quot;&gt;IDENTIFIED&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;canal&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 授权REPLICATION权限&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;GRANT&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;SELECT&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;REPLICATION&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;SLAVE&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;REPLICATION&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;CLIENT&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;ON&lt;/span&gt; *.* &lt;span class=&quot;keyword&quot;&gt;TO&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;canal&#39;&lt;/span&gt;@&lt;span class=&quot;string&quot;&gt;&#39;%&#39;&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;FLUSH&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;PRIVILEGES&lt;/span&gt;; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# check&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;grants&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;canal&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看当前db binlog文件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;binary&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;logs&lt;/span&gt; ;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -67,7 +61,7 @@
     <link href="https://perkins4j2.github.io/posts/58214/"/>
     <id>https://perkins4j2.github.io/posts/58214/</id>
     <published>2019-11-29T07:45:03.000Z</published>
-    <updated>2019-11-29T07:45:51.506Z</updated>
+    <updated>2019-11-29T08:01:08.750Z</updated>
     
     <summary type="html">
     
@@ -96,7 +90,7 @@
     <link href="https://perkins4j2.github.io/posts/9251/"/>
     <id>https://perkins4j2.github.io/posts/9251/</id>
     <published>2019-11-29T07:44:04.000Z</published>
-    <updated>2019-11-29T07:44:42.482Z</updated>
+    <updated>2019-11-29T08:01:08.755Z</updated>
     
     <summary type="html">
     
@@ -117,7 +111,7 @@
     <link href="https://perkins4j2.github.io/posts/38650/"/>
     <id>https://perkins4j2.github.io/posts/38650/</id>
     <published>2019-11-29T07:43:24.000Z</published>
-    <updated>2019-11-29T07:43:51.526Z</updated>
+    <updated>2019-11-29T08:01:08.752Z</updated>
     
     <summary type="html">
     
@@ -142,7 +136,7 @@
     <link href="https://perkins4j2.github.io/posts/3676/"/>
     <id>https://perkins4j2.github.io/posts/3676/</id>
     <published>2019-11-29T07:41:33.000Z</published>
-    <updated>2019-11-29T07:42:22.013Z</updated>
+    <updated>2019-11-29T08:01:08.754Z</updated>
     
     <summary type="html">
     
@@ -162,7 +156,7 @@
     <link href="https://perkins4j2.github.io/posts/47529/"/>
     <id>https://perkins4j2.github.io/posts/47529/</id>
     <published>2019-11-29T07:39:54.000Z</published>
-    <updated>2019-11-29T07:40:22.252Z</updated>
+    <updated>2019-11-29T08:01:08.747Z</updated>
     
     <summary type="html">
     
