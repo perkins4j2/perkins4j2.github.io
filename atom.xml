@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-11-29T08:01:08.756Z</updated>
+  <updated>2019-11-30T02:01:38.566Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -15,6 +15,166 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Varint编码</title>
+    <link href="https://perkins4j2.github.io/posts/63107/"/>
+    <id>https://perkins4j2.github.io/posts/63107/</id>
+    <published>2019-11-30T01:55:49.000Z</published>
+    <updated>2019-11-30T02:01:38.566Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;什么是Varint编码&quot;&gt;&lt;a href=&quot;#什么是Varint编码&quot; class=&quot;headerlink&quot; title=&quot;什么是Varint编码&quot;&gt;&lt;/a&gt;什么是Varint编码&lt;/h3&gt;&lt;p&gt;Varint是一种使用一个或多个字节序列化整数的方法，会把&lt;code&gt;整数&lt;/code&gt;编码为&lt;code&gt;变长字节&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;对于32位整型的&lt;code&gt;4&lt;/code&gt;个字节数据经过Varint编码后需要&lt;code&gt;1~5&lt;/code&gt;个字节，小的数字使用1个byte，大的数字使用5个bytes。&lt;/p&gt;
+&lt;p&gt;64位整型数据编码后占用1~10个字节。在实际场景中小数字的使用率远远多于大数字，因此通过Varint编码对于大部分场景都可以起到很好的压缩效果。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="Varint" scheme="https://perkins4j2.github.io/tags/Varint/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kafka解压缩</title>
+    <link href="https://perkins4j2.github.io/posts/27626/"/>
+    <id>https://perkins4j2.github.io/posts/27626/</id>
+    <published>2019-11-30T01:55:40.000Z</published>
+    <updated>2019-11-30T02:00:53.659Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;压缩的目的&quot;&gt;&lt;a href=&quot;#压缩的目的&quot; class=&quot;headerlink&quot; title=&quot;压缩的目的&quot;&gt;&lt;/a&gt;压缩的目的&lt;/h3&gt;&lt;p&gt;时间换空间，用CPU时间去换磁盘空间或网络IO传输量。&lt;/p&gt;
+&lt;h3 id=&quot;配置&quot;&gt;&lt;a href=&quot;#配置&quot; class=&quot;headerlink&quot; title=&quot;配置&quot;&gt;&lt;/a&gt;配置&lt;/h3&gt;&lt;p&gt;// 开启GZIP压缩&lt;br&gt;// Producer启动后，生产的每个消息集合都会经过GZIP压缩，能够很好地节省网络传输带宽和Kafka Broker端的磁盘占用。&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;props.put(&lt;span class=&quot;string&quot;&gt;&quot;compression.type&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;gzip&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Producer&amp;lt;String, String&amp;gt; producer = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; KafkaProducer&amp;lt;&amp;gt;(props);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="kafka" scheme="https://perkins4j2.github.io/tags/kafka/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kafka Producer配置</title>
+    <link href="https://perkins4j2.github.io/posts/38013/"/>
+    <id>https://perkins4j2.github.io/posts/38013/</id>
+    <published>2019-11-30T01:55:28.000Z</published>
+    <updated>2019-11-30T02:00:28.703Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;acks&quot;&gt;&lt;a href=&quot;#acks&quot; class=&quot;headerlink&quot; title=&quot;acks&quot;&gt;&lt;/a&gt;acks&lt;/h3&gt;&lt;p&gt;producer希望leader返回的用于确认请求完成的确认数量. 可选值 all, -1, 0 1. 默认值为1。&lt;/p&gt;
+&lt;p&gt;acks=0 不需要等待服务器的确认. 这是retries设置无效. 响应里来自服务端的offset总是-1. producer只管发不管发送成功与否。延迟低，容易丢失数据。&lt;/p&gt;
+&lt;p&gt;acks=1 表示leader写入成功（但是并没有刷新到磁盘）后即向producer响应。延迟中等，一旦leader副本挂了，就会丢失数据。&lt;/p&gt;
+&lt;p&gt;acks=all等待数据完成副本的复制, 等同于-1. 假如需要保证消息不丢失, 需要使用该设置. 同时需要设置unclean.leader.election.enable为true, 保证当ISR列表为空时, 选择其他存活的副本作为新的leader.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="kafka" scheme="https://perkins4j2.github.io/tags/kafka/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Maven 打包Plugins集成</title>
+    <link href="https://perkins4j2.github.io/posts/22633/"/>
+    <id>https://perkins4j2.github.io/posts/22633/</id>
+    <published>2019-11-30T01:54:51.000Z</published>
+    <updated>2019-11-30T02:00:08.973Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;目标&quot;&gt;&lt;a href=&quot;#目标&quot; class=&quot;headerlink&quot; title=&quot;目标&quot;&gt;&lt;/a&gt;目标&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;jar冲突检测&lt;/li&gt;
+&lt;li&gt;源码编译&lt;/li&gt;
+&lt;li&gt;源码生成jar&lt;/li&gt;
+&lt;li&gt;pom依赖jar拷贝&lt;/li&gt;
+&lt;li&gt;spring boot可执行jar生成&lt;/li&gt;
+&lt;li&gt;脚本动态生成&lt;/li&gt;
+&lt;li&gt;生成目录和打包tar
+    
+    </summary>
+    
+      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
+    
+    
+      <category term="Maven" scheme="https://perkins4j2.github.io/tags/Maven/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis Cluster</title>
+    <link href="https://perkins4j2.github.io/posts/39943/"/>
+    <id>https://perkins4j2.github.io/posts/39943/</id>
+    <published>2019-11-30T01:54:41.000Z</published>
+    <updated>2019-11-30T01:59:55.922Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Redis-Cluster&quot;&gt;&lt;a href=&quot;#Redis-Cluster&quot; class=&quot;headerlink&quot; title=&quot;Redis Cluster&quot;&gt;&lt;/a&gt;Redis Cluster&lt;/h3&gt;&lt;p&gt;Redis Cluster是Redis3.0版本推出的高可用及分布式解决方案，多个Redis实例组成，数据按照槽(slot)存储分布在多个Redis实例上，通过Gossip流言协议来进行节点之间通信。&lt;/p&gt;
+&lt;p&gt;Redis Cluster实现的功能：&lt;/p&gt;
+&lt;p&gt;• 将数据分片到多个实例(按照slot存储)；&lt;br&gt;• 集群节点宕掉会自动failover；&lt;br&gt;• 提供相对平滑扩容(缩容)节点。&lt;/p&gt;
+&lt;p&gt;Redis Cluster暂未有的：&lt;br&gt;• 实时同步&lt;br&gt;• 强一致性&lt;br&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="redis" scheme="https://perkins4j2.github.io/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis跳表</title>
+    <link href="https://perkins4j2.github.io/posts/64570/"/>
+    <id>https://perkins4j2.github.io/posts/64570/</id>
+    <published>2019-11-30T01:54:32.000Z</published>
+    <updated>2019-11-30T01:57:51.211Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;跳表&quot;&gt;&lt;a href=&quot;#跳表&quot; class=&quot;headerlink&quot; title=&quot;跳表&quot;&gt;&lt;/a&gt;跳表&lt;/h3&gt;&lt;p&gt;跳表（skiplist）是一个特俗的链表，相比一般的链表，有更高的查找效率，其效率可比拟于二叉查找树。&lt;/p&gt;
+&lt;p&gt;Redis里面使用skiplist是为了实现sorted set这种对外的数据结构。&lt;/p&gt;
+&lt;p&gt;跳表预先间隔地保存了有序链表中的节点，从而在查找过程中能达到类似于二分搜索的效果，而二分搜索思想就是通过比较中点数据放弃另一半的查找，从而节省一半的查找时间，缺点即浪费了空间。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="redis" scheme="https://perkins4j2.github.io/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Zero-Copy</title>
+    <link href="https://perkins4j2.github.io/posts/20850/"/>
+    <id>https://perkins4j2.github.io/posts/20850/</id>
+    <published>2019-11-30T01:54:20.000Z</published>
+    <updated>2019-11-30T01:57:54.781Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Zero-Copy零拷贝&quot;&gt;&lt;a href=&quot;#Zero-Copy零拷贝&quot; class=&quot;headerlink&quot; title=&quot;Zero-Copy零拷贝&quot;&gt;&lt;/a&gt;Zero-Copy零拷贝&lt;/h3&gt;&lt;p&gt;Zero-Copy用于提高Linux平台上的IO密集型的应用程序的性能。能够避免中间缓冲区中的冗余数据复制以及减少Linux内核空间和用户空间上下文交换的次数。&lt;/p&gt;
+&lt;p&gt;Zero-Copy使得应用程序从本地磁盘读取数据，再将读取的数据原封不动直接地发送给Socket。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="Zero-Copy" scheme="https://perkins4j2.github.io/tags/Zero-Copy/"/>
+    
+  </entry>
   
   <entry>
     <title>ThreadLocal原理</title>
@@ -79,9 +239,9 @@
       <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
     
     
-      <category term="docker" scheme="https://perkins4j2.github.io/tags/docker/"/>
-    
       <category term="kafka" scheme="https://perkins4j2.github.io/tags/kafka/"/>
+    
+      <category term="docker" scheme="https://perkins4j2.github.io/tags/docker/"/>
     
   </entry>
   
@@ -305,187 +465,6 @@
     
     
       <category term="Git" scheme="https://perkins4j2.github.io/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Canal日志增量订阅和消费</title>
-    <link href="https://perkins4j2.github.io/posts/53545/"/>
-    <id>https://perkins4j2.github.io/posts/53545/</id>
-    <published>2019-11-18T01:00:24.000Z</published>
-    <updated>2019-11-19T03:03:57.495Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;基于日志增量订阅和消费的业务&quot;&gt;&lt;a href=&quot;#基于日志增量订阅和消费的业务&quot; class=&quot;headerlink&quot; title=&quot;基于日志增量订阅和消费的业务&quot;&gt;&lt;/a&gt;基于日志增量订阅和消费的业务&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;数据库镜像&lt;/li&gt;
-&lt;li&gt;数据库实时备份&lt;/li&gt;
-&lt;li&gt;索引构建和实时维护(拆分异构索引、倒排索引等)&lt;/li&gt;
-&lt;li&gt;业务 cache 刷新&lt;/li&gt;
-&lt;li&gt;带业务逻辑的增量数据处理
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="Canal" scheme="https://perkins4j2.github.io/tags/Canal/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hazelcast持久化及优化</title>
-    <link href="https://perkins4j2.github.io/posts/53779/"/>
-    <id>https://perkins4j2.github.io/posts/53779/</id>
-    <published>2019-11-11T09:15:18.000Z</published>
-    <updated>2019-11-18T12:23:44.523Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;数据内存格式&quot;&gt;&lt;a href=&quot;#数据内存格式&quot; class=&quot;headerlink&quot; title=&quot;数据内存格式&quot;&gt;&lt;/a&gt;数据内存格式&lt;/h3&gt;&lt;p&gt;参数:in-memory-format,有3种。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;BINARY&lt;br&gt;  默认，数据k-v均二进制。&lt;br&gt;  适合绝大多数put、get等操作，效率最高。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;OBJECT&lt;br&gt;  数据存储为对象反序列化，适合对象复杂查询操作，避免反序列时间消耗。&lt;br&gt;  k为二进制，v为对象。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;NATIVE&lt;br&gt;  企业版，二进制格式，存储在非堆空间，避免GC。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="Hazelcast" scheme="https://perkins4j2.github.io/tags/Hazelcast/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java8新变化</title>
-    <link href="https://perkins4j2.github.io/posts/3769/"/>
-    <id>https://perkins4j2.github.io/posts/3769/</id>
-    <published>2019-10-24T01:27:30.000Z</published>
-    <updated>2019-10-24T01:29:52.726Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Java8优势&quot;&gt;&lt;a href=&quot;#Java8优势&quot; class=&quot;headerlink&quot; title=&quot;Java8优势&quot;&gt;&lt;/a&gt;Java8优势&lt;/h3&gt;&lt;p&gt;自1998年JDK1.0（Java1.0）发布以来,从Java1.1（1997年）-Java7（2011年），Java不断升级,Java8则是在2014年3月发布。&lt;/p&gt;
-&lt;h4 id=&quot;流处理&quot;&gt;&lt;a href=&quot;#流处理&quot; class=&quot;headerlink&quot; title=&quot;流处理&quot;&gt;&lt;/a&gt;流处理&lt;/h4&gt;&lt;p&gt;Java 8在java.util.stream中添加了一个Stream API;Stream&lt;t&gt;可以看成一种迭代器。&lt;/t&gt;&lt;/p&gt;
-&lt;p&gt;Stream API的可以链接形成一个复杂的流水线，就像Unix命令。&lt;/p&gt;
-&lt;p&gt;可以在一个更高的抽象层次上写Java8程序，把这样的流变成那样的流(就像写数据库查询语句时的那种思路)，而不是一次只处理一个项目。&lt;/p&gt;
-&lt;p&gt;Java8可以透明地把输入的不相关部分拿到几个CPU内核上去分别执行。Stream操作流水线——这是几乎免费的并行，用不着去费劲搞Thread。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
-    
-    
-      <category term="Java8" scheme="https://perkins4j2.github.io/tags/Java8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hazelcast队列和发布订阅实现</title>
-    <link href="https://perkins4j2.github.io/posts/48149/"/>
-    <id>https://perkins4j2.github.io/posts/48149/</id>
-    <published>2019-10-16T01:55:40.000Z</published>
-    <updated>2019-10-16T01:57:06.962Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;队列和订阅区别&quot;&gt;&lt;a href=&quot;#队列和订阅区别&quot; class=&quot;headerlink&quot; title=&quot;队列和订阅区别&quot;&gt;&lt;/a&gt;队列和订阅区别&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;队列是queue，订阅是topic&lt;/li&gt;
-&lt;li&gt;队列是只能被消费一次，订阅是被消费多次&lt;/li&gt;
-&lt;li&gt;队列消费是主动轮询take，订阅是消息被动通知&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;队列实现&quot;&gt;&lt;a href=&quot;#队列实现&quot; class=&quot;headerlink&quot; title=&quot;队列实现&quot;&gt;&lt;/a&gt;队列实现&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;采用FIFO先进先出顺序消费&lt;/li&gt;
-&lt;li&gt;元素没有批量处理，只能迭代逐个take&lt;/li&gt;
-&lt;li&gt;元素被复制到本地处理&lt;/li&gt;
-&lt;li&gt;可能使用ItemListener监听队列新增和删除操作
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="Hazelcast" scheme="https://perkins4j2.github.io/tags/Hazelcast/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Gradle安装和IDEA配置</title>
-    <link href="https://perkins4j2.github.io/posts/52236/"/>
-    <id>https://perkins4j2.github.io/posts/52236/</id>
-    <published>2019-10-12T12:10:58.000Z</published>
-    <updated>2019-10-12T12:11:44.106Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;下载&quot;&gt;&lt;a href=&quot;#下载&quot; class=&quot;headerlink&quot; title=&quot;下载&quot;&gt;&lt;/a&gt;下载&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;下载地址&lt;/p&gt;
-&lt;p&gt;  &lt;a href=&quot;https://gradle.org/releases/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;gradle&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;选择&lt;a href=&quot;https://gradle.org/next-steps/?version=5.6.2&amp;format=bin&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;二进制包&lt;/a&gt;，包括文档和源码&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;下载V5.6.2，后解压&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="Gradle" scheme="https://perkins4j2.github.io/tags/Gradle/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NPM包管理工具</title>
-    <link href="https://perkins4j2.github.io/posts/45569/"/>
-    <id>https://perkins4j2.github.io/posts/45569/</id>
-    <published>2019-10-12T10:23:51.000Z</published>
-    <updated>2019-10-12T10:25:07.893Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h3&gt;&lt;p&gt;npm 是JavaScript 世界的包管理工具，并且是Node.js 平台的默认包管理工具。通过npm 可以安装、共享、分发代码，管理项目依赖关系。&lt;/p&gt;
-&lt;p&gt;npm 由三个独立的部分组成：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;网站；网站 是开发者查找包（package）、设置参数以及管理 npm 使用体验的主要途径。&lt;/li&gt;
-&lt;li&gt;注册表（registry）；注册表 是一个巨大的数据库，保存了每个包（package）的信息。&lt;/li&gt;
-&lt;li&gt;命令行工具 (CLI)；CLI 通过命令行或终端运行。开发者通过 CLI 与 npm 打交道。
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="NPM" scheme="https://perkins4j2.github.io/tags/NPM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringBoot+JPA实体自动生成数据库</title>
-    <link href="https://perkins4j2.github.io/posts/4871/"/>
-    <id>https://perkins4j2.github.io/posts/4871/</id>
-    <published>2019-10-12T08:04:53.000Z</published>
-    <updated>2019-10-12T08:06:30.050Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;POM&quot;&gt;&lt;a href=&quot;#POM&quot; class=&quot;headerlink&quot; title=&quot;POM&quot;&gt;&lt;/a&gt;POM&lt;/h3&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;org.springframework.boot&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;spring-boot-starter-data-jpa&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;ul&gt;
-&lt;li&gt;引入SpringBoot&lt;/li&gt;
-&lt;li&gt;引入Jpa
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="SpringBoot" scheme="https://perkins4j2.github.io/tags/SpringBoot/"/>
-    
-      <category term="JPA" scheme="https://perkins4j2.github.io/tags/JPA/"/>
     
   </entry>
   

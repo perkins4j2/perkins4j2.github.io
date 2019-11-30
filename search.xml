@@ -1,6 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Varint编码]]></title>
+    <url>%2Fposts%2F63107%2F</url>
+    <content type="text"><![CDATA[什么是Varint编码Varint是一种使用一个或多个字节序列化整数的方法，会把整数编码为变长字节。 对于32位整型的4个字节数据经过Varint编码后需要1~5个字节，小的数字使用1个byte，大的数字使用5个bytes。 64位整型数据编码后占用1~10个字节。在实际场景中小数字的使用率远远多于大数字，因此通过Varint编码对于大部分场景都可以起到很好的压缩效果。 编码原理Varint 中的每个 byte 的最高位 bit 有特殊的含义，如果该位为 1，表示后续的 byte 也是该数字的一部分，如果该位为 0，则结束。 其他的 7 个 bit 都用来表示数字。因此小于 128 的数字都可以用一个 byte 表示。大于 128 的数字，比如 300，会用两个字节来表示：1010 1100 0000 0010 由于负数的高位为1,所以采用这种压缩处理的时候必须负数转成正数。 解码的过程就是将字节依次取出，去掉最高有效位，因为是小端排序所以先解码的字节要放在低位，之后解码出来的二进制位继续放在之前已经解码出来的二进制的高位，最后转换为10进制数完成varint编码的解码过程。 举例对数字123456进行varint编码，123456用二进制表示为1 11100010 01000000，每次低从向高取7位再加上最高有效位变成1100 0000 - 11000100 - 00000111 所以经过varint编码后123456占用三个字节分别为192 196 7。 每8位的第一位是最高有效位（most significant bit - msb）–msb。]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>Varint</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Kafka解压缩]]></title>
+    <url>%2Fposts%2F27626%2F</url>
+    <content type="text"><![CDATA[压缩的目的时间换空间，用CPU时间去换磁盘空间或网络IO传输量。 配置// 开启GZIP压缩// Producer启动后，生产的每个消息集合都会经过GZIP压缩，能够很好地节省网络传输带宽和Kafka Broker端的磁盘占用。 123props.put("compression.type", "gzip");Producer&lt;String, String&gt; producer = new KafkaProducer&lt;&gt;(props); Consumer通常来说解压缩发生在消费者Producer压缩，Broker保持、Consumer解压缩Kafka会将启用的压缩算法封装进消息集合中，当Consumer读取到消息集合时，会知道这些消息使用了哪一种压缩算法。 Broker与消息格式转换时发生的解压缩是不同的场景（主要为了兼容老版本的消费者）。 每个压缩过的消息集合在Broker端写入时都要发生解压缩操作，目的是为了对消息执行各种验证（主要影响CPU使用率）。 压缩算法对比Kafka 2.1.0之前，Kafka支持三种压缩算法：GZIP、Snappy、LZ4，从2.1.0开始正式支持zstd算法。 zstd是Facebook开源的压缩算法，能够提供超高的压缩比 评估一个压缩算法的优劣，主要有两个指标：压缩比、压缩/解压缩吞吐量。 zstd具有最高的压缩比，LZ4具有最高的吞吐量在Kafka的实际使用中 吞吐量：LZ4 &gt; Snappy &gt; zstd &gt; GZIP 压缩比：zstd &gt; LZ4 &gt; GZIP &gt; Snappy 带宽：由于Snappy的压缩比最低，因此占用的网络带宽最大 CPU：各个压缩算法差不多，在压缩时Snappy使用更多的CPU，在解压缩时GZIP使用更多的CPU带宽资源比CPU资源和磁盘资源更吃紧（千兆网络是标配），首先排除Snappy，其次排除GZIP，剩下在LZ4和zstd中选择。 如果客户端的CPU资源充足，强烈建议开启zstd压缩，可以极大地节省网络带宽。]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>kafka</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Kafka Producer配置]]></title>
+    <url>%2Fposts%2F38013%2F</url>
+    <content type="text"><![CDATA[acksproducer希望leader返回的用于确认请求完成的确认数量. 可选值 all, -1, 0 1. 默认值为1。 acks=0 不需要等待服务器的确认. 这是retries设置无效. 响应里来自服务端的offset总是-1. producer只管发不管发送成功与否。延迟低，容易丢失数据。 acks=1 表示leader写入成功（但是并没有刷新到磁盘）后即向producer响应。延迟中等，一旦leader副本挂了，就会丢失数据。 acks=all等待数据完成副本的复制, 等同于-1. 假如需要保证消息不丢失, 需要使用该设置. 同时需要设置unclean.leader.election.enable为true, 保证当ISR列表为空时, 选择其他存活的副本作为新的leader. buffer.memoryproducer可以使用的最大内存来缓存等待发送到server端的消息. 如果消息速度大于producer交付到server端的阻塞时间max.block.ms, 将会抛出异常. 默认值33554432 byte (32m). 这个设置不是一个严格的边界, 因为producer除了用来缓存消息, 还要用来进行压缩. compression.typeproducer压缩数据的类型, 默认为none, 就是不压缩. 可选none, gzip, snappy 和lz4. 压缩整个batch的数据, 因此batch的效果对压缩率也有影响. 更多的批处理意味着更好的压缩。 retries设置大于零的值将导致客户端重新发送其发送失败并发生潜在的瞬时错误的记录. 相当于client在发送失败的时候会重新发行. 如果设置了retries而没有将max.in.flight.request.per.connection设置为1, 在两个batch发送到同一个partition时有可能打乱消息的发送顺序(第一个发送失败, 而第二个发送成功) batch.sizeproducer会尝试批量发送属于同一个partition的消息以减少请求的数量. 这样可以提升客户端和服务端的性能. 默认大小是16348 byte (16k). 发送到broker的请求可以包含多个batch, 每个batch的数据属于同一个partition. 太小的batch会降低吞吐. 太大会浪费内存. max.request.size请求的最大大小（以字节为单位）。 此设置将限制生产者在单个请求中发送的记录批次数，以避免发送巨大的请求。 这也是最大记录批量大小的上限。 请注意，服务器拥有自己的记录批量大小，可能与此不同。 partitioner.classPartitioner接口的实现类, 默认是org.apache.kafka.clients.producer.internals.DefaultPartitioner. 需要处理数据倾斜等原因调整分区逻辑的时候使用. request.timeout.ms配置控制客户端等待请求响应的最长时间。 如果在超时之前未收到响应，客户端将在必要时重新发送请求，如果重试耗尽，则该请求将失败。 这应该大于replica.lag.time.max.ms(broker配置)，以减少由于不必要的生产者重试引起的消息重复的可能性。 enable.idempotence设置为’true’, 将开启exactly-once模式. 设置为’false’(默认值), producer会因为borker失败等原因重试发送, 可能会导致消息重复. 设置为’true’时需要结合max.in.flight.requests.per.connection设为’1’和retires不能为’0’, 同时acks需要设置为’all’或者”-1’. interceptor.classes一组ProducerInterceptor接口的实现类, 默认为null. 可以通过该接口的实现类去拦截(可能需要修改)producer要发送的消息在发送到服务端之前. retry.backoff.ms失败请求重试的间隔时间. 默认是100毫秒 transactional.id用于事务传递的TransactionalId。 这使得可以跨越多个生产者会话的可靠性语义，因为它允许客户端保证在开始任何新事务之前使用相同的TransactionalId的事务已经完成。 如果没有提供TransactionalId，则生产者被限制为幂等传递。 请注意，如果配置了TransactionalId，则必须启用enable.idempotence。 默认值为空，这意味着无法使用事务。 linger.ms在正常负载的情况下, 要想减少请求的数量. 加上一个认为的延迟: 不是立即发送消息, 而是延迟等待更多的消息一起批量发送. 当达到得了batch.size的同一partition的消息会立即发送, 不管linger.ms的设置. 假如要发送的消息比较少, 会等待指定的时间以获取更多的消息. 默认设置为0 ms(没有延迟). max.in.flight.requests.per.connection没有被确认unacknowledge的batch数, 如果设置大于1在retries设置了的情况下会出现消息发送顺序错误.]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>kafka</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Maven 打包Plugins集成]]></title>
+    <url>%2Fposts%2F22633%2F</url>
+    <content type="text"><![CDATA[目标 jar冲突检测 源码编译 源码生成jar pom依赖jar拷贝 spring boot可执行jar生成 脚本动态生成 生成目录和打包tar 版本及配置123456789101112131415&lt;properties&gt; &lt;app.main.class&gt;&lt;/app.main.class&gt; &lt;maven-enforcer-plugin&gt;1.4.1&lt;/maven-enforcer-plugin&gt; &lt;maven-compiler-plugin&gt;3.1&lt;/maven-compiler-plugin&gt; &lt;maven-jar-plugin&gt;2.6&lt;/maven-jar-plugin&gt; &lt;maven-dependency-plugin&gt;2.10&lt;/maven-dependency-plugin&gt; &lt;maven-source-plugin&gt;3.0.1&lt;/maven-source-plugin&gt; &lt;spring-boot-maven-plugin&gt;1.5.13.RELEASE&lt;/spring-boot-maven-plugin&gt; &lt;src.data.dir&gt;src/main/data&lt;/src.data.dir&gt; &lt;dependency.dist.dir&gt;$&#123;project.build.directory&#125;/dist&lt;/dependency.dist.dir&gt; &lt;dependency.lib.dir&gt;$&#123;dependency.dist.dir&#125;/lib&lt;/dependency.lib.dir&gt; &lt;dependency.data.dir&gt;$&#123;dependency.dist.dir&#125;/data&lt;/dependency.data.dir&gt; &lt;dependency.bin.dir&gt;$&#123;dependency.dist.dir&#125;/bin&lt;/dependency.bin.dir&gt; &lt;dependency.log.dir&gt;$&#123;dependency.dist.dir&#125;/logs&lt;/dependency.log.dir&gt; &lt;/properties&gt; 资源目录1234567891011&lt;resources&gt; &lt;resource&gt; &lt;directory&gt;src/main/resources&lt;/directory&gt; &lt;filtering&gt;false&lt;/filtering&gt; &lt;/resource&gt; &lt;!--非资源目录--&gt; &lt;resource&gt; &lt;directory&gt;bin&lt;/directory&gt; &lt;filtering&gt;true&lt;/filtering&gt; &lt;/resource&gt; &lt;/resources&gt; plugins插件123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170171172173174175176177&lt;plugins&gt; &lt;!--jar冲突排查--&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-enforcer-plugin&lt;/artifactId&gt; &lt;version&gt;$&#123;maven-enforcer-plugin&#125;&lt;/version&gt; &lt;executions&gt; &lt;execution&gt; &lt;id&gt;enforce&lt;/id&gt; &lt;configuration&gt; &lt;rules&gt; &lt;dependencyConvergence&gt; &lt;uniqueVersions&gt;true&lt;/uniqueVersions&gt; &lt;/dependencyConvergence&gt; &lt;/rules&gt; &lt;/configuration&gt; &lt;goals&gt; &lt;goal&gt;enforce&lt;/goal&gt; &lt;/goals&gt; &lt;/execution&gt; &lt;/executions&gt; &lt;/plugin&gt; &lt;!--jdk版本编译--&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt; &lt;version&gt;$&#123;maven-compiler-plugin&#125;&lt;/version&gt; &lt;configuration&gt; &lt;useIncrementalCompilation&gt;false&lt;/useIncrementalCompilation&gt; &lt;source&gt;1.8&lt;/source&gt; &lt;target&gt;1.8&lt;/target&gt; &lt;encoding&gt;UTF-8&lt;/encoding&gt; &lt;skip&gt;true&lt;/skip&gt; &lt;/configuration&gt; &lt;/plugin&gt; &lt;!-- 用于生成jar包的plugin --&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-jar-plugin&lt;/artifactId&gt; &lt;version&gt;$&#123;maven-jar-plugin&#125;&lt;/version&gt; &lt;configuration&gt; &lt;outputDirectory&gt;$&#123;dependency.lib.dir&#125;&lt;/outputDirectory&gt; &lt;skip&gt;true&lt;/skip&gt; &lt;archive&gt; &lt;manifest&gt; &lt;addClasspath&gt;true&lt;/addClasspath&gt; &lt;mainClass&gt;$&#123;app.main.class&#125;&lt;/mainClass&gt; &lt;useUniqueVersions&gt;false&lt;/useUniqueVersions&gt; &lt;/manifest&gt; &lt;manifestEntries&gt; &lt;Class-Path&gt;./&lt;/Class-Path&gt; &lt;/manifestEntries&gt; &lt;/archive&gt; &lt;/configuration&gt; &lt;/plugin&gt; &lt;!-- 用于拷贝maven依赖的plugin --&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-dependency-plugin&lt;/artifactId&gt; &lt;version&gt;$&#123;maven-dependency-plugin&#125;&lt;/version&gt; &lt;executions&gt; &lt;execution&gt; &lt;id&gt;copy-dependencies&lt;/id&gt; &lt;phase&gt;install&lt;/phase&gt; &lt;goals&gt; &lt;goal&gt;copy-dependencies&lt;/goal&gt; &lt;/goals&gt; &lt;configuration&gt; &lt;!-- 把依赖的所有jar包拷贝到lib目录中--&gt; &lt;outputDirectory&gt;$&#123;dependency.lib.dir&#125;&lt;/outputDirectory&gt; &lt;excludeTransitive&gt;false&lt;/excludeTransitive&gt; &lt;stripVersion&gt;false&lt;/stripVersion&gt; &lt;overWriteSnapshots&gt;true&lt;/overWriteSnapshots&gt; &lt;overWriteReleases&gt;true&lt;/overWriteReleases&gt; &lt;overWriteIfNewer&gt;true&lt;/overWriteIfNewer&gt; &lt;/configuration&gt; &lt;/execution&gt; &lt;/executions&gt; &lt;configuration&gt; &lt;excludeScope&gt;provided&lt;/excludeScope&gt; &lt;includeScope&gt;runtime&lt;/includeScope&gt; &lt;/configuration&gt; &lt;/plugin&gt; &lt;!--将Spring Boot应用打包为可执行的jar或war文件--&gt; &lt;plugin&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt; &lt;version&gt;$&#123;spring-boot-maven-plugin&#125;&lt;/version&gt; &lt;executions&gt; &lt;execution&gt; &lt;goals&gt; &lt;goal&gt;build-info&lt;/goal&gt; &lt;/goals&gt; &lt;/execution&gt; &lt;/executions&gt; &lt;/plugin&gt; &lt;!--源码打包并发布--&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-source-plugin&lt;/artifactId&gt; &lt;version&gt;$&#123;maven-source-plugin&#125;&lt;/version&gt; &lt;configuration&gt; &lt;outputDirectory&gt;$&#123;project.build.directory&#125;/sources-lib&lt;/outputDirectory&gt; &lt;/configuration&gt; &lt;executions&gt; &lt;execution&gt; &lt;id&gt;attach-sources&lt;/id&gt; &lt;goals&gt; &lt;goal&gt;jar&lt;/goal&gt; &lt;/goals&gt; &lt;/execution&gt; &lt;/executions&gt; &lt;/plugin&gt; &lt;!-- copy文件 --&gt; &lt;plugin&gt; &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt; &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt; &lt;executions&gt; &lt;execution&gt; &lt;phase&gt;install&lt;/phase&gt; &lt;goals&gt; &lt;goal&gt;run&lt;/goal&gt; &lt;/goals&gt; &lt;configuration&gt; &lt;tasks&gt; &lt;mkdir dir="$&#123;src.data.dir&#125;"/&gt; &lt;mkdir dir="$&#123;dependency.dist.dir&#125;"/&gt; &lt;mkdir dir="$&#123;dependency.lib.dir&#125;"/&gt; &lt;mkdir dir="$&#123;dependency.log.dir&#125;"/&gt; &lt;mkdir dir="$&#123;dependency.data.dir&#125;"/&gt; &lt;mkdir dir="$&#123;dependency.bin.dir&#125;"/&gt; &lt;copy todir="$&#123;dependency.dist.dir&#125;" overwrite="true"&gt; &lt;fileset dir="$&#123;src.data.dir&#125;"/&gt; &lt;/copy&gt; &lt;chmod file="$&#123;dependency.bin.dir&#125;/app.sh" perm="ugo+rx"/&gt; &lt;tar destfile="$&#123;project.build.directory&#125;/$&#123;project.artifactId&#125;-$&#123;project.version&#125;.tar" basedir="$&#123;project.build.directory&#125;/dist"/&gt; &lt;/tasks&gt; &lt;/configuration&gt; &lt;/execution&gt; &lt;/executions&gt; &lt;/plugin&gt; &lt;plugin&gt; &lt;groupId&gt;ru.yaal.maven&lt;/groupId&gt; &lt;artifactId&gt;write-text-files-maven-plugin&lt;/artifactId&gt; &lt;version&gt;1.1&lt;/version&gt; &lt;configuration&gt; &lt;charset&gt;UTF-8&lt;/charset&gt; &lt;files&gt; &lt;file&gt; &lt;path&gt;$&#123;dependency.bin.dir&#125;/app.sh&lt;/path&gt; &lt;lines&gt; &lt;line&gt;#!/bin/sh&lt;/line&gt; &lt;line&gt;exit 0&lt;/line&gt; &lt;/lines&gt; &lt;/file&gt; &lt;/files&gt; &lt;/configuration&gt; &lt;executions&gt; &lt;execution&gt; &lt;id&gt;write-text-files&lt;/id&gt; &lt;phase&gt;prepare-package&lt;/phase&gt; &lt;goals&gt; &lt;goal&gt;write-text-files&lt;/goal&gt; &lt;/goals&gt; &lt;/execution&gt; &lt;/executions&gt; &lt;/plugin&gt;&lt;/plugins&gt;]]></content>
+      <categories>
+        <category>工具利器</category>
+      </categories>
+      <tags>
+        <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Redis Cluster]]></title>
+    <url>%2Fposts%2F39943%2F</url>
+    <content type="text"><![CDATA[Redis ClusterRedis Cluster是Redis3.0版本推出的高可用及分布式解决方案，多个Redis实例组成，数据按照槽(slot)存储分布在多个Redis实例上，通过Gossip流言协议来进行节点之间通信。 Redis Cluster实现的功能： • 将数据分片到多个实例(按照slot存储)；• 集群节点宕掉会自动failover；• 提供相对平滑扩容(缩容)节点。 Redis Cluster暂未有的：• 实时同步• 强一致性 分片实现基于hash的分片方式，具体是虚拟槽分区。 虚拟槽分区 槽(slot):使用分散度良好的hash函数把所有数据映射到一个固定范围的整数集合中。 Redis Cluster槽的范围是0 ~ 16383。槽是集群内数据管理和迁移的基本单位。 分片的具体算法Redis Cluster使用slot = CRC16(key) %16384来计算键key属于哪个slot。 CRC算法全称循环冗余校验算法。16位的CRC码产生的规则是先将要发送的二进制序列数左移16位（既乘以）后,再除以一个多项式,最后 所得到的余数既是CRC码。(注: CRC16算法——循环冗余校验(Cyclic Redundancy Check/Code)，即G(x)为：x16+ x12+ x5+ 1。) 集群状态当16384个槽都有节点在处理时，集群处于上线状态(ok)； 如果有任何一个槽没有得到处理(或者某一分片的最后一个节点挂了)，那么集群处于下线状态(fail)。 如果集群超过半数以上master挂掉，无论是否有slave集群，均进入fail状态。 节点ID每个节点在集群中都有唯一的ID，该ID是由40位的16进制字符组成，具体是节点第一次启动由linux的/dev/urandom生成。 具体信息会保存在node.cnf配置文件中(该文件有Redis Cluster自动维护，可以通过参数cluster-config-file来指定路径和名称)，如果该文件被删除，节点ID将会重新生成。 节点ID用于标识集群中的每个节点，包括指定Replication Master。只要节点ID不改变，哪怕节点的IP和端口发生了改变，Redis Cluster可以自动识别出IP和端口的变化，并将变更的信息通过Gossip协议广播给其他节点。 clusterNode结构的slots属性记录了节点负责处理那些槽。 Slots属性是一个二进制位数组(bitarray)，这个数组的长度为16384/8=2048个字节，共包含16384个二进制位。 Master节点用bit来标识对于某个槽自己是否拥有。比如对于编号为1的槽，Master只要判断序列的第二位（索引从0开始）是不是为1即可。时间复杂度为O（1）。 将所有槽的指派信息保存在clusterState.slots数组里面，程序要检查槽i是否已经被指派，又或者取得负责处理槽i的节点，只需要访问clusterState.slots[i]的值即可，复杂度仅为O（1）。 请求重定向由于每个节点只负责部分slot，以及slot可能从一个节点迁移到另一节点，造成客户端有可能会向错误的节点发起请求。 因此需要有一种机制来对其进行发现和修正，这就是请求重定向。有两种不同的重定向场景： a)MOVED错误1.请求的key对应的槽不在该节点上，节点将查看自身内部所保存的哈希槽到节点ID的映射记录，节点回复一个MOVED错误。2.需要客户端进行再次重试。 b)ASK错误1.请求的key对应的槽目前的状态属于MIGRATING状态，并且当前节点找不到这个key了，节点回复ASK错误。ASK会把对应槽的IMPORTING节点返回给你，告诉你去IMPORTING的节点尝试找找。2.客户端进行重试首先发送ASKING命令，节点将为客户端设置一个一次性的标志（flag），使得客户端可以执行一次针对IMPORTING状态的槽的命令请求，然后再发送真正的命令请求。3.不必更新客户端所记录的槽至节点的映射。 节点通信采用P2P的Gossip协议，Gossip协议的原理就是每个节点与其他节点间不断通信交换信息，一段时间后节点信息一致，每个节点都知道集群的完整信息。 (1)集群中的每个节点都会单独开辟一个TCP通道，用于节点之间彼此通信，通信端口号在基础端口上加10000； (2)每个节点在固定周期内通过特定规则选择几个节点发送ping消息； (3)接收到ping消息的节点用pong消息作为响应。 集群中每个节点通过一定规则挑选要通信的节点，每个节点可能知道全部节点，也可能仅知道部分节点.只要这些节点彼此可以正常通信，最终它们会达到一致的状态。 当节点出故障、新节点加入、主从角色变化、槽信息变更等事件发生时，通过不断的ping/pong消息通信，经过一段时间后所有的节点都会知道整个集群全部节点的最新状态，从而达到集群状态同步的目的。 Gossip消息Gossip协议的主要职责就是信息交换，信息交换的载体就是节点彼此发送的Gossip消息，常用的Gossip消息可分为： • meet消息：用于通知新节点加入。消息发送者通知接收者加入到当前集群，meet消息通信正常完成后，接收节点会加入到集群中并进行周期性的ping、pong消息交换； • ping消息：集群内交换最频繁的消息，集群内每个节点每秒向多个其他节点发送ping消息，用于检测节点是否在线和交换彼此状态信息。ping消息发送封装了自身节点和部分其他节点的状态数据。 • pong消息：当接收到ping、meet消息时，作为响应消息回复给发送方确认消息正常通信。pong消息内部封装了自身状态数据。节点也可以向集群内广播自身的pong消息来通知整个集群对自身状态进行更新。 • fail消息：当节点判定集群内另一个节点下线时，会向集群内广播一个fail消息，其他节点接收到fail消息之后把对应节点更新为下线状态。 通信规则Redis集群内节点通信采用固定频率(定时任务每秒执行10次)。由于内部需要频繁地进行节点信息交换，而ping/pong消息会携带当前节点和部分其他节点的状态数据，势必会加重带宽和计算的负担。 • 通信节点选择过多可以让信息及时交换，但是成本过高； • 通信节点选择过少会降低集群内所有节点彼此信息交换频率，从而影响故障判定、新节点发现等需求的速度。 节点选择消息交换的成本主要体现在单位时间选择发送消息的节点数量和每个消息携带的数据量。 (1)选择发送消息的节点数量 集群内每个节点维护定时任务默认每秒执行10次，每秒会随机选择5个节点找出最久没有通信的节点发送ping消息，用于Gossip信息交换的随机性。 每100毫秒都会扫描本地节点列表，如果发现节点最后一次接受pong消息的时间大于cluster_node_timeout/2，则立刻发送ping消息,防止该节点信息太长时间未更新。 根据以上规则得出每个节点每秒需要发送ping消息的数量=1+10*num(node.pong_received&gt; cluster_node_timeout/2)，因此cluster_node_timeout参数对消息发送的节点数量影响非常大。 当我们的带宽资源紧张时，可以适当调大此参数。但是如果cluster_node_timeout过大会影响消息交换的频率从而影响故障转移、槽信息更新、新节点发现的速度。因此需要根据业务容忍度和资源消耗进行平衡。同时整个集群消息总交换量也跟节点数成正比。 消息数据量每个ping消息的数据量体现在消息头和消息体中，其中消息头主要占用空间的字段是myslots[CLUSTER_SLOTS/8]，占用2KB，这块空间占用相对固定。 消息体会携带一定数量的其他节点信息用于信息交换。而消息体携带数据量跟集群的节点数量相关，集群越大每次消息通信的成本也就更高。]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Redis跳表]]></title>
+    <url>%2Fposts%2F64570%2F</url>
+    <content type="text"><![CDATA[跳表跳表（skiplist）是一个特俗的链表，相比一般的链表，有更高的查找效率，其效率可比拟于二叉查找树。 Redis里面使用skiplist是为了实现sorted set这种对外的数据结构。 跳表预先间隔地保存了有序链表中的节点，从而在查找过程中能达到类似于二分搜索的效果，而二分搜索思想就是通过比较中点数据放弃另一半的查找，从而节省一半的查找时间，缺点即浪费了空间。 性质 由很多层结构组成 每一层都是一个有序的链表 最底层(Level 1) 的链表包含所有元素 如果一个元素出现在 Level i 的链表中，则它在 Level i 之下的链表也都会出现。 每个节点包含两个指针，一个指向同一链表中的下一个元素，一个指向下面一层的元素。 插入新插入一个节点之后，就会打乱上下相邻两层链表上节点个数严格的2:1的对应关系。如果要维持这种对应关系，就必须把新插入的节点后面的所有节点（也包括新插入的节点）重新进行调整，这会让时间复杂度重新蜕化成O(n)。 skiplist为了避免这一问题，它不要求上下相邻两层链表之间的节点个数有严格的对应关系，而是为每个节点随机出一个层数(level)。 首先确定该关键字的层数，层数是根据随机算法生成的，但是为了不让层数过大，会有一个最大层数MAX_LEVEL限制，随机算法生成的数值不得大于该值。 每一个节点的层数（level）是随机出来的，而且新插入一个节点不会影响其它节点的层数。因此，插入操作只需要修改插入节点前后的指针，而不需要对很多节点都进行调整。这就降低了插入操作的复杂度。实际上，这是skiplist的一个很重要的特性，这让它在插入性能上明显优于平衡树的方案。 查找skiplist除了最下面第1层链表之外，它会产生若干层稀疏的链表，这些链表里面的指针故意跳过了一些节点（而且越高层的链表跳过的节点越多）。这就使得我们在查找数据的时候能够先在高层的链表中进行查找，然后逐层降低，最终降到第1层链表来精确地确定数据位置。在这个过程中，我们跳过了一些节点，从而也就加快了查找速度。 skiplist与平衡树、哈希表的比较 skiplist和各种平衡树（如AVL、红黑树等）的元素是有序排列的，而哈希表不是有序的。因此，在哈希表上只能做单个key的查找，不适宜做范围查找。所谓范围查找，指的是查找那些大小在指定的两个值之间的所有节点。 在做范围查找的时候，平衡树比skiplist操作要复杂。在平衡树上，我们找到指定范围的小值之后，还需要以中序遍历的顺序继续寻找其它不超过大值的节点。如果不对平衡树进行一定的改造，这里的中序遍历并不容易实现。而在skiplist上进行范围查找就非常简单，只需要在找到小值之后，对第1层链表进行若干步的遍历就可以实现。 平衡树的插入和删除操作可能引发子树的调整，逻辑复杂，而skiplist的插入和删除只需要修改相邻节点的指针，操作简单又快速。 查找单个key，skiplist和平衡树的时间复杂度都为O(log n)，大体相当；而哈希表在保持较低的哈希值冲突概率的前提下，查找时间复杂度接近O(1)，性能更高一些。所以我们平常使用的各种Map或dictionary结构，大都是基于哈希表实现的。 从算法实现难度上来比较，skiplist比平衡树要简单得多。]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>redis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Zero-Copy]]></title>
+    <url>%2Fposts%2F20850%2F</url>
+    <content type="text"><![CDATA[Zero-Copy零拷贝Zero-Copy用于提高Linux平台上的IO密集型的应用程序的性能。能够避免中间缓冲区中的冗余数据复制以及减少Linux内核空间和用户空间上下文交换的次数。 Zero-Copy使得应用程序从本地磁盘读取数据，再将读取的数据原封不动直接地发送给Socket。 传统数据传输过程数据先从本地磁盘读取到内核空间中，再通过缓冲区由用户程序得到，用户程序再通过缓冲区将数据发送到Socket。 即: 本地磁盘-&gt;内核buffer:用户态-&gt;内核态 内核buffer-&gt;用户buffer:内核态-&gt;用户态 用户buffer-&gt;socket buffer:用户态-&gt;内核态 socket buffer-&gt;协议引擎:内核态-&gt;用户态 这个过程当中一共出现了4次数据拷贝和4次用户态-内核态的上下文切换。 每次数据传输到内核-用户缓冲区时，必须进行复制，这消耗了CPU和内存，通过zerocopy请求使得数据直接从内核发送到Socket。即: 本地磁盘-&gt;内核buffer:用户态-&gt;内核态 内核buffer-&gt;socket buffer:内核态-&gt;内核态 socket buffer-&gt;协议引擎:内核态-&gt;用户态这个过程当中一共出现了3次数据拷贝和2次用户态-内核态的上下文切换。 transferToJAVA类库通过java.nio.channels.FileChannel. transferTo()方法支持zerocopy技术。 transferTo() 方法将数据从一个文件channel传输到一个可写channel。在内部它依赖于操作系统对 Zero-copy 的支持，在UNIX/Linux系统上， transferTo() 实际会调用 sendfile() 这个系统函数，将数据从一个文件描述符传输到另一个。 与传统方法相比，使用transferTo（）API可减少大约65％的时间。这对于需要将大量数据从一个I / O通道复制到另一个I / O通道的应用程序（如Web服务器）来说可以显著提高性能。 内核态和用户态内核态：cpu可以访问内存的所有数据，包括外围设备，例如硬盘，网卡，cpu也可以将自己从一个程序切换到另一个程序。 用户态：只能受限的访问内存，且不允许访问外围设备，占用cpu的能力被剥夺，cpu资源可以被其他程序获取。 为什么要有用户态和内核态？由于需要限制不同的程序之间的访问能力, 防止他们获取别的程序的内存数据, 或者获取外围设备的数据, 并发送到网络, CPU划分出两个权限等级 – 用户态和内核态。 用户态与内核态的切换所有用户程序都是运行在用户态的，但是有时候程序确实需要做一些内核态的事情，例如从硬盘读取数据, 或者从键盘获取输入等。 而唯一可以做这些事情的就是操作系统,所以此时程序就需要先操作系统请求以程序的名义来执行这些操作。 用户态切换到内核态的唯一途径：中断/异常/陷入内核态切换到用户态的途径：设置程序状态字]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>Zero-Copy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ThreadLocal原理]]></title>
     <url>%2Fposts%2F46263%2F</url>
     <content type="text"><![CDATA[使用定义123456private static ThreadLocal&lt;String&gt; CHARSET = new ThreadLocal&lt;String&gt;() &#123; @Override protected String initialValue() &#123; return "utf-8"; &#125; &#125;; 或者 1private static ThreadLocal&lt;String&gt; CHARSET = ThreadLocal.withInitial(() -&gt; "utf-8"); 销毁1CHARSET.remove(); 原理 一个线程Thread包含一个ThreadLocalMap变量 一个ThreadLocal包含一个ThreadLocalMap内部类 一个ThreadLocalMap包含一个Entry内部类 一个ThreadLocalMap的key为ThreadLocal对象 一个ThreadLocalMap的value为Entry的数组 初始化1234567891011121314private T setInitialValue() &#123; //默认null T value = initialValue(); //native方法，返回线程对象引用 Thread t = Thread.currentThread(); //默认null ThreadLocalMap map = getMap(t); if (map != null) map.set(this, value); else //创建ThreadLocalMap createMap(t, value); return value;&#125; setInitialValue为ThreadLocal方法，负责 初始化线程变量 初始化线程变量值 123public class Thread implements Runnable &#123;ThreadLocal.ThreadLocalMap threadLocals = null;&#125; threadLocals属于当前线程，负责 记录线程变量 保持多线程隔离1234567891011public class ThreadLocal&lt;T&gt; &#123; void createMap(Thread t, T firstValue) &#123; //初始化值到map中，this为ThreadLocal对象 //threadLocals为线程变量 t.threadLocals = new ThreadLocalMap(this, firstValue); &#125; ThreadLocalMap getMap(Thread t) &#123; //获取本线程变量map return t.threadLocals; &#125;&#125; createMap为ThreadLocal方法，负责创建线程变量map 12345678910111213141516171819public class ThreadLocal&lt;T&gt; &#123; static class ThreadLocalMap &#123; //构造方法 ThreadLocalMap(ThreadLocal&lt;?&gt; firstKey, Object firstValue) &#123; //创建table，初始容量16 table = new Entry[INITIAL_CAPACITY]; //索引位置 int i = firstKey.threadLocalHashCode &amp; (INITIAL_CAPACITY - 1); //填充 table[i] = new Entry(firstKey, firstValue); //当前大小 size = 1; //resize 阈值,2/3 //threshold = len * 2 / 3; setThreshold(INITIAL_CAPACITY); &#125; &#125; &#125;&#125; ThreadLocalMap为ThreadLocal静态类，key为ThreadLocal对象，提供 当前线程内，所有变量和值得map 设置索引位置，设置resize阈值 setThreadLocal方法 12345678910public void set(T value) &#123; //当前线程对象 Thread t = Thread.currentThread(); //获取线程内的变量map ThreadLocalMap map = getMap(t); if (map != null) //赋值 map.set(this, value); else createMap(t, value); 赋值 123456789101112131415161718192021222324252627282930private void set(ThreadLocal&lt;?&gt; key, Object value) &#123; Entry[] tab = table; int len = tab.length; //取余 int i = key.threadLocalHashCode &amp; (len-1); //存在该索引值 for (Entry e = tab[i]; e != null; e = tab[i = nextIndex(i, len)]) &#123; ThreadLocal&lt;?&gt; k = e.get(); //找到key if (k == key) &#123; //替换 e.value = value; return; &#125; //k为null，即弱引用的垃圾回收，则清除旧值并替换设置值 if (k == null) &#123; replaceStaleEntry(key, value, i); return; &#125; &#125; //不存在则新建 tab[i] = new Entry(key, value); //当前大小+1 int sz = ++size; //清除弱引用无用数据并确定是否扩容 if (!cleanSomeSlots(i, sz) &amp;&amp; sz &gt;= threshold) rehash(); &#125; 负责设置变量值 get123456789101112131415161718192021222324252627public T get() &#123; //当前线程 Thread t = Thread.currentThread(); //线程内变量map ThreadLocalMap map = getMap(t); if (map != null) &#123; //获取值对象 ThreadLocalMap.Entry e = map.getEntry(this); if (e != null) &#123; @SuppressWarnings("unchecked") T result = (T)e.value; return result; &#125; &#125; //初始化 return setInitialValue();&#125;private Entry getEntry(ThreadLocal&lt;?&gt; key) &#123; //索引位置 int i = key.threadLocalHashCode &amp; (table.length - 1); //数组取值 Entry e = table[i]; if (e != null &amp;&amp; e.get() == key) return e; else return getEntryAfterMiss(key, i, e);&#125; hash和索引计算firstKey.threadLocalHashCode，获取线程变量hashcode 12345private final int threadLocalHashCode = nextHashCode();private static final int HASH_INCREMENT = 0x61c88647;private static int nextHashCode() &#123; return nextHashCode.getAndAdd(HASH_INCREMENT);&#125; 0x61c88647，斐波那契散列即黄金分割 HASH_INCREMENT的0x61c88647对应的十进制为1640531527 0x61c88647与一个神奇的数字产生关系，就是 (Math.sqrt(5) - 1)/2。也就是传说中的黄金比例 0.618（0.618 只是一个粗略值），即0x61c88647 = 2^32 * 黄金分割比。 通过HASH_INCREMENT再借助一定的算法，就可以将哈希码能均匀的分布在2的N次方的数组里，保证了散列表的离散度，从而降低了冲突几率。 用0x61c88647作为魔数累加为每个ThreadLocal分配各自的ID也就是threadLocalHashCode再与2的幂取模，得到的结果分布很均匀。 firstKey.threadLocalHashCode &amp; (INITIAL_CAPACITY - 1)即求余]]></content>
@@ -30,8 +107,8 @@
         <category>架构</category>
       </categories>
       <tags>
-        <tag>docker</tag>
         <tag>kafka</tag>
+        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
@@ -732,7 +809,7 @@
   <entry>
     <title><![CDATA[IDEA基本配置]]></title>
     <url>%2Fposts%2F49684%2F</url>
-    <content type="text"><![CDATA[IDEA通用插件安装Alibaba Java Code Guidelines Preferences &gt;&gt; Plugins &gt;&gt; Marketplace 查询Alibaba Java Code Guidelines并安装后重启 Git Flow Integrationgit flow集成 GitToolBox行代码给与log历史提示 类的注释格式 Preferences &gt;&gt; Editor &gt;&gt; File and Code Templates &gt;&gt; Includes &gt;&gt; File Header 12345/*** @author: Perkins* @date: $&#123;DATE&#125;* @description: todo*/ lombok IDEA插件查询lombok并安装 pom 123456&lt;dependency&gt; &lt;groupId&gt;org.projectlombok&lt;/groupId&gt; &lt;artifactId&gt;lombok&lt;/artifactId&gt; &lt;version&gt;1.16.18&lt;/version&gt; &lt;scope&gt;provided&lt;/scope&gt;&lt;/dependency&gt; 代码使用注解@Data，@Log]]></content>
+    <content type="text"><![CDATA[IDEA通用插件安装Alibaba Java Code Guidelines Preferences &gt;&gt; Plugins &gt;&gt; Marketplace 查询Alibaba Java Code Guidelines并安装后重启 Git Flow Integrationgit flow集成 GitToolBox行代码给与log历史提示 类的注释格式 Preferences &gt;&gt; Editor &gt;&gt; File and Code Templates &gt;&gt; Includes &gt;&gt; File Header 12345/*** @author: Perkins* @date: $&#123;DATE&#125;* @description: todo*/ lombok IDEA插件查询lombok并安装 pom 123456&lt;dependency&gt; &lt;groupId&gt;org.projectlombok&lt;/groupId&gt; &lt;artifactId&gt;lombok&lt;/artifactId&gt; &lt;version&gt;1.16.18&lt;/version&gt; &lt;scope&gt;provided&lt;/scope&gt;&lt;/dependency&gt; 代码使用注解@Data，@Log 快捷键 左侧缩进：先选中多行，Shift+Tab多次，直至对齐 左侧对齐后的竖着多行选中：Option+光标上下选中 光标最左右侧移动，command+左右方向键 选中光标直至最左、右侧，command+shift+左右方向键 选中右侧第一个单词，command+w]]></content>
       <categories>
         <category>工具利器</category>
       </categories>
@@ -840,8 +917,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java并发编程</tag>
         <tag>Java内存模型</tag>
+        <tag>Java并发编程</tag>
       </tags>
   </entry>
   <entry>
@@ -864,8 +941,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>synchronized</tag>
         <tag>Java并发编程</tag>
+        <tag>synchronized</tag>
       </tags>
   </entry>
   <entry>
@@ -916,8 +993,8 @@
       </categories>
       <tags>
         <tag>Spring Cloud</tag>
-        <tag>Ribbon</tag>
         <tag>Zuul</tag>
+        <tag>Ribbon</tag>
         <tag>灰度测试</tag>
       </tags>
   </entry>
