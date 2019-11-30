@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="Perkins4j2的技术博客">
 <meta property="og:description" content="最大value 单个k-v的操作本身不受数据字节大小限制  操作受最大堆内存-Xmx限制  操作受超时时间限制hazelcast.max.operation.timeout 12INFO HazelcastTest - size:273437KBINFO HazelcastTest - elapsed:62ms">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-30T07:44:59.077Z">
+<meta property="og:updated_time" content="2019-11-30T07:51:02.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hazelcast Client配置">
 <meta name="twitter:description" content="最大value 单个k-v的操作本身不受数据字节大小限制  操作受最大堆内存-Xmx限制  操作受超时时间限制hazelcast.max.operation.timeout 12INFO HazelcastTest - size:273437KBINFO HazelcastTest - elapsed:62ms">
@@ -453,7 +453,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-11-30 15:44:59" itemprop="dateModified" datetime="2019-11-30T15:44:59+08:00">2019-11-30</time>
+                <time title="修改时间：2019-11-30 15:51:02" itemprop="dateModified" datetime="2019-11-30T15:51:02+08:00">2019-11-30</time>
               
             
           </span>
@@ -506,7 +506,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.4k</span>
+                <span title="本文字数">6k</span>
               
 
               
@@ -520,7 +520,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">4 分钟</span>
+                <span title="阅读时长">5 分钟</span>
               
             </div>
           
@@ -577,7 +577,7 @@
 <li>基于Eureka</li>
 <li>基于Zk</li>
 </ul>
-
+<h3 id="检索"><a href="#检索" class="headerlink" title="检索"></a>检索</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Cache cache1 = <span class="keyword">new</span> Cache();</span><br><span class="line">        topiccache1Cache1.setA(<span class="string">"1"</span>);</span><br><span class="line">        cache1.setB(<span class="string">"你好"</span>);</span><br><span class="line">        cache1.setC(<span class="string">"大家好"</span>);</span><br><span class="line">        Gson gson = <span class="keyword">new</span> Gson();</span><br><span class="line">Client.getInstance().putKV(cache1.getA(),</span><br><span class="line">        Predicate p1      = Predicates.like(<span class="string">"b"</span>, <span class="string">"%好%"</span>);</span><br><span class="line">        Predicate p2 = Predicates.like(<span class="string">"c"</span>, <span class="string">"%大%"</span>);</span><br><span class="line">        Predicate predicate   = Predicates.or(p1, p2);</span><br><span class="line">        Collection&lt;HazelcastJsonValue&gt; peopleUnder21 = Client.getInstance().values(predicate);</span><br><span class="line"> log.info(peopleUnder21.toString());</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -1031,7 +1031,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#最大value"><span class="nav-number">1.</span> <span class="nav-text">最大value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数量、过期等限制"><span class="nav-number">2.</span> <span class="nav-text">数量、过期等限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map过期时间"><span class="nav-number">3.</span> <span class="nav-text">Map过期时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除策略"><span class="nav-number">4.</span> <span class="nav-text">删除策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群性能"><span class="nav-number">5.</span> <span class="nav-text">集群性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动扩充"><span class="nav-number">6.</span> <span class="nav-text">自动扩充</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#最大value"><span class="nav-number">1.</span> <span class="nav-text">最大value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数量、过期等限制"><span class="nav-number">2.</span> <span class="nav-text">数量、过期等限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map过期时间"><span class="nav-number">3.</span> <span class="nav-text">Map过期时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除策略"><span class="nav-number">4.</span> <span class="nav-text">删除策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集群性能"><span class="nav-number">5.</span> <span class="nav-text">集群性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动扩充"><span class="nav-number">6.</span> <span class="nav-text">自动扩充</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检索"><span class="nav-number">7.</span> <span class="nav-text">检索</span></a></li></ol></div>
             
 
           </div>
