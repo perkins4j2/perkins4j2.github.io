@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-11-30T02:01:52.430Z</updated>
+  <updated>2019-12-09T12:33:16.865Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -15,6 +15,72 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Docker安装和配置</title>
+    <link href="https://perkins4j2.github.io/posts/25453/"/>
+    <id>https://perkins4j2.github.io/posts/25453/</id>
+    <published>2019-12-09T12:32:31.000Z</published>
+    <updated>2019-12-09T12:33:16.865Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Docker&quot;&gt;&lt;a href=&quot;#Docker&quot; class=&quot;headerlink&quot; title=&quot;Docker&quot;&gt;&lt;/a&gt;Docker&lt;/h3&gt;&lt;p&gt;Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从 Apache2.0 协议开源。&lt;/p&gt;
+&lt;p&gt;Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。&lt;/p&gt;
+&lt;p&gt;容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）,更重要的是容器性能开销极低。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="docker" scheme="https://perkins4j2.github.io/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python环境及工具安装</title>
+    <link href="https://perkins4j2.github.io/posts/3231/"/>
+    <id>https://perkins4j2.github.io/posts/3231/</id>
+    <published>2019-12-09T12:32:14.000Z</published>
+    <updated>2019-12-09T12:36:27.649Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://www.jetbrains.com/pycharm/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;下载安装PyCharm CE2019.2&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;安装Python&quot;&gt;&lt;a href=&quot;#安装Python&quot; class=&quot;headerlink&quot; title=&quot;安装Python&quot;&gt;&lt;/a&gt;安装Python&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://www.python.org/downloads/mac-osx/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;下载安装Python3.6&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="Python" scheme="https://perkins4j2.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python3.6+Tensorflow1.8</title>
+    <link href="https://perkins4j2.github.io/posts/16968/"/>
+    <id>https://perkins4j2.github.io/posts/16968/</id>
+    <published>2019-12-09T12:31:59.000Z</published>
+    <updated>2019-12-09T12:36:37.114Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;要求&quot;&gt;&lt;a href=&quot;#要求&quot; class=&quot;headerlink&quot; title=&quot;要求&quot;&gt;&lt;/a&gt;要求&lt;/h3&gt;&lt;p&gt;Requires Python &amp;gt; 3.4 and pip &amp;gt;= 19.0&lt;/p&gt;
+&lt;p&gt;目前是Python &amp;gt; 3.4，但3.7及以上不支持&lt;br&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="Python" scheme="https://perkins4j2.github.io/tags/Python/"/>
+    
+      <category term="Tensorflow" scheme="https://perkins4j2.github.io/tags/Tensorflow/"/>
+    
+  </entry>
   
   <entry>
     <title>Varint编码</title>
@@ -239,9 +305,9 @@
       <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
     
     
-      <category term="kafka" scheme="https://perkins4j2.github.io/tags/kafka/"/>
-    
       <category term="docker" scheme="https://perkins4j2.github.io/tags/docker/"/>
+    
+      <category term="kafka" scheme="https://perkins4j2.github.io/tags/kafka/"/>
     
   </entry>
   
@@ -394,77 +460,6 @@
     
     
       <category term="kafka" scheme="https://perkins4j2.github.io/tags/kafka/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>二进制按位与&amp;及求余数</title>
-    <link href="https://perkins4j2.github.io/posts/19120/"/>
-    <id>https://perkins4j2.github.io/posts/19120/</id>
-    <published>2019-11-18T06:06:00.000Z</published>
-    <updated>2019-11-18T12:14:44.046Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;按位与-amp&quot;&gt;&lt;a href=&quot;#按位与-amp&quot; class=&quot;headerlink&quot; title=&quot;按位与&amp;amp;&quot;&gt;&lt;/a&gt;按位与&amp;amp;&lt;/h3&gt;&lt;h4 id=&quot;移位&quot;&gt;&lt;a href=&quot;#移位&quot; class=&quot;headerlink&quot; title=&quot;移位&quot;&gt;&lt;/a&gt;移位&lt;/h4&gt;&lt;p&gt;运算规则：0&amp;amp;0=0; 0&amp;amp;1=0; 1&amp;amp;0=0; 1&amp;amp;1=1;&lt;/p&gt;
-&lt;p&gt;在移位运算中我们可知，计算机中的数据都是0和1的序列，当我们把某个数字左移一位，该数字会扩大为原来的2倍；而将其右移一位时，该数字就会缩小为原来的1/2，即相当于对该数字做了一次被2整除的运算。&lt;/p&gt;
-&lt;p&gt;举例说明：&lt;/p&gt;
-&lt;p&gt;11的二进制是1011，如果右移一位的话，将变成0101，也就是5。&lt;/p&gt;
-&lt;p&gt;现在我们考虑11除以8的余数，很显然是3；因为8是2的3次幂，求余时相当于除以2的3次幂，也就是把1011右移3位，该过程会把1011的低3位011给移走，事实上，这个被移走的011就是11除以8的余数！&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
-    
-    
-      <category term="按位与" scheme="https://perkins4j2.github.io/tags/%E6%8C%89%E4%BD%8D%E4%B8%8E/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Snowflake根据设备生成15位ID</title>
-    <link href="https://perkins4j2.github.io/posts/19968/"/>
-    <id>https://perkins4j2.github.io/posts/19968/</id>
-    <published>2019-11-18T02:23:35.000Z</published>
-    <updated>2019-11-18T02:24:38.567Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Snowflake&quot;&gt;&lt;a href=&quot;#Snowflake&quot; class=&quot;headerlink&quot; title=&quot;Snowflake&quot;&gt;&lt;/a&gt;Snowflake&lt;/h3&gt;&lt;p&gt;snowflake是Twitter开源的分布式ID生成算法，结果是一个long型的ID。&lt;/p&gt;
-&lt;p&gt;其核心思想是，生成64位即一个long类型的递增序列Id，保障有序及不重复，具体如下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;使用41bit作为毫秒数，&lt;/li&gt;
-&lt;li&gt;10bit作为机器的ID，5个bit是数据中心，5个bit的机器ID&lt;/li&gt;
-&lt;li&gt;12bit作为毫秒内的流水号，意味着每个节点在每毫秒可以产生 4096个ID&lt;/li&gt;
-&lt;li&gt;最后还有一个符号位，永远是0
-    
-    </summary>
-    
-      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
-    
-    
-      <category term="Snowflake" scheme="https://perkins4j2.github.io/tags/Snowflake/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git操作</title>
-    <link href="https://perkins4j2.github.io/posts/53101/"/>
-    <id>https://perkins4j2.github.io/posts/53101/</id>
-    <published>2019-11-18T01:01:37.000Z</published>
-    <updated>2019-11-29T07:42:58.551Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;分支&quot;&gt;&lt;a href=&quot;#分支&quot; class=&quot;headerlink&quot; title=&quot;分支&quot;&gt;&lt;/a&gt;分支&lt;/h3&gt;&lt;h4 id=&quot;创建分支&quot;&gt;&lt;a href=&quot;#创建分支&quot; class=&quot;headerlink&quot; title=&quot;创建分支&quot;&gt;&lt;/a&gt;创建分支&lt;/h4&gt;&lt;p&gt;&lt;code&gt;git branch &amp;lt;branch-name&amp;gt;&lt;/code&gt;&lt;br&gt;如git branch testing&lt;/p&gt;
-&lt;h4 id=&quot;切换分支&quot;&gt;&lt;a href=&quot;#切换分支&quot; class=&quot;headerlink&quot; title=&quot;切换分支&quot;&gt;&lt;/a&gt;切换分支&lt;/h4&gt;&lt;p&gt;从当前所处的分支切换到其他分支&lt;br&gt;&lt;code&gt;git checkout &amp;lt;branch-name&amp;gt;&lt;/code&gt;&lt;br&gt;如git checkout testing；&lt;br&gt;
-    
-    </summary>
-    
-      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
-    
-    
-      <category term="Git" scheme="https://perkins4j2.github.io/tags/Git/"/>
     
   </entry>
   

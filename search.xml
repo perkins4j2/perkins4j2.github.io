@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Docker安装和配置]]></title>
+    <url>%2Fposts%2F25453%2F</url>
+    <content type="text"><![CDATA[DockerDocker 是一个开源的应用容器引擎，基于 Go 语言 并遵从 Apache2.0 协议开源。 Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。 容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）,更重要的是容器性能开销极低。 安装方式 Mac OS安装Docker3种方式 1、命令方式， 2、Docker Desktop for Mac，带一套可视化软件，和Docker环境 3、Docker Toolbox，带一套可视化软件，VirtualBox和Docker环境 Docker Desktop for Mac是Docker管理桌面IDE，用于在Mac上构建，调试和测试Dockerized应用程序。是一个完整的开发环境，与Mac OS Hypervisor框架，网络和文件系统深度集成。是在Mac上运行Docker的最快，最可靠的方式。 Docker Toolbox，使用Oracle VirtualBox虚拟机软件，而不是HyperKit。 Docker Desktop使用 HyperKit替代Virtual Box. Hyperkit 是轻量级的macOS 虚拟化解决方案。 下载官方docker-for-mac阿里云下载 官方配置教程 需要macOS 10.12+，至少4 GB内存。 验证123456docker psdocker infodocker versiondocker imagesdocker run hello-worlddocker run --detach --publish=80:80 --name=webserver nginx 容器和镜像操作 123456$ docker container ls$ docker container stop webserver$ docker container ls -a$ docker container rm webserver$ docker image ls$ docker image rm nginx 数据保存12345678# 保存镜像docker save -o images.tar image1 [image2 ...]# 导出容器docker export -o myContainner1.tar container1# 加载镜像docker load -i images.tar# 导入容器docker import -i myContainer1.tar 一个Docker镜像可以构建于另一个Docker镜像之上，这种层叠关系可以是多层的。 第1层的镜像层我们称之为基础镜像（Base Image），其他层的镜像（除了最顶层）我们称之为父层镜像（Parent Image） Docker镜像通过镜像ID进行识别。镜像ID是一个64字符的十六进制的字符串。 docker容器是由docker镜像创建的运行实例。docker create &lt;image -id &gt;,为指定的镜像添加一个可读写层，构成一个新的容器。 一个正在运行的Docker容器时，从运行态到停止态，我们对它所做的一切变更都会永久地写到容器的文件系统中。要切记，对容器的变更是写入到容器的文件系统的，而不是写入到Docker镜像中的。配置General 关闭Automatically check for updates 关闭Send usage statistics registry-mirrors docker info 查看 公共 1234http://f1361db2.m.daocloud.iohttps://registry.docker-cn.comhttps://dockerhub.azk8s.cnhttps://reg-mirror.qiniu.com 阿里云公有或私有镜像仓库免费注册进入容器镜像服务-&gt;镜像中心-&gt;镜像加速器-&gt;加速器地址 配置右键点击桌面顶栏的 docker 图标，选择 Preferences ，在 Daemon 标签（Docker 17.03 之前版本为 Advanced 标签）下的 Registry mirrors 列表中将加速器地址加到”registry-mirrors”的数组里，点击 Apply &amp; Restart按钮，等待Docker重启并应用配置的镜像加速器。]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python环境及工具安装]]></title>
+    <url>%2Fposts%2F3231%2F</url>
+    <content type="text"><![CDATA[安装下载安装PyCharm CE2019.2 安装Python下载安装Python3.6 查看64位 123&gt;&gt;&gt; import platform&gt;&gt;&gt; platform.architecture()('64bit', '') 查看python目录 which python 查看python3目录 which python3 各版本python命令 python python3PyCharm配置Python本地 Pycharm - Preference - Project:xxx - Python Interpreter 配置图标 -&gt; Show All -&gt; +图标 -&gt; 系统解释器 -&gt; 选择python3.6目录 全局 Pycharm -&gt; Preference - Build,Deployment -&gt; Python Console -&gt; Python interpreter 选择python3.6 包管理pippip是Python安装包默认的包管理工具 Python 2.7.9及后续版本：默认安装，命令为 pip Python 3.4及后续版本：默认安装，命令为 pip3 更新pip3 1pip3 install --upgrade pip 如果要安装特定版本的package，通过使用==, &gt;=, &lt;=, &gt;, &lt;来指定一个版本号。 123pip3 install github3.pypip3 install 'Markdown&lt;2.0'pip3 install 'Markdown&gt;2.0,&lt;2.0.3 也可以将所有的依赖放到一个requirement文件中，一次性安装。例如新建内容如下的requirements.txt文件。 1pip3 install -r requirements.txt 卸载软件包，使用uninstall选项。 1pip3 uninstall SomePackage 更新软件包 1pip3 install --upgrade SomePackage 显示已经安装的文件 1pip show --files SomePackage 显示过期的安装包 1pip list --outdated virtualenvvirtualenv创建一个拥有自己安装目录的环境, 这个环境不与其他虚拟环境共享库, 能够方便的管理python版本和管理python库。 virtualenv是可以用来创建独立Python环境的工具, 来解决依赖、版本以及间接权限问题。 安装 12pip3 install virtualenvvirtualenv --version 创建项目的虚拟环境 123mkdir venv #名字随便取cd venvvirtualenv venv-tf --python=python3.6 # venv 环境名称，文件夹名称 虚拟环境会默认装上Python setuptools, pip, wheel 执行后，在本地会生成一个与虚拟环境同名的文件夹，包含 Python 可执行文件和 pip 库的拷贝，可用于安装其他包。 但是默认情况下，虚拟环境中不会包含也无法使用系统环境的global site-packages。比如系统环境里安装了 requests 模块，在虚拟环境里 import requests 会提示 ImportError。如果想使用系统环境的第三方软件包，可以在创建虚拟环境时使用参数–system-site-packages。 1virtualenv --system-site-packages venv 另外，你还可以自己指定虚拟环境所使用的 Python 版本，但前提是系统中已经安装了该版本： 1virtualenv -p /usr/bin/python3.6 venv 如果未对命令行进行个性化，此时命令行前面应该会多出一个括号，括号里为虚拟环境的名称。启动虚拟环境后安装的所有模块都会安装到该虚拟环境目录里。 激活 1source venv/bin/activate(activate路径) 退出虚拟环境 1deactivate pycharm使用Virtualenv PyCharm -&gt; Preferences -&gt; Project Interpreter 配置图标 -&gt; Add 选择选择 New environment或已存在的venv AnacondaAnaconda是一个包含180+的科学包及其依赖项的发行版本。其包含的科学包包括：conda, numpy, scipy, ipython notebook等。 conda结合了pip和virtualenv的功能。]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python3.6+Tensorflow1.8]]></title>
+    <url>%2Fposts%2F16968%2F</url>
+    <content type="text"><![CDATA[要求Requires Python &gt; 3.4 and pip &gt;= 19.0 目前是Python &gt; 3.4，但3.7及以上不支持 pip修改源配置文件 12345cd ~mkdir .pipcd .piptouch pip.confvi pip.conf 配置 12345[global]index-url = http://mirrors.aliyun.com/pypi/simple/[install]trusted-host=mirrors.aliyun.com 安装Tensorflow1.8123456source venv/bin/activatepip install --upgrade pippip list pip3 search tensorflowpip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.8.0-py3-none-any.whl 消除FutureWarning 1pip install numpy==1.13.3 Hello1234567891011import tensorflow as tfhello = tf.constant("Hello,TF")session = tf.Session()print(session.run(hello))a = tf.constant(10)b = tf.constant(32)print(session.run(a + b))session.close()]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Tensorflow</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Varint编码]]></title>
     <url>%2Fposts%2F63107%2F</url>
     <content type="text"><![CDATA[什么是Varint编码Varint是一种使用一个或多个字节序列化整数的方法，会把整数编码为变长字节。 对于32位整型的4个字节数据经过Varint编码后需要1~5个字节，小的数字使用1个byte，大的数字使用5个bytes。 64位整型数据编码后占用1~10个字节。在实际场景中小数字的使用率远远多于大数字，因此通过Varint编码对于大部分场景都可以起到很好的压缩效果。 编码原理Varint 中的每个 byte 的最高位 bit 有特殊的含义，如果该位为 1，表示后续的 byte 也是该数字的一部分，如果该位为 0，则结束。 其他的 7 个 bit 都用来表示数字。因此小于 128 的数字都可以用一个 byte 表示。大于 128 的数字，比如 300，会用两个字节来表示：1010 1100 0000 0010 由于负数的高位为1,所以采用这种压缩处理的时候必须负数转成正数。 解码的过程就是将字节依次取出，去掉最高有效位，因为是小端排序所以先解码的字节要放在低位，之后解码出来的二进制位继续放在之前已经解码出来的二进制的高位，最后转换为10进制数完成varint编码的解码过程。 举例对数字123456进行varint编码，123456用二进制表示为1 11100010 01000000，每次低从向高取7位再加上最高有效位变成1100 0000 - 11000100 - 00000111 所以经过varint编码后123456占用三个字节分别为192 196 7。 每8位的第一位是最高有效位（most significant bit - msb）–msb。]]></content>
@@ -107,8 +141,8 @@
         <category>架构</category>
       </categories>
       <tags>
-        <tag>kafka</tag>
         <tag>docker</tag>
+        <tag>kafka</tag>
       </tags>
   </entry>
   <entry>
@@ -917,8 +951,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java内存模型</tag>
         <tag>Java并发编程</tag>
+        <tag>Java内存模型</tag>
       </tags>
   </entry>
   <entry>
@@ -993,8 +1027,8 @@
       </categories>
       <tags>
         <tag>Spring Cloud</tag>
-        <tag>Zuul</tag>
         <tag>Ribbon</tag>
+        <tag>Zuul</tag>
         <tag>灰度测试</tag>
       </tags>
   </entry>
