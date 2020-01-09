@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2019-12-09T12:33:16.865Z</updated>
+  <updated>2020-01-09T01:23:01.733Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,11 +17,127 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>FastText介绍</title>
+    <link href="https://perkins4j2.github.io/posts/55043/"/>
+    <id>https://perkins4j2.github.io/posts/55043/</id>
+    <published>2020-01-09T00:59:54.721Z</published>
+    <updated>2020-01-09T01:23:01.733Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;FastText&quot;&gt;&lt;a href=&quot;#FastText&quot; class=&quot;headerlink&quot; title=&quot;FastText&quot;&gt;&lt;/a&gt;FastText&lt;/h2&gt;&lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;p&gt;FastText是Facebook研究团队创建的一个库，用于高效计算word representation和执行文本分类，可以在几秒内完成其他算法几天才可以完成的任务。&lt;/p&gt;
+&lt;p&gt;这个库在NLP社区获得了用户的大量支持，并且可能替代gensim包，它提供了像Word Vectors（词向量）功能。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="FastText" scheme="https://perkins4j2.github.io/tags/FastText/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Word2Vector介绍</title>
+    <link href="https://perkins4j2.github.io/posts/44927/"/>
+    <id>https://perkins4j2.github.io/posts/44927/</id>
+    <published>2020-01-09T00:59:44.000Z</published>
+    <updated>2020-01-09T01:24:12.870Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;word2vector&quot;&gt;&lt;a href=&quot;#word2vector&quot; class=&quot;headerlink&quot; title=&quot;word2vector&quot;&gt;&lt;/a&gt;word2vector&lt;/h3&gt;&lt;h4 id=&quot;word2vec简介&quot;&gt;&lt;a href=&quot;#word2vec简介&quot; class=&quot;headerlink&quot; title=&quot;word2vec简介&quot;&gt;&lt;/a&gt;word2vec简介&lt;/h4&gt;&lt;p&gt;word2vec的核心是神经网络，采用 CBOW（Continuous Bag-Of-Words，即连续的词袋模型）和 Skip-Gram 两种模型，将词语映像到同一坐标系，输出为数值型向量的方法。&lt;/p&gt;
+&lt;p&gt;简而言之，就是将人类才可以看懂的文字，转换为机器也可以识别、操作、处理的数值，将一串文字转化为一个数值型向量的过程。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="NLP" scheme="https://perkins4j2.github.io/categories/NLP/"/>
+    
+    
+      <category term="word2vector" scheme="https://perkins4j2.github.io/tags/word2vector/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Jupyter Notebook安装</title>
+    <link href="https://perkins4j2.github.io/posts/7893/"/>
+    <id>https://perkins4j2.github.io/posts/7893/</id>
+    <published>2020-01-09T00:59:32.000Z</published>
+    <updated>2020-01-09T01:24:56.415Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h3&gt;&lt;h4 id=&quot;前提&quot;&gt;&lt;a href=&quot;#前提&quot; class=&quot;headerlink&quot; title=&quot;前提&quot;&gt;&lt;/a&gt;前提&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Python 3.3+, or Python 2.7&lt;/li&gt;
+&lt;li&gt;推荐Anaconda安装&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;使用Anaconda&quot;&gt;&lt;a href=&quot;#使用Anaconda&quot; class=&quot;headerlink&quot; title=&quot;使用Anaconda&quot;&gt;&lt;/a&gt;使用Anaconda&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;默认jupyter已安装&lt;/li&gt;
+&lt;li&gt;若无，搜索jupyter进行安装&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;使用pip3&quot;&gt;&lt;a href=&quot;#使用pip3&quot; class=&quot;headerlink&quot; title=&quot;使用pip3&quot;&gt;&lt;/a&gt;使用pip3&lt;/h4&gt;&lt;p&gt;pip3 install –upgrade pip&lt;br&gt;pip3 install jupyter&lt;br&gt;
+    
+    </summary>
+    
+      <category term="NLP" scheme="https://perkins4j2.github.io/categories/NLP/"/>
+    
+    
+      <category term="Jupyter" scheme="https://perkins4j2.github.io/tags/Jupyter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>动态代理和CGLib</title>
+    <link href="https://perkins4j2.github.io/posts/25433/"/>
+    <id>https://perkins4j2.github.io/posts/25433/</id>
+    <published>2020-01-09T00:58:57.000Z</published>
+    <updated>2020-01-09T01:22:18.248Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;1、JDK动态代理&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;利用拦截器(拦截器必须实现InvocationHanlder)加上反射机制生成一个实现代理接口的匿名类。&lt;/li&gt;
+&lt;li&gt;在调用具体方法前调用InvokeHandler来处理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2、CGLIB动态代理&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;利用ASM开源包，对代理对象类的class文件加载进来，通过修改其字节码生成子类来处理。
+    
+    </summary>
+    
+      <category term="Java" scheme="https://perkins4j2.github.io/categories/Java/"/>
+    
+    
+      <category term="aop" scheme="https://perkins4j2.github.io/tags/aop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AOP及内部调用</title>
+    <link href="https://perkins4j2.github.io/posts/43132/"/>
+    <id>https://perkins4j2.github.io/posts/43132/</id>
+    <published>2020-01-09T00:58:46.000Z</published>
+    <updated>2020-01-09T01:12:16.608Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;AOP简介&quot;&gt;&lt;a href=&quot;#AOP简介&quot; class=&quot;headerlink&quot; title=&quot;AOP简介&quot;&gt;&lt;/a&gt;AOP简介&lt;/h3&gt;&lt;p&gt;将相同逻辑的重复代码横向抽取出来，使用动态代理技术将这些重复代码织入到目标对象方法中，实现和原来一样的功能。&lt;br&gt;这样一来，我们就在写业务时只关心业务代码，而不用关心与业务无关的代码。&lt;/p&gt;
+&lt;p&gt;拦截器的实现原理就是动态代理，实现AOP机制。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="https://perkins4j2.github.io/categories/Java/"/>
+    
+    
+      <category term="aop" scheme="https://perkins4j2.github.io/tags/aop/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Docker安装和配置</title>
     <link href="https://perkins4j2.github.io/posts/25453/"/>
     <id>https://perkins4j2.github.io/posts/25453/</id>
     <published>2019-12-09T12:32:31.000Z</published>
-    <updated>2019-12-09T12:33:16.865Z</updated>
+    <updated>2019-12-09T12:36:49.517Z</updated>
     
     <summary type="html">
     
@@ -43,7 +159,7 @@
     <link href="https://perkins4j2.github.io/posts/3231/"/>
     <id>https://perkins4j2.github.io/posts/3231/</id>
     <published>2019-12-09T12:32:14.000Z</published>
-    <updated>2019-12-09T12:36:27.649Z</updated>
+    <updated>2019-12-09T12:36:49.522Z</updated>
     
     <summary type="html">
     
@@ -64,7 +180,7 @@
     <link href="https://perkins4j2.github.io/posts/16968/"/>
     <id>https://perkins4j2.github.io/posts/16968/</id>
     <published>2019-12-09T12:31:59.000Z</published>
-    <updated>2019-12-09T12:36:37.114Z</updated>
+    <updated>2019-12-09T12:36:49.520Z</updated>
     
     <summary type="html">
     
@@ -354,112 +470,6 @@
     
     
       <category term="log" scheme="https://perkins4j2.github.io/tags/log/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Protobuf和JSON</title>
-    <link href="https://perkins4j2.github.io/posts/3676/"/>
-    <id>https://perkins4j2.github.io/posts/3676/</id>
-    <published>2019-11-29T07:41:33.000Z</published>
-    <updated>2019-11-29T08:01:08.754Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Protobuf&quot;&gt;&lt;a href=&quot;#Protobuf&quot; class=&quot;headerlink&quot; title=&quot;Protobuf&quot;&gt;&lt;/a&gt;Protobuf&lt;/h3&gt;&lt;p&gt;Protobuf是用于允许对结构化数据进行序列化和反序列化。Google开发它的目的是提供一种比XML更好的方法来使系统进行通信。因此，他们专注于使其比XML更简单，更小，更快和更可维护，甚至以更好的性能，更好的可维护性和更小的大小超过了JSON。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="protobuf" scheme="https://perkins4j2.github.io/tags/protobuf/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Canal及MQ顺序性</title>
-    <link href="https://perkins4j2.github.io/posts/47529/"/>
-    <id>https://perkins4j2.github.io/posts/47529/</id>
-    <published>2019-11-29T07:39:54.000Z</published>
-    <updated>2019-11-29T08:01:08.747Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;顺序性&quot;&gt;&lt;a href=&quot;#顺序性&quot; class=&quot;headerlink&quot; title=&quot;顺序性&quot;&gt;&lt;/a&gt;顺序性&lt;/h3&gt;&lt;p&gt;Binlog本身是有序的，写入到mq之后需要保障顺序。&lt;/p&gt;
-&lt;h3 id=&quot;方案&quot;&gt;&lt;a href=&quot;#方案&quot; class=&quot;headerlink&quot; title=&quot;方案&quot;&gt;&lt;/a&gt;方案&lt;/h3&gt;&lt;p&gt;Canal目前选择支持Kafka/Rocketmq，本质上都是基于本地文件的方式来支持了分区级的顺序消息的能力。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="Canal" scheme="https://perkins4j2.github.io/tags/Canal/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>散列算法</title>
-    <link href="https://perkins4j2.github.io/posts/64783/"/>
-    <id>https://perkins4j2.github.io/posts/64783/</id>
-    <published>2019-11-18T12:13:12.000Z</published>
-    <updated>2019-11-18T12:14:44.047Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;何为散列&quot;&gt;&lt;a href=&quot;#何为散列&quot; class=&quot;headerlink&quot; title=&quot;何为散列&quot;&gt;&lt;/a&gt;何为散列&lt;/h3&gt;&lt;p&gt;散列（Hash）也称为哈希，就是把任意长度的输入，通过散列算法，变换成固定长度的输出，这个输出值就是散列值。&lt;/p&gt;
-&lt;p&gt;散列算法的宗旨就是：构造冲突较低的散列地址，保证散列表中数据的离散度。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
-    
-    
-      <category term="散列" scheme="https://perkins4j2.github.io/tags/%E6%95%A3%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kafka消费配置</title>
-    <link href="https://perkins4j2.github.io/posts/39128/"/>
-    <id>https://perkins4j2.github.io/posts/39128/</id>
-    <published>2019-11-18T12:10:58.000Z</published>
-    <updated>2019-11-18T12:14:44.045Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;offset&quot;&gt;&lt;a href=&quot;#offset&quot; class=&quot;headerlink&quot; title=&quot;offset&quot;&gt;&lt;/a&gt;offset&lt;/h3&gt;&lt;p&gt;在Kafka中无论是producer往topic中写数据,还是consumer从topic中读数据,都避免不了和offset打交道,关于offset主要有以下几个概念。&lt;/p&gt;
-&lt;p&gt;Last Committed Offset&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;consumer group最新一次 commit 的 offset，表示这个 group 已经把 Last Committed Offset 之前的数据都消费成功了。
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="kafka" scheme="https://perkins4j2.github.io/tags/kafka/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Consumer手动提交Kafka偏移量和Rebalance</title>
-    <link href="https://perkins4j2.github.io/posts/32177/"/>
-    <id>https://perkins4j2.github.io/posts/32177/</id>
-    <published>2019-11-18T12:07:45.000Z</published>
-    <updated>2019-11-18T12:14:44.042Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;再均衡是指分区的所属权从一个消费者转移到另一个消费者的行为，再均衡期间，消费组内的消费组无法读取消息。&lt;/p&gt;
-&lt;p&gt;消费者需要自己保留一个offset，从kafka 获取消息时，只拉去当前offset以后的消息。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="kafka" scheme="https://perkins4j2.github.io/tags/kafka/"/>
     
   </entry>
   
