@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="Sentinel介绍 阿里巴巴中间件，负责流量控制和熔断降级。 适配Spring类框架 可原生开发  引入pom123456789101112131415&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;com.alibaba.csp&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;sentinel-core&amp;lt;/artifactId&amp;gt;">
+  <meta name="description" content="Sentinel介绍 阿里巴巴中间件，负责流量控制和熔断降级。 适配Spring类框架 可原生开发  引入pom1234567891011121314151617&amp;lt;sentinel.version&amp;gt;1.7.1&amp;lt;/sentinel.version&amp;gt;&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;com.alibaba.csp&amp;lt;/groupId&amp;">
 <meta name="keywords" content="sentinel">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sentinel流控和降级方案">
 <meta property="og:url" content="https://perkins4j2.github.io/posts/28431/index.html">
 <meta property="og:site_name" content="Perkins4j2的技术博客">
-<meta property="og:description" content="Sentinel介绍 阿里巴巴中间件，负责流量控制和熔断降级。 适配Spring类框架 可原生开发  引入pom123456789101112131415&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;com.alibaba.csp&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;sentinel-core&amp;lt;/artifactId&amp;gt;">
+<meta property="og:description" content="Sentinel介绍 阿里巴巴中间件，负责流量控制和熔断降级。 适配Spring类框架 可原生开发  引入pom1234567891011121314151617&amp;lt;sentinel.version&amp;gt;1.7.1&amp;lt;/sentinel.version&amp;gt;&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;com.alibaba.csp&amp;lt;/groupId&amp;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-14T01:42:39.344Z">
+<meta property="og:updated_time" content="2020-04-14T01:51:51.420Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sentinel流控和降级方案">
-<meta name="twitter:description" content="Sentinel介绍 阿里巴巴中间件，负责流量控制和熔断降级。 适配Spring类框架 可原生开发  引入pom123456789101112131415&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;com.alibaba.csp&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;sentinel-core&amp;lt;/artifactId&amp;gt;">
+<meta name="twitter:description" content="Sentinel介绍 阿里巴巴中间件，负责流量控制和熔断降级。 适配Spring类框架 可原生开发  引入pom1234567891011121314151617&amp;lt;sentinel.version&amp;gt;1.7.1&amp;lt;/sentinel.version&amp;gt;&amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;com.alibaba.csp&amp;lt;/groupId&amp;">
 
 
 
@@ -436,7 +436,7 @@
                 
               
 
-              <time title="创建时间：2020-04-14 08:54:29 / 修改时间：09:42:39" itemprop="dateCreated datePublished" datetime="2020-04-14T08:54:29+08:00">2020-04-14</time>
+              <time title="创建时间：2020-04-14 08:54:29 / 修改时间：09:51:51" itemprop="dateCreated datePublished" datetime="2020-04-14T08:54:29+08:00">2020-04-14</time>
             
 
             
@@ -494,7 +494,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">13k</span>
+                <span title="本文字数">19k</span>
               
 
               
@@ -508,7 +508,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">12 分钟</span>
+                <span title="阅读时长">17 分钟</span>
               
             </div>
           
@@ -533,7 +533,7 @@
 <li>适配Spring类框架</li>
 <li>可原生开发</li>
 </ul>
-<h3 id="引入pom"><a href="#引入pom" class="headerlink" title="引入pom"></a>引入pom</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.csp<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>sentinel-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;sentinel.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.csp<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>sentinel-annotation-aspectj<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;sentinel.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.csp<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>sentinel-transport-simple-http<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;sentinel.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="引入pom"><a href="#引入pom" class="headerlink" title="引入pom"></a>引入pom</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">sentinel.version</span>&gt;</span>1.7.1<span class="tag">&lt;/<span class="name">sentinel.version</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.csp<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>sentinel-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;sentinel.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.csp<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>sentinel-annotation-aspectj<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;sentinel.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.csp<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>sentinel-transport-simple-http<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;sentinel.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><p>sentinel-core核心包</p>
@@ -562,7 +562,7 @@
 <li><p>count为流控的阈值，线程数或QPS</p>
 </li>
 <li><p>grade流控类型，0-线程，1-QPS</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Flow flow= <span class="keyword">new</span> Flow();</span><br><span class="line">FlowRuleManager.loadRules(flow);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 刷新Flow</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">reloadFlow</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    List&lt;FlowRule&gt; rules = <span class="keyword">new</span> ArrayList&lt;&gt;(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line">    flows.forEach(e -&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isEmpty(e.getResource()) || e.getCount() == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        log.warn(e.toString());</span><br><span class="line"></span><br><span class="line">        FlowRule rule = <span class="keyword">new</span> FlowRule();</span><br><span class="line">        rule.setResource(e.getResource());</span><br><span class="line">        <span class="comment">//qps</span></span><br><span class="line">        rule.setCount(e.getCount());</span><br><span class="line">        rule.setGrade(e.getGrade());</span><br><span class="line">        rules.add(rule);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (rules.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        FlowRuleManager.loadRules(rules);</span><br><span class="line">        log.warn(<span class="string">"Sentinel reloadFlow success!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>导入自定义的流控配置</p>
 <h3 id="降级配置"><a href="#降级配置" class="headerlink" title="降级配置"></a>降级配置</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Degrade</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String resource;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> count;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> grade;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> window;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -576,7 +576,7 @@
 <li><p>count为降级的参考指标，qps=5时的平均响应时间(最大为4.9s)、qps&gt;=5时异常百分比或默认1分钟的异常数量</p>
 </li>
 <li><p>grade降级类型，平均响应时间-0、异常百分比-1或异常数量-2</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Flow flow= <span class="keyword">new</span> Flow();</span><br><span class="line">FlowRuleManager.loadRules(flow);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 刷新Degrade</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">reloadDegrade</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    List&lt;DegradeRule&gt; rules = <span class="keyword">new</span> ArrayList&lt;&gt;(<span class="number">20</span>);</span><br><span class="line"></span><br><span class="line">    degrades.forEach(e -&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isEmpty(e.getResource()) || e.getCount() == <span class="number">0</span> || e.getWindow() == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        log.warn(e.toString());</span><br><span class="line">        DegradeRule rule = <span class="keyword">new</span> DegradeRule();</span><br><span class="line">        rule.setResource(e.getResource());</span><br><span class="line">        <span class="comment">//rt,ms</span></span><br><span class="line">        rule.setCount(e.getCount());</span><br><span class="line">        rule.setGrade(e.getGrade());</span><br><span class="line">        <span class="comment">//secs</span></span><br><span class="line">        rule.setTimeWindow(e.getWindow());</span><br><span class="line">        rules.add(rule);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (rules.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        DegradeRuleManager.loadRules(rules);</span><br><span class="line">        log.warn(<span class="string">"Sentinel reloadDegrade success!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>导入自定义的流控配置</p>
 </li>
@@ -1070,7 +1070,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">255k</span>
+    <span title="站点总字数">256k</span>
   
 
   
@@ -1081,7 +1081,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">3:52</span>
+    <span title="站点阅读时长">3:53</span>
   
 </div>
 
