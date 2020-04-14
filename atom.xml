@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2020-01-09T01:23:01.733Z</updated>
+  <updated>2020-04-14T01:41:47.241Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,11 +17,43 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Sentinel流控和降级方案</title>
+    <link href="https://perkins4j2.github.io/posts/28431/"/>
+    <id>https://perkins4j2.github.io/posts/28431/</id>
+    <published>2020-04-14T00:54:29.000Z</published>
+    <updated>2020-04-14T01:41:47.241Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Sentinel介绍&quot;&gt;&lt;a href=&quot;#Sentinel介绍&quot; class=&quot;headerlink&quot; title=&quot;Sentinel介绍&quot;&gt;&lt;/a&gt;Sentinel介绍&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;阿里巴巴中间件，负责流量控制和熔断降级。&lt;/li&gt;
+&lt;li&gt;适配Spring类框架&lt;/li&gt;
+&lt;li&gt;可原生开发&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;引入pom&quot;&gt;&lt;a href=&quot;#引入pom&quot; class=&quot;headerlink&quot; title=&quot;引入pom&quot;&gt;&lt;/a&gt;引入pom&lt;/h3&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;com.alibaba.csp&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;sentinel-core&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;$&amp;#123;sentinel.version&amp;#125;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;com.alibaba.csp&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;sentinel-annotation-aspectj&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;$&amp;#123;sentinel.version&amp;#125;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;com.alibaba.csp&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;sentinel-transport-simple-http&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;$&amp;#123;sentinel.version&amp;#125;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;sentinel-core核心包&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;sentinel-annotation-aspectj适合spring切面和注解&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;sentinel-transport-simple-http便于接入console控制台&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="sentinel" scheme="https://perkins4j2.github.io/tags/sentinel/"/>
+    
+  </entry>
+  
+  <entry>
     <title>FastText介绍</title>
     <link href="https://perkins4j2.github.io/posts/55043/"/>
     <id>https://perkins4j2.github.io/posts/55043/</id>
     <published>2020-01-09T00:59:54.721Z</published>
-    <updated>2020-01-09T01:23:01.733Z</updated>
+    <updated>2020-01-09T01:25:42.191Z</updated>
     
     <summary type="html">
     
@@ -40,7 +72,7 @@
     <link href="https://perkins4j2.github.io/posts/44927/"/>
     <id>https://perkins4j2.github.io/posts/44927/</id>
     <published>2020-01-09T00:59:44.000Z</published>
-    <updated>2020-01-09T01:24:12.870Z</updated>
+    <updated>2020-01-09T01:25:42.197Z</updated>
     
     <summary type="html">
     
@@ -61,7 +93,7 @@
     <link href="https://perkins4j2.github.io/posts/7893/"/>
     <id>https://perkins4j2.github.io/posts/7893/</id>
     <published>2020-01-09T00:59:32.000Z</published>
-    <updated>2020-01-09T01:24:56.415Z</updated>
+    <updated>2020-01-09T01:25:42.193Z</updated>
     
     <summary type="html">
     
@@ -89,7 +121,7 @@
     <link href="https://perkins4j2.github.io/posts/25433/"/>
     <id>https://perkins4j2.github.io/posts/25433/</id>
     <published>2020-01-09T00:58:57.000Z</published>
-    <updated>2020-01-09T01:22:18.248Z</updated>
+    <updated>2020-01-09T01:25:42.199Z</updated>
     
     <summary type="html">
     
@@ -116,7 +148,7 @@
     <link href="https://perkins4j2.github.io/posts/43132/"/>
     <id>https://perkins4j2.github.io/posts/43132/</id>
     <published>2020-01-09T00:58:46.000Z</published>
-    <updated>2020-01-09T01:12:16.608Z</updated>
+    <updated>2020-01-09T01:25:42.189Z</updated>
     
     <summary type="html">
     
@@ -421,9 +453,9 @@
       <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
     
     
-      <category term="docker" scheme="https://perkins4j2.github.io/tags/docker/"/>
-    
       <category term="kafka" scheme="https://perkins4j2.github.io/tags/kafka/"/>
+    
+      <category term="docker" scheme="https://perkins4j2.github.io/tags/docker/"/>
     
   </entry>
   
@@ -445,31 +477,6 @@
     
     
       <category term="SqlServer" scheme="https://perkins4j2.github.io/tags/SqlServer/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Log工具类打印调用者信息</title>
-    <link href="https://perkins4j2.github.io/posts/38650/"/>
-    <id>https://perkins4j2.github.io/posts/38650/</id>
-    <published>2019-11-29T07:43:24.000Z</published>
-    <updated>2019-11-29T08:01:08.752Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;方法调用栈&quot;&gt;&lt;a href=&quot;#方法调用栈&quot; class=&quot;headerlink&quot; title=&quot;方法调用栈&quot;&gt;&lt;/a&gt;方法调用栈&lt;/h3&gt;&lt;p&gt;方法调用栈，在Java 中可以通过两种方法获取到方法调用栈的信息&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;(new Throwable()).getStackTrace()&lt;/li&gt;
-&lt;li&gt;Thread.currentThread().getStackTrace()&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;这两种方式都能返回一个 StackTraceElement 数组，StackTraceElement 对象中包含了类名、方法名、文件名、代码行号这样的信息。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="log" scheme="https://perkins4j2.github.io/tags/log/"/>
     
   </entry>
   

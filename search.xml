@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Sentinel流控和降级方案]]></title>
+    <url>%2Fposts%2F28431%2F</url>
+    <content type="text"><![CDATA[Sentinel介绍 阿里巴巴中间件，负责流量控制和熔断降级。 适配Spring类框架 可原生开发 引入pom123456789101112131415&lt;dependency&gt; &lt;groupId&gt;com.alibaba.csp&lt;/groupId&gt; &lt;artifactId&gt;sentinel-core&lt;/artifactId&gt; &lt;version&gt;$&#123;sentinel.version&#125;&lt;/version&gt;&lt;/dependency&gt;&lt;dependency&gt; &lt;groupId&gt;com.alibaba.csp&lt;/groupId&gt; &lt;artifactId&gt;sentinel-annotation-aspectj&lt;/artifactId&gt; &lt;version&gt;$&#123;sentinel.version&#125;&lt;/version&gt;&lt;/dependency&gt;&lt;dependency&gt; &lt;groupId&gt;com.alibaba.csp&lt;/groupId&gt; &lt;artifactId&gt;sentinel-transport-simple-http&lt;/artifactId&gt; &lt;version&gt;$&#123;sentinel.version&#125;&lt;/version&gt;&lt;/dependency&gt; sentinel-core核心包 sentinel-annotation-aspectj适合spring切面和注解 sentinel-transport-simple-http便于接入console控制台 SpringBoot配置1234567@Configurationpublic class SentinelAspectConfiguration &#123; @Bean public SentinelResourceAspect sentinelResourceAspect() &#123; return new SentinelResourceAspect(); &#125;&#125; 负责切面拦截 1234@SentinelResource(value = "action")public boolean action(String str)&#123; return "Hi";&#125; SentinelResource为Sentinel的注解 value为资源标识 流控配置1234567@Data@ToStringpublic static class Flow &#123; private String resource; private int count; private int grade;&#125; Flow为自定义的配置文件 resource为资源名称 count为流控的阈值，线程数或QPS grade流控类型，0-线程，1-QPS 12Flow flow= new Flow();FlowRuleManager.loadRules(flow); 导入自定义的流控配置 降级配置12345678@Data@ToStringpublic static class Degrade &#123; private String resource; private int count; private int grade; private int window;&#125; Degrade为自定义的降级配置文件 resource为资源名称 window为降级后持续的窗口时长，平均响应时间-秒、异常百分比-秒或异常数量-秒 count为降级的参考指标，qps=5时的平均响应时间(最大为4.9s)、qps&gt;=5时异常百分比或默认1分钟的异常数量 grade降级类型，平均响应时间-0、异常百分比-1或异常数量-2 12Flow flow= new Flow();FlowRuleManager.loadRules(flow); 导入自定义的流控配置 慎重配置降级策略，若降级，影响范围是window时间内的请求都处于自动降级中 Fallback和BlockHandler Fallback，当异常时的处理策略，即有异常的容错方案；Fallback参数要和业务方法保持一致 BlockHandler，被流控或降级时，指定窗口内的降级方案；Fallback参数要和业务方法保持一致，同时新增一个BlockException参数 Case 降级策略 12345678910sentinel: flows[0]: #流控 resource: action count: 1000 #number grade: 1 #thread-0,qps-1 degrades[0]: # 降级 resource: action window: 120 #rt-s,exceptionRatio-s,exceptionCount-s count: 100 #rt-art,exceptionRatio-[0.0,1.0],exceptionCount-number grade: 2 #RuleConstant:rt-0,exceptionRatio-1,exceptionCount/m-2 业务注解 1234@SentinelResource(value = "action",fallback = "defaultFallback", blockHandler = "defaultBlockHandler")public boolean action(String str)&#123; return "Hi";&#125; 123456public boolean defaultBlockHandler(String str, BlockException ex)&#123; return "Hi1";&#125;public boolean defaultFallback(String str)&#123; return "Hi2";&#125; 控制台 下载源码启动即可 控制台可浏览和配置资源策略，基于内存 建议对接DB或Nacos 集群限流略微复杂，需要注意业务适配度及集群本身对应用的影响]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>sentinel</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[FastText介绍]]></title>
     <url>%2Fposts%2F55043%2F</url>
     <content type="text"><![CDATA[FastText简介FastText是Facebook研究团队创建的一个库，用于高效计算word representation和执行文本分类，可以在几秒内完成其他算法几天才可以完成的任务。 这个库在NLP社区获得了用户的大量支持，并且可能替代gensim包，它提供了像Word Vectors（词向量）功能。 区别word2vec将每个词视为要找到向量表征的最小单位，但FastText假定一个词由n个字符组成。例如，阳光由[sun ，sunn，sunny]，[sunny，unny，nny]等，其中n的范围是从1到词语的长度。 fastText的表示方法比word2vec或glove要多出以下几个优点。 找到罕见词的向量表示是有帮助的。由于罕见词仍然可以被分解成字符n-gram，所以它们可以与通用字共享这些n-gram。 它可以给出词典中不存在的字（OOV字）的向量表示，因为这些字也可以分解成字符n-gram。 word2vec和glove都不能对词典中不存在的词提供字的向量。 字符n-gram在更小的数据集上比word2vec和glove更出色。 对于可能永远都不在任何语料库，gensim可能会去选择以下两个解决方案中的任意一个零向量 或具有低幅度的随机向量。FastText通过将该词分成数据块，并使用这些数据块的向量来创建这个词的最终向量，从而可以产生比随机向量更好的向量。 与word2vec相同 图模型结构很像，都是采用embedding向量的形式，得到word的隐向量表达。 都采用很多相似的优化方法，比如使用Hierarchical softmax优化训练和预测中的打分速度。 不同 word2vec是一个无监督算法，而fasttext是一个有监督算法。 word2vec的学习目标是skip的word，而fasttext的学习目标是人工标注的分类结果。 word2vec要求训练样本带有“序”的属性，而fasttext使用的是bag of words的思想，使用的是n-gram的无序属性。 与深度神经网络 fasttext只有1层神经网络，属于所谓的shallow learning，但是fasttext的效果并不差，而且具备学习和预测速度快的优势，在工业界这点非常重要。 比一般的神经网络模型的精确度还要高。 训练和评估速度快几百倍。10分钟内就可以在一台多核CPU训练10亿词汇。1分种内完成100万句子在31万中类型中的分类。 训练123./fasttext skipgram -input file.txt -output model./fasttext cbow -input file.txt -output model 运行上述命令将创建两个名为model.bin和model.vec的文件。 model.bin包含模型参数，字典和超参数，可用于计算词向量。 model.vec是一个文本文件，其中每行包含一个词的词向量。 使用根据创建的词向量，做一些常见的任务，比如寻找类似的词，类比等。 输出词向量1./fasttext print-word-vectors model.bin &lt; queries.txt 要检查一个词的词向量，而且不保存到一个文件中，可以这样做 1echo "word" | ./fasttext print-word-vectors model.bin 找到相似词寻找最相似于给定词语的词，该功能由nn参数提供。 1./fasttext nn model.bin 键入上述命令后，终端将要求您输入查询词。 12345happy$ ./fasttext nn model.binQuery word? happywith 0.211394which 0.174745 上面的结果是和happy最相似的词。 此功能也可用于修正拼写错误。例如，当您输入错误的拼写时，它会显示在训练文件中出现的词的正确拼写。 123456wrdQuery word? wrdwords 0.186589word 0.179257skip-gram 0.173146 类比FastText字向量也可以用于类别任务，A，B和C3个词,什么对于C等同于B对于A?这里，A，B和C是词。 1234./fasttext analogies model.bin$ ./fasttext analogies model.binLoading model model.binQuery triplet (A - B + C)? 上述命令将要求输入A-B+C格式的字，但是我们只需要用空格分隔三个字。 12345Query triplet (A - B + C)? happy sad angryand 0.217641with 0.178739which 0.114323 在一个非常大的语料库上进行训练会产生更好的结果。 文本分类文本分类是使用特定的类标来标记文本中的每个文档。情感分析和电子邮件分类是文本分类的典型例子。 训练我们的模型的文本文件的默认格式应该是label 。 其中label是类的前缀，而是分配给文档的类。此外，文档中不应有引号，一个文档中的所有内容都应该在一行中。 训练分类器1./fasttext supervised -input train.ft.txt -output model_kaggle-label 这里，参数与创建word representation时所提到的参数相同。如果不想使用默认参数来训练模型，则可以在训练时间内指定它们。例如，如果您明确要指定训练过程的学习率，则可以使用参数-lr 来指定学习速率。 1./fasttext supervised-input train.ft.txt-output model_kaggle -lr0.5 可以调整的其他可用参数是：-lr：学习速率[0.1]-lrUpdateRate：更改学习率的更新速率[100]-dim ：字向量大小[100]-ws：上下文窗口的大小[5]-epoch：历元数[5]-neg：抽样数量[5]-loss：损失函数 {ns，hs，softmax} [ns]-thread：线程数[12]-pretrainedVectors：用于监督学习的预培训字向量-saveOutput：输出参数是否应该保存[0]方括号[]中的值表示传递的参数的默认值。 测试结果1./fasttext test model_kaggle.bin test.ft.txt N 400000P@1 0.916R@1 0.916 预测测试数据集1./fasttext predict model_kaggle.bin test.ft.txt 预测前3名标签1./fasttext predict model_kaggle.bin test.ft.txt 3 计算句子向量（受监督）1echo "this is a sample sentence" | ./fasttext print-sentence-vectors model_kaggle.bin 优点和缺点优点 与实现相同精度的其他方法相比，该库的速度惊人。 句子向量（被监督）可以很容易的计算。 与gensim相比，fastText在小数据集上的运行效果更好。 在语义性能上，fastText在语法表现和FAIR语言表现都优于gensim。 缺点 不是NLP的独立库，因为它将需要另一个库进行预处理步骤。 虽然，这个库有一个python实现，但它没有得到官方支持。]]></content>
@@ -193,8 +204,8 @@
         <category>架构</category>
       </categories>
       <tags>
-        <tag>docker</tag>
         <tag>kafka</tag>
+        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
@@ -1003,8 +1014,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java内存模型</tag>
         <tag>Java并发编程</tag>
+        <tag>Java内存模型</tag>
       </tags>
   </entry>
   <entry>
@@ -1027,8 +1038,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java并发编程</tag>
         <tag>synchronized</tag>
+        <tag>Java并发编程</tag>
       </tags>
   </entry>
   <entry>
