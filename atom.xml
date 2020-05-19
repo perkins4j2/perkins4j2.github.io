@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2020-05-19T10:27:14.610Z</updated>
+  <updated>2020-05-19T10:27:27.839Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://perkins4j2.github.io/posts/38089/"/>
     <id>https://perkins4j2.github.io/posts/38089/</id>
     <published>2020-05-19T10:24:07.000Z</published>
-    <updated>2020-05-19T10:27:14.610Z</updated>
+    <updated>2020-05-19T10:27:27.839Z</updated>
     
     <summary type="html">
     
@@ -42,7 +42,7 @@
     <link href="https://perkins4j2.github.io/posts/22671/"/>
     <id>https://perkins4j2.github.io/posts/22671/</id>
     <published>2020-05-19T10:23:59.000Z</published>
-    <updated>2020-05-19T10:26:40.210Z</updated>
+    <updated>2020-05-19T10:27:27.842Z</updated>
     
     <summary type="html">
     
@@ -59,6 +59,32 @@
     
     
       <category term="Spring" scheme="https://perkins4j2.github.io/tags/Spring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CompletableFuture和Future介绍</title>
+    <link href="https://perkins4j2.github.io/posts/13999/"/>
+    <id>https://perkins4j2.github.io/posts/13999/</id>
+    <published>2020-05-19T10:23:46.000Z</published>
+    <updated>2020-05-19T10:28:33.025Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h3&gt;&lt;p&gt;Future是JDK1.5后提供的异步调用接口。&lt;br&gt;CompletableFuture是JDK8提出的一个支持非阻塞的多功能的异步类，实现了Future。&lt;/p&gt;
+&lt;h3 id=&quot;与Future区别&quot;&gt;&lt;a href=&quot;#与Future区别&quot; class=&quot;headerlink&quot; title=&quot;与Future区别&quot;&gt;&lt;/a&gt;与Future区别&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;CompletableFuture支持回调，可指定线程池&lt;/li&gt;
+&lt;li&gt;CompletableFuture支持链式、顺序和聚合等执行&lt;/li&gt;
+&lt;li&gt;CompletableFuture支持不阻塞主线程且无需轮询等待状态&lt;/li&gt;
+&lt;li&gt;都是提交后直接执行，并在get时阻塞等待&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="CompletableFuture" scheme="https://perkins4j2.github.io/tags/CompletableFuture/"/>
     
   </entry>
   
@@ -453,26 +479,6 @@
     
     
       <category term="ThreadLocal" scheme="https://perkins4j2.github.io/tags/ThreadLocal/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Canal配置</title>
-    <link href="https://perkins4j2.github.io/posts/60983/"/>
-    <id>https://perkins4j2.github.io/posts/60983/</id>
-    <published>2019-11-29T07:46:44.000Z</published>
-    <updated>2019-11-29T08:03:34.534Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;新增用户和权限&quot;&gt;&lt;a href=&quot;#新增用户和权限&quot; class=&quot;headerlink&quot; title=&quot;新增用户和权限&quot;&gt;&lt;/a&gt;新增用户和权限&lt;/h3&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 新增用户&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;USER&lt;/span&gt; canal &lt;span class=&quot;keyword&quot;&gt;IDENTIFIED&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;canal&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 授权REPLICATION权限&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;GRANT&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;SELECT&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;REPLICATION&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;SLAVE&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;REPLICATION&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;CLIENT&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;ON&lt;/span&gt; *.* &lt;span class=&quot;keyword&quot;&gt;TO&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;canal&#39;&lt;/span&gt;@&lt;span class=&quot;string&quot;&gt;&#39;%&#39;&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;FLUSH&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;PRIVILEGES&lt;/span&gt;; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# check&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;grants&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;canal&#39;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# 查看当前db binlog文件&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;show&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;binary&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;logs&lt;/span&gt; ;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="Canal" scheme="https://perkins4j2.github.io/tags/Canal/"/>
     
   </entry>
   
