@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[EasyExcel介绍]]></title>
+    <url>%2Fposts%2F38089%2F</url>
+    <content type="text"><![CDATA[介绍easyexcel是阿里读写Excel工具类。 pom12345&lt;dependency&gt; &lt;groupId&gt;com.alibaba&lt;/groupId&gt; &lt;artifactId&gt;easyexcel&lt;/artifactId&gt; &lt;version&gt;2.1.7&lt;/version&gt; &lt;/dependency&gt; Demo，读取多个Sheet，生成1个Excel123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120@Data@Slf4jpublic class SessionExtract &#123; /** * 读文件1 */ private static String filePath = "/1.xlsx"; /** * 写文件 */ private static String filePath2 = "/2.xlsx"; /** * 读文件内容1 */ private static Map&lt;String, List&lt;String&gt;&gt; queryMap = new ConcurrentHashMap&lt;&gt;(); /** * 读文件内容2 */ private static Map&lt;String, List&lt;SessionData&gt;&gt; sessionMap = new ConcurrentHashMap&lt;&gt;(); private static List&lt;SessionData&gt; resultList = new ArrayList&lt;&gt;(); @Data @ToString public static class QueryData &#123; /** * 指定读取的excel索引 */ @ExcelProperty(index = 0) String query; &#125; @Data @ToString public static class SessionData &#123; @ExcelProperty(index = 0) private String uid; @ExcelProperty(index = 1) private String sessionId; @ExcelProperty(index = 2) private String query; @ExcelProperty(index = 3) private String requestTime; &#125; /** * 监听读取文件 */ public static class QueryDataListener extends AnalysisEventListener&lt;QueryData&gt; &#123; /** * 逐行读 * * @param queryData * @param analysisContext */ @Override public void invoke(QueryData queryData, AnalysisContext analysisContext) &#123; queryMap.put(queryData.getQuery(), new ArrayList&lt;&gt;()); &#125; /** * 读完成 * * @param analysisContext */ @Override public void doAfterAllAnalysed(AnalysisContext analysisContext) &#123; log.info("queryMap size:&#123;&#125;", queryMap.size()); &#125; &#125; public static class SessionDataListener extends AnalysisEventListener&lt;SessionData&gt; &#123; @Override public void invoke(SessionData sessionData, AnalysisContext analysisContext) &#123; if (sessionData == null || sessionData.getSessionId() == null || sessionData.getQuery() == null) &#123; return; &#125; List&lt;SessionData&gt; sessionDataList = sessionMap.getOrDefault(sessionData.getSessionId(), new ArrayList&lt;&gt;()); sessionDataList.add(sessionData); sessionMap.put(sessionData.getSessionId(), sessionDataList); if (queryMap.containsKey(sessionData.getQuery())) &#123; queryMap.get(sessionData.getQuery()).add(sessionData.getSessionId()); &#125; &#125; @Override public void doAfterAllAnalysed(AnalysisContext analysisContext) &#123; log.info("sessionMap size:&#123;&#125;", sessionMap.size()); &#125; &#125; public static void main(String[] args) &#123; ExcelReader excelReader = EasyExcel.read(filePath).build(); //sheet1 ReadSheet readSheet1 = EasyExcel.readSheet(0).head(QueryData.class).registerReadListener(new QueryDataListener()).build(); //sheet2 ReadSheet readSheet2 = EasyExcel.readSheet(3).head(SessionData.class). registerReadListener(new SessionDataListener()).build(); //读取多个sheet excelReader.read(readSheet2, readSheet1); // 这里千万别忘记关闭，读的时候会创建临时文件，到时磁盘会崩的 excelReader.finish(); //生成写数据 queryMap.forEach((k, v) -&gt; v.forEach(e -&gt; resultList.addAll(sessionMap.get(e)))); log.info("resultList size:&#123;&#125;", resultList.size()); //写文件 EasyExcel.write(filePath2, SessionData.class).sheet(0).doWrite(resultList); &#125;&#125;]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>EasyExcel</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Spring Bean注解介绍]]></title>
+    <url>%2Fposts%2F22671%2F</url>
+    <content type="text"><![CDATA[介绍Bean为声明由Spring管理的实例。 Bean管理Demo123456789101112@Configurationpublic class BeanConfig &#123; @Bean A a(B b) &#123; return new A(b); &#125; @Bean B b() &#123; return new B(); &#125;&#125; B，Bean声明，由spring管理 A依赖B，输入参数为B，自动解决Bean加载顺序问题 使用Bean实例12345@AutowiredA a;@AutowiredB b;]]></content>
+      <categories>
+        <category>架构</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Sentinel流控和降级方案]]></title>
     <url>%2Fposts%2F28431%2F</url>
     <content type="text"><![CDATA[Sentinel介绍 阿里巴巴中间件，负责流量控制和熔断降级。 适配Spring类框架 可原生开发 引入pom1234567891011121314151617&lt;sentinel.version&gt;1.7.1&lt;/sentinel.version&gt;&lt;dependency&gt; &lt;groupId&gt;com.alibaba.csp&lt;/groupId&gt; &lt;artifactId&gt;sentinel-core&lt;/artifactId&gt; &lt;version&gt;$&#123;sentinel.version&#125;&lt;/version&gt;&lt;/dependency&gt;&lt;dependency&gt; &lt;groupId&gt;com.alibaba.csp&lt;/groupId&gt; &lt;artifactId&gt;sentinel-annotation-aspectj&lt;/artifactId&gt; &lt;version&gt;$&#123;sentinel.version&#125;&lt;/version&gt;&lt;/dependency&gt;&lt;dependency&gt; &lt;groupId&gt;com.alibaba.csp&lt;/groupId&gt; &lt;artifactId&gt;sentinel-transport-simple-http&lt;/artifactId&gt; &lt;version&gt;$&#123;sentinel.version&#125;&lt;/version&gt;&lt;/dependency&gt; sentinel-core核心包 sentinel-annotation-aspectj适合spring切面和注解 sentinel-transport-simple-http便于接入console控制台 SpringBoot配置1234567@Configurationpublic class SentinelAspectConfiguration &#123; @Bean public SentinelResourceAspect sentinelResourceAspect() &#123; return new SentinelResourceAspect(); &#125;&#125; 负责切面拦截 1234@SentinelResource(value = "action")public boolean action(String str)&#123; return "Hi";&#125; SentinelResource为Sentinel的注解 value为资源标识 流控配置1234567@Data@ToStringpublic static class Flow &#123; private String resource; private int count; private int grade;&#125; Flow为自定义的配置文件 resource为资源名称 count为流控的阈值，线程数或QPS grade流控类型，0-线程，1-QPS 12345678910111213141516171819202122232425/** * 刷新Flow */public synchronized void reloadFlow() &#123; List&lt;FlowRule&gt; rules = new ArrayList&lt;&gt;(20); flows.forEach(e -&gt; &#123; if (StringUtils.isEmpty(e.getResource()) || e.getCount() == 0) &#123; return; &#125; log.warn(e.toString()); FlowRule rule = new FlowRule(); rule.setResource(e.getResource()); //qps rule.setCount(e.getCount()); rule.setGrade(e.getGrade()); rules.add(rule); &#125;); if (rules.size() &gt; 0) &#123; FlowRuleManager.loadRules(rules); log.warn("Sentinel reloadFlow success!"); &#125;&#125; 导入自定义的流控配置 降级配置12345678@Data@ToStringpublic static class Degrade &#123; private String resource; private int count; private int grade; private int window;&#125; Degrade为自定义的降级配置文件 resource为资源名称 window为降级后持续的窗口时长，平均响应时间-秒、异常百分比-秒或异常数量-秒 count为降级的参考指标，qps=5时的平均响应时间(最大为4.9s)、qps&gt;=5时异常百分比或默认1分钟的异常数量 grade降级类型，平均响应时间-0、异常百分比-1或异常数量-2 1234567891011121314151617181920212223242526/** * 刷新Degrade */public synchronized void reloadDegrade() &#123; List&lt;DegradeRule&gt; rules = new ArrayList&lt;&gt;(20); degrades.forEach(e -&gt; &#123; if (StringUtils.isEmpty(e.getResource()) || e.getCount() == 0 || e.getWindow() == 0) &#123; return; &#125; log.warn(e.toString()); DegradeRule rule = new DegradeRule(); rule.setResource(e.getResource()); //rt,ms rule.setCount(e.getCount()); rule.setGrade(e.getGrade()); //secs rule.setTimeWindow(e.getWindow()); rules.add(rule); &#125;); if (rules.size() &gt; 0) &#123; DegradeRuleManager.loadRules(rules); log.warn("Sentinel reloadDegrade success!"); &#125;&#125; 导入自定义的流控配置 慎重配置降级策略，若降级，影响范围是window时间内的请求都处于自动降级中 Fallback和BlockHandler Fallback，当异常时的处理策略，即有异常的容错方案；Fallback参数要和业务方法保持一致 BlockHandler，被流控或降级时，指定窗口内的降级方案；BlockHandler参数要和业务方法保持一致，同时新增一个BlockException参数 Case 降级策略 12345678910sentinel: flows[0]: #流控 resource: action count: 1000 #number grade: 1 #thread-0,qps-1 degrades[0]: # 降级 resource: action window: 120 #rt-s,exceptionRatio-s,exceptionCount-s count: 100 #rt-art,exceptionRatio-[0.0,1.0],exceptionCount-number grade: 2 #RuleConstant:rt-0,exceptionRatio-1,exceptionCount/m-2 业务注解 1234@SentinelResource(value = "action",fallback = "defaultFallback", blockHandler = "defaultBlockHandler")public boolean action(String str)&#123; return "Hi";&#125; 123456public boolean defaultBlockHandler(String str, BlockException ex)&#123; return "Hi1";&#125;public boolean defaultFallback(String str)&#123; return "Hi2";&#125; 控制台 下载源码启动即可 控制台可浏览和配置资源策略，基于内存 建议对接DB或Nacos 集群限流略微复杂，需要注意业务适配度及集群本身对应用的影响]]></content>
@@ -1014,8 +1036,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>Java并发编程</tag>
         <tag>Java内存模型</tag>
+        <tag>Java并发编程</tag>
       </tags>
   </entry>
   <entry>
@@ -1038,8 +1060,8 @@
         <category>并发编程</category>
       </categories>
       <tags>
-        <tag>synchronized</tag>
         <tag>Java并发编程</tag>
+        <tag>synchronized</tag>
       </tags>
   </entry>
   <entry>

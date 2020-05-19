@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2020-04-14T01:58:11.536Z</updated>
+  <updated>2020-05-19T10:27:14.610Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>EasyExcel介绍</title>
+    <link href="https://perkins4j2.github.io/posts/38089/"/>
+    <id>https://perkins4j2.github.io/posts/38089/</id>
+    <published>2020-05-19T10:24:07.000Z</published>
+    <updated>2020-05-19T10:27:14.610Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h3&gt;&lt;p&gt;easyexcel是阿里读写Excel工具类。&lt;/p&gt;
+&lt;h3 id=&quot;pom&quot;&gt;&lt;a href=&quot;#pom&quot; class=&quot;headerlink&quot; title=&quot;pom&quot;&gt;&lt;/a&gt;pom&lt;/h3&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;com.alibaba&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;easyexcel&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;           &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;2.1.7&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="EasyExcel" scheme="https://perkins4j2.github.io/tags/EasyExcel/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Bean注解介绍</title>
+    <link href="https://perkins4j2.github.io/posts/22671/"/>
+    <id>https://perkins4j2.github.io/posts/22671/</id>
+    <published>2020-05-19T10:23:59.000Z</published>
+    <updated>2020-05-19T10:26:40.210Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h3&gt;&lt;p&gt;Bean为声明由Spring管理的实例。&lt;/p&gt;
+&lt;h3 id=&quot;Bean管理Demo&quot;&gt;&lt;a href=&quot;#Bean管理Demo&quot; class=&quot;headerlink&quot; title=&quot;Bean管理Demo&quot;&gt;&lt;/a&gt;Bean管理Demo&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@Configuration&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BeanConfig&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Bean&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;A &lt;span class=&quot;title&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(B b)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; A(b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Bean&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;B &lt;span class=&quot;title&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; B();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+&lt;li&gt;B，Bean声明，由spring管理&lt;/li&gt;
+&lt;li&gt;A依赖B，输入参数为B，自动解决Bean加载顺序问题
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="Spring" scheme="https://perkins4j2.github.io/tags/Spring/"/>
+    
+  </entry>
   
   <entry>
     <title>Sentinel流控和降级方案</title>
@@ -427,56 +473,6 @@
     
     
       <category term="Canal" scheme="https://perkins4j2.github.io/tags/Canal/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker搭建kafka</title>
-    <link href="https://perkins4j2.github.io/posts/58214/"/>
-    <id>https://perkins4j2.github.io/posts/58214/</id>
-    <published>2019-11-29T07:45:03.000Z</published>
-    <updated>2019-11-29T08:01:08.750Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;搭建zookeeper环境&quot;&gt;&lt;a href=&quot;#搭建zookeeper环境&quot; class=&quot;headerlink&quot; title=&quot;搭建zookeeper环境&quot;&gt;&lt;/a&gt;搭建zookeeper环境&lt;/h3&gt;&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;docker pull zookeeper&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;docker run -d \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     --restart=always \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     -v /opt/docker/zookeeper/zoo1/data:/data \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     -v /opt/docker/zookeeper/zoo1/datalog:/datalog \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     -e ZOO_MY_ID=1 \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     -e ZOO_SERVERS=&lt;span class=&quot;string&quot;&gt;&quot;server.1=zookeeper-A:2888:3888 server.2=zookeeper-B:2888:3888 server.3=zookeeper-C:2888:3888&quot;&lt;/span&gt; \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     --name=zookeeper-A \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     --net=host \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     --privileged \&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     zookeeper&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;ul&gt;
-&lt;li&gt;指定了–net=host和–privileged选项，使得容器可以使用主机的ip地址和端口进行通信。&lt;/li&gt;
-&lt;li&gt;restart=always当Docker重启时，容器能自动启动&lt;/li&gt;
-&lt;li&gt;2181：对client端提供服务&lt;/li&gt;
-&lt;li&gt;3888：选举leader使用&lt;/li&gt;
-&lt;li&gt;2888：集群内机器通讯使用（Leader监听此端口）
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="kafka" scheme="https://perkins4j2.github.io/tags/kafka/"/>
-    
-      <category term="docker" scheme="https://perkins4j2.github.io/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SQL-Server备份</title>
-    <link href="https://perkins4j2.github.io/posts/9251/"/>
-    <id>https://perkins4j2.github.io/posts/9251/</id>
-    <published>2019-11-29T07:44:04.000Z</published>
-    <updated>2019-11-29T08:01:08.755Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;备份方案&quot;&gt;&lt;a href=&quot;#备份方案&quot; class=&quot;headerlink&quot; title=&quot;备份方案&quot;&gt;&lt;/a&gt;备份方案&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://docs.microsoft.com/zh-cn/sql/integration-services/backup-restore-and-move-the-ssis-catalog?view=sql-server-2014&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;SSIS（SQL Server Integration Services）&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="SqlServer" scheme="https://perkins4j2.github.io/tags/SqlServer/"/>
     
   </entry>
   
