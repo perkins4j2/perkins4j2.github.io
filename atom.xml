@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2020-05-19T10:27:27.839Z</updated>
+  <updated>2020-06-08T12:28:45.732Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaAPI调用TensorFlow2.0模型GPU或CPU</title>
+    <link href="https://perkins4j2.github.io/posts/41363/"/>
+    <id>https://perkins4j2.github.io/posts/41363/</id>
+    <published>2020-06-08T12:25:55.000Z</published>
+    <updated>2020-06-08T12:28:45.732Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;jvm设置&quot;&gt;&lt;a href=&quot;#jvm设置&quot; class=&quot;headerlink&quot; title=&quot;jvm设置&quot;&gt;&lt;/a&gt;jvm设置&lt;/h3&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;export CUDA_VISIBLE_DEVICES=1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;指定GPU显卡索引&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;export CUDA_VISIBLE_DEVICES=-1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;不使用GPU&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="TensorFlow" scheme="https://perkins4j2.github.io/tags/TensorFlow/"/>
+    
+  </entry>
   
   <entry>
     <title>EasyExcel介绍</title>
@@ -67,7 +92,7 @@
     <link href="https://perkins4j2.github.io/posts/13999/"/>
     <id>https://perkins4j2.github.io/posts/13999/</id>
     <published>2020-05-19T10:23:46.000Z</published>
-    <updated>2020-05-19T10:28:33.025Z</updated>
+    <updated>2020-06-08T12:27:31.021Z</updated>
     
     <summary type="html">
     
@@ -459,26 +484,6 @@
     
     
       <category term="Zero-Copy" scheme="https://perkins4j2.github.io/tags/Zero-Copy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ThreadLocal原理</title>
-    <link href="https://perkins4j2.github.io/posts/46263/"/>
-    <id>https://perkins4j2.github.io/posts/46263/</id>
-    <published>2019-11-29T07:56:37.000Z</published>
-    <updated>2019-11-29T08:01:08.756Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;使用&quot;&gt;&lt;a href=&quot;#使用&quot; class=&quot;headerlink&quot; title=&quot;使用&quot;&gt;&lt;/a&gt;使用&lt;/h3&gt;&lt;h4 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h4&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; ThreadLocal&amp;lt;String&amp;gt; CHARSET = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; ThreadLocal&amp;lt;String&amp;gt;() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;meta&quot;&gt;@Override&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;protected&lt;/span&gt; String &lt;span class=&quot;title&quot;&gt;initialValue&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&quot;utf-8&quot;&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="ThreadLocal" scheme="https://perkins4j2.github.io/tags/ThreadLocal/"/>
     
   </entry>
   
