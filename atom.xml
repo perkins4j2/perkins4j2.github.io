@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2020-06-08T12:28:45.732Z</updated>
+  <updated>2020-08-17T12:54:13.617Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,11 +17,78 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java实现gRPC的单和双流等服务调用</title>
+    <link href="https://perkins4j2.github.io/posts/43712/"/>
+    <id>https://perkins4j2.github.io/posts/43712/</id>
+    <published>2020-08-17T12:53:42.000Z</published>
+    <updated>2020-08-17T12:54:13.617Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Client-Stub&quot;&gt;&lt;a href=&quot;#Client-Stub&quot; class=&quot;headerlink&quot; title=&quot;Client Stub&quot;&gt;&lt;/a&gt;Client Stub&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ServiceGrpc.ServiceFutureStub stub;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ServiceGrpc.ServiceStub streamStub;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ManagedChannel channel = ManagedChannelBuilder.forAddress(&lt;span class=&quot;string&quot;&gt;&quot;192.168.1.100&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;20000&lt;/span&gt;).usePlaintext().build();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;stub = ServiceGrpc.newFutureStub(channel).withExecutor(executor);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;streamStub = ServiceGrpc.newStub(channel);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="gRPC" scheme="https://perkins4j2.github.io/tags/gRPC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java实现gRPC服务</title>
+    <link href="https://perkins4j2.github.io/posts/24127/"/>
+    <id>https://perkins4j2.github.io/posts/24127/</id>
+    <published>2020-08-17T12:23:28.000Z</published>
+    <updated>2020-08-17T12:54:30.064Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;GRPC&quot;&gt;&lt;a href=&quot;#GRPC&quot; class=&quot;headerlink&quot; title=&quot;GRPC&quot;&gt;&lt;/a&gt;GRPC&lt;/h3&gt;&lt;p&gt;gRPC由GOOGLE开发，是一款语言中立、平台中立、开源的远程过程调用(RPC)系统。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="gRPC" scheme="https://perkins4j2.github.io/tags/gRPC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Arthas生产性能测试工具</title>
+    <link href="https://perkins4j2.github.io/posts/62389/"/>
+    <id>https://perkins4j2.github.io/posts/62389/</id>
+    <published>2020-08-17T12:20:35.000Z</published>
+    <updated>2020-08-17T12:21:36.438Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Alibaba开源的Java诊断工具&lt;/li&gt;
+&lt;li&gt;生产中对类、方法性能评估&lt;/li&gt;
+&lt;li&gt;查询ClassLoader关系&lt;/li&gt;
+&lt;li&gt;查看异常信息&lt;/li&gt;
+&lt;li&gt;JVM、线程池和堆栈等运行状态&lt;/li&gt;
+&lt;li&gt;代码修改和热加载&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="Arthas" scheme="https://perkins4j2.github.io/tags/Arthas/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaAPI调用TensorFlow2.0模型GPU或CPU</title>
     <link href="https://perkins4j2.github.io/posts/41363/"/>
     <id>https://perkins4j2.github.io/posts/41363/</id>
     <published>2020-06-08T12:25:55.000Z</published>
-    <updated>2020-06-08T12:28:45.732Z</updated>
+    <updated>2020-06-08T12:29:02.327Z</updated>
     
     <summary type="html">
     
@@ -418,72 +485,6 @@
     
     
       <category term="Maven" scheme="https://perkins4j2.github.io/tags/Maven/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis Cluster</title>
-    <link href="https://perkins4j2.github.io/posts/39943/"/>
-    <id>https://perkins4j2.github.io/posts/39943/</id>
-    <published>2019-11-30T01:54:41.000Z</published>
-    <updated>2019-11-30T02:01:52.429Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Redis-Cluster&quot;&gt;&lt;a href=&quot;#Redis-Cluster&quot; class=&quot;headerlink&quot; title=&quot;Redis Cluster&quot;&gt;&lt;/a&gt;Redis Cluster&lt;/h3&gt;&lt;p&gt;Redis Cluster是Redis3.0版本推出的高可用及分布式解决方案，多个Redis实例组成，数据按照槽(slot)存储分布在多个Redis实例上，通过Gossip流言协议来进行节点之间通信。&lt;/p&gt;
-&lt;p&gt;Redis Cluster实现的功能：&lt;/p&gt;
-&lt;p&gt;• 将数据分片到多个实例(按照slot存储)；&lt;br&gt;• 集群节点宕掉会自动failover；&lt;br&gt;• 提供相对平滑扩容(缩容)节点。&lt;/p&gt;
-&lt;p&gt;Redis Cluster暂未有的：&lt;br&gt;• 实时同步&lt;br&gt;• 强一致性&lt;br&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="redis" scheme="https://perkins4j2.github.io/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis跳表</title>
-    <link href="https://perkins4j2.github.io/posts/64570/"/>
-    <id>https://perkins4j2.github.io/posts/64570/</id>
-    <published>2019-11-30T01:54:32.000Z</published>
-    <updated>2019-11-30T02:01:52.428Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;跳表&quot;&gt;&lt;a href=&quot;#跳表&quot; class=&quot;headerlink&quot; title=&quot;跳表&quot;&gt;&lt;/a&gt;跳表&lt;/h3&gt;&lt;p&gt;跳表（skiplist）是一个特俗的链表，相比一般的链表，有更高的查找效率，其效率可比拟于二叉查找树。&lt;/p&gt;
-&lt;p&gt;Redis里面使用skiplist是为了实现sorted set这种对外的数据结构。&lt;/p&gt;
-&lt;p&gt;跳表预先间隔地保存了有序链表中的节点，从而在查找过程中能达到类似于二分搜索的效果，而二分搜索思想就是通过比较中点数据放弃另一半的查找，从而节省一半的查找时间，缺点即浪费了空间。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="redis" scheme="https://perkins4j2.github.io/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Zero-Copy</title>
-    <link href="https://perkins4j2.github.io/posts/20850/"/>
-    <id>https://perkins4j2.github.io/posts/20850/</id>
-    <published>2019-11-30T01:54:20.000Z</published>
-    <updated>2019-11-30T02:01:52.431Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Zero-Copy零拷贝&quot;&gt;&lt;a href=&quot;#Zero-Copy零拷贝&quot; class=&quot;headerlink&quot; title=&quot;Zero-Copy零拷贝&quot;&gt;&lt;/a&gt;Zero-Copy零拷贝&lt;/h3&gt;&lt;p&gt;Zero-Copy用于提高Linux平台上的IO密集型的应用程序的性能。能够避免中间缓冲区中的冗余数据复制以及减少Linux内核空间和用户空间上下文交换的次数。&lt;/p&gt;
-&lt;p&gt;Zero-Copy使得应用程序从本地磁盘读取数据，再将读取的数据原封不动直接地发送给Socket。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="Zero-Copy" scheme="https://perkins4j2.github.io/tags/Zero-Copy/"/>
     
   </entry>
   
