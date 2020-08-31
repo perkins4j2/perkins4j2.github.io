@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2020-08-17T12:54:37.695Z</updated>
+  <updated>2020-08-31T13:45:52.373Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -15,6 +15,112 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>协议升级机制</title>
+    <link href="https://perkins4j2.github.io/posts/254331/"/>
+    <id>https://perkins4j2.github.io/posts/254331/</id>
+    <published>2020-08-31T13:44:10.000Z</published>
+    <updated>2020-08-31T13:45:52.373Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;协议升级&quot;&gt;&lt;a href=&quot;#协议升级&quot; class=&quot;headerlink&quot; title=&quot;协议升级&quot;&gt;&lt;/a&gt;协议升级&lt;/h3&gt;&lt;p&gt;HTTP协议 提供了一种特殊的机制，这一机制允许将一个已建立的连接升级成新的、不相容的协议。这篇指南涵盖了其工作原理和使用场景。&lt;/p&gt;
+&lt;p&gt;通常来说这一机制总是由客户端发起的 （不过也有例外，比如说可以由服务端发起升级到传输层安全协议（TLS））， 服务端可以选择是否要升级到新协议。借助这一技术，连接可以以常用的协议启动（如HTTP/1.1），随后再升级到HTTP2甚至是WebSockets.&lt;/p&gt;
+&lt;p&gt;注意：HTTP/2 明确禁止使用此机制，这个机制只属于HTTP/1.1&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="HTTP" scheme="https://perkins4j2.github.io/tags/HTTP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RandomAccessFile随机读写文件</title>
+    <link href="https://perkins4j2.github.io/posts/32311/"/>
+    <id>https://perkins4j2.github.io/posts/32311/</id>
+    <published>2020-08-31T13:44:00.000Z</published>
+    <updated>2020-08-31T13:45:00.933Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h3&gt;&lt;p&gt;RandomAccessFile提供了对文件的读写功能。RandomAccessFile 虽然属于java.io下的类，但它不是InputStream或者OutputStream的子类；它也不同于FileInputStream和FileOutputStream。 &lt;/p&gt;
+&lt;p&gt;FileInputStream 只能对文件进行读操作，而FileOutputStream 只能对文件进行写操作；但是，RandomAccessFile 与输入流和输出流不同之处就是RandomAccessFile可以访问文件的任意地方同时支持文件的读和写，并且它支持随机访问。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="Java" scheme="https://perkins4j2.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>中文分词</title>
+    <link href="https://perkins4j2.github.io/posts/208501/"/>
+    <id>https://perkins4j2.github.io/posts/208501/</id>
+    <published>2020-08-31T13:38:19.000Z</published>
+    <updated>2020-08-31T13:45:57.670Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h3&gt;&lt;p&gt;词是最小的能够独立活动的有意义的语言成分，英文单词之间是以空格作为自然分界符的，而汉语是以字为基本的书写单位，词语之间没有明显的区分标记，因此，中文词语分析是中文信息处理的基础与关键。&lt;/p&gt;
+&lt;p&gt;Lucene中对中文的处理是基于自动切分的单字切分，或者二元切分。除此之外，还有最大切分（包括向前、向后、以及前后相结合）、最少切分、全切分等等。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="分词" scheme="https://perkins4j2.github.io/tags/%E5%88%86%E8%AF%8D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CompletableFuture方法</title>
+    <link href="https://perkins4j2.github.io/posts/139991/"/>
+    <id>https://perkins4j2.github.io/posts/139991/</id>
+    <published>2020-08-31T13:38:10.000Z</published>
+    <updated>2020-08-31T13:42:56.301Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h3&gt;&lt;p&gt;在Java 8中，引入了CompletableFuture类。除Future接口外，它还实现了CompletionStage接口。该接口为异步计算步骤定义了联系，该联系可以与其他步骤结合使用。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="CompletableFuture" scheme="https://perkins4j2.github.io/tags/CompletableFuture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JVM诊断</title>
+    <link href="https://perkins4j2.github.io/posts/1399911/"/>
+    <id>https://perkins4j2.github.io/posts/1399911/</id>
+    <published>2020-08-31T13:37:16.000Z</published>
+    <updated>2020-08-31T13:42:34.055Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;查看堆栈&quot;&gt;&lt;a href=&quot;#查看堆栈&quot; class=&quot;headerlink&quot; title=&quot;查看堆栈&quot;&gt;&lt;/a&gt;查看堆栈&lt;/h3&gt;&lt;h4 id=&quot;jstack&quot;&gt;&lt;a href=&quot;#jstack&quot; class=&quot;headerlink&quot; title=&quot;jstack&quot;&gt;&lt;/a&gt;jstack&lt;/h4&gt;&lt;p&gt;jstack 是 JDK 自带的工具，用于 dump 指定进程 ID(PID)的 JVM 的线程堆栈信息。&lt;br&gt;jstack PID&lt;/p&gt;
+&lt;p&gt;打印关于锁的信息&lt;br&gt;jstack -l PID&lt;/p&gt;
+&lt;p&gt;JVM进程可能挂起，强制打印堆栈信息&lt;br&gt;jstack -F PID&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
+    
+    
+      <category term="Java8" scheme="https://perkins4j2.github.io/tags/Java8/"/>
+    
+  </entry>
   
   <entry>
     <title>Java实现gRPC的单和双流等服务调用</title>
@@ -61,7 +167,7 @@
     <link href="https://perkins4j2.github.io/posts/62389/"/>
     <id>https://perkins4j2.github.io/posts/62389/</id>
     <published>2020-08-17T12:20:35.000Z</published>
-    <updated>2020-08-17T12:54:37.690Z</updated>
+    <updated>2020-08-31T13:40:14.296Z</updated>
     
     <summary type="html">
     
@@ -368,123 +474,6 @@
     
     
       <category term="Python" scheme="https://perkins4j2.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python3.6+Tensorflow1.8</title>
-    <link href="https://perkins4j2.github.io/posts/16968/"/>
-    <id>https://perkins4j2.github.io/posts/16968/</id>
-    <published>2019-12-09T12:31:59.000Z</published>
-    <updated>2019-12-09T12:36:49.520Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;要求&quot;&gt;&lt;a href=&quot;#要求&quot; class=&quot;headerlink&quot; title=&quot;要求&quot;&gt;&lt;/a&gt;要求&lt;/h3&gt;&lt;p&gt;Requires Python &amp;gt; 3.4 and pip &amp;gt;= 19.0&lt;/p&gt;
-&lt;p&gt;目前是Python &amp;gt; 3.4，但3.7及以上不支持&lt;br&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="Python" scheme="https://perkins4j2.github.io/tags/Python/"/>
-    
-      <category term="Tensorflow" scheme="https://perkins4j2.github.io/tags/Tensorflow/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Varint编码</title>
-    <link href="https://perkins4j2.github.io/posts/63107/"/>
-    <id>https://perkins4j2.github.io/posts/63107/</id>
-    <published>2019-11-30T01:55:49.000Z</published>
-    <updated>2019-11-30T02:01:52.430Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;什么是Varint编码&quot;&gt;&lt;a href=&quot;#什么是Varint编码&quot; class=&quot;headerlink&quot; title=&quot;什么是Varint编码&quot;&gt;&lt;/a&gt;什么是Varint编码&lt;/h3&gt;&lt;p&gt;Varint是一种使用一个或多个字节序列化整数的方法，会把&lt;code&gt;整数&lt;/code&gt;编码为&lt;code&gt;变长字节&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;对于32位整型的&lt;code&gt;4&lt;/code&gt;个字节数据经过Varint编码后需要&lt;code&gt;1~5&lt;/code&gt;个字节，小的数字使用1个byte，大的数字使用5个bytes。&lt;/p&gt;
-&lt;p&gt;64位整型数据编码后占用1~10个字节。在实际场景中小数字的使用率远远多于大数字，因此通过Varint编码对于大部分场景都可以起到很好的压缩效果。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="Varint" scheme="https://perkins4j2.github.io/tags/Varint/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kafka解压缩</title>
-    <link href="https://perkins4j2.github.io/posts/27626/"/>
-    <id>https://perkins4j2.github.io/posts/27626/</id>
-    <published>2019-11-30T01:55:40.000Z</published>
-    <updated>2019-11-30T02:01:52.425Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;压缩的目的&quot;&gt;&lt;a href=&quot;#压缩的目的&quot; class=&quot;headerlink&quot; title=&quot;压缩的目的&quot;&gt;&lt;/a&gt;压缩的目的&lt;/h3&gt;&lt;p&gt;时间换空间，用CPU时间去换磁盘空间或网络IO传输量。&lt;/p&gt;
-&lt;h3 id=&quot;配置&quot;&gt;&lt;a href=&quot;#配置&quot; class=&quot;headerlink&quot; title=&quot;配置&quot;&gt;&lt;/a&gt;配置&lt;/h3&gt;&lt;p&gt;// 开启GZIP压缩&lt;br&gt;// Producer启动后，生产的每个消息集合都会经过GZIP压缩，能够很好地节省网络传输带宽和Kafka Broker端的磁盘占用。&lt;/p&gt;
-&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;props.put(&lt;span class=&quot;string&quot;&gt;&quot;compression.type&quot;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&quot;gzip&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Producer&amp;lt;String, String&amp;gt; producer = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; KafkaProducer&amp;lt;&amp;gt;(props);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="kafka" scheme="https://perkins4j2.github.io/tags/kafka/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kafka Producer配置</title>
-    <link href="https://perkins4j2.github.io/posts/38013/"/>
-    <id>https://perkins4j2.github.io/posts/38013/</id>
-    <published>2019-11-30T01:55:28.000Z</published>
-    <updated>2019-11-30T02:01:52.427Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;acks&quot;&gt;&lt;a href=&quot;#acks&quot; class=&quot;headerlink&quot; title=&quot;acks&quot;&gt;&lt;/a&gt;acks&lt;/h3&gt;&lt;p&gt;producer希望leader返回的用于确认请求完成的确认数量. 可选值 all, -1, 0 1. 默认值为1。&lt;/p&gt;
-&lt;p&gt;acks=0 不需要等待服务器的确认. 这是retries设置无效. 响应里来自服务端的offset总是-1. producer只管发不管发送成功与否。延迟低，容易丢失数据。&lt;/p&gt;
-&lt;p&gt;acks=1 表示leader写入成功（但是并没有刷新到磁盘）后即向producer响应。延迟中等，一旦leader副本挂了，就会丢失数据。&lt;/p&gt;
-&lt;p&gt;acks=all等待数据完成副本的复制, 等同于-1. 假如需要保证消息不丢失, 需要使用该设置. 同时需要设置unclean.leader.election.enable为true, 保证当ISR列表为空时, 选择其他存活的副本作为新的leader.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="kafka" scheme="https://perkins4j2.github.io/tags/kafka/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Maven 打包Plugins集成</title>
-    <link href="https://perkins4j2.github.io/posts/22633/"/>
-    <id>https://perkins4j2.github.io/posts/22633/</id>
-    <published>2019-11-30T01:54:51.000Z</published>
-    <updated>2019-11-30T02:01:52.432Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;目标&quot;&gt;&lt;a href=&quot;#目标&quot; class=&quot;headerlink&quot; title=&quot;目标&quot;&gt;&lt;/a&gt;目标&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;jar冲突检测&lt;/li&gt;
-&lt;li&gt;源码编译&lt;/li&gt;
-&lt;li&gt;源码生成jar&lt;/li&gt;
-&lt;li&gt;pom依赖jar拷贝&lt;/li&gt;
-&lt;li&gt;spring boot可执行jar生成&lt;/li&gt;
-&lt;li&gt;脚本动态生成&lt;/li&gt;
-&lt;li&gt;生成目录和打包tar
-    
-    </summary>
-    
-      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
-    
-    
-      <category term="Maven" scheme="https://perkins4j2.github.io/tags/Maven/"/>
     
   </entry>
   
