@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2020-08-31T13:45:52.373Z</updated>
+  <updated>2020-09-01T13:34:23.924Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GraphQL服务实现</title>
+    <link href="https://perkins4j2.github.io/posts/522360011/"/>
+    <id>https://perkins4j2.github.io/posts/522360011/</id>
+    <published>2020-09-01T13:33:04.000Z</published>
+    <updated>2020-09-01T13:34:23.924Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;p&gt;GraphQL是一种用于API或数据的查询语言。&lt;/p&gt;
+&lt;h3 id=&quot;优势&quot;&gt;&lt;a href=&quot;#优势&quot; class=&quot;headerlink&quot; title=&quot;优势&quot;&gt;&lt;/a&gt;优势&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;发出一个GraphQL请求就能准确获得想要的数据，不多不少。 - GraphQL查询总是返回可预测的结果。&lt;/li&gt;
+&lt;li&gt;REST API请求多个资源时，GraphQL可以通过一次请求就获取所需的所有数据。&lt;/li&gt;
+&lt;li&gt;GraphQL基于类型和字段的方式进行查询语言定义。
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="GraphQL" scheme="https://perkins4j2.github.io/tags/GraphQL/"/>
+    
+  </entry>
   
   <entry>
     <title>协议升级机制</title>
@@ -453,27 +477,6 @@
     
     
       <category term="docker" scheme="https://perkins4j2.github.io/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python环境及工具安装</title>
-    <link href="https://perkins4j2.github.io/posts/3231/"/>
-    <id>https://perkins4j2.github.io/posts/3231/</id>
-    <published>2019-12-09T12:32:14.000Z</published>
-    <updated>2019-12-09T12:36:49.522Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://www.jetbrains.com/pycharm/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;下载安装PyCharm CE2019.2&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;安装Python&quot;&gt;&lt;a href=&quot;#安装Python&quot; class=&quot;headerlink&quot; title=&quot;安装Python&quot;&gt;&lt;/a&gt;安装Python&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://www.python.org/downloads/mac-osx/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;下载安装Python3.6&lt;/a&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="Python" scheme="https://perkins4j2.github.io/tags/Python/"/>
     
   </entry>
   
