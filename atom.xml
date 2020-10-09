@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://perkins4j2.github.io/"/>
-  <updated>2020-09-01T13:34:23.924Z</updated>
+  <updated>2020-10-09T12:20:18.439Z</updated>
   <id>https://perkins4j2.github.io/</id>
   
   <author>
@@ -17,9 +17,141 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java隐藏特征</title>
+    <link href="https://perkins4j2.github.io/posts/2020-10-09-undefined-undefined"/>
+    <id>https://perkins4j2.github.io/posts/2020-10-09-undefined-undefined</id>
+    <published>2020-10-09T12:19:14.000Z</published>
+    <updated>2020-10-09T12:20:18.439Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Double-Brace-Initialization&quot;&gt;&lt;a href=&quot;#Double-Brace-Initialization&quot; class=&quot;headerlink&quot; title=&quot;Double Brace Initialization&quot;&gt;&lt;/a&gt;Double Brace Initialization&lt;/h3&gt;&lt;p&gt;双括号初始化，创建一个从指定类（外部大括号）派生的匿名类，并在该类（内部大括号）中提供初始化块。&lt;/p&gt;
+&lt;p&gt;每次使用双括号初始化时，都会生成一个新类，创建的类具有指向周围外部类的隐式this指针。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="https://perkins4j2.github.io/categories/Java/"/>
+    
+    
+      <category term="并发编程" scheme="https://perkins4j2.github.io/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hazelcast服务及注册中心实现</title>
+    <link href="https://perkins4j2.github.io/posts/2020-10-09-undefined-undefined"/>
+    <id>https://perkins4j2.github.io/posts/2020-10-09-undefined-undefined</id>
+    <published>2020-10-09T12:17:44.000Z</published>
+    <updated>2020-10-09T12:24:07.628Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;分区和复制&quot;&gt;&lt;a href=&quot;#分区和复制&quot; class=&quot;headerlink&quot; title=&quot;分区和复制&quot;&gt;&lt;/a&gt;分区和复制&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//backup&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; MapConfig()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;.setBackupCount(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;.setAsyncBackupCount(&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;.setReadBackupData(&lt;span class=&quot;keyword&quot;&gt;true&lt;/span&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="Hazelcast" scheme="https://perkins4j2.github.io/tags/Hazelcast/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lambda重构面向对象的设计模式</title>
+    <link href="https://perkins4j2.github.io/posts/2020-10-09-undefined-undefined"/>
+    <id>https://perkins4j2.github.io/posts/2020-10-09-undefined-undefined</id>
+    <published>2020-10-09T12:17:04.000Z</published>
+    <updated>2020-10-09T12:23:20.161Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;策略模式&quot;&gt;&lt;a href=&quot;#策略模式&quot; class=&quot;headerlink&quot; title=&quot;策略模式&quot;&gt;&lt;/a&gt;策略模式&lt;/h3&gt;&lt;p&gt;Lambda表达式避免了采用策略设计模式时僵化的模板代码。&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Validator numericValidator = &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Validator((String s) -&amp;gt; s.matches(&lt;span class=&quot;string&quot;&gt;&quot;[a-z]+&quot;&lt;/span&gt;)); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;boolean&lt;/span&gt; b1 = numericValidator.validate(&lt;span class=&quot;string&quot;&gt;&quot;aaaa&quot;&lt;/span&gt;); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Validator lowerCaseValidator = &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Validator((String s) -&amp;gt; s.matches(&lt;span class=&quot;string&quot;&gt;&quot;\\d+&quot;&lt;/span&gt;)); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;boolean&lt;/span&gt; b2 = lowerCaseValidator.validate(&lt;span class=&quot;string&quot;&gt;&quot;bbbb&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="Lambda" scheme="https://perkins4j2.github.io/tags/Lambda/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Vue教程</title>
+    <link href="https://perkins4j2.github.io/posts/2020-10-09-undefined-undefined"/>
+    <id>https://perkins4j2.github.io/posts/2020-10-09-undefined-undefined</id>
+    <published>2020-10-09T12:16:53.000Z</published>
+    <updated>2020-10-09T12:22:43.891Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;声明式渲染&quot;&gt;&lt;a href=&quot;#声明式渲染&quot; class=&quot;headerlink&quot; title=&quot;声明式渲染&quot;&gt;&lt;/a&gt;声明式渲染&lt;/h3&gt;&lt;p&gt;模板语法来声明式地将数据渲染进 DOM 的系统&lt;br&gt;&lt;figure class=&quot;highlight
+        
+      
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="Vue" scheme="https://perkins4j2.github.io/tags/Vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CompletableFuture组合式异步编程</title>
+    <link href="https://perkins4j2.github.io/posts/2020-10-09-undefined-undefined"/>
+    <id>https://perkins4j2.github.io/posts/2020-10-09-undefined-undefined</id>
+    <published>2020-10-09T12:16:08.000Z</published>
+    <updated>2020-10-09T12:22:09.420Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Callable与Runnable&quot;&gt;&lt;a href=&quot;#Callable与Runnable&quot; class=&quot;headerlink&quot; title=&quot;Callable与Runnable&quot;&gt;&lt;/a&gt;Callable与Runnable&lt;/h3&gt;&lt;p&gt;java.lang.Runnable吧，它是一个接口，在它里面只声明了一个run()方法，由于run()方法返回值为void类型，所以在执行完任务之后无法返回任何结果。&lt;/p&gt;
+&lt;p&gt;Callable位于java.util.concurrent包下，它也是一个接口，在它里面也只声明了一个方法，只不过这个方法叫做call()，这是一个泛型接口，call()函数返回的类型就是传递进来的V类型。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
+    
+    
+      <category term="CompletableFuture" scheme="https://perkins4j2.github.io/tags/CompletableFuture/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Maven多Module自定义archetype</title>
+    <link href="https://perkins4j2.github.io/posts/2020-10-09-undefined-undefined"/>
+    <id>https://perkins4j2.github.io/posts/2020-10-09-undefined-undefined</id>
+    <published>2020-10-09T12:15:57.000Z</published>
+    <updated>2020-10-09T12:21:27.653Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;创建archetype项目&quot;&gt;&lt;a href=&quot;#创建archetype项目&quot; class=&quot;headerlink&quot; title=&quot;创建archetype项目&quot;&gt;&lt;/a&gt;创建archetype项目&lt;/h3&gt;&lt;h4 id=&quot;创建Parent&quot;&gt;&lt;a href=&quot;#创建Parent&quot; class=&quot;headerlink&quot; title=&quot;创建Parent&quot;&gt;&lt;/a&gt;创建Parent&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;利用IDEA创建骨架项目，名称例如archetype-all&lt;/li&gt;
+&lt;li&gt;Pom&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;archetype-all&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;packaging&lt;/span&gt;&amp;gt;&lt;/span&gt;pom&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;packaging&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;1.0.0-SNAPSHOT&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;build&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;extensions&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;extension&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;             &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;org.apache.maven.archetype&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;             &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;archetype-packaging&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;             &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;3.2.0&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;extension&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;extensions&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;pluginManagement&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;plugins&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;             &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;plugin&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                 &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;maven-archetype-plugin&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                 &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;3.2.0&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;             &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;plugin&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;         &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;plugins&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;pluginManagement&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;build&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="工具利器" scheme="https://perkins4j2.github.io/categories/%E5%B7%A5%E5%85%B7%E5%88%A9%E5%99%A8/"/>
+    
+    
+      <category term="Maven" scheme="https://perkins4j2.github.io/tags/Maven/"/>
+    
+  </entry>
+  
+  <entry>
     <title>GraphQL服务实现</title>
-    <link href="https://perkins4j2.github.io/posts/522360011/"/>
-    <id>https://perkins4j2.github.io/posts/522360011/</id>
+    <link href="https://perkins4j2.github.io/posts/2020-09-01-undefined-undefined"/>
+    <id>https://perkins4j2.github.io/posts/2020-09-01-undefined-undefined</id>
     <published>2020-09-01T13:33:04.000Z</published>
     <updated>2020-09-01T13:34:23.924Z</updated>
     
@@ -42,8 +174,8 @@
   
   <entry>
     <title>协议升级机制</title>
-    <link href="https://perkins4j2.github.io/posts/254331/"/>
-    <id>https://perkins4j2.github.io/posts/254331/</id>
+    <link href="https://perkins4j2.github.io/posts/2020-08-31-undefined-undefined"/>
+    <id>https://perkins4j2.github.io/posts/2020-08-31-undefined-undefined</id>
     <published>2020-08-31T13:44:10.000Z</published>
     <updated>2020-08-31T13:45:52.373Z</updated>
     
@@ -51,7 +183,7 @@
     
       &lt;h3 id=&quot;协议升级&quot;&gt;&lt;a href=&quot;#协议升级&quot; class=&quot;headerlink&quot; title=&quot;协议升级&quot;&gt;&lt;/a&gt;协议升级&lt;/h3&gt;&lt;p&gt;HTTP协议 提供了一种特殊的机制，这一机制允许将一个已建立的连接升级成新的、不相容的协议。这篇指南涵盖了其工作原理和使用场景。&lt;/p&gt;
 &lt;p&gt;通常来说这一机制总是由客户端发起的 （不过也有例外，比如说可以由服务端发起升级到传输层安全协议（TLS））， 服务端可以选择是否要升级到新协议。借助这一技术，连接可以以常用的协议启动（如HTTP/1.1），随后再升级到HTTP2甚至是WebSockets.&lt;/p&gt;
-&lt;p&gt;注意：HTTP/2 明确禁止使用此机制，这个机制只属于HTTP/1.1&lt;/p&gt;
+&lt;p&gt;注意：HTTP/2 明确禁止使用此机制，这个机制只属于HTTP/1.1&lt;br&gt;
     
     </summary>
     
@@ -64,8 +196,8 @@
   
   <entry>
     <title>RandomAccessFile随机读写文件</title>
-    <link href="https://perkins4j2.github.io/posts/32311/"/>
-    <id>https://perkins4j2.github.io/posts/32311/</id>
+    <link href="https://perkins4j2.github.io/posts/2020-08-31-undefined-undefined"/>
+    <id>https://perkins4j2.github.io/posts/2020-08-31-undefined-undefined</id>
     <published>2020-08-31T13:44:00.000Z</published>
     <updated>2020-08-31T13:45:00.933Z</updated>
     
@@ -85,15 +217,15 @@
   
   <entry>
     <title>中文分词</title>
-    <link href="https://perkins4j2.github.io/posts/208501/"/>
-    <id>https://perkins4j2.github.io/posts/208501/</id>
+    <link href="https://perkins4j2.github.io/posts/2020-08-31-undefined-undefined"/>
+    <id>https://perkins4j2.github.io/posts/2020-08-31-undefined-undefined</id>
     <published>2020-08-31T13:38:19.000Z</published>
     <updated>2020-08-31T13:45:57.670Z</updated>
     
     <summary type="html">
     
       &lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h3&gt;&lt;p&gt;词是最小的能够独立活动的有意义的语言成分，英文单词之间是以空格作为自然分界符的，而汉语是以字为基本的书写单位，词语之间没有明显的区分标记，因此，中文词语分析是中文信息处理的基础与关键。&lt;/p&gt;
-&lt;p&gt;Lucene中对中文的处理是基于自动切分的单字切分，或者二元切分。除此之外，还有最大切分（包括向前、向后、以及前后相结合）、最少切分、全切分等等。&lt;/p&gt;
+&lt;p&gt;Lucene中对中文的处理是基于自动切分的单字切分，或者二元切分。除此之外，还有最大切分（包括向前、向后、以及前后相结合）、最少切分、全切分等等。&lt;br&gt;
     
     </summary>
     
@@ -106,14 +238,14 @@
   
   <entry>
     <title>CompletableFuture方法</title>
-    <link href="https://perkins4j2.github.io/posts/139991/"/>
-    <id>https://perkins4j2.github.io/posts/139991/</id>
+    <link href="https://perkins4j2.github.io/posts/2020-08-31-undefined-undefined"/>
+    <id>https://perkins4j2.github.io/posts/2020-08-31-undefined-undefined</id>
     <published>2020-08-31T13:38:10.000Z</published>
     <updated>2020-08-31T13:42:56.301Z</updated>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h3&gt;&lt;p&gt;在Java 8中，引入了CompletableFuture类。除Future接口外，它还实现了CompletionStage接口。该接口为异步计算步骤定义了联系，该联系可以与其他步骤结合使用。&lt;/p&gt;
+      &lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h3&gt;&lt;p&gt;在Java 8中，引入了CompletableFuture类。除Future接口外，它还实现了CompletionStage接口。该接口为异步计算步骤定义了联系，该联系可以与其他步骤结合使用。&lt;br&gt;
     
     </summary>
     
@@ -126,8 +258,8 @@
   
   <entry>
     <title>JVM诊断</title>
-    <link href="https://perkins4j2.github.io/posts/1399911/"/>
-    <id>https://perkins4j2.github.io/posts/1399911/</id>
+    <link href="https://perkins4j2.github.io/posts/2020-08-31-undefined-undefined"/>
+    <id>https://perkins4j2.github.io/posts/2020-08-31-undefined-undefined</id>
     <published>2020-08-31T13:37:16.000Z</published>
     <updated>2020-08-31T13:42:34.055Z</updated>
     
@@ -148,8 +280,8 @@
   
   <entry>
     <title>Java实现gRPC的单和双流等服务调用</title>
-    <link href="https://perkins4j2.github.io/posts/43712/"/>
-    <id>https://perkins4j2.github.io/posts/43712/</id>
+    <link href="https://perkins4j2.github.io/posts/2020-08-17-undefined-undefined"/>
+    <id>https://perkins4j2.github.io/posts/2020-08-17-undefined-undefined</id>
     <published>2020-08-17T12:53:42.000Z</published>
     <updated>2020-08-17T12:54:37.695Z</updated>
     
@@ -168,8 +300,8 @@
   
   <entry>
     <title>Java实现gRPC服务</title>
-    <link href="https://perkins4j2.github.io/posts/24127/"/>
-    <id>https://perkins4j2.github.io/posts/24127/</id>
+    <link href="https://perkins4j2.github.io/posts/2020-08-17-undefined-undefined"/>
+    <id>https://perkins4j2.github.io/posts/2020-08-17-undefined-undefined</id>
     <published>2020-08-17T12:23:28.000Z</published>
     <updated>2020-08-17T12:54:37.694Z</updated>
     
@@ -188,21 +320,20 @@
   
   <entry>
     <title>Arthas生产性能测试工具</title>
-    <link href="https://perkins4j2.github.io/posts/62389/"/>
-    <id>https://perkins4j2.github.io/posts/62389/</id>
+    <link href="https://perkins4j2.github.io/posts/2020-08-17-undefined-undefined"/>
+    <id>https://perkins4j2.github.io/posts/2020-08-17-undefined-undefined</id>
     <published>2020-08-17T12:20:35.000Z</published>
-    <updated>2020-08-31T13:40:14.296Z</updated>
+    <updated>2020-10-09T12:18:44.607Z</updated>
     
     <summary type="html">
     
       &lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;Alibaba开源的Java诊断工具&lt;/li&gt;
 &lt;li&gt;生产中对类、方法性能评估&lt;/li&gt;
-&lt;li&gt;查询ClassLoader关系&lt;/li&gt;
+&lt;li&gt;查询classloader关系&lt;/li&gt;
 &lt;li&gt;查看异常信息&lt;/li&gt;
-&lt;li&gt;JVM、线程池和堆栈等运行状态&lt;/li&gt;
-&lt;li&gt;代码修改和热加载&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;jvm、线程池和堆栈等运行状态&lt;/li&gt;
+&lt;li&gt;代码修改和热加载
     
     </summary>
     
@@ -215,18 +346,15 @@
   
   <entry>
     <title>JavaAPI调用TensorFlow2.0模型GPU或CPU</title>
-    <link href="https://perkins4j2.github.io/posts/41363/"/>
-    <id>https://perkins4j2.github.io/posts/41363/</id>
+    <link href="https://perkins4j2.github.io/posts/2020-06-08-undefined-undefined"/>
+    <id>https://perkins4j2.github.io/posts/2020-06-08-undefined-undefined</id>
     <published>2020-06-08T12:25:55.000Z</published>
     <updated>2020-06-08T12:29:02.327Z</updated>
     
     <summary type="html">
     
       &lt;h3 id=&quot;jvm设置&quot;&gt;&lt;a href=&quot;#jvm设置&quot; class=&quot;headerlink&quot; title=&quot;jvm设置&quot;&gt;&lt;/a&gt;jvm设置&lt;/h3&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;export CUDA_VISIBLE_DEVICES=1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;指定GPU显卡索引&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;export CUDA_VISIBLE_DEVICES=-1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
+&lt;p&gt;指定GPU显卡索引&lt;br&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;export CUDA_VISIBLE_DEVICES=-1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;不使用GPU&lt;/p&gt;
     
     </summary>
@@ -240,8 +368,8 @@
   
   <entry>
     <title>EasyExcel介绍</title>
-    <link href="https://perkins4j2.github.io/posts/38089/"/>
-    <id>https://perkins4j2.github.io/posts/38089/</id>
+    <link href="https://perkins4j2.github.io/posts/2020-05-19-undefined-undefined"/>
+    <id>https://perkins4j2.github.io/posts/2020-05-19-undefined-undefined</id>
     <published>2020-05-19T10:24:07.000Z</published>
     <updated>2020-05-19T10:27:27.839Z</updated>
     
@@ -261,8 +389,8 @@
   
   <entry>
     <title>Spring Bean注解介绍</title>
-    <link href="https://perkins4j2.github.io/posts/22671/"/>
-    <id>https://perkins4j2.github.io/posts/22671/</id>
+    <link href="https://perkins4j2.github.io/posts/2020-05-19-undefined-undefined"/>
+    <id>https://perkins4j2.github.io/posts/2020-05-19-undefined-undefined</id>
     <published>2020-05-19T10:23:59.000Z</published>
     <updated>2020-05-19T10:27:27.842Z</updated>
     
@@ -270,7 +398,6 @@
     
       &lt;h3 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h3&gt;&lt;p&gt;Bean为声明由Spring管理的实例。&lt;/p&gt;
 &lt;h3 id=&quot;Bean管理Demo&quot;&gt;&lt;a href=&quot;#Bean管理Demo&quot; class=&quot;headerlink&quot; title=&quot;Bean管理Demo&quot;&gt;&lt;/a&gt;Bean管理Demo&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;@Configuration&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;BeanConfig&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Bean&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;A &lt;span class=&quot;title&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(B b)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; A(b);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;meta&quot;&gt;@Bean&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;B &lt;span class=&quot;title&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; B();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
 &lt;ul&gt;
 &lt;li&gt;B，Bean声明，由spring管理&lt;/li&gt;
 &lt;li&gt;A依赖B，输入参数为B，自动解决Bean加载顺序问题
@@ -286,8 +413,8 @@
   
   <entry>
     <title>CompletableFuture和Future介绍</title>
-    <link href="https://perkins4j2.github.io/posts/13999/"/>
-    <id>https://perkins4j2.github.io/posts/13999/</id>
+    <link href="https://perkins4j2.github.io/posts/2020-05-19-undefined-undefined"/>
+    <id>https://perkins4j2.github.io/posts/2020-05-19-undefined-undefined</id>
     <published>2020-05-19T10:23:46.000Z</published>
     <updated>2020-06-08T12:27:31.021Z</updated>
     
@@ -312,8 +439,8 @@
   
   <entry>
     <title>Sentinel流控和降级方案</title>
-    <link href="https://perkins4j2.github.io/posts/28431/"/>
-    <id>https://perkins4j2.github.io/posts/28431/</id>
+    <link href="https://perkins4j2.github.io/posts/2020-04-14-undefined-undefined"/>
+    <id>https://perkins4j2.github.io/posts/2020-04-14-undefined-undefined</id>
     <published>2020-04-14T00:54:29.000Z</published>
     <updated>2020-04-14T01:58:11.536Z</updated>
     
@@ -325,12 +452,9 @@
 &lt;li&gt;可原生开发&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;引入pom&quot;&gt;&lt;a href=&quot;#引入pom&quot; class=&quot;headerlink&quot; title=&quot;引入pom&quot;&gt;&lt;/a&gt;引入pom&lt;/h3&gt;&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;sentinel.version&lt;/span&gt;&amp;gt;&lt;/span&gt;1.7.1&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;sentinel.version&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;com.alibaba.csp&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;sentinel-core&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;$&amp;#123;sentinel.version&amp;#125;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;com.alibaba.csp&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;sentinel-annotation-aspectj&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;$&amp;#123;sentinel.version&amp;#125;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;com.alibaba.csp&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;groupId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;sentinel-transport-simple-http&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;artifactId&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;$&amp;#123;sentinel.version&amp;#125;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;version&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;dependency&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;sentinel-core核心包&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;sentinel-annotation-aspectj适合spring切面和注解&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;sentinel-core核心包&lt;/li&gt;
+&lt;li&gt;sentinel-annotation-aspectj适合spring切面和注解&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;sentinel-transport-simple-http便于接入console控制台&lt;/p&gt;
     
     </summary>
@@ -339,144 +463,6 @@
     
     
       <category term="sentinel" scheme="https://perkins4j2.github.io/tags/sentinel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>FastText介绍</title>
-    <link href="https://perkins4j2.github.io/posts/55043/"/>
-    <id>https://perkins4j2.github.io/posts/55043/</id>
-    <published>2020-01-09T00:59:54.721Z</published>
-    <updated>2020-01-09T01:25:42.191Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;FastText&quot;&gt;&lt;a href=&quot;#FastText&quot; class=&quot;headerlink&quot; title=&quot;FastText&quot;&gt;&lt;/a&gt;FastText&lt;/h2&gt;&lt;h3 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h3&gt;&lt;p&gt;FastText是Facebook研究团队创建的一个库，用于高效计算word representation和执行文本分类，可以在几秒内完成其他算法几天才可以完成的任务。&lt;/p&gt;
-&lt;p&gt;这个库在NLP社区获得了用户的大量支持，并且可能替代gensim包，它提供了像Word Vectors（词向量）功能。&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="FastText" scheme="https://perkins4j2.github.io/tags/FastText/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Word2Vector介绍</title>
-    <link href="https://perkins4j2.github.io/posts/44927/"/>
-    <id>https://perkins4j2.github.io/posts/44927/</id>
-    <published>2020-01-09T00:59:44.000Z</published>
-    <updated>2020-01-09T01:25:42.197Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;word2vector&quot;&gt;&lt;a href=&quot;#word2vector&quot; class=&quot;headerlink&quot; title=&quot;word2vector&quot;&gt;&lt;/a&gt;word2vector&lt;/h3&gt;&lt;h4 id=&quot;word2vec简介&quot;&gt;&lt;a href=&quot;#word2vec简介&quot; class=&quot;headerlink&quot; title=&quot;word2vec简介&quot;&gt;&lt;/a&gt;word2vec简介&lt;/h4&gt;&lt;p&gt;word2vec的核心是神经网络，采用 CBOW（Continuous Bag-Of-Words，即连续的词袋模型）和 Skip-Gram 两种模型，将词语映像到同一坐标系，输出为数值型向量的方法。&lt;/p&gt;
-&lt;p&gt;简而言之，就是将人类才可以看懂的文字，转换为机器也可以识别、操作、处理的数值，将一串文字转化为一个数值型向量的过程。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="NLP" scheme="https://perkins4j2.github.io/categories/NLP/"/>
-    
-    
-      <category term="word2vector" scheme="https://perkins4j2.github.io/tags/word2vector/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Jupyter Notebook安装</title>
-    <link href="https://perkins4j2.github.io/posts/7893/"/>
-    <id>https://perkins4j2.github.io/posts/7893/</id>
-    <published>2020-01-09T00:59:32.000Z</published>
-    <updated>2020-01-09T01:25:42.193Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h3&gt;&lt;h4 id=&quot;前提&quot;&gt;&lt;a href=&quot;#前提&quot; class=&quot;headerlink&quot; title=&quot;前提&quot;&gt;&lt;/a&gt;前提&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;Python 3.3+, or Python 2.7&lt;/li&gt;
-&lt;li&gt;推荐Anaconda安装&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;使用Anaconda&quot;&gt;&lt;a href=&quot;#使用Anaconda&quot; class=&quot;headerlink&quot; title=&quot;使用Anaconda&quot;&gt;&lt;/a&gt;使用Anaconda&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;默认jupyter已安装&lt;/li&gt;
-&lt;li&gt;若无，搜索jupyter进行安装&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;使用pip3&quot;&gt;&lt;a href=&quot;#使用pip3&quot; class=&quot;headerlink&quot; title=&quot;使用pip3&quot;&gt;&lt;/a&gt;使用pip3&lt;/h4&gt;&lt;p&gt;pip3 install –upgrade pip&lt;br&gt;pip3 install jupyter&lt;br&gt;
-    
-    </summary>
-    
-      <category term="NLP" scheme="https://perkins4j2.github.io/categories/NLP/"/>
-    
-    
-      <category term="Jupyter" scheme="https://perkins4j2.github.io/tags/Jupyter/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>动态代理和CGLib</title>
-    <link href="https://perkins4j2.github.io/posts/25433/"/>
-    <id>https://perkins4j2.github.io/posts/25433/</id>
-    <published>2020-01-09T00:58:57.000Z</published>
-    <updated>2020-01-09T01:25:42.199Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;1、JDK动态代理&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;利用拦截器(拦截器必须实现InvocationHanlder)加上反射机制生成一个实现代理接口的匿名类。&lt;/li&gt;
-&lt;li&gt;在调用具体方法前调用InvokeHandler来处理。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;2、CGLIB动态代理&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;利用ASM开源包，对代理对象类的class文件加载进来，通过修改其字节码生成子类来处理。
-    
-    </summary>
-    
-      <category term="Java" scheme="https://perkins4j2.github.io/categories/Java/"/>
-    
-    
-      <category term="aop" scheme="https://perkins4j2.github.io/tags/aop/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AOP及内部调用</title>
-    <link href="https://perkins4j2.github.io/posts/43132/"/>
-    <id>https://perkins4j2.github.io/posts/43132/</id>
-    <published>2020-01-09T00:58:46.000Z</published>
-    <updated>2020-01-09T01:25:42.189Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;AOP简介&quot;&gt;&lt;a href=&quot;#AOP简介&quot; class=&quot;headerlink&quot; title=&quot;AOP简介&quot;&gt;&lt;/a&gt;AOP简介&lt;/h3&gt;&lt;p&gt;将相同逻辑的重复代码横向抽取出来，使用动态代理技术将这些重复代码织入到目标对象方法中，实现和原来一样的功能。&lt;br&gt;这样一来，我们就在写业务时只关心业务代码，而不用关心与业务无关的代码。&lt;/p&gt;
-&lt;p&gt;拦截器的实现原理就是动态代理，实现AOP机制。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="Java" scheme="https://perkins4j2.github.io/categories/Java/"/>
-    
-    
-      <category term="aop" scheme="https://perkins4j2.github.io/tags/aop/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker安装和配置</title>
-    <link href="https://perkins4j2.github.io/posts/25453/"/>
-    <id>https://perkins4j2.github.io/posts/25453/</id>
-    <published>2019-12-09T12:32:31.000Z</published>
-    <updated>2019-12-09T12:36:49.517Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Docker&quot;&gt;&lt;a href=&quot;#Docker&quot; class=&quot;headerlink&quot; title=&quot;Docker&quot;&gt;&lt;/a&gt;Docker&lt;/h3&gt;&lt;p&gt;Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从 Apache2.0 协议开源。&lt;/p&gt;
-&lt;p&gt;Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。&lt;/p&gt;
-&lt;p&gt;容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）,更重要的是容器性能开销极低。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="架构" scheme="https://perkins4j2.github.io/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-      <category term="docker" scheme="https://perkins4j2.github.io/tags/docker/"/>
     
   </entry>
   
