@@ -267,7 +267,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">89</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">91</span></a>
 
   </li>
         
@@ -305,7 +305,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">117</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">123</span></a>
 
   </li>
 
@@ -506,7 +506,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">6.9k</span>
+                <span title="本文字数">1.4k</span>
               
 
               
@@ -520,7 +520,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">6 分钟</span>
+                <span title="阅读时长">1 分钟</span>
               
             </div>
           
@@ -541,7 +541,6 @@
 
       
         <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//当前副本</span></span><br><span class="line"><span class="keyword">public</span> List&lt;String&gt; r1 = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//第二个副本</span></span><br><span class="line"><span class="keyword">public</span> List&lt;String&gt; r2 = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> AtomicBoolean replicationIsEmpty = <span class="keyword">new</span> AtomicBoolean();</span><br></pre></td></tr></table></figure>
-
    <a id="more"></a>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initCurrent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    r1 = <span class="keyword">new</span> ArrayList&lt;String&gt;(<span class="number">10</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initReplication</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    r2 = <span class="keyword">new</span> ArrayList&lt;String&gt;(<span class="number">10</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 更新数据至副本，同时切换副本状态</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> keys</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addKeys</span><span class="params">(List&lt;String&gt; keys)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//replicationIsEmpty为true，表示可用</span></span><br><span class="line">    <span class="keyword">if</span> (replicationIsEmpty.get()) &#123;</span><br><span class="line">        r2.addAll(keys);</span><br><span class="line">        replicationIsEmpty.set(<span class="keyword">false</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//等其他正在引用该数据方法处理完成</span></span><br><span class="line">            Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        initCurrent();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        r1.addAll(keys);</span><br><span class="line">        <span class="comment">//先改状态，运行两份数据并存</span></span><br><span class="line">        replicationIsEmpty.set(<span class="keyword">true</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//等其他正在引用该数据方法处理完成</span></span><br><span class="line">            Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//后清空</span></span><br><span class="line">        initReplication();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 根据副本状态，返回引用对象</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> List&lt;String&gt; <span class="title">getIdList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!replicationIsEmpty.get()) &#123;</span><br><span class="line">        <span class="keyword">return</span> r2;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> r1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
@@ -709,7 +708,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">117</span>
+                    <span class="site-state-item-count">123</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -937,7 +936,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">89</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">91</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1007,7 +1010,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">300k</span>
+    <span title="站点总字数">335k</span>
   
 
   
@@ -1018,7 +1021,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">4:32</span>
+    <span title="站点阅读时长">5:04</span>
   
 </div>
 

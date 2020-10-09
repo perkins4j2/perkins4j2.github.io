@@ -267,7 +267,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">89</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">91</span></a>
 
   </li>
         
@@ -305,7 +305,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">117</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">123</span></a>
 
   </li>
 
@@ -494,7 +494,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.7k</span>
+                <span title="本文字数">1.5k</span>
               
 
               
@@ -508,7 +508,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">3 分钟</span>
+                <span title="阅读时长">1 分钟</span>
               
             </div>
           
@@ -532,11 +532,10 @@
 <li><p>下载地址</p>
 <p>  <a href="https://gradle.org/releases/" target="_blank" rel="noopener">gradle</a></p>
 </li>
-<li><p>选择<a href="https://gradle.org/next-steps/?version=5.6.2&format=bin" target="_blank" rel="noopener">二进制包</a>，包括文档和源码</p>
+<li><p>选择<a href="https://gradle.org/next-steps/?version=5.6.2&amp;format=bin" target="_blank" rel="noopener">二进制包</a>，包括文档和源码</p>
 </li>
 <li><p>下载V5.6.2，后解压</p>
 <a id="more"></a>
-
 </li>
 </ul>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><ul>
@@ -550,7 +549,6 @@
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>创建.gradle目录<br>  <code>~/.gradle/</code></p>
 <p>设置源<br>  <code>vi ~/.gradle/init.gradle</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">allprojects&#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        def ALIYUN_REPOSITORY_URL = &apos;http://maven.aliyun.com/nexus/content/groups/public&apos;</span><br><span class="line">        def ALIYUN_JCENTER_URL = &apos;http://maven.aliyun.com/nexus/content/repositories/jcenter&apos;</span><br><span class="line">        all &#123; ArtifactRepository repo -&gt;</span><br><span class="line">            if(repo instanceof MavenArtifactRepository)&#123;</span><br><span class="line">                def url = repo.url.toString()</span><br><span class="line">                if (url.startsWith(&apos;https://repo1.maven.org/maven2&apos;)) &#123;</span><br><span class="line">                    project.logger.lifecycle &quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_REPOSITORY_URL.&quot;</span><br><span class="line">                    remove repo</span><br><span class="line">                &#125;</span><br><span class="line">                if (url.startsWith(&apos;https://jcenter.bintray.com/&apos;)) &#123;</span><br><span class="line">                    project.logger.lifecycle &quot;Repository $&#123;repo.url&#125; replaced by $ALIYUN_JCENTER_URL.&quot;</span><br><span class="line">                    remove repo</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        maven &#123;</span><br><span class="line">            url ALIYUN_REPOSITORY_URL</span><br><span class="line">            url ALIYUN_JCENTER_URL</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="IDEA"><a href="#IDEA" class="headerlink" title="IDEA"></a>IDEA</h3><ul>
 <li>打开file-&gt;setting-&gt;Build,Execution,Deployment-&gt;Gradle</li>
 <li>配置Gradle home，选择用本地Gradle，输入Gradle安装目录</li>
@@ -731,7 +729,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">117</span>
+                    <span class="site-state-item-count">123</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -959,7 +957,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">89</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">91</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1046,7 +1048,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">300k</span>
+    <span title="站点总字数">335k</span>
   
 
   
@@ -1057,7 +1059,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">4:32</span>
+    <span title="站点阅读时长">5:04</span>
   
 </div>
 

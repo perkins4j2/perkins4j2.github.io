@@ -267,7 +267,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">89</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">91</span></a>
 
   </li>
         
@@ -305,7 +305,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">117</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">123</span></a>
 
   </li>
 
@@ -494,7 +494,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.1k</span>
+                <span title="本文字数">1.3k</span>
               
 
               
@@ -508,7 +508,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">3 分钟</span>
+                <span title="阅读时长">1 分钟</span>
               
             </div>
           
@@ -532,12 +532,9 @@
 <p>FileInputStream 只能对文件进行读操作，而FileOutputStream 只能对文件进行写操作；但是，RandomAccessFile 与输入流和输出流不同之处就是RandomAccessFile可以访问文件的任意地方同时支持文件的读和写，并且它支持随机访问。<br> <a id="more"></a><br>RandomAccessFile包含InputStream的三个read方法，也包含OutputStream的三个write方法。同时RandomAccessFile还包含一系列的readXxx和writeXxx方法完成输入输出。<br>   RandomAccessFile父类：java.lang.Object<br>   所有接口实现：Closeable, DataInput, DataOutput, AutoCloseable</p>
 <h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>  1、向10G文件末尾插入指定内容，或者向指定指针位置进行插入或者修改内容。<br>  2、断点续传，使用seek()方法不断的更新下载资源的位置。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">long getFilePoint():设置文件指针偏移，从该文件的开头测量，发生下一次读取或写入。(前面是文档原文翻译通俗一点就是：返回文件记录指针的当前位置,不指定指针的位置默认是0。)</span><br><span class="line"></span><br><span class="line">void seek(long pos):设置文件指针偏移，从该文件的开头测量，发生下一次读取或写入。（前面是文档原文翻译通俗一点就是：将文件记录指针定位到pos位置。）</span><br></pre></td></tr></table></figure>
+<p>通过指定记录指针的位置及跳过的字节数，输出内容<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">raf = <span class="keyword">new</span> RandomAccessFile(path,mode);</span><br><span class="line">raf.writeBytes(<span class="string">"If you interesting to me,please give the kiss to me!"</span>);</span><br><span class="line">raf.seek(seek);<span class="comment">//指定记录指针的位置</span></span><br><span class="line"><span class="comment">//System.out.println(raf.readLine());//使用seek指针指向0，readLine读取所有内容</span></span><br><span class="line">raf.getFilePointer();<span class="comment">//获取指针的位置</span></span><br><span class="line">raf.skipBytes(skipBytes);<span class="comment">//跳过的字节数</span></span><br></pre></td></tr></table></figure></p>
+<p>在内容后面插入一个字符串，并输出<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">raf = <span class="keyword">new</span> RandomAccessFile(path,mode);</span><br><span class="line">raf.writeBytes(<span class="string">"If you interesting to me,please give the kiss to me!"</span>);</span><br><span class="line">raf.seek(raf.length());<span class="comment">//通过raf.length()获取总长度，记录指针指向最后</span></span><br><span class="line">raf.write(<span class="string">"oh yes！"</span>.getBytes());<span class="comment">//在最后插入oh yes!s</span></span><br><span class="line">raf.seek(<span class="number">0</span>);<span class="comment">//记录指针指向初始位置</span></span><br></pre></td></tr></table></figure></p>
 
-<p>通过指定记录指针的位置及跳过的字节数，输出内容</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">raf = <span class="keyword">new</span> RandomAccessFile(path,mode);</span><br><span class="line">raf.writeBytes(<span class="string">"If you interesting to me,please give the kiss to me!"</span>);</span><br><span class="line">raf.seek(seek);<span class="comment">//指定记录指针的位置</span></span><br><span class="line"><span class="comment">//System.out.println(raf.readLine());//使用seek指针指向0，readLine读取所有内容</span></span><br><span class="line">raf.getFilePointer();<span class="comment">//获取指针的位置</span></span><br><span class="line">raf.skipBytes(skipBytes);<span class="comment">//跳过的字节数</span></span><br></pre></td></tr></table></figure>
-
-<p>在内容后面插入一个字符串，并输出</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">raf = <span class="keyword">new</span> RandomAccessFile(path,mode);</span><br><span class="line">raf.writeBytes(<span class="string">"If you interesting to me,please give the kiss to me!"</span>);</span><br><span class="line">raf.seek(raf.length());<span class="comment">//通过raf.length()获取总长度，记录指针指向最后</span></span><br><span class="line">raf.write(<span class="string">"oh yes！"</span>.getBytes());<span class="comment">//在最后插入oh yes!s</span></span><br><span class="line">raf.seek(<span class="number">0</span>);<span class="comment">//记录指针指向初始位置</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -712,7 +709,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">117</span>
+                    <span class="site-state-item-count">123</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -940,7 +937,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">89</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">91</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1027,7 +1028,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">300k</span>
+    <span title="站点总字数">335k</span>
   
 
   
@@ -1038,7 +1039,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">4:32</span>
+    <span title="站点阅读时长">5:04</span>
   
 </div>
 

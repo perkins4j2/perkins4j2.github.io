@@ -267,7 +267,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">89</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">91</span></a>
 
   </li>
         
@@ -305,7 +305,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">117</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">123</span></a>
 
   </li>
 
@@ -476,7 +476,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">9.1k</span>
+                <span title="本文字数">3.1k</span>
               
 
               
@@ -490,7 +490,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">8 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -538,7 +538,6 @@
 <li>训练和评估速度快几百倍。10分钟内就可以在一台多核CPU训练10亿词汇。1分种内完成100万句子在31万中类型中的分类。</li>
 </ul>
 <h2 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./fasttext skipgram -input file.txt -output model</span><br><span class="line"></span><br><span class="line">./fasttext cbow -input file.txt -output model</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>运行上述命令将创建两个名为model.bin和model.vec的文件。</li>
 <li>model.bin包含模型参数，字典和超参数，可用于计算词向量。</li>
@@ -546,44 +545,25 @@
 </ul>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>根据创建的词向量，做一些常见的任务，比如寻找类似的词，类比等。</p>
 <h3 id="输出词向量"><a href="#输出词向量" class="headerlink" title="输出词向量"></a>输出词向量</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./fasttext <span class="built_in">print</span>-word-vectors model.bin &lt; queries.txt</span><br></pre></td></tr></table></figure>
-
-<p>要检查一个词的词向量，而且不保存到一个文件中，可以这样做</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"word"</span> | ./fasttext <span class="built_in">print</span>-word-vectors model.bin</span><br></pre></td></tr></table></figure>
-
-<h3 id="找到相似词"><a href="#找到相似词" class="headerlink" title="找到相似词"></a>找到相似词</h3><p>寻找最相似于给定词语的词，该功能由nn参数提供。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./fasttext nn model.bin</span><br></pre></td></tr></table></figure>
-
-<p>键入上述命令后，终端将要求您输入查询词。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">happy</span><br><span class="line">$ ./fasttext nn model.bin</span><br><span class="line">Query word? happy</span><br><span class="line">with 0.211394</span><br><span class="line"><span class="built_in">which</span> 0.174745</span><br></pre></td></tr></table></figure>
-
-<p>上面的结果是和happy最相似的词。 此功能也可用于修正拼写错误。例如，当您输入错误的拼写时，它会显示在训练文件中出现的词的正确拼写。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wrd</span><br><span class="line"></span><br><span class="line">Query word? wrd</span><br><span class="line">words 0.186589</span><br><span class="line">word 0.179257</span><br><span class="line">skip-gram 0.173146</span><br></pre></td></tr></table></figure>
-
-<h3 id="类比"><a href="#类比" class="headerlink" title="类比"></a>类比</h3><p>FastText字向量也可以用于类别任务，A，B和C3个词,什么对于C等同于B对于A?<br>这里，A，B和C是词。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./fasttext analogies model.bin</span><br><span class="line">$ ./fasttext analogies model.bin</span><br><span class="line">Loading model model.bin</span><br><span class="line">Query triplet (A - B + C)?</span><br></pre></td></tr></table></figure>
-
-<p>上述命令将要求输入A-B+C格式的字，但是我们只需要用空格分隔三个字。</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Query triplet (A - B + C)? happy sad angry</span><br><span class="line"></span><br><span class="line">and 0.217641</span><br><span class="line">with 0.178739</span><br><span class="line"><span class="built_in">which</span> 0.114323</span><br></pre></td></tr></table></figure>
-
+<p>要检查一个词的词向量，而且不保存到一个文件中，可以这样做<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"word"</span> | ./fasttext <span class="built_in">print</span>-word-vectors model.bin</span><br></pre></td></tr></table></figure></p>
+<h3 id="找到相似词"><a href="#找到相似词" class="headerlink" title="找到相似词"></a>找到相似词</h3><p>寻找最相似于给定词语的词，该功能由nn参数提供。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./fasttext nn model.bin</span><br></pre></td></tr></table></figure></p>
+<p>键入上述命令后，终端将要求您输入查询词。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">happy</span><br><span class="line">$ ./fasttext nn model.bin</span><br><span class="line">Query word? happy</span><br><span class="line">with 0.211394</span><br><span class="line"><span class="built_in">which</span> 0.174745</span><br></pre></td></tr></table></figure></p>
+<p>上面的结果是和happy最相似的词。 此功能也可用于修正拼写错误。例如，当您输入错误的拼写时，它会显示在训练文件中出现的词的正确拼写。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wrd</span><br><span class="line"></span><br><span class="line">Query word? wrd</span><br><span class="line">words 0.186589</span><br><span class="line">word 0.179257</span><br><span class="line">skip-gram 0.173146</span><br></pre></td></tr></table></figure></p>
+<h3 id="类比"><a href="#类比" class="headerlink" title="类比"></a>类比</h3><p>FastText字向量也可以用于类别任务，A，B和C3个词,什么对于C等同于B对于A?<br>这里，A，B和C是词。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./fasttext analogies model.bin</span><br><span class="line">$ ./fasttext analogies model.bin</span><br><span class="line">Loading model model.bin</span><br><span class="line">Query triplet (A - B + C)?</span><br></pre></td></tr></table></figure></p>
+<p>上述命令将要求输入A-B+C格式的字，但是我们只需要用空格分隔三个字。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Query triplet (A - B + C)? happy sad angry</span><br><span class="line"></span><br><span class="line">and 0.217641</span><br><span class="line">with 0.178739</span><br><span class="line"><span class="built_in">which</span> 0.114323</span><br></pre></td></tr></table></figure></p>
 <p>在一个非常大的语料库上进行训练会产生更好的结果。</p>
 <h3 id="文本分类"><a href="#文本分类" class="headerlink" title="文本分类"></a>文本分类</h3><p>文本分类是使用特定的类标来标记文本中的每个文档。情感分析和电子邮件分类是文本分类的典型例子。</p>
 <p>训练我们的模型的文本文件的默认格式应该是<strong>label</strong><x> <text>。</text></x></p>
 <p>其中<strong>label</strong>是类的前缀，而<x>是分配给文档的类。此外，文档中不应有引号，一个文档中的所有内容都应该在一行中。</x></p>
 <h4 id="训练分类器"><a href="#训练分类器" class="headerlink" title="训练分类器"></a>训练分类器</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./fasttext supervised -input train.ft.txt -output model_kaggle-label</span><br></pre></td></tr></table></figure>
-
 <p>这里，参数与创建word representation时所提到的参数相同。<br>如果不想使用默认参数来训练模型，则可以在训练时间内指定它们。例如，如果您明确要指定训练过程的学习率，则可以使用参数-lr 来指定学习速率。</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./fasttext supervised-input train.ft.txt-output model_kaggle -lr0.5</span><br></pre></td></tr></table></figure>
-
 <p>可以调整的其他可用参数是：<br>-lr：学习速率[0.1]<br>-lrUpdateRate：更改学习率的更新速率[100]<br>-dim ：字向量大小[100]<br>-ws：上下文窗口的大小[5]<br>-epoch：历元数[5]<br>-neg：抽样数量[5]<br>-loss：损失函数 {ns，hs，softmax} [ns]<br>-thread：线程数[12]<br>-pretrainedVectors：用于监督学习的预培训字向量<br>-saveOutput：输出参数是否应该保存[0]<br>方括号[]中的值表示传递的参数的默认值。</p>
 <h4 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./fasttext <span class="built_in">test</span> model_kaggle.bin test.ft.txt</span><br></pre></td></tr></table></figure>
-
 <p>N       400000<br>P@1     0.916<br>R@1     0.916</p>
 <h4 id="预测测试数据集"><a href="#预测测试数据集" class="headerlink" title="预测测试数据集"></a>预测测试数据集</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./fasttext predict model_kaggle.bin test.ft.txt</span><br></pre></td></tr></table></figure>
-
 <h4 id="预测前3名标签"><a href="#预测前3名标签" class="headerlink" title="预测前3名标签"></a>预测前3名标签</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./fasttext predict model_kaggle.bin test.ft.txt 3</span><br></pre></td></tr></table></figure>
-
 <h4 id="计算句子向量（受监督）"><a href="#计算句子向量（受监督）" class="headerlink" title="计算句子向量（受监督）"></a>计算句子向量（受监督）</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"this is a sample sentence"</span> | ./fasttext <span class="built_in">print</span>-sentence-vectors model_kaggle.bin</span><br></pre></td></tr></table></figure>
-
 <h2 id="优点和缺点"><a href="#优点和缺点" class="headerlink" title="优点和缺点"></a>优点和缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
 <li>与实现相同精度的其他方法相比，该库的速度惊人。</li>
 <li>句子向量（被监督）可以很容易的计算。</li>
@@ -769,7 +749,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">117</span>
+                    <span class="site-state-item-count">123</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -997,7 +977,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">89</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">91</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1084,7 +1068,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">300k</span>
+    <span title="站点总字数">335k</span>
   
 
   
@@ -1095,7 +1079,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">4:32</span>
+    <span title="站点阅读时长">5:04</span>
   
 </div>
 

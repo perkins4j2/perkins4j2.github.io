@@ -267,7 +267,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">89</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">91</span></a>
 
   </li>
         
@@ -305,7 +305,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">117</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">123</span></a>
 
   </li>
 
@@ -494,7 +494,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.6k</span>
+                <span title="本文字数">1.4k</span>
               
 
               
@@ -508,7 +508,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">1 分钟</span>
               
             </div>
           
@@ -530,19 +530,15 @@
       
         <h3 id="协议升级"><a href="#协议升级" class="headerlink" title="协议升级"></a>协议升级</h3><p>HTTP协议 提供了一种特殊的机制，这一机制允许将一个已建立的连接升级成新的、不相容的协议。这篇指南涵盖了其工作原理和使用场景。</p>
 <p>通常来说这一机制总是由客户端发起的 （不过也有例外，比如说可以由服务端发起升级到传输层安全协议（TLS））， 服务端可以选择是否要升级到新协议。借助这一技术，连接可以以常用的协议启动（如HTTP/1.1），随后再升级到HTTP2甚至是WebSockets.</p>
-<p>注意：HTTP/2 明确禁止使用此机制，这个机制只属于HTTP/1.1</p>
-<a id="more"></a>
+<p>注意：HTTP/2 明确禁止使用此机制，这个机制只属于HTTP/1.1<br><a id="more"></a></p>
 <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>协议升级请求总是由客户端发起的；暂时没有服务端请求协议更改的机制。当客户端试图升级到一个新的协议时，可以先发送一个普通的请求（GET，POST等），不过这个请求需要进行特殊配置以包含升级请求。</p>
 <p>特别这个请求需要添加两项额外的header：</p>
-<p>Connection: Upgrade<br>设置 Connection 头的值为 “Upgrade” 来指示这是一个升级请求.<br>Upgrade: protocols<br>Upgrade 头指定一项或多项协议名，按优先级排序，以逗号分隔。<br>一个典型的包含升级请求的例子差不多是这样的：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GET /index.html HTTP/1.1</span><br><span class="line">Host: www.example.com</span><br><span class="line">Connection: upgrade</span><br><span class="line">Upgrade: example/1, foo/2</span><br></pre></td></tr></table></figure>
-
+<p>Connection: Upgrade<br>设置 Connection 头的值为 “Upgrade” 来指示这是一个升级请求.<br>Upgrade: protocols<br>Upgrade 头指定一项或多项协议名，按优先级排序，以逗号分隔。<br>一个典型的包含升级请求的例子差不多是这样的：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GET /index.html HTTP/1.1</span><br><span class="line">Host: www.example.com</span><br><span class="line">Connection: upgrade</span><br><span class="line">Upgrade: example/1, foo/2</span><br></pre></td></tr></table></figure></p>
 <p>如果服务器决定升级这次连接，就会返回一个 101 Switching Protocols 响应状态码，和一个要切换到的协议的头部字段Upgrade。 如果服务器没有（或者不能）升级这次连接，它会忽略客户端发送的 “Upgrade 头部字段，返回一个常规的响应：例如一个200 OK).</p>
 <p>服务在发送 101  状态码之后，就可以使用新的协议，并可以根据需要执行任何其他协议指定的握手。实际上，一旦这次升级完成了，连接就变成了双向管道。并且可以通过新协议完成启动升级的请求。</p>
 <p>由HTTP/1.1请求建立的连接可以升级为HTTP/2协议的连接，但是反过来不可以。事实上HTTP/2已经不再支持101状态码了，也不再支持任何连接升级机制。</p>
 <h3 id="升级到WebSocket协议的连接"><a href="#升级到WebSocket协议的连接" class="headerlink" title="升级到WebSocket协议的连接"></a>升级到WebSocket协议的连接</h3><p>至今为止最经常会需要升级一个HTTP连接的场合就是使用WebSocket。当你用 WebSocket API 以及其他大部分实现WebSockets的库去建立WebSocket连接时，基本上都不用操心升级的过程，因为这些API已经实现了这一步。比如，用如下API打开一个WebSocket连接：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">webSocket = new WebSocket("ws://destination.server.ext", "optionalProtocol");</span><br></pre></td></tr></table></figure>
-
 <p>WebSocket() 构造函数已经自动完成了发送初始 HTTP/1.1 请求，处理握手及升级过程。</p>
 <p>你也可以用 “wss://“ 地址格式来打开安全的WebSocket连接。</p>
 <p>如果想要自己重头实现WebSocket 连接，就必须要处理握手和升级过程。在创建初始HTTP/1.1会话之后你需要发送另一个HTTP标准请求，但在headers中要带上Upgrade and Connection，也就是：</p>
@@ -721,7 +717,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">117</span>
+                    <span class="site-state-item-count">123</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -949,7 +945,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">89</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">91</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1036,7 +1036,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">300k</span>
+    <span title="站点总字数">335k</span>
   
 
   
@@ -1047,7 +1047,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">4:32</span>
+    <span title="站点阅读时长">5:04</span>
   
 </div>
 

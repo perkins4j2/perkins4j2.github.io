@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="队列和订阅区别 队列是queue，订阅是topic 队列是只能被消费一次，订阅是被消费多次 队列消费是主动轮询take，订阅是消息被动通知  队列实现 采用FIFO先进先出顺序消费 元素没有批量处理，只能迭代逐个take 元素被复制到本地处理 可能使用ItemListener监听队列新增和删除操作">
-<meta name="keywords" content="Hazelcast">
+  <meta name="description" content="Double Brace Initialization双括号初始化，创建一个从指定类（外部大括号）派生的匿名类，并在该类（内部大括号）中提供初始化块。 每次使用双括号初始化时，都会生成一个新类，创建的类具有指向周围外部类的隐式this指针。">
+<meta name="keywords" content="并发编程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hazelcast队列和发布订阅实现">
-<meta property="og:url" content="https://perkins4j2.github.io/posts/2019-10-16-undefined-undefined">
+<meta property="og:title" content="Java隐藏特征">
+<meta property="og:url" content="https://perkins4j2.github.io/posts/3350900/index.html">
 <meta property="og:site_name" content="Perkins4j2的技术博客">
-<meta property="og:description" content="队列和订阅区别 队列是queue，订阅是topic 队列是只能被消费一次，订阅是被消费多次 队列消费是主动轮询take，订阅是消息被动通知  队列实现 采用FIFO先进先出顺序消费 元素没有批量处理，只能迭代逐个take 元素被复制到本地处理 可能使用ItemListener监听队列新增和删除操作">
+<meta property="og:description" content="Double Brace Initialization双括号初始化，创建一个从指定类（外部大括号）派生的匿名类，并在该类（内部大括号）中提供初始化块。 每次使用双括号初始化时，都会生成一个新类，创建的类具有指向周围外部类的隐式this指针。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-16T01:57:06.962Z">
+<meta property="og:updated_time" content="2020-10-09T12:20:18.439Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hazelcast队列和发布订阅实现">
-<meta name="twitter:description" content="队列和订阅区别 队列是queue，订阅是topic 队列是只能被消费一次，订阅是被消费多次 队列消费是主动轮询take，订阅是消息被动通知  队列实现 采用FIFO先进先出顺序消费 元素没有批量处理，只能迭代逐个take 元素被复制到本地处理 可能使用ItemListener监听队列新增和删除操作">
+<meta name="twitter:title" content="Java隐藏特征">
+<meta name="twitter:description" content="Double Brace Initialization双括号初始化，创建一个从指定类（外部大括号）派生的匿名类，并在该类（内部大括号）中提供初始化块。 每次使用双括号初始化时，都会生成一个新类，创建的类具有指向周围外部类的隐式this指针。">
 
 
 
@@ -126,7 +126,7 @@
 
   
   
-  <link rel="canonical" href="https://perkins4j2.github.io/posts/2019-10-16-undefined-undefined">
+  <link rel="canonical" href="https://perkins4j2.github.io/posts/3350900/">
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Hazelcast队列和发布订阅实现 | Perkins4j2的技术博客</title>
+  <title>Java隐藏特征 | Perkins4j2的技术博客</title>
   
 
 
@@ -393,7 +393,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://perkins4j2.github.io/posts/2019-10-16-undefined-undefined">
+    <link itemprop="mainEntityOfPage" href="https://perkins4j2.github.io/posts/3350900/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Perkins">
@@ -410,7 +410,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hazelcast队列和发布订阅实现
+          <h1 class="post-title" itemprop="name headline">Java隐藏特征
 
               
             
@@ -436,7 +436,7 @@
                 
               
 
-              <time title="创建时间：2019-10-16 09:55:40 / 修改时间：09:57:06" itemprop="dateCreated datePublished" datetime="2019-10-16T09:55:40+08:00">2019-10-16</time>
+              <time title="创建时间：2020-10-09 20:19:14 / 修改时间：20:20:18" itemprop="dateCreated datePublished" datetime="2020-10-09T20:19:14+08:00">2020-10-09</time>
             
 
             
@@ -458,7 +458,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/架构/" itemprop="url" rel="index"><span itemprop="name">架构</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
 
                 
                 
@@ -494,7 +494,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3k</span>
+                <span title="本文字数">4.1k</span>
               
 
               
@@ -508,7 +508,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">3 分钟</span>
+                <span title="阅读时长">4 分钟</span>
               
             </div>
           
@@ -528,108 +528,34 @@
       
 
       
-        <h3 id="队列和订阅区别"><a href="#队列和订阅区别" class="headerlink" title="队列和订阅区别"></a>队列和订阅区别</h3><ul>
-<li>队列是queue，订阅是topic</li>
-<li>队列是只能被消费一次，订阅是被消费多次</li>
-<li>队列消费是主动轮询take，订阅是消息被动通知</li>
-</ul>
-<h3 id="队列实现"><a href="#队列实现" class="headerlink" title="队列实现"></a>队列实现</h3><ul>
-<li>采用FIFO先进先出顺序消费</li>
-<li>元素没有批量处理，只能迭代逐个take</li>
-<li>元素被复制到本地处理</li>
-<li>可能使用ItemListener监听队列新增和删除操作<a id="more"></a>
-</li>
-</ul>
-<h4 id="生产"><a href="#生产" class="headerlink" title="生产"></a>生产</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ProducerMember</span> </span>&#123;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">( String[] args )</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">          HazelcastInstance hz = Hazelcast.newHazelcastInstance();</span><br><span class="line">          IQueue&lt;Integer&gt; queue = hz.getQueue( <span class="string">"queue"</span> );</span><br><span class="line">          <span class="keyword">for</span> ( <span class="keyword">int</span> k = <span class="number">1</span>; k &lt; <span class="number">100</span>; k++ ) &#123;</span><br><span class="line">              queue.put( k );</span><br><span class="line">              System.out.println( <span class="string">"Producing: "</span> + k );</span><br><span class="line">              Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">          &#125;</span><br><span class="line">          queue.put( -<span class="number">1</span> );</span><br><span class="line">          System.out.println( <span class="string">"Producer Finished!"</span> );</span><br><span class="line">&#125; &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="消费"><a href="#消费" class="headerlink" title="消费"></a>消费</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConsumerMember</span> </span>&#123;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">( String[] args )</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">          HazelcastInstance hz = Hazelcast.newHazelcastInstance();</span><br><span class="line">          IQueue&lt;Integer&gt; queue = hz.getQueue( <span class="string">"queue"</span> );</span><br><span class="line">          <span class="keyword">while</span> ( <span class="keyword">true</span> ) &#123;</span><br><span class="line">              <span class="keyword">int</span> item = queue.take();</span><br><span class="line">              System.out.println( <span class="string">"Consumed: "</span> + item );</span><br><span class="line">              <span class="keyword">if</span> ( item == -<span class="number">1</span> ) &#123;</span><br><span class="line">                  queue.put( -<span class="number">1</span> );</span><br><span class="line"><span class="keyword">break</span>; &#125;</span><br><span class="line">              Thread.sleep( <span class="number">5000</span> );</span><br><span class="line">          &#125;</span><br><span class="line">          System.out.println( <span class="string">"Consumer Finished!"</span> );</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="效率提升"><a href="#效率提升" class="headerlink" title="效率提升"></a>效率提升</h4><ul>
-<li>提供多个消费者</li>
-<li>非严格顺序，可以创建多个队列分别生产和消费</li>
-<li>消费者可以启动定时任务，提高消费频度</li>
-</ul>
-<h4 id="可靠性"><a href="#可靠性" class="headerlink" title="可靠性"></a>可靠性</h4><ul>
-<li>一个队列成员，会有一个备份</li>
-<li>队列元素使用全局递增itemId，不会重复</li>
-<li>QueueStore提供队列内存时，同时也持久化，在超内存限制时数据也会持久化</li>
-<li>max-size可以设置队列长度，多余元素put会被阻塞，直到有队列空间</li>
-<li>高吞吐量时，可支持多个消费者并发</li>
-<li>网络分区故障时，提供Split-Brain脑裂保护，避免仅部分员执行操作成功</li>
-</ul>
-<h3 id="订阅实现"><a href="#订阅实现" class="headerlink" title="订阅实现"></a>订阅实现</h3><ul>
-<li>发布/订阅模型，发布是异步操作</li>
-<li>订阅同一个topic，所有订阅者均收到消息</li>
-<li>支持全局顺序</li>
-</ul>
-<h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>发布<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TopicPublisher</span> </span>&#123;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">          HazelcastInstance hz = Hazelcast.newHazelcastInstance();</span><br><span class="line">          ITopic&lt;Date&gt; topic = hz.getTopic(<span class="string">"topic"</span>);</span><br><span class="line">          topic.publish(<span class="keyword">new</span> Date());</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>订阅<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TopicSubscriber</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  HazelcastInstance hz = Hazelcast.newHazelcastInstance();</span><br><span class="line">  ITopic&lt;Date&gt; topic = hz.getTopic(<span class="string">"topic"</span>);</span><br><span class="line">  topic.addMessageListener(<span class="keyword">new</span> MessageListenerImpl());</span><br><span class="line">  System.out.println(<span class="string">"Subscribed"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MessageListenerImpl</span> <span class="keyword">implements</span> <span class="title">MessageListener</span>&lt;<span class="title">Date</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMessage</span><span class="params">(Message&lt;Date&gt; m)</span> </span>&#123;</span><br><span class="line">  System.out.println(<span class="string">"Received: "</span> + m.getMessageObject());</span><br><span class="line">  &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>MessageListener 可以监听和消费具体消息</p>
-<h4 id="全局顺序"><a href="#全局顺序" class="headerlink" title="全局顺序"></a>全局顺序</h4><ul>
-<li>消息是顺序发布，订阅者是顺序接受</li>
-<li>消息也可能是全局顺序，所有订阅者接受多个发布者消息的顺序都是一致</li>
-</ul>
-<p>例如有3个成员，member1发布消息a1 和 a2. Member3 发布消息 c1 and c2. 可能有以下顺序：</p>
-<p>member1 → c1, a1, a2, c2</p>
-<p>member2 → c1, c2, a1, a2</p>
+        <h3 id="Double-Brace-Initialization"><a href="#Double-Brace-Initialization" class="headerlink" title="Double Brace Initialization"></a>Double Brace Initialization</h3><p>双括号初始化，创建一个从指定类（外部大括号）派生的匿名类，并在该类（内部大括号）中提供初始化块。</p>
+<p>每次使用双括号初始化时，都会生成一个新类，创建的类具有指向周围外部类的隐式this指针。<br>   <a id="more"></a><br>例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Map source = <span class="keyword">new</span> HashMap()&#123;&#123;</span><br><span class="line">    put(<span class="string">"firstName"</span>, <span class="string">"John"</span>);</span><br><span class="line">    put(<span class="string">"lastName"</span>, <span class="string">"Smith"</span>);</span><br><span class="line">    put(<span class="string">"organizations"</span>, <span class="keyword">new</span> HashMap()&#123;&#123;</span><br><span class="line">        put(<span class="string">"0"</span>, <span class="keyword">new</span> HashMap()&#123;&#123;</span><br><span class="line">            put(<span class="string">"id"</span>, <span class="string">"1234"</span>);</span><br><span class="line">        &#125;&#125;);</span><br><span class="line">        put(<span class="string">"abc"</span>, <span class="keyword">new</span> HashMap()&#123;&#123;</span><br><span class="line">            put(<span class="string">"id"</span>, <span class="string">"5678"</span>);</span><br><span class="line">        &#125;&#125;);</span><br><span class="line">    &#125;&#125;);</span><br><span class="line">&#125;&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>…将产生这些类：</p>
+<p>Test$1$1$1.class<br>Test$1$1$2.class<br>Test$1$1.class<br>Test$1.class<br>Test.class</p>
+<p>当然，如果你这样只做一次，它将不需要太多的初始化时间。</p>
+<p>优点非常明显：</p>
 <ul>
-<li>开启 globalOrderEnabled </li>
+<li>对于熟悉该使用方法的人而言，它具有更好的可读性以及更好的维护性。</li>
 </ul>
-<p>如果member1 → a1, c1, a2, c2</p>
-<p>则member2 → a1, c1, a2, c2</p>
-<p>确保所有成员接受所有消息的顺序是一致，而非来自某个发布者。</p>
+<p>缺点：</p>
 <ul>
-<li>StripedExecutor 有很多线程，负责消息的全局顺序发布。</li>
-<li>hazelcast.event.thread.count是线程数量。</li>
-<li>Topic的名称取hash%线程数量，即为处理该Topic的线程id</li>
+<li>在使用Double Brace Initialization的时候，我们实际上创建了一个匿名类。匿名类有一个性质，那就是该匿名类实例将拥有一个包含它的类型的引用。如果我们将该匿名类实例通过函数调用等方式传到该类型之外，那么对该匿名类的保持实际上会导致外层的类型无法被释放，进而造成内存泄露。</li>
+<li>另外一个缺点则是破坏了equals()函数的语义。在为一个类型实现equals()函数的时候，我们可能需要判断两个参与比较的类型是否一致。</li>
 </ul>
-<h4 id="Reliable-Topic"><a href="#Reliable-Topic" class="headerlink" title="Reliable Topic"></a>Reliable Topic</h4><ul>
-<li>Reliable Topic 根据Ringbuffer数据结构进行备份 </li>
-<li>可靠性高，解决事件丢失问题</li>
-<li>快速消费，更稳定和安全</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ITopic&lt;Long&gt; topic = hz.getReliableTopic(<span class="string">"sometopic"</span>);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>TopicOverloadPolicy 超过容量可以设置过载策略，DISCARD_OLDEST丢失最老、DISCARD_NEWEST丢弃最新、BLOCK阻塞直到超时、ERROR抛出异常</li>
-<li>read-batch-size，支持批量读取消息</li>
-</ul>
+<p>最常见的一种解决方案就是使用第三方类库。例如由Apache Commons类库提供的ArrayUtils.toMap()函数就提供了一种非常清晰的创建Map的实现：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Integer, String&gt; map = (Map) ArrayUtils.toMap(<span class="keyword">new</span> Object[][] &#123;</span><br><span class="line">        &#123;<span class="number">1</span>, <span class="string">"one"</span>&#125;,</span><br><span class="line">        &#123;<span class="number">2</span>, <span class="string">"two"</span>&#125;,</span><br><span class="line">        &#123;<span class="number">3</span>, <span class="string">"three"</span>&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="类实例化顺序"><a href="#类实例化顺序" class="headerlink" title="类实例化顺序"></a>类实例化顺序</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">App</span><span class="params">(String name)</span> </span>&#123; System.out.println(name + <span class="string">"'s constructor called"</span>); &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123; System.out.println(<span class="string">"static initializer called"</span>); &#125;</span><br><span class="line"></span><br><span class="line">    &#123; System.out.println(<span class="string">"instance initializer called"</span>); &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123; System.out.println(<span class="string">"static initializer2 called"</span>); &#125;</span><br><span class="line"></span><br><span class="line">    &#123; System.out.println(<span class="string">"instance initializer2 called"</span>); &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">( String[] args )</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> App(<span class="string">"one"</span>);</span><br><span class="line">        <span class="keyword">new</span> App(<span class="string">"two"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h3><p>提供线程局部变量。这些变量与普通变量不同，因为每个访问一个线程（通过其get或set方法）的线程都有其自己的，独立初始化的变量副本。 </p>
+<p>ThreadLocal实例通常是希望将状态与线程关联的类中的私有静态字段（例如，用户ID或事务ID）。</p>
+<p>只要线程是活动的并且ThreadLocal 实例是可访问的，则每个线程都对其线程局部变量的副本持有隐式引用。线程消失后，其线程本地实例的所有副本都将进行垃圾回收（除非存在对这些副本的其他引用）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicInteger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UniqueThreadIdGenerator</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> AtomicInteger uniqueId = <span class="keyword">new</span> AtomicInteger(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> ThreadLocal &lt; Integer &gt; uniqueNum = </span><br><span class="line">        <span class="keyword">new</span> ThreadLocal &lt; Integer &gt; () &#123;</span><br><span class="line">            <span class="meta">@Override</span> <span class="function"><span class="keyword">protected</span> Integer <span class="title">initialValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> uniqueId.getAndIncrement();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getCurrentThreadId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> uniqueId.get();</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="comment">// UniqueThreadIdGenerator</span></span><br></pre></td></tr></table></figure>
+<h3 id="Compare-and-swap-CAS"><a href="#Compare-and-swap-CAS" class="headerlink" title="Compare and swap (CAS)"></a>Compare and swap (CAS)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimulatedCAS</span> </span>&#123;</span><br><span class="line">     <span class="keyword">private</span> <span class="keyword">int</span> value;</span><br><span class="line"> </span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> value; &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">int</span> <span class="title">compareAndSwap</span><span class="params">(<span class="keyword">int</span> expectedValue, <span class="keyword">int</span> newValue)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">int</span> oldValue = value;</span><br><span class="line">         <span class="keyword">if</span> (value == expectedValue)</span><br><span class="line">             value = newValue;</span><br><span class="line">         <span class="keyword">return</span> oldValue;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CasCounter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> SimulatedCAS value;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value.getValue();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">increment</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> oldValue = value.getValue();</span><br><span class="line">        <span class="keyword">while</span> (value.compareAndSwap(oldValue, oldValue + <span class="number">1</span>) != oldValue)</span><br><span class="line">            oldValue = value.getValue();</span><br><span class="line">        <span class="keyword">return</span> oldValue + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Lock-free and wait-free algorithms<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PseudoRandomUsingSynch</span> <span class="keyword">implements</span> <span class="title">PseudoRandom</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> seed;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PseudoRandomUsingSynch</span><span class="params">(<span class="keyword">int</span> s)</span> </span>&#123; seed = s; &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">int</span> <span class="title">nextInt</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> s = seed;</span><br><span class="line">        seed = Util.calculateNext(seed);</span><br><span class="line">        <span class="keyword">return</span> s % n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PseudoRandomUsingAtomic</span> <span class="keyword">implements</span> <span class="title">PseudoRandom</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AtomicInteger seed;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PseudoRandomUsingAtomic</span><span class="params">(<span class="keyword">int</span> s)</span> </span>&#123;</span><br><span class="line">        seed = <span class="keyword">new</span> AtomicInteger(s);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">nextInt</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">            <span class="keyword">int</span> s = seed.get();</span><br><span class="line">            <span class="keyword">int</span> nexts = Util.calculateNext(s);</span><br><span class="line">            <span class="keyword">if</span> (seed.compareAndSet(s, nexts))</span><br><span class="line">                <span class="keyword">return</span> s % n;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
 
     
       
-
-  <div class="popular-posts-header">相关文章</div>
-  <ul class="popular-posts">
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/posts/2019-10-08-undefined-undefined" rel="bookmark">Hazelcast超时配置</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/posts/2019-09-12-undefined-undefined" rel="bookmark">Hazelcast性能评估</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/posts/2019-11-11-undefined-undefined" rel="bookmark">Hazelcast持久化及优化</a></div>
-      
-    </li>
-  
-    <li class="popular-posts-item">
-      
-      
-      <div class="popular-posts-title"><a href="/posts/2020-10-09-undefined-undefined" rel="bookmark">Vue教程</a></div>
-      
-    </li>
-  
-  </ul>
 
 
     
@@ -659,11 +585,11 @@
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 -->
-  <p><span>本文标题:</span>Hazelcast队列和发布订阅实现</p>
+  <p><span>本文标题:</span>Java隐藏特征</p>
   <p><span>文章作者:</span>Perkins</p>
-  <p><span>发布时间:</span>2019年10月16日</p>
-  <p><span>原始链接:</span><a href="/posts/2019-10-16-undefined-undefined" title="Hazelcast队列和发布订阅实现">https://perkins4j2.github.io/posts/2019-10-16-undefined-undefined</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://perkins4j2.github.io/posts/2019-10-16-undefined-undefined" aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2020年10月09日</p>
+  <p><span>原始链接:</span><a href="/posts/3350900/" title="Java隐藏特征">https://perkins4j2.github.io/posts/3350900/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://perkins4j2.github.io/posts/3350900/" aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
 </div>
@@ -699,7 +625,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Hazelcast/" rel="tag"># Hazelcast</a>
+            <a href="/tags/并发编程/" rel="tag"># 并发编程</a>
           
         </div>
       
@@ -712,8 +638,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/2019-10-12-undefined-undefined" rel="next" title="Gradle安装和IDEA配置">
-                <i class="fa fa-chevron-left"></i> Gradle安装和IDEA配置
+              <a href="/posts/5377900/" rel="next" title="Hazelcast服务及注册中心实现">
+                <i class="fa fa-chevron-left"></i> Hazelcast服务及注册中心实现
               </a>
             
           </div>
@@ -721,10 +647,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/2019-10-24-undefined-undefined" rel="prev" title="Java8新变化">
-                Java8新变化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -1076,7 +998,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#队列和订阅区别"><span class="nav-number">1.</span> <span class="nav-text">队列和订阅区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#队列实现"><span class="nav-number">2.</span> <span class="nav-text">队列实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#生产"><span class="nav-number">2.1.</span> <span class="nav-text">生产</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消费"><span class="nav-number">2.2.</span> <span class="nav-text">消费</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#效率提升"><span class="nav-number">2.3.</span> <span class="nav-text">效率提升</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可靠性"><span class="nav-number">2.4.</span> <span class="nav-text">可靠性</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#订阅实现"><span class="nav-number">3.</span> <span class="nav-text">订阅实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实现"><span class="nav-number">3.1.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#全局顺序"><span class="nav-number">3.2.</span> <span class="nav-text">全局顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reliable-Topic"><span class="nav-number">3.3.</span> <span class="nav-text">Reliable Topic</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Double-Brace-Initialization"><span class="nav-number">1.</span> <span class="nav-text">Double Brace Initialization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类实例化顺序"><span class="nav-number">2.</span> <span class="nav-text">类实例化顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreadLocal"><span class="nav-number">3.</span> <span class="nav-text">ThreadLocal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Compare-and-swap-CAS"><span class="nav-number">4.</span> <span class="nav-text">Compare and swap (CAS)</span></a></li></ol></div>
             
 
           </div>

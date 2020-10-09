@@ -267,7 +267,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">89</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">91</span></a>
 
   </li>
         
@@ -305,7 +305,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">117</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">123</span></a>
 
   </li>
 
@@ -494,7 +494,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.1k</span>
+                <span title="本文字数">688</span>
               
 
               
@@ -530,9 +530,7 @@
       
         <h3 id="什么是Varint编码"><a href="#什么是Varint编码" class="headerlink" title="什么是Varint编码"></a>什么是Varint编码</h3><p>Varint是一种使用一个或多个字节序列化整数的方法，会把<code>整数</code>编码为<code>变长字节</code>。</p>
 <p>对于32位整型的<code>4</code>个字节数据经过Varint编码后需要<code>1~5</code>个字节，小的数字使用1个byte，大的数字使用5个bytes。</p>
-<p>64位整型数据编码后占用1~10个字节。在实际场景中小数字的使用率远远多于大数字，因此通过Varint编码对于大部分场景都可以起到很好的压缩效果。</p>
-<a id="more"></a>
-
+<p>64位整型数据编码后占用1~10个字节。在实际场景中小数字的使用率远远多于大数字，因此通过Varint编码对于大部分场景都可以起到很好的压缩效果。<br><a id="more"></a></p>
 <h3 id="编码原理"><a href="#编码原理" class="headerlink" title="编码原理"></a>编码原理</h3><p>Varint 中的每个 byte 的最高位 bit 有特殊的含义，如果该位为 1，表示后续的 byte 也是该数字的一部分，如果该位为 0，则结束。</p>
 <p>其他的 7 个 bit 都用来表示数字。因此小于 128 的数字都可以用一个 byte 表示。大于 128 的数字，比如 300，会用两个字节来表示：1010 1100 0000 0010</p>
 <p>由于负数的高位为1,所以采用这种压缩处理的时候必须负数转成正数。</p>
@@ -714,7 +712,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">117</span>
+                    <span class="site-state-item-count">123</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -942,7 +940,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">89</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">91</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1029,7 +1031,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">300k</span>
+    <span title="站点总字数">335k</span>
   
 
   
@@ -1040,7 +1042,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">4:32</span>
+    <span title="站点阅读时长">5:04</span>
   
 </div>
 

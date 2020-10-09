@@ -267,7 +267,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">89</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">91</span></a>
 
   </li>
         
@@ -305,7 +305,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">117</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">123</span></a>
 
   </li>
 
@@ -494,7 +494,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.9k</span>
+                <span title="本文字数">1.2k</span>
               
 
               
@@ -508,7 +508,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">1 分钟</span>
               
             </div>
           
@@ -529,19 +529,17 @@
 
       
         <h3 id="何为散列"><a href="#何为散列" class="headerlink" title="何为散列"></a>何为散列</h3><p>散列（Hash）也称为哈希，就是把任意长度的输入，通过散列算法，变换成固定长度的输出，这个输出值就是散列值。</p>
-<p>散列算法的宗旨就是：构造冲突较低的散列地址，保证散列表中数据的离散度。</p>
-<a id="more"></a>
-
+<p>散列算法的宗旨就是：构造冲突较低的散列地址，保证散列表中数据的离散度。<br><a id="more"></a></p>
 <h3 id="除法散列法"><a href="#除法散列法" class="headerlink" title="除法散列法"></a>除法散列法</h3><p>散列长度 m, 对于一个小于 m 的数 p 取模，所得结果为散列地址。对 p 的选择很重要，一般取素数或 m</p>
 <p>公式：f(k) = k % p （p&lt;=m）</p>
 <p>因为求模数其实是通过一个除法运算得到的，所以叫“除法散列法”</p>
 <p>先通过求关键字的平方值扩大相近数的差别，然后根据表长度取中间的几位数作为散列函数值。又因为一个乘积的中间几位数和乘数的每一位都相关，所以由此产生的散列地址较为均匀。</p>
-<p>公式：f(k) = ((k * k) &gt;&gt; X) &lt;&lt; Y对于常见的32位整数而言，也就是 f(k) = (k * k) &gt;&gt; 28</p>
+<p>公式：f(k) = ((k <em> k) &gt;&gt; X) &lt;&lt; Y对于常见的32位整数而言，也就是 f(k) = (k </em> k) &gt;&gt; 28</p>
 <h3 id="平方散列法（平方取中法）"><a href="#平方散列法（平方取中法）" class="headerlink" title="平方散列法（平方取中法）"></a>平方散列法（平方取中法）</h3><p>先通过求关键字的平方值扩大相近数的差别，然后根据表长度取中间的几位数作为散列函数值。又因为一个乘积的中间几位数和乘数的每一位都相关，所以由此产生的散列地址较为均匀。</p>
-<p>公式：f(k) = ((k * k) &gt;&gt; X) &lt;&lt; Y对于常见的32位整数而言，也就是 f(k) = (k * k) &gt;&gt; 28</p>
+<p>公式：f(k) = ((k <em> k) &gt;&gt; X) &lt;&lt; Y对于常见的32位整数而言，也就是 f(k) = (k </em> k) &gt;&gt; 28</p>
 <h3 id="斐波那契（Fibonacci）散列法"><a href="#斐波那契（Fibonacci）散列法" class="headerlink" title="斐波那契（Fibonacci）散列法"></a>斐波那契（Fibonacci）散列法</h3><p>和平方散列法类似，此种方法使用斐波那契数列的值作为乘数而不是自己。</p>
 <p>对于 16 位整数而言，这个乘数是 40503。<br>对于 32 位整数而言，这个乘数是 2654435769。<br>对于 64 位整数而言，这个乘数是 11400714819323198485。</p>
-<p>公式：f(k) = ((k * 2654435769) &gt;&gt; X) &lt;&lt; Y<br>对于常见的32位整数而言，也就是 f(k) = (k * 2654435769) &gt;&gt; 28</p>
+<p>公式：f(k) = ((k <em> 2654435769) &gt;&gt; X) &lt;&lt; Y<br>对于常见的32位整数而言，也就是 f(k) = (k </em> 2654435769) &gt;&gt; 28</p>
 <p>可以发现 0x61c88647 与一个神奇的数字产生了关系，它就是 (Math.sqrt(5) - 1)/2。也就是传说中的黄金比例 0.618（0.618 只是一个粗略值），即0x61c88647 = 2^32 * 黄金分割比。同时也对应上了上文所提到的斐波那契散列法。</p>
 <h3 id="随机数法"><a href="#随机数法" class="headerlink" title="随机数法"></a>随机数法</h3><p>选择一随机函数，取关键字的随机值作为散列地址，通常用于关键字长度不同的场合。</p>
 <p>公式：f(k) = random(k)</p>
@@ -722,7 +720,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">117</span>
+                    <span class="site-state-item-count">123</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -950,7 +948,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">89</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">91</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1037,7 +1039,7 @@
     
       <span class="post-meta-item-text">站点总字数：</span>
     
-    <span title="站点总字数">300k</span>
+    <span title="站点总字数">335k</span>
   
 
   
@@ -1048,7 +1050,7 @@
     
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
     
-    <span title="站点阅读时长">4:32</span>
+    <span title="站点阅读时长">5:04</span>
   
 </div>
 
